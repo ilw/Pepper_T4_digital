@@ -1,0 +1,174 @@
+
+# Developer Guide
+
+
+```{toctree}
+:maxdepth: 1
+:hidden:
+:caption: Topics
+
+
+```
+
+This site is developed using git and python tools. Here is a short overview on how 
+to use this repository and contribute. 
+The documentation is built with [Sphinx](https://www.sphinx-doc.org/en/master/) using the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/). 
+It is designed for a technical audience: engineers, researchers, and circuit designers.
+
+This documentation aims to make Pepper development reproducible, transparent, and easy to extend. 
+For questions or issues, please open a discussion in the project’s repository.
+
+## Quick Start Summary
+
+| Task  |  Command |
+|:------|:--------------|
+| Clean build  |  `make clean` |
+| Build documentation  |  `make livehtml` |
+| Build notebooks  |  `make build_nb` |
+| Create environment  |  `python -m venv .venv or uv venv`  |
+| Install dependencies  |  `pip install -r requirements.txt` |
+
+
+## Project Organization
+
+This repository is organized as follows: 
+
+
+``` bash
+pepper/
+├── units/
+│   ├── adc/
+│   │   ├── dms/
+│   │   └── signoff/
+│   ├── PRESTUDY.md
+│   └── README.md
+├── _static/
+├── build/
+├── src/
+├── conf.py
+├── index.md
+├── Makefile
+├── requirements.txt
+└── README.md
+```
+
+All module documentation must be placed in the `units` directory and is 
+organized in a hierarchical fashion that reflects the circuit hierarchy.
+The `src` directory and `conf.py` file are specific to the website configuration
+and should not be changed. 
+
+Any external files that need to be served can be placed
+in `_static` while other resources such a figures and data should be organized 
+in the same directory as the markdown document that is referencing it. The 
+`.fig` naming convention to collect figures is required. 
+
+Sub-modules, verification data, and modelling files for a particular block should be
+placed in local sub-folders `units`, `signoff`, and `dms` respectively. 
+
+
+```{attention}
+All units should have a `README.md` file as entry point for the module documentation.
+```
+
+## Building Documentation with Sphinx
+
+[Sphinx](https://www.sphinx-doc.org/en/master/) is 
+a documentation generator or a tool that translates a set of plain text source 
+files into various output formats, automatically producing cross-references, indices, etc.
+
+Here we use plain markdown as documentation source together with `directives` to
+provide sphinx specific formatting. The `toctree` will be the most used way to
+organize the site structure. In order to reference documents and include them
+in the site structure we simply reference them according to their relative path:
+
+``` markdown
+.. toctree::
+   :maxdepth: 2
+
+   usage/installation
+   usage/quickstart
+   ...
+```
+
+Please see the [Quick Start Guide](https://www.sphinx-doc.org/en/master/usage/quickstart.html) for more details.
+
+## Setup and Git Usage
+
+### Cloning and Branching
+
+```bash
+# Clone the repository
+git clone https://github.com/<organization>/pepper.git
+cd pepper
+
+# Create a new development branch for your changes
+git checkout -b dev/user/my-feature
+```
+
+Follow a standard Git branching workflow:
+
+ - main → stable release-ready documentation
+ - dev/ → active feature and bug-fix integration
+
+Commit Guidelines
+
+ - Write atomic commits that encapsulate a single logical change.
+ - Use imperative mood in commit messages (e.g., “Add documentation for virtual environment setup”).
+ - Reference issues or PRs when applicable.
+
+Example:
+``` bash
+git commit -m "Add initial setup instructions for Python venv"
+```
+
+ - Use `git fetch --all` regularly to sync remote branches.
+ - Clean old branches with `git branch --merged`.
+ - Use `git stash` when you need to switch context quickly without committing incomplete work
+
+
+## Python Environment Setup
+
+This repository supports two primary ways to manage dependencies: venv and uv. This will manage 
+the dependencies required to build documentation from source.
+
+### Option A: Using venv
+
+[venv](https://docs.python.org/3/library/venv.html) is Python's default environment/package manager.
+
+
+``` bash
+python -m venv .venv
+source .venv/bin/activate   # (Linux/Mac)
+.venv\Scripts\activate      # (Windows)
+
+pip install -r requirements.txt
+```
+
+### Option B: Using uv (Recommended for lightweight environments)
+
+[uv](https://github.com/astral-sh/uv) is a fast, modern Python package manager compatible with pip’s interface.
+
+``` bash
+uv venv
+source .venv/bin/activate   # (Linux/Mac)
+.venv\Scripts\activate      # (Windows)
+uv pip install -r requirements.txt
+
+```
+
+
+## Exporting Cadence Data
+
+!TODO
+
+## Contributing
+
+To contribute:
+
+ - Fork the repository.
+ - Create a feature branch.
+ - Follow coding and documentation conventions.
+ - Submit a pull request to develop.
+
+Make sure to update `CHANGELOG.md` with any notable change.
+

@@ -1,0 +1,109 @@
+# Application Notes
+
+
+```{toctree}
+:hidden:
+
+```
+
+## System Integration 
+
+Because of the Asynchronous SAR operation there are fast current transients
+on the digital and analogue supplies. This operation runs internally at around
+100 MHz depending on settling speed of the CDAC over PVT. 
+Because of this reason we require a 10 nF decoupling capacitance on the 
+analog supplies `AVDD/AGND`. This will minimize any conversion errors without
+having a 100 MHz bandwidth requirement on the LDO.
+
+!TODO
+
+
+## `ANALOG_TEST` Output Net Constraints
+
+This details the integration requirements for the `ANALOG_TEST` net for 
+accurate debug and characterization. This is a requirement for all analog test modes
+detailed below.
+
+| **Parameter**                       | **Symbol / Unit**         | **Requirement / Limit** | **Description / Notes**                                                                     |
+| ----------------------------------- | ------------------------- | ----------------------- | ------------------------------------------------------------------------------------------- |
+| **Net Name**                        | —                         | `ANALOG_TEST`              | General-purpose analog voltage output net.                                             |
+| **Function**                        | —                         | Voltage output          | Driven by source follower.                                                              |
+| **Operating Voltage Range**         | V<sub>OUT</sub> (V)       | 0 V – 2.0 V  (`AVDD`)  | Output voltage range referenced to analog ground.                                           |
+| **Nominal Output Voltage**          | V<sub>OUT,nom</sub>       | 0.4 V                  | Typical DC level or midpoint bias.                                                          |
+| **Output Resistance (max)**         | R<sub>OUT,max</sub> (Ω)   | ≤ 100 Ω                 | Maximum routing resistance allowed at the pad.                                                |
+| **Load Capacitance (max)**          | C<sub>LOAD,max</sub> (pF) | ≤ 1 pF                  | Maximum total capacitive load including parasitics and routing.                             |
+| **Operating Frequency / Bandwidth** | f<sub>BW</sub> (Hz)       | DC – 1 MHz              | Small-signal bandwidth for -3 dB response.                                                  |
+| **Output Current Drive Capability** | I<sub>OUT,max</sub> (mA)  | ±1 uA                   | Maximum continuous sourcing or sinking current.                                             |
+| **Power Supply Voltage**            | V<sub>DD,ANA</sub> (V)    | 1.8 V ± 10 %             | Analog supply for the driving circuit.                                                      |
+| **Power Supply Rejection Ratio**    | PSRR (dB)                 | ≥ 60 dB @ 1 kHz         | Minimum suppression of supply noise at 1 kHz.                                               |
+| **Output Noise Density**            | e<sub>n</sub> (nV/√Hz)    | ≤ 100 nV/√Hz @ 1 kHz    | Target output noise spectral density.                                                       |
+| **Output Offset Voltage**           | V<sub>OS</sub> (mV)       | ≤ 1 mV                  | DC offset at output with respect to ideal level.                                            |
+| **ESD Protection**                  | —                         | ±2 kV (HBM)             | Minimum electrostatic discharge protection level.                                           |
+| **Operating Temperature Range**     | T<sub>OP</sub> (°C)       | –40 °C to +85 °C        | Ambient operating range.                                                                    |
+| **Reference Ground**                | —                         | `AGND`                  | Dedicated analog ground reference (must not share high-current digital returns).            |
+| **Notes / Comments**                | —                         | —                       | Keep trace length < 2 mm and minimize coupling to digital nets. Use guard ring if possible. |
+
+## Analog Test MUX
+
+
+| TEST MODE | ANALOG_TEST_SELECT<2:0> | Signal Name  | Description  |
+|:---|:------------------------|:-------------|:----------|
+| 1 | 0                       | IREF_OUT     | Internal Current Bias  |
+| 2 | 1                       | REFC         | Common Mode Reference Voltage |
+| 3 | 2                       | VOP1         | Positive QNF Amplifier1 Voltage |
+| 4 | 3                       | VON1         | Negative QNF Amplifier1 Voltage |
+| 5 | 4                       | VOP2         | Positive QNF Amplifier2 Voltage |
+| 6 | 5                       | VON2         | Negative QNF Amplifier2 Voltage |
+| 7 | 6                       | VOP3         | Positive QNF Amplifier3 Voltage |
+| 8 | 7                       | VON3         | Negative QNF Amplifier3 Voltage |
+
+###  Analog Test Mode: 1
+
+!TODO
+
+## `DIGITAL_DEBUG` Output Net Constraints
+
+This details the integration requirements for the `DIGITAL_DEBUG` net for 
+accurate debug and characterization. This is a requirement for all digital test modes
+detailed below.
+
+| **Parameter**                      | **Symbol / Unit**                    | **Requirement / Limit**                   | **Description / Notes**                                                              |
+| ---------------------------------- | ------------------------------------ | ----------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Net Name**                       | —                                    | `DIGITAL_DEBUG`                            | Digital debug data output signal.                                                    |
+| **Function**                       | —                                    | Encodes sampled debug data                | Data is valid with respect to `SAMPLE_CLK`.                                          |
+| **Signal Type**                    | —                                    | Digital Output                            | Unidirectional output from logic core or debug block.                                |
+| **Reference Clock**                | —                                    | `SAMPLE_CLK`                              | All data transitions are synchronous to this clock domain.                           |
+| **Clock Frequency**                | f<sub>CLK</sub> (Hz)                 | 10 MHz                                    | Typical `SAMPLE_CLK` frequency for timing reference.                                 |
+| **Operating Voltage (I/O Supply)** | V<sub>DDIO</sub> (V)                 | 1.8 V ± 10 %                               | Logic supply for digital I/O buffer.                                                 |
+| **Input / Output Type**            | —                                    | CMOS push-pull                            | Standard CMOS logic levels referenced to digital ground.                             |
+| **Logic High Voltage (min)**       | V<sub>OH,min</sub> (V)               | ≥ 1.4 × `DVDD`                             | Minimum guaranteed high-level output voltage.                                        |
+| **Logic Low Voltage (max)**        | V<sub>OL,max</sub> (V)               | ≤ 0.2 × `DVDD`                             | Maximum guaranteed low-level output voltage.                                         |
+| **Output Drive Strength**          | I<sub>OH</sub> / I<sub>OL</sub> (mA) | ±0.1 mA                                     | Maximum source/sink capability per in.                                              |
+| **Output Resistance (typ)**        | R<sub>OUT</sub> (Ω)                  | 10k Ω (typical)                            | Equivalent output impedance for signal integrity estimation.                         |
+| **Load Capacitance (max)**         | C<sub>LOAD,max</sub> (pF)            | 0.1 pF                                     | Total allowable load including trace and input capacitance.                          |
+| **Timing Reference**               | —                                    | Data valid on rising edge of `SAMPLE_CLK` | Defines setup/hold timing relationship.                                              |
+| **Setup Time (min)**               | t<sub>SU</sub> (ns)                  | ≥ 10 ns                                    | Minimum time data must be stable before the active clock edge.                       |
+| **Hold Time (min)**                | t<sub>H</sub> (ns)                   | ≥ 10 ns                                    | Minimum time data must remain stable after the active clock edge.                    |
+| **Output Rise/Fall Time (max)**    | t<sub>R</sub> / t<sub>F</sub> (ns)   | ≤ 10 ns                                    | Maximum transition times (20%–80%) at nominal load.                                  |
+| **ESD Protection**                 | —                                    | ±2 kV (HBM)                               | Minimum electrostatic discharge protection level.                                    |
+| **Operating Temperature Range**    | T<sub>OP</sub> (°C)                  | –40 °C to +85 °C                          | Ambient operating range.                                                             |
+| **Reference Ground**               | —                                    | `DGND`                                    | Digital ground reference; may be isolated from analog ground except at common point. |
+| **Notes / Comments**               | —                                    | —                                         | Route adjacent to `SAMPLE_CLK` with controlled impedance. Keep stubs short (< 1 cm). |
+
+
+## Digital Test MUX
+
+| TEST MODE | DIGITAL_DEBUG_SELECT<2:0> | Signal Name       | Description  |
+|:---|:--------------------------|:------------------|:---------------------|
+| 1 | 0                         | SAMPLE_INTERNAL   | Sample Control |
+| 2 | 1                         | SAR_INTERNAL      | SAR Control |
+| 3 | 2                         | QNF_INTERNAL      | QNF Control |
+| 4 | 3                         | CHOPPER_INTERNAL  | Chopper Clock |
+| 5 | 4                         | SAR_DEBUG         | Async Comparator Output |
+| 6 | 5                         | INTEGRATOR_DEBUG  | 9th Carry bit from 1st CIC integrator |
+| 7 | 6                         | CIC_DONE_PRE      | CIC Done signal without OVERRIDE |
+| 8 | 7                         | SAR_DATA<9>       | SAR DATA MSB |
+
+###  Digital Test Mode: 1
+
+!TODO

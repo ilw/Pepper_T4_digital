@@ -1,0 +1,26 @@
+
+# Verification Summary: LIB_PEPPER_NSADC tb_sar_controller
+  
+lbl11 2025-10-13 
+
+## Test: Interactive.0:functional
+  
+Simulation started on 13 Oct 2025 and ran for 0 minutes.The test had no hard specification requirements.
+
+### Design Setup
+
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: tb_sar_controller
+View Name: schematic
+Simulator: spectre
+```  
+
+### Test Summary
+
+|Output|Specification|Result|Pass/Fail|
+| :---: | :---: | :---: | :---: |
+|energy_per_conversion|37.4p|< 100 pJ|Pass|
+|smpl_frq|1.67M|-|Info|
+|vdd_iload|34.6u|-|Info|

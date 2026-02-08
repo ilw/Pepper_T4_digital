@@ -1,0 +1,60 @@
+
+# Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc
+  
+lbl11 2025-10-13 
+
+## Test: MonteCarlo.0:dc_mc_eval
+  
+Simulation started on 12 Oct 2025 and ran for 23 minutes. The yield for this test is 1% to 2% (69 of 4500 points passed)
+Verification state: 2/3
+
+### Design Setup
+
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: tb_capacitor_mc
+View Name: schematic
+Simulator: spectre
+```  
+
+### Specifications
+
+|Output|Specification|Pass/Fail|
+| :---: | :---: | :---: |
+|lsb_cunit|51.5 fF ±1%|Fail|
+|msb_cunit|832 fF ±100m%|Fail|
+
+### Output: lsb_cunit
+  
+Sample presents a normal distribution. Using 51.5 fF ±1% as specification requirement.
+
+|Corner|P0.16|P0.5|P0.84|Pass/Fail|
+| :---: | :---: | :---: | :---: | :---: |
+|MC_0|48.5f, 49.1f|51f, 51.6f|53.6f, 54.3f|Fail|
+|MC_1|48.5f, 49.2f|51.1f, 51.7f|53.6f, 54.3f|Fail|
+|MC_2|48.6f, 49.3f|51.2f, 51.8f|53.8f, 54.5f|Fail|
+|MC_3|48.5f, 49.1f|51f, 51.6f|53.6f, 54.3f|Fail|
+|MC_4|48.5f, 49.2f|51.1f, 51.7f|53.6f, 54.3f|Fail|
+|MC_5|48.6f, 49.3f|51.2f, 51.8f|53.8f, 54.5f|Fail|
+|MC_6|48.5f, 49.1f|51f, 51.6f|53.6f, 54.3f|Fail|
+|MC_7|48.5f, 49.2f|51.1f, 51.7f|53.6f, 54.3f|Fail|
+|MC_8|48.6f, 49.3f|51.2f, 51.8f|53.8f, 54.5f|Fail|
+  
+
+### Output: msb_cunit
+  
+Sample presents a normal distribution. Using 832 fF ±100m% as specification requirement.
+
+|Corner|P0.16|P0.5|P0.84|Pass/Fail|
+| :---: | :---: | :---: | :---: | :---: |
+|MC_0|783f, 795f|826f, 835f|866f, 878f|Fail|
+|MC_1|785f, 796f|827f, 837f|868f, 879f|Fail|
+|MC_2|787f, 798f|829f, 839f|870f, 881f|Fail|
+|MC_3|784f, 795f|826f, 835f|867f, 878f|Fail|
+|MC_4|785f, 796f|827f, 837f|868f, 879f|Fail|
+|MC_5|787f, 798f|829f, 839f|870f, 881f|Fail|
+|MC_6|784f, 795f|826f, 835f|867f, 878f|Fail|
+|MC_7|785f, 796f|827f, 837f|868f, 879f|Fail|
+|MC_8|787f, 798f|829f, 839f|870f, 881f|Fail|
+  

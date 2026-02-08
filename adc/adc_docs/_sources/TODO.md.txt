@@ -1,0 +1,27 @@
+# TODO List
+
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+
+
+```
+
+## Python Modelling
+
+ - Sweep confiruations to show performance with statistics
+ - signal-dependent dither
+ - output correlators
+ - second-order MES
+ - quantization noise shaping
+
+## Check References
+
+For HDL Diagrams
+
+https://github.com/SymbiFlow/sphinxcontrib-hdl-diagrams
+
+https://schemdraw.readthedocs.io/en/stable/gallery/signalproc.html
+
+

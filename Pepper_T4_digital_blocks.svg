@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 9593 7869" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(1.726113,0,0,1.108873,0,3543.43054)">
+        <rect x="0" y="-3195.524" width="5557.419" height="7095.937" style="fill:none;"/>
+        <g id="Layer1" transform="matrix(0.579336,0,0,0.901817,1595.451099,-1709.975567)">
+            <g transform="matrix(1,0,0,1,-1689.615099,-1468.688367)">
+                <g transform="matrix(95.833333,0,0,95.833333,2540.113098,303.086142)">
+                </g>
+                <text x="2348.446px" y="303.086px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:95.833px;">TLM</text>
+            </g>
+        </g>
+        <g id="Layer2" transform="matrix(0.579336,0,0,0.901817,1595.451099,-1709.975567)">
+            <g transform="matrix(1.496551,0,0,1.850894,-577.266424,-2631.48951)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(123,174,222);fill-opacity:0.5;stroke:black;stroke-width:2.48px;"/>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.57509,-1956.3468,1039.038087)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(123,174,222);fill-opacity:0.5;stroke:black;stroke-width:2.71px;"/>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.346081,-1966.137616,-2174.730162)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(123,174,222);fill-opacity:0.5;stroke:black;stroke-width:2.93px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-1669.401396,-1140)">
+                <text x="389.009px" y="562.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+                <text x="389.009px" y="662.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">MOSI</text>
+                <text x="389.009px" y="762.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">SCK</text>
+                <text x="389.009px" y="862.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">CS</text>
+                <g transform="matrix(50,0,0,50,511.322989,962.69258)">
+                </g>
+                <g transform="matrix(50,0,0,50,524.677481,962.69258)">
+                </g>
+                <g transform="matrix(50,0,0,50,663.12963,962.69258)">
+                </g>
+                <text x="389.009px" y="962.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">tx_buﬀ[15:0]</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2923.241198,-1952.728654)">
+                <text x="389.009px" y="562.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+                <text x="389.009px" y="662.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">MOSI</text>
+                <text x="389.009px" y="762.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">SCK</text>
+                <text x="389.009px" y="862.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">CS</text>
+                <text x="389.009px" y="962.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">HF_CLK</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2323.222124,-1140)">
+                <text x="1989.956px" y="562.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">MISO</text>
+                <text x="1900.967px" y="662.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">byte_rcvd</text>
+                <text x="1887.099px" y="762.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">word_rcvd</text>
+                <text x="1789.785px" y="862.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">cmd_byte [7:0]</text>
+                <g transform="matrix(50,0,0,50,2117.739064,962.69258)">
+                </g>
+                <text x="1786.929px" y="962.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">data_byte [7:0]</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-3673.98304,-1537.043909)">
+                <g transform="matrix(83.333333,0,0,83.333333,4758.078305,669.952281)">
+                </g>
+                <text x="3873.516px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">Commmand Interpreter</text>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.346081,-531.62835,2871.219455)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(65,161,145);fill-opacity:0.5;stroke:black;stroke-width:2.93px;"/>
+            </g>
+            <g transform="matrix(0.714607,0,0,1.178325,-1606.054888,1398.390819)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(65,161,145);fill-opacity:0.5;stroke:black;stroke-width:4.28px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2280.107627,1898.860294)">
+                <g transform="matrix(83.333333,0,0,83.333333,3294.443517,2295.368084)">
+                </g>
+                <text x="2674.082px" y="2295.368px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">A<tspan x="2723.48px 2774.383px " y="2295.368px 2295.368px ">TM</tspan> CONTROL</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2144.823685,-1330)">
+                <path d="M849.104,618.457L1956.683,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2144.823685,-1330)">
+                <path d="M2238.258,618.457L3345.554,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2099.185611,3715.593202)">
+                <path d="M2238.258,618.457L3345.554,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-4591.21273,-1460.115672)">
+                <g transform="matrix(83.333333,0,0,83.333333,3916.441372,669.952281)">
+                </g>
+                <text x="3782.123px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">SPI</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-225.817958,1585.528951)">
+                <text x="3392.674px" y="1720.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENADCANALOG</text>
+                <text x="3598.289px" y="1820.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENMES</text>
+                <text x="3601.073px" y="1920.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENCHP</text>
+                <text x="3591.844px" y="2020.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENDW<tspan x="3742.747px " y="2020.855px ">A</tspan></text>
+                <text x="3434.276px" y="2120.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ADCOSR&lt;3:0&gt;</text>
+                <text x="3420.384px" y="2220.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ADCGAIN&lt;3:0&gt;</text>
+                <text x="3512.132px" y="2320.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENEXTCLK</text>
+                <text x="3370.482px" y="2420.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">DONEOVERRIDE</text>
+                <text x="3279.686px" y="2520.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">DONEOVERRIDEV<tspan x="3714.94px 3748.289px " y="2520.855px 2520.855px ">AL</tspan></text>
+                <text x="3313.035px" y="2620.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ANARST<tspan x="3514.94px 3553.831px " y="2620.855px 2620.855px ">OV</tspan>ERRIDE</text>
+                <text x="3222.24px" y="2720.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ANARST<tspan x="3424.144px 3463.035px " y="2720.855px 2720.855px ">OV</tspan>ERRIDEV<tspan x="3714.94px 3748.289px " y="2720.855px 2720.855px ">AL</tspan></text>
+                <text x="3286.986px" y="2820.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">DIGDEBUGSEL&lt;2:0&gt;</text>
+                <text x="3326.805px" y="2920.855px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ANA<tspan x="3425.902px 3456.444px " y="2920.855px 2920.855px ">TE</tspan>STSEL&lt;2:0&gt;</text>
+                <text x="3448.167px" y="3120.855px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">SAMPLE_CLK</text>
+                <text x="3614.94px" y="3220.855px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">nARST</text>
+                <g transform="matrix(50,0,0,50,3776.096957,3320.854909)">
+                </g>
+                <text x="3584.373px" y="3320.855px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">HF_CLK</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-5821.187165,-2764.465334)">
+                <text x="3291.938px" y="1870.643px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">RESUL<tspan x="3454.951px 3485.493px " y="1870.643px 1870.643px ">T </tspan>[15:0]</text>
+                <text x="3291.938px" y="1970.643px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">DONE</text>
+                <text x="3291.938px" y="2070.643px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">ADCOVERFLOW</text>
+                <g transform="matrix(50,0,0,50,3558.637615,2170.643378)">
+                </g>
+                <text x="3291.938px" y="2170.643px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">DIGDEBUG</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-1573.222124,-1214.901529)">
+                <text x="1684.844px" y="562.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+                <text x="1684.844px" y="662.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">CS</text>
+                <text x="1684.844px" y="762.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">SCK</text>
+                <text x="1684.844px" y="862.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">byte_rcvd</text>
+                <text x="1684.844px" y="962.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">word_rcvd</text>
+                <text x="1684.844px" y="1062.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">cmd_byte [7:0]</text>
+                <text x="1684.844px" y="1162.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">data_byte [7:0]</text>
+                <text x="1684.844px" y="1262.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ADC_data [2:0][15:0]</text>
+                <text x="1684.844px" y="1362.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">status[13:0]</text>
+                <text x="1684.844px" y="1462.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">cfg_data[5:0][7:0]</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2135.03287,2067.300523)">
+                <path d="M849.104,618.457L1956.683,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-4842.553615,1883.933723)">
+                <g transform="matrix(83.333333,0,0,83.333333,4186.039407,669.952281)">
+                </g>
+                <text x="3996.261px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">FIFO</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-764.768731,2626.324985)">
+                <text x="930.645px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SAMPLE_CLK</text>
+                <text x="930.645px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP_sync</text>
+                <text x="930.645px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CHEN[7:0]_sync</text>
+                <text x="930.645px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">DONE</text>
+                <text x="930.645px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NRST_sync</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-254.768731,2626.324985)">
+                <text x="1320.507px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">nARST</text>
+                <text x="1103.783px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">A<tspan x="1133.422px 1163.964px " y="1930.325px 1930.325px ">TM</tspan>CHSEL<tspan x="1370.482px 1384.374px " y="1930.325px 1930.325px "> [</tspan>9:0]</text>
+                <text x="1217.65px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CHSEL[7:0]</text>
+                <text x="1198.314px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">LASTWORD</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2106.033111,-1729.532693)">
+                <text x="1634.907px" y="4531.788px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">DA<tspan x="1703.412px 1730.244px 1766.352px " y="4531.788px 4531.788px 4531.788px ">TA_</tspan>RDY</text>
+                <text x="1471.918px" y="4631.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_OVERFLOW</text>
+                <text x="1438.618px" y="4731.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_W<tspan x="1625.629px 1655.268px 1685.81px " y="4731.788px 4731.788px 4731.788px ">ATE</tspan>RMARK</text>
+                <text x="1446.65px" y="4831.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ADC_data[2:0][15:0]</text>
+                <text x="1435.834px" y="4931.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_UNDERFLOW</text>
+                <text x="837.357px" y="5131.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_POP</text>
+                <text x="837.357px" y="5231.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFOW<tspan x="996.561px 1026.2px 1056.742px " y="5231.788px 5231.788px 5231.788px ">ATE</tspan>RMARK[4:0]</text>
+                <text x="837.357px" y="5331.788px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">SCK</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2106.033111,-1729.532693)">
+                <text x="837.357px" y="4531.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">RESUL<tspan x="1000.37px 1030.912px " y="4531.812px 4531.812px ">T[</tspan>15:0]</text>
+                <text x="837.357px" y="4631.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">DONE</text>
+                <text x="837.357px" y="4731.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SAMPLE_CLK</text>
+                <text x="837.357px" y="4831.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NRST_sync</text>
+                <text x="837.357px" y="4931.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">A<tspan x="866.996px 897.538px " y="4931.812px 4931.812px ">TM</tspan>CHSEL[7:0]</text>
+                <g transform="matrix(50,0,0,50,1120.70663,5031.812284)">
+                </g>
+                <text x="837.357px" y="5031.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">LASTWORD</text>
+            </g>
+            <g transform="matrix(1,0,0,1,2053.596032,-2380.430072)">
+                <text x="1217.699px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENAFELNA</text>
+                <text x="1223.265px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENAFELPF</text>
+                <text x="1214.965px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENAFEBUF</text>
+                <text x="1162.157px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SENSEMODE</text>
+                <text x="1212.206px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENREFBUF</text>
+                <text x="1231.664px" y="2330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">REFMODE</text>
+                <text x="1192.675px" y="2430.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFELPFBYP</text>
+                <text x="1084.3px" y="2530.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFERSTCH&lt;7:0&gt;</text>
+                <text x="1184.423px" y="2630.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFEBUFRST</text>
+                <text x="1087.084px" y="2730.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFEBUFGT&lt;1:0&gt;</text>
+                <text x="1095.507px" y="2830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENMONTSENSE</text>
+                <text x="1209.398px" y="2930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENLNAOUT</text>
+                <text x="1214.965px" y="3030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENLPFOUT</text>
+                <text x="1198.314px" y="3130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENMONAFE</text>
+                <text x="1084.276px" y="3230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFELPFBW&lt;7:0&gt;</text>
+                <text x="1192.675px" y="3330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFELPFBYP</text>
+                <g transform="matrix(50,0,0,50,1481.66376,3430.324955)">
+                </g>
+                <text x="1187.035px" y="3430.325px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">CHSEL&lt;7:0&gt;</text>
+            </g>
+            <g transform="matrix(1,0,0,1,2053.596032,-3220.336615)">
+                <text x="1206.615px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENREGAFE</text>
+                <text x="1198.29px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENREGADC</text>
+                <text x="1214.965px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PDREGDIG</text>
+                <text x="1215.77px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">R<tspan x="1250.975px 1281.517px " y="2130.325px 2130.325px ">TG</tspan>B&lt;3:0&gt;</text>
+                <text x="1082.421px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">R<tspan x="1117.626px 1148.168px " y="2230.325px 2230.325px ">TR</tspan>EGAFE&lt;3:0&gt;</text>
+                <text x="1074.095px" y="2330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">R<tspan x="1109.3px 1139.842px " y="2330.325px 2330.325px ">TR</tspan>EGADC&lt;3:0&gt;</text>
+                <text x="1056.517px" y="2430.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">RETREGDIG&lt;3:0&gt;</text>
+                <text x="1353.881px" y="2530.325px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">MISO</text>
+            </g>
+            <g transform="matrix(1,0,0,1,2053.596032,-701.894684)">
+                <text x="1298.265px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENBIAS</text>
+                <text x="1212.157px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENTSENSE</text>
+                <text x="1270.531px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENITEST</text>
+                <text x="1101.83px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">R<tspan x="1137.035px 1167.577px " y="2130.325px 2130.325px ">TB</tspan>GBIAS&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2230.325px 2230.325px ">AF</tspan>ELNACH0&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2330.325px 2330.325px ">AF</tspan>ELNACH1&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2430.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2430.325px 2430.325px ">AF</tspan>ELNACH2&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2530.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2530.325px 2530.325px ">AF</tspan>ELNACH3&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2630.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2630.325px 2630.325px ">AF</tspan>ELNACH4&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2730.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2730.325px 2730.325px ">AF</tspan>ELNACH5&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2830.325px 2830.325px ">AF</tspan>ELNACH6&lt;3:0&gt;</text>
+                <text x="1018.505px" y="2930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1059.227px 1092.577px " y="2930.325px 2930.325px ">AF</tspan>ELNACH7&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3030.325px 3030.325px ">AF</tspan>ELPFCH0&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3130.325px 3130.325px ">AF</tspan>ELPFCH1&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3230.325px 3230.325px ">AF</tspan>ELPFCH2&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3330.325px 3330.325px ">AF</tspan>ELPFCH3&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3430.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3430.325px 3430.325px ">AF</tspan>ELPFCH4&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3530.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3530.325px 3530.325px ">AF</tspan>ELPFCH5&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3630.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3630.325px 3630.325px ">AF</tspan>ELPFCH6&lt;3:0&gt;</text>
+                <text x="1024.071px" y="3730.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1064.794px 1098.143px " y="3730.325px 3730.325px ">AF</tspan>ELPFCH7&lt;3:0&gt;</text>
+                <text x="1115.795px" y="3830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1156.517px 1189.867px " y="3830.325px 3830.325px ">AF</tspan>EBUF&lt;3:0&gt;</text>
+                <text x="1207.469px" y="3930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">IT<tspan x="1248.192px 1281.542px " y="3930.325px 3930.325px ">AD</tspan>C&lt;3:0&gt;</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-815.442277,-2407.607961)">
+                <text x="1833.868px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">reg[5:0]</text>
+                <text x="1686.529px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">reg_value[7:0]</text>
+                <g transform="matrix(50,0,0,50,1837.725059,2030.324955)">
+                </g>
+                <g transform="matrix(50,0,0,50,1851.079551,2030.324955)">
+                </g>
+                <text x="1715.411px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">tx_buﬀ [15:0]</text>
+                <text x="1747.71px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">status_sent</text>
+                <text x="1756.158px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_POP</text>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.413437,682.733576,-2235.674023)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(123,174,222);fill-opacity:0.5;stroke:black;stroke-width:2.86px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2413.98304,-1537.043909)">
+                <g transform="matrix(83.333333,0,0,83.333333,4021.689145,669.952281)">
+                </g>
+                <g transform="matrix(83.333333,0,0,83.333333,4044.841814,669.952281)">
+                </g>
+                <g transform="matrix(83.333333,0,0,83.333333,4739.625343,669.952281)">
+                </g>
+                <text x="3868.816px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">Conﬁguration Registers</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-884.823685,-1330)">
+                <path d="M2238.258,618.457L3345.554,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-313.222124,-1214.901529)">
+                <text x="1684.844px" y="562.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+                <text x="1684.844px" y="662.693px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">SCK</text>
+                <text x="1684.844px" y="762.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">reg[5:0]</text>
+                <text x="1684.844px" y="862.693px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">reg_value[7:0]</text>
+            </g>
+            <g transform="matrix(1,0,0,1,437.259534,-2425.469774)">
+                <g transform="matrix(50,0,0,50,2003.423301,1830.324955)">
+                </g>
+                <text x="1603.13px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">cfg_data [5:0][7:0]</text>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.804099,-551.101462,848.081511)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(160,208,200);stroke:black;stroke-width:2.51px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-3647.818078,1900.185881)">
+                <g transform="matrix(83.333333,0,0,83.333333,4572.856951,669.952281)">
+                </g>
+                <text x="4035.585px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">Status monitor</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2118.658724,2107.22979)">
+                <path d="M2238.258,618.457L3345.554,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-1547.057162,2222.328261)">
+                <text x="1684.844px" y="562.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NRST_sync</text>
+                <text x="1684.844px" y="662.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SAMPLE_CLK</text>
+                <text x="1684.844px" y="762.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP_sync</text>
+                <text x="1684.844px" y="862.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CRCCFG[15:0]</text>
+                <text x="1684.844px" y="962.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFERSTCH_sync[7:0]</text>
+                <text x="1684.844px" y="1062.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_OVERFLOW_sync</text>
+                <text x="1684.844px" y="1162.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_UNDERFLOW _sync</text>
+                <text x="1684.844px" y="1262.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ADCOVERFLOW</text>
+                <text x="1684.844px" y="1362.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SA<tspan x="1747.833px 1778.375px " y="1362.717px 1362.717px ">TD</tspan>ETECT_sync[7:0]</text>
+                <g transform="matrix(50,0,0,50,1940.557325,1462.716994)">
+                </g>
+                <text x="1684.844px" y="1462.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">status_sent</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-776.528273,969.777372)">
+                <g transform="matrix(50,0,0,50,2003.423301,1830.324955)">
+                </g>
+                <text x="1744.927px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">status[13:0]</text>
+            </g>
+            <g transform="matrix(1.496551,0,0,0.841126,128.975406,302.786202)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:none;stroke:black;stroke-width:3.43px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2967.741209,483.58437)">
+                <text x="4047.222px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">Register CRC</text>
+                <g transform="matrix(83.333333,0,0,83.333333,4589.071957,815.777476)">
+                </g>
+                <text x="4019.37px" y="815.777px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">(combinational)</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-1438.581855,690.628279)">
+                <path d="M2238.258,618.457L3345.554,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-866.980294,805.72675)">
+                <text x="1684.844px" y="562.717px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">cfg_data[5:0][7:0]</text>
+                <g transform="matrix(50,0,0,50,1820.952833,662.716994)">
+                </g>
+                <text x="1684.844px" y="662.717px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-96.451404,-446.824139)">
+                <g transform="matrix(50,0,0,50,1983.37607,1830.324955)">
+                </g>
+                <text x="1644.411px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CRCCFG[15:0]</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-4008.968049,-1617.284852)">
+                <g transform="matrix(150,0,0,150,4756.046599,107.446289)">
+                </g>
+                <text x="4339.225px" y="107.446px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:150px;">Digital</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-11400.807099,-4923.489721)">
+                <g transform="matrix(50,0,0,50,9288.009985,4395.772755)">
+                </g>
+                <text x="8866.574px" y="4395.773px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">SA<tspan x="8929.563px 8960.105px " y="4395.773px 4395.773px ">TD</tspan>ETECT&lt;7:0&gt;</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-6198.241598,-2202.713849)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-1491.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-1391.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-1291.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-1191.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-1091.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-991.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-901.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-801.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-701.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-601.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-501.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7588.554975,-401.186027)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-6198.241598,-3010.895106)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-7592.737843,-2944.135117)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-4938.241598,-3010.895106)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1.796493,0,0,2.129023,-2090.713234,-1356.920458)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:none;stroke:black;stroke-width:2.12px;"/>
+            </g>
+            <g transform="matrix(0.960076,0,0,2.129023,-1096.997859,-1356.920458)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(65,161,145);fill-opacity:0.5;stroke:black;stroke-width:2.52px;"/>
+            </g>
+            <g transform="matrix(1.200422,0,0,1,-2305.211901,172.545476)">
+                <path d="M849.104,618.457L1956.683,618.457" style="fill:none;stroke:black;stroke-width:3.77px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-4842.553615,-10.821323)">
+                <g transform="matrix(83.333333,0,0,83.333333,4278.670429,669.952281)">
+                </g>
+                <text x="3903.63px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">CDC sync</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-1544.578522,-3662.0455)">
+                <text x="1289.636px" y="4531.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NRST_sync</text>
+                <text x="1214.587px" y="4631.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP_sync</text>
+                <text x="1111.829px" y="4731.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CFG_CHNGE_sync</text>
+                <text x="1058.997px" y="4831.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFERSTCH_sync[7:0]</text>
+                <text x="997.937px" y="4931.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_OVERFLOW_sync</text>
+                <text x="947.961px" y="5031.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_UNDERFLOW _sync</text>
+                <text x="1034.924px" y="5131.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SA<tspan x="1097.913px 1128.455px " y="5131.812px 5131.812px ">TD</tspan>ETECT_sync[7:0]</text>
+                <text x="995.886px" y="5231.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1DIV1_sync[1<tspan x="1472.961px 1500.769px " y="5231.812px 5231.812px ">1:</tspan>0]</text>
+                <text x="953.381px" y="5331.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1COUNT_sync[3:0]</text>
+                <text x="953.381px" y="5431.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE2COUNT_sync[9:0]</text>
+                <text x="1214.587px" y="5531.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP_sync</text>
+                <text x="1284.07px" y="5631.812px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CHEN_sync</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2106.033111,-3662.0455)">
+                <text x="837.357px" y="4531.788px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">NRST</text>
+                <text x="837.357px" y="4631.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP</text>
+                <text x="837.357px" y="4731.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CFG_CHNGE</text>
+                <text x="837.357px" y="4831.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">AFERSTCH&lt;7:0&gt;</text>
+                <text x="837.357px" y="4931.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_OVERFLOW</text>
+                <text x="837.357px" y="5031.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">FIFO_UNDERFLOW</text>
+                <text x="837.357px" y="5131.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SA<tspan x="900.345px 930.887px " y="5131.788px 5131.788px ">TD</tspan>ETECT&lt;7:0&gt;</text>
+                <text x="837.357px" y="5231.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1DIV1[1<tspan x="1183.817px 1211.625px " y="5231.788px 5231.788px ">1:</tspan>0]</text>
+                <text x="837.357px" y="5331.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1COUNT[3:0]</text>
+                <text x="837.357px" y="5431.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE2COUNT[9:0]</text>
+                <text x="837.357px" y="5531.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP</text>
+                <text x="837.357px" y="5631.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">CHEN</text>
+                <g transform="matrix(50,0,0,50,1120.70663,5731.78787)">
+                </g>
+                <text x="837.357px" y="5731.788px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">LASTWORD</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-3573.880378,-1529.716465)">
+                <rect x="5170.287" y="6285.478" width="81.914" height="81.914" style="fill:rgb(48,111,179);fill-opacity:0.54;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-3573.880378,-1659.716465)">
+                <rect x="5170.287" y="6285.478" width="81.914" height="81.914" style="fill:rgb(65,161,145);fill-opacity:0.63;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-3573.880378,-1529.716465)">
+                <g transform="matrix(50,0,0,50,5814.556259,6191.293645)">
+                </g>
+                <text x="5317.144px" y="6191.294px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">HF_CLK clock domain</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-3573.880378,-1529.716465)">
+                <g transform="matrix(50,0,0,50,5725.640243,6321.293645)">
+                </g>
+                <text x="5317.144px" y="6321.294px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SCK clock domain</text>
+            </g>
+            <g transform="matrix(1.496551,0,0,1.346081,-1920.499542,2871.219455)">
+                <rect x="447.975" y="904.809" width="740.087" height="740.087" style="fill:rgb(65,161,145);fill-opacity:0.5;stroke:black;stroke-width:2.93px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2099.185611,3715.593202)">
+                <path d="M849.104,618.457L1956.683,618.457" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-4806.706356,3532.226403)">
+                <text x="3764.51px" y="669.952px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">Dual phase gated</text>
+                <g transform="matrix(83.333333,0,0,83.333333,4341.251809,765.777476)">
+                </g>
+                <text x="3864.201px" y="765.777px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:83.333px;">burst divider</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2169.185611,2625.593202)">
+                <text x="930.645px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1DIV1_sync[1<tspan x="1407.72px 1435.527px " y="1830.325px 1830.325px ">1:</tspan>0]</text>
+                <text x="930.645px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE1COUNT_sync[3:0]</text>
+                <text x="930.645px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">PHASE2COUNT_sync[9:0]</text>
+                <text x="930.645px" y="2130.325px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:50px;">HF_CLK</text>
+                <text x="930.645px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENSAMP_sync</text>
+                <text x="930.645px" y="2330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">NRST_sync</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2069.185611,2625.593202)">
+                <text x="1575.906px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SAMPLE_CLK</text>
+                <g transform="matrix(50,0,0,50,1903.835726,1930.324955)">
+                </g>
+                <text x="1767.605px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">phase</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-2356.623503,-1156.317977)">
+                <rect x="3073.519" y="2060.324" width="1338.714" height="902.941" style="fill:none;stroke:black;stroke-width:8.65px;stroke-dasharray:43.226,43.226,0,0,0,0;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-2207.076981,-1082.288744)">
+                <g transform="matrix(70.833333,0,0,70.833333,3786.714631,1918.657125)">
+                </g>
+                <text x="3499.473px" y="1918.657px" style="font-family:'Arial-BoldMT', 'Arial', sans-serif;font-weight:700;font-size:70.833px;">Optional</text>
+            </g>
+            <g transform="matrix(1,0,0,1,-4652.147771,1901.812853)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-6204.9216,1329.330652)">
+                <circle cx="6269.974" cy="2344.315" r="21.419" style="fill:rgb(227,143,68);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-3429.785991,-2194.474339)">
+                <g transform="matrix(50,0,0,50,5611.085396,6454.997763)">
+                </g>
+                <text x="5108.107px" y="6454.998px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">Clock domain crossing</text>
+            </g>
+            <g transform="matrix(1.421701,0,0,1.149145,-2873.607354,-1677.555707)">
+                <rect x="238.71" y="202.963" width="4302.325" height="6566.178" style="fill:none;stroke:black;stroke-width:6.69px;"/>
+            </g>
+            <g transform="matrix(1,0,0,6.556861,-1798.383688,-44704.362261)">
+                <rect x="4568.14" y="6597.676" width="812.633" height="1150.778" style="fill:none;stroke:black;stroke-width:1.84px;"/>
+            </g>
+            <g transform="matrix(1,0,0,6.556861,-7102.372382,-44704.362261)">
+                <rect x="4568.14" y="6597.676" width="812.633" height="1150.778" style="fill:none;stroke:black;stroke-width:1.84px;"/>
+            </g>
+        </g>
+        <g transform="matrix(0.579336,0,0,0.901817,2793.875346,1167.261945)">
+            <text x="1260.375px" y="1830.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENA<tspan x="1359.471px 1390.013px " y="1830.325px 1830.325px ">TM</tspan>IN</text>
+            <text x="1204.833px" y="1930.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENA<tspan x="1303.929px 1334.471px " y="1930.325px 1930.325px ">TM</tspan>OUT</text>
+            <text x="1213.109px" y="2030.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENA<tspan x="1312.206px 1342.748px " y="2030.325px 2030.325px ">TM</tspan>LNA</text>
+            <text x="1218.675px" y="2130.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENA<tspan x="1317.772px 1348.314px " y="2130.325px 2130.325px ">TM</tspan>LPF</text>
+            <text x="1210.375px" y="2230.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENA<tspan x="1309.471px 1340.013px " y="2230.325px 2230.325px ">TM</tspan>BUF</text>
+            <text x="1182.567px" y="2330.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">ENTEST<tspan x="1376.097px 1409.447px " y="2330.325px 2330.325px ">AD</tspan>C</text>
+            <text x="1179.784px" y="2430.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">A<tspan x="1209.423px 1239.965px " y="2430.325px 2430.325px ">TM</tspan>BUFBYP</text>
+            <text x="1101.927px" y="2530.325px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">A<tspan x="1131.566px 1162.108px " y="2530.325px 2530.325px ">TM</tspan>MODE&lt;2:0&gt;</text>
+            <text x="1085.204px" y="2730.325px" style="font-family:'Arial-ItalicMT', 'Arial', sans-serif;font-style:italic;font-size:50px;">A<tspan x="1114.842px 1145.384px " y="2730.325px 2730.325px ">TM</tspan>CHSEL&lt;7:0&gt;</text>
+        </g>
+        <g transform="matrix(0.579336,0,0,0.901817,-12.995615,-3247.221809)">
+            <text x="253.044px" y="1281.854px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SCAN_EN</text>
+            <text x="253.044px" y="1389.349px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SCAN_CLK</text>
+            <text x="253.044px" y="1496.844px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SCAN_IN</text>
+            <g transform="matrix(50,0,0,50,525.309569,1604.339428)">
+            </g>
+            <text x="253.044px" y="1604.339px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:50px;">SCAN_OUT</text>
+        </g>
+    </g>
+</svg>

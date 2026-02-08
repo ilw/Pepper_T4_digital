@@ -1,0 +1,34 @@
+
+# Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b
+  
+lbl11 2025-10-13 
+
+## Test: ExplorerRun.0:tran_functional
+  
+Simulation started on 12 Oct 2025 and ran for 7 minutes. The yield for this test is 0% to 20% (0 of 16 points passed)
+Verification state: 0/3
+
+### Design Setup
+
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: tb_nssar_decimator_18b
+View Name: schematic
+Simulator: spectre
+```  
+
+### Test Summary
+
+|Output|Specification|Result|Pass/Fail|
+| :---: | :---: | :---: | :---: |
+|clk_frq|10M|-|Info|
+|energy_perconv|-inf, inf|< 5 pJ|Fail|
+|gain_bit0|0, 1|-|Info|
+|gain_bit1|0, 1|-|Info|
+|gain_bit2|0, 1|-|Info|
+|gain_bit3|0, 1|-|Info|
+|gain_check_bits|1|1 ±1%|Pass|
+|ilod_vdd|-inf, inf|< 10 uA|Fail|
+|ratio_check|1, 1|1 N ±1%|Pass|
+|sampling_effective|-inf, inf|-|Info|

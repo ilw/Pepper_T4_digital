@@ -1,0 +1,144 @@
+
+@font-face { 
+    font-family: "Aeonik Pro"; 
+    src:    url("../fonts/AeonikPro-Regular.woff2") format("woff2"), 
+            url("../fonts/AeonikPro-Regular.woff") format("woff"); 
+    font-style: normal; 
+    font-weight: 400; 
+    font-display: swap; 
+}
+
+@font-face { 
+    font-family: "Aeonik Pro"; 
+    src:    url("../fonts/AeonikPro-Medium.woff2") format("woff2"), 
+            url("../fonts/AeonikPro-Medium.woff") format("woff"); 
+    font-style: normal; 
+    font-weight: 500; 
+    font-display: swap; 
+}
+
+:root {
+    --mintneuro-dark-green: rgb(0, 92, 93);
+    --mintneuro-light-green: rgb(78, 168, 144);
+    --mintneuro-dark-blue-one: rgb(4, 30, 46);
+    --mintneuro-dark-blue-two: rgb(2, 66, 84);
+    --mintneuro-blue: rgb(26, 110, 140);
+    --mintneuro-light-blue-one: rgb(41, 159, 192);
+    --mintneuro-light-blue-two: rgb(168, 222, 240);
+    --mintneuro-neon-blue: rgb(23, 211, 226);
+    --mintneuro-neon-green: rgb(0, 224, 121);
+    --mintneuro-website-green: #40D892;         
+    --mintneuro-website-dark-blue-one: #002733; 
+    --mintneuro-website-dark-blue-two: #043645; 
+    --pst-font-family-heading: "Aeonik Pro", var(--pst-font-family-base-system);
+    /* --pst-font-family-base: "Aeonik Pro", var(--pst-font-family-base-system); */
+}
+
+html[data-theme="light"] {
+    --pst-color-primary: var(--mintneuro-blue);
+    --pst-color-active-navigation: var(--mintneuro-dark-blue-two);
+    --pst-color-link: var(--mintneuro-light-blue-one);
+    --pst-color-secondary: var(--mintneuro-light-green); /* Used for hovered links */
+    --sd-color-secondary: var(--mintneuro-blue);
+    --pst-color-inline-code: var(--mintneuro-blue);
+    /* --sd-color-primary: #1b4d64; */
+    /* --sd-color-secondary: #2d91a9; */
+    --navbar-center-text-color: #323232;
+    table td ul, table td ol {
+        color: #323232;  
+    }
+}
+
+html[data-theme="dark"] { 
+    --pst-color-primary: var(--mintneuro-light-blue-two);
+    --pst-color-background: var(--mintneuro-website-dark-blue-one); 
+    --pst-color-on-background: var(--mintneuro-website-dark-blue-two); 
+    --pst-color-surface: var(--mintneuro-website-dark-blue-two);
+    /* --pst-color-active-navigation: var(--mintneuro-dark-blue-two); */
+    --pst-color-link: var(--mintneuro-light-blue-two);
+    --pst-color-link-hover: var(--mintneuro-light-green); /* Used for hovered links */
+    --sd-color-primary-text: var(--pst-color-background); /* Used for text in buttons when hovered */
+    --sd-color-secondary: white; /* Used for icons in buttons on main page */
+    --pst-color-inline-code: var(--mintneuro-website-green);
+    --pst-color-target: var(--mintneuro-website-dark-blue-two);
+    --sd-color-card-header: rgb(0, 224, 121);
+    /* --pst-color-link: rgb(41, 159, 192); */
+    --navbar-center-text-color: #cecece;
+    table td ul, table td ol {
+        color: #cecece; 
+    }
+    body table td, body table th, body table td ul, body table td ol {
+        color: #cecece !important; 
+    }
+    body table td ul li, body table td ol li {
+        color: #cecece !important; /
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+.sd-card-footer {
+    border-top: none !important;
+    padding-top: 0;
+    padding-bottom: 1rem;
+} 
+
+.navbar-brand{
+    gap: 1.5rem;
+}
+
+.sphx-glr-download-link-note{
+    visibility: hidden;
+    display: none;
+}
+
+.sphx-glr-download{
+    visibility: hidden;
+    display: none;
+}
+
+.sphx-glr-footer{
+    visibility: hidden;
+    display: none;
+}
+
+/* .sphx-glr-timing{
+    visibility: hidden;
+    display: none;
+} */
+
+
+/* Add bullet points for lists*/
+table td ul, table td ol {
+    margin: 0;          /* Remove default margins */
+    padding-left: 20px; /* Add left padding for bullets */
+    list-style-type: disc; /* Ensure bullet points are shown */
+}
+
+/* Second-level lists (hollow circles) */
+body table td ul ul, body table td ol ol {
+    list-style-type: circle !important; /* Ensure second-level bullet points are hollow circles */
+}
+
+.navbar-center-text {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateX(-50%);
+    font-size: 1.2em;  /* Adjust font size */
+    /*font-weight: bold; /* Adjust font type */
+    /*color: #323232;       /* Adjust text color (different ones for light/dark is configured above */
+}
+
+.bd-main .bd-content .bd-article-container {
+  max-width: 140rem;  /* default is 88rem */
+}
+
+.bd-page-width {
+  max-width: 140rem;  /* default is 88rem */
+}

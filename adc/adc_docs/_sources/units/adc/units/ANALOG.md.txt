@@ -1,0 +1,822 @@
+# Analog Circuit Modules
+
+
+```{toctree}
+:hidden:
+
+```
+
+These are the analog modules.
+
+## lib-pepper-nsadc-loopfilter-v3
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Analog loop filter for quantization noise shaping with analog test bus.
+
+The amplifier block provides three amplifiers that are switched in by the switched-capacitor network to provide amplification and integration of the
+quantization residue on VDAC. The digital controls are timed by the SAR controller to provide correct sequencing after conversion.
+
+The analog test output allows us to select any of the amplifier outputs and is isolated from the active circuit through with voltage follower
+configuration. When the analog core is disabled this net is shorted to AGND.
+The disable control also powers down all amplifiers but does not garantee
+discharging of the switched-capacitor nodes.
+
+Note it is important here that the sample signal is accurately timed together
+with the CDAC sample control so that we auto-zero the capacitor array correctly.
+
+Internal logic will allow SAR operation without noise-shaping if the analogue
+enable flag is deasserted. This ties the capacitive DAC to the common-mode reference when we sample the input signal. This control also overrides the
+feedback signal VXP/VXN to be held as REFC.
+
+Note when this circuit is disabled the current bias input is tied to ground!
+  
+  
+![Loopfilter_v3 Schematic](../.fig/lib-pepper-nsadc-loopfilter-v3_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-v3: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[loopfilter_analogue](#lib-pepper-nsadc-loopfilter-analogue)|IAMP|1|
+|LIB_PEPPER_NSADC|[loopfilter_digital](#lib-pepper-nsadc-loopfilter-digital)|ISC_FB|1|
+|tcb018gbwp7t_r1a|INVD2BWP7T|i_enable|1|
+|tcb018gbwp7t_r1a|NR3D1BWP7T|i_test_select<6:0>|7|
+|tsmc18|mimcap_2p0_sin_3t|C0|1|
+|tsmc18|nmos2v|M2<6:0>|7|
+
+### lib-pepper-nsadc-loopfilter-v3: Layout Specification
+  
+The design is 111.51 um by 56.815 um.
+
+#### lib-pepper-nsadc-loopfilter-v3: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Loopfilter_v3 Layout](../.fig/lib-pepper-nsadc-loopfilter-v3_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-v3: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|0.45 um, -1.75 um|
+|ANALOG_ENABLE|METAL2|2.25 um, -1.15 um|
+|ANALOG_TEST|METAL2|2.25 um, -1.75 um|
+|ANALOG_TEST_SELECT<0>|METAL2|3.45 um, -1.75 um|
+|ANALOG_TEST_SELECT<1>|METAL2|4.65 um, -1.75 um|
+|ANALOG_TEST_SELECT<2>|METAL2|4.05 um, -1.75 um|
+|AVDD|METAL2|1.05 um, -1.75 um|
+|CTRL_CHOP_IN|METAL2|8.25 um, -1.15 um|
+|CTRL_RESET_IN|METAL2|1.65 um, -1.15 um|
+|CTRL_SAMPLE_IN|METAL2|1.05 um, -1.15 um|
+|CTRL_SAR_IN|METAL2|0.45 um, -1.15 um|
+|CTRL_UPDATE_QNF_IN|METAL2|2.85 um, -1.75 um|
+|DGND|METAL2|4.65 um, -1.15 um|
+|DVDD|METAL2|5.25 um, -1.15 um|
+|IBIAS_500N_PTAT|METAL2|1.65 um, -1.75 um|
+|REFC|METAL2|4.05 um, -1.15 um|
+|VDACN|METAL2|2.85 um, -1.15 um|
+|VDACP|METAL2|3.45 um, -1.15 um|
+|VX1N|METAL2|7.05 um, -1.15 um|
+|VX1P|METAL2|7.65 um, -1.15 um|
+|VX2N|METAL2|5.85 um, -1.15 um|
+|VX2P|METAL2|6.45 um, -1.15 um|
+
+### lib-pepper-nsadc-loopfilter-v3: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Signal|Input|1|||Analog Ground|
+|ANALOG_ENABLE|Signal|Input|1|AGND|AVDD|Enable Control Loopfilter|
+|ANALOG_TEST|Signal|Output|1|||Analog Test Output|
+|ANALOG_TEST_SELECT<2:0>|Signal|Input|3|||Analog Test Signal Selection Control|
+|AVDD|Signal|Input|1|||Analog Supply Voltage|
+|CTRL_CHOP_IN|Signal|Input|1|DGND|DVDD|Digital SC Chopper Control|
+|CTRL_RESET_IN|Signal|Input|1|DGND|DVDD|Digital SC Reset Control|
+|CTRL_SAMPLE_IN|Signal|Input|1|DGND|DVDD|Digital SC Sample Control|
+|CTRL_SAR_IN|Signal|Input|1|DGND|DVDD|Digital SC SAR Control|
+|CTRL_UPDATE_QNF_IN|Signal|Input|1|DGND|DVDD|Digital SC QNF Control|
+|DGND|Signal|Input|1|||Digital Ground Supply|
+|DVDD|Signal|Input|1|DGND||Digital Power Supply|
+|IBIAS_500N_PTAT|Signal|Input|1|AGND|AVDD|Loopfilter N-SIDE Bias Current|
+|REFC|Signal|Input|1|||ADC Common Mode Reference Voltage|
+|VDACN|Signal|Input|1|||Negative Top Plate CDAC Voltage|
+|VDACP|Signal|Input|1|||Positive Top Plate CDAC Voltage|
+|VX1N<1:0>|Signal|Output|2|||Negative QFN 1 Feedback|
+|VX1P<1:0>|Signal|Output|2|||Positive QFN 1 Feedback|
+|VX2N<1:0>|Signal|Output|2|||Negative QFN 2 Feedback|
+|VX2P<1:0>|Signal|Output|2|||Positive QFN 2 Feedback|
+
+## lib-pepper-nsadc-loopfilter-analogue
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Analog sub circuit of the ADC providing 3 differential amplifiers with current biasing.
+
+The common-mode feedback uses a REFC as reference and is biased using a input p-side current ranging from 100nA to 2uA depending on
+the oversampling ratio.
+
+The disable flag powers down all amplifiers and the outputs will be high-Z.
+The common mode reference should be at AVDD/2 and operate between 1.6 V to
+2.0 V of supply voltage.
+  
+  
+[!WARNING]
+Schematic MarkersMembers IBIAS_250N_AUX<9>..IBIAS_250N_AUX<8> of pin  IBIAS_250N_AUX<9:0>  on instance  IBIAS : shorted output.  
+
+  
+![Loopfilter_analogue Schematic](../.fig/lib-pepper-nsadc-loopfilter-analogue_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-analogue: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[loopfilter_amplifier_a](#lib-pepper-nsadc-loopfilter-amplifier-a)|IAMP_MAIN|1|
+|LIB_PEPPER_NSADC|[loopfilter_amplifier_b](#lib-pepper-nsadc-loopfilter-amplifier-b)|IAMP_INT1|1|
+|LIB_PEPPER_NSADC|[loopfilter_ibias](#lib-pepper-nsadc-loopfilter-ibias)|IBIAS|1|
+
+### lib-pepper-nsadc-loopfilter-analogue: Layout Specification
+  
+The design is 40.96 um by 109.49 um.
+
+#### lib-pepper-nsadc-loopfilter-analogue: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Loopfilter_analogue Layout](../.fig/lib-pepper-nsadc-loopfilter-analogue_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-analogue: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|5.46 um, -1.12 um|
+|AVDD|METAL2|6.02 um, -1.12 um|
+|DGND|METAL2|6.58 um, -1.12 um|
+|IBIAS_500N_PTAT|METAL2|0.42 um, -1.68 um|
+|IREF_OUT|METAL2|3.78 um, -1.68 um|
+|LOOPFILTER_DISABLE|METAL2|0.42 um, -1.12 um|
+|REFC|METAL2|4.9 um, -1.12 um|
+|VIN1|METAL2|2.66 um, -1.12 um|
+|VIN2|METAL2|3.78 um, -1.12 um|
+|VIN3|METAL2|0.98 um, -1.68 um|
+|VIP1|METAL2|3.22 um, -1.12 um|
+|VIP2|METAL2|4.34 um, -1.12 um|
+|VIP3|METAL2|2.1 um, -1.12 um|
+|VON1|METAL2|1.54 um, -1.68 um|
+|VON2|METAL2|2.66 um, -1.68 um|
+|VON3|METAL2|0.98 um, -1.12 um|
+|VOP1|METAL2|1.54 um, -1.12 um|
+|VOP2|METAL2|2.1 um, -1.68 um|
+|VOP3|METAL2|3.22 um, -1.68 um|
+
+### lib-pepper-nsadc-loopfilter-analogue: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Ground|Input|1|||Analog Ground|
+|AVDD|Supply|Input|1|||Analog Supply Voltage|
+|DGND|Ground|Input|1|||Core Digital Ground|
+|IBIAS_500N_PTAT|Signal|Input|1|AGND|AVDD|Loopfilter N-SIDE Bias Current|
+|IREF_OUT|Analog|Output|1|AGND|AVDD|Analog Test Output Current|
+|LOOPFILTER_DISABLE|Signal|Input|1|AGND|AVDD|Enable Control Loopfilter|
+|REFC|Analog|Input|1|AGND|AVDD|Analog Common Mode Reference|
+|VIN1|Analog|Input|1|AGND|AVDD|Amplifier1 Negative Input|
+|VIN2|Analog|Input|1|AGND|AVDD|Amplifier2 Negative Input|
+|VIN3|Analog|Input|1|AGND|AVDD|Amplifier3 Negative Input|
+|VIP1|Analog|Input|1|AGND|AVDD|Amplifier1 Positive Input|
+|VIP2|Analog|Input|1|AGND|AVDD|Amplifier2 Positive Input|
+|VIP3|Analog|Input|1|AGND|AVDD|Amplifier3 Positive Input|
+|VON1|Analog|Output|1|AGND|AVDD|Amplifier1 Negative Output|
+|VON2|Analog|Output|1|AGND|AVDD|Amplifier2 Negative Output|
+|VON3|Analog|Output|1|AGND|AVDD|Amplifier3 Negative Output|
+|VOP1|Analog|Output|1|AGND|AVDD|Amplifier1 Positive Output|
+|VOP2|Analog|Output|1|AGND|AVDD|Amplifier2 Positive Output|
+|VOP3|Analog|Output|1|AGND|AVDD|Amplifier3 Positive Output|
+
+## lib-pepper-nsadc-loopfilter-amplifier-a
+  
+Last Change:  Revision: 0 User:   
+Design views available: layout, symbol, schematic
+
+
+Single stage complimentary input amplifier with common-mode feedback.
+
+This circuit provides 16x amplification of the quantization residue and
+is used in a switched-capacitor configuration with auto-zeroing. M16
+provides adaptive biasing that lets the common-mode settle quickly from a discharged state. Both differential and common-mode paths are designed
+to be stable without extrenal load.
+
+Note depending on the state of the loop-filter either input or output
+can be left floating and we should not incur oscilation while the rest of the system operated.
+  
+  
+![Loopfilter_amplifier_a Schematic](../.fig/lib-pepper-nsadc-loopfilter-amplifier-a_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-amplifier-a: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M0<1:4>|4|
+|tsmc18|pmos2v|M10<1:4>|4|
+|tsmc18|rm3|RPROBE|1|
+
+### lib-pepper-nsadc-loopfilter-amplifier-a: Layout Specification
+  
+The design is 15.02 um by 67.86 um.
+
+#### lib-pepper-nsadc-loopfilter-amplifier-a: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Loopfilter_amplifier_a Layout](../.fig/lib-pepper-nsadc-loopfilter-amplifier-a_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-amplifier-a: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|5.915 um, 22.55 um|
+|AVDD|METAL2|7.035 um, 22.55 um|
+|DGND|METAL2|6.475 um, 22.55 um|
+|IBIAS_250N_AUX<0>|METAL2|8.155 um, 23.11 um|
+|IBIAS_250N_AUX<1>|METAL2|8.715 um, 23.11 um|
+|IBIAS_2U_AMP|METAL2|5.915 um, 23.11 um|
+|REFC|METAL2|5.355 um, 22.55 um|
+|VIN|METAL2|6.475 um, 23.11 um|
+|VIP|METAL2|7.035 um, 23.11 um|
+|VON|METAL2|5.355 um, 23.11 um|
+|VOP|METAL2|7.595 um, 23.11 um|
+
+### lib-pepper-nsadc-loopfilter-amplifier-a: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Ground|Input|1|||Analog Ground|
+|AVDD|Supply|Input|1|||Analog Supply Voltage|
+|DGND|Ground|Input|1|||Core Digital Ground|
+|IBIAS_250N_AUX<1:0>|Analog|Input|2|AGND|AVDD|CMFB N-SIDE Bias Current|
+|IBIAS_2U_AMP|Signal|Input|1|AGND|AVDD|Amplifier N-SIDE Bias Current|
+|REFC|Analog|Input|1|||Analog Common Mode Reference|
+|VIN|Analog|Input|1|AGND|AVDD|Amplifier Negative Input|
+|VIP|Analog|Input|1|AGND|AVDD|Amplifier Positive Input|
+|VON|Analog|Output|1|AGND|AVDD|Amplifier Negative Output|
+|VOP|Analog|Output|1|AGND|AVDD|Amplifier Positive Output|
+
+## lib-pepper-nsadc-loopfilter-amplifier-b
+  
+Last Change:  Revision: 0 User:   
+Design views available: layout, symbol, schematic
+
+
+Single stage complimentary input amplifier with common-mode feedback.
+
+This circuit provides cascaded integration of the quantization residue and
+is used in a switched-capacitor configuration with chopping. Both differential
+and common-mode paths are designed to be stable without extrenal load.
+  
+  
+![Loopfilter_amplifier_b Schematic](../.fig/lib-pepper-nsadc-loopfilter-amplifier-b_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-amplifier-b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M4|1|
+|tsmc18|pmos2v|M9<1:0>|2|
+|tsmc18|rm3|RPROBE|1|
+
+### lib-pepper-nsadc-loopfilter-amplifier-b: Layout Specification
+  
+The design is 24.42 um by 23.19 um.
+
+#### lib-pepper-nsadc-loopfilter-amplifier-b: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Loopfilter_amplifier_b Layout](../.fig/lib-pepper-nsadc-loopfilter-amplifier-b_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-amplifier-b: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|11.87 um, 12.94 um|
+|AVDD|METAL2|11.31 um, 12.94 um|
+|DGND|METAL2|10.75 um, 12.94 um|
+|IBIAS_250N_AMP|METAL2|10.19 um, 12.94 um|
+|IBIAS_250N_AUX<0>|METAL2|10.19 um, 12.38 um|
+|IBIAS_250N_AUX<1>|METAL2|10.75 um, 12.38 um|
+|REFC|METAL2|12.43 um, 12.94 um|
+|VIN|METAL2|9.63 um, 12.94 um|
+|VIP|METAL2|9.07 um, 12.94 um|
+|VON|METAL2|9.07 um, 12.38 um|
+|VOP|METAL2|9.63 um, 12.38 um|
+
+### lib-pepper-nsadc-loopfilter-amplifier-b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Ground|Input|1|||Analog Ground|
+|AVDD|Supply|Input|1|||Analog Supply Voltage|
+|DGND|Ground|Input|1|||Core Digital Ground|
+|IBIAS_250N_AMP|Signal|Input|1|AGND|AVDD|Amplifier N-SIDE Bias Current|
+|IBIAS_250N_AUX<1:0>|Analog|Input|2|AGND|AVDD|CMFB N-SIDE Bias Current|
+|REFC|Analog|Input|1|||Analog Common Mode Reference|
+|VIN|Analog|Input|1|AGND|AVDD|Amplifier Negative Input|
+|VIP|Analog|Input|1|AGND|AVDD|Amplifier Positive Input|
+|VON|Analog|Output|1|AGND|AVDD|Amplifier Negative Output|
+|VOP|Analog|Output|1|AGND|AVDD|Amplifier Positive Output|
+
+## lib-pepper-nsadc-loopfilter-ibias
+  
+Last Change:  Revision: 0 User:   
+Design views available: layout, symbol, schematic
+
+
+Analog current redistribution using a 500 nA input reference from the PMU.
+  
+  
+![Loopfilter_ibias Schematic](../.fig/lib-pepper-nsadc-loopfilter-ibias_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-ibias: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M1<1:4>|4|
+
+### lib-pepper-nsadc-loopfilter-ibias: Layout Specification
+  
+The design is 39.32 um by 40.54 um.
+
+#### lib-pepper-nsadc-loopfilter-ibias: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|DIFF|METAL1|
+|NIMP|METAL2|
+|POLY1||
+  
+![Loopfilter_ibias Layout](../.fig/lib-pepper-nsadc-loopfilter-ibias_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-ibias: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|18.875 um, 20.595 um|
+|DGND|METAL2|17.195 um, 20.595 um|
+|IBIAS_250N_AUX<0>|METAL2|19.995 um, 20.595 um|
+|IBIAS_250N_AUX<1>|METAL2|19.435 um, 20.035 um|
+|IBIAS_250N_AUX<2>|METAL2|18.875 um, 20.035 um|
+|IBIAS_250N_AUX<3>|METAL2|18.315 um, 20.035 um|
+|IBIAS_250N_AUX<4>|METAL2|17.755 um, 20.035 um|
+|IBIAS_250N_AUX<5>|METAL2|17.195 um, 20.035 um|
+|IBIAS_250N_AUX<6>|METAL2|22.235 um, 20.595 um|
+|IBIAS_250N_AUX<7>|METAL2|21.675 um, 20.595 um|
+|IBIAS_250N_AUX<8>|METAL2|21.115 um, 20.595 um|
+|IBIAS_250N_AUX<9>|METAL2|20.555 um, 20.595 um|
+|IBIAS_2U_AMP|METAL2|18.315 um, 20.595 um|
+|IBIAS_500N_PTAT|METAL2|17.755 um, 20.595 um|
+|LOOPFILTER_DISABLE|METAL2|19.435 um, 20.595 um|
+
+### lib-pepper-nsadc-loopfilter-ibias: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Ground|Input|1|||Analog Ground|
+|DGND|Ground|Input|1|||Core Digital Ground|
+|IBIAS_250N_AUX<9:0>|Analog|Output|10|AGND||Auxillary 250 nA Current Bias|
+|IBIAS_2U_AMP|Analog|Output|1|AGND||Amplifier 8uA Current Bias|
+|IBIAS_500N_PTAT|Signal|Input|1|AGND||Input Reference Current PTAT|
+|LOOPFILTER_DISABLE|Signal|Input|1|AGND||Enable Control Loopfilter|
+
+
+
+## lib-pepper-nsadc-loopfilter-digital
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Switched capacitor controller with the respective switches and capacitors.
+The VGx and VOx signals are internal analog signals that refer to the amplifier inputs and outputs while the VXx signals are the feedback signals
+that need to be applied to the capacitive DAC for noise shaping.
+
+The control relies on 3-phase operation: Sample, Conversion, Amplification.
+with non-overlapping signals for the internal switches. When the ADC samples
+the DAC voltage is auto-zero d on the main amplifier while the integrating
+amplifiers perform integration with feedback. Then the loopfilter is disconnected and SAR conversion is performed. Once this is completed the loopfilter samples and amplifies the residue for the next integration phase.
+
+The reset control is gated internall with the sample signal so that the external control does not need to be synchronized.
+  
+  
+![Loopfilter_digital Schematic](../.fig/lib-pepper-nsadc-loopfilter-digital_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-digital: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[loopfilter_sc_autozero](#lib-pepper-nsadc-loopfilter-sc-autozero)|ISC_P1<1:0>|2|
+|LIB_PEPPER_NSADC|[loopfilter_sc_chopper](#lib-pepper-nsadc-loopfilter-sc-chopper)|ICHOP_A2_OUT<1:0>|2|
+|LIB_PEPPER_NSADC|[loopfilter_sc_connect](#lib-pepper-nsadc-loopfilter-sc-connect)|i_switch|1|
+|LIB_PEPPER_NSADC|[loopfilter_sc_integrator](#lib-pepper-nsadc-loopfilter-sc-integrator)|ISC_P3<1:0>|2|
+|tcb018gbwp7t_r1a|AN2D2BWP7T|I13|1|
+|tcb018gbwp7t_r1a|BUFFD2BWP7T|I6|1|
+|tcb018gbwp7t_r1a|INVD2BWP7T|I9|1|
+|tcb018gbwp7t_r1a|NR2D4BWP7T|I5|1|
+|tcb018gbwp7t_r1a|OR2D2BWP7T|I4|1|
+
+### lib-pepper-nsadc-loopfilter-digital: Layout Specification
+  
+The design is 132.26 um by 91.04 um.
+
+#### lib-pepper-nsadc-loopfilter-digital: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL4|
+|NIMP|METAL5|
+|POLY1||
+  
+![Loopfilter_digital Layout](../.fig/lib-pepper-nsadc-loopfilter-digital_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-digital: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|AGND|METAL2|0.98 um, -3.06 um|
+|AVDD|METAL2|0.42 um, -3.06 um|
+|CTRL_CHOP_IN|METAL2|6.45 um, -1.15 um|
+|CTRL_RESET_IN|METAL2|10.05 um, -1.15 um|
+|CTRL_SAMPLE_IN|METAL2|2.25 um, -1.75 um|
+|CTRL_SAR_IN|METAL2|0.45 um, -1.75 um|
+|CTRL_UPDATE_QNF_IN|METAL2|5.25 um, -1.75 um|
+|DGND|METAL2|2.25 um, -1.15 um|
+|DVDD|METAL2|4.05 um, -1.75 um|
+|LOOPFILTER_DISABLE|METAL2|2.85 um, -1.75 um|
+|REFC|METAL2|1.65 um, -1.15 um|
+|VDACN|METAL2|3.45 um, -1.15 um|
+|VDACP|METAL2|2.85 um, -1.15 um|
+|VGN1|METAL2|8.85 um, -1.15 um|
+|VGN2X|METAL2|4.05 um, -1.15 um|
+|VGN3|METAL2|4.65 um, -1.15 um|
+|VGP1|METAL2|1.05 um, -1.75 um|
+|VGP2X|METAL2|8.25 um, -1.15 um|
+|VGP3|METAL2|1.65 um, -1.75 um|
+|VON1|METAL2|7.05 um, -1.15 um|
+|VON2X|METAL2|4.65 um, -1.75 um|
+|VON3|METAL2|3.45 um, -1.75 um|
+|VOP1|METAL2|7.65 um, -1.15 um|
+|VOP2X|METAL2|5.85 um, -1.15 um|
+|VOP3|METAL2|5.25 um, -1.15 um|
+|VX1N<0>|METAL2|2.66 um, -3.06 um|
+|VX1N<1>|METAL2|3.22 um, -3.06 um|
+|VX1P<0>|METAL2|1.54 um, -3.06 um|
+|VX1P<1>|METAL2|2.1 um, -3.06 um|
+|VX2N<0>|METAL2|4.9 um, -3.06 um|
+|VX2N<1>|METAL2|5.46 um, -3.06 um|
+|VX2P<0>|METAL2|3.78 um, -3.06 um|
+|VX2P<1>|METAL2|4.34 um, -3.06 um|
+
+### lib-pepper-nsadc-loopfilter-digital: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Signal|Input|1|||Analog Ground|
+|AVDD|Signal|Input|1|||Analog Supply Voltage|
+|CTRL_CHOP_IN|Signal|Input|1|DGND|DVDD|Digital SC Chopper Control|
+|CTRL_RESET_IN|Signal|Input|1|DGND|DVDD|Digital SC Reset Control|
+|CTRL_SAMPLE_IN|Signal|Input|1|DGND|DVDD|Digital SC Sample Control|
+|CTRL_SAR_IN|Signal|Input|1|DGND|DVDD|Digital SC SAR Control|
+|CTRL_UPDATE_QNF_IN|Signal|Input|1|DGND|DVDD|Digital SC QNF Control|
+|DGND|Ground|Input|1|||Digital Ground Supply|
+|DVDD|Supply|Input|1|DGND||Digital Power Supply|
+|LOOPFILTER_DISABLE|Signal|Input|1|||Enable Control Loopfilter|
+|REFC|Analog|Input|1|||ADC Common Mode Reference Voltage|
+|VDACN|Analog|Input|1|||Negative Top Plate CDAC Voltage|
+|VDACP|Analog|Input|1|||Positive Top Plate CDAC Voltage|
+|VGN1|Analog|Inout|1|||Negative Gate Terminal of AMP1|
+|VGN2X|Analog|Inout|1|||Negative Gate Terminal of AMP2|
+|VGN3|Analog|Inout|1|||Negative Gate Terminal of AMP3|
+|VGP1|Analog|Inout|1|||Positive Gate Terminal of AMP1|
+|VGP2X|Analog|Inout|1|||Positive Gate Terminal of AMP2|
+|VGP3|Analog|Inout|1|||Positive Gate Terminal of AMP3|
+|VON1|Analog|Inout|1|||Negative Output Terminal of AMP1|
+|VON2X|Analog|Inout|1|DGND||Negative Output Terminal of AMP2|
+|VON3|Analog|Inout|1|||Negative Output Terminal of AMP3|
+|VOP1|Analog|Inout|1|||Positive Output Terminal of AMP1|
+|VOP2X|Analog|Inout|1|DGND||Positive Output Terminal of AMP2|
+|VOP3|Analog|Inout|1|||Positive Output Terminal of AMP3|
+|VX1N<1:0>|Analog|Output|2|||Negative QFN 1 Feedback|
+|VX1P<1:0>|Analog|Output|2|||Positive QFN 1 Feedback|
+|VX2N<1:0>|Analog|Output|2|||Negative QFN 2 Feedback|
+|VX2P<1:0>|Analog|Output|2|||Positive QFN 2 Feedback|
+
+
+
+## lib-pepper-nsadc-loopfilter-sc-autozero
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic
+
+
+Simple switch configuration for the main amplifier to perform auto-zeroing
+and amplification.
+
+Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.
+  
+  
+![Loopfilter_sc_autozero Schematic](../.fig/lib-pepper-nsadc-loopfilter-sc-autozero_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-sc-autozero: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|mimcap_2p0_sin_3t|C0|1|
+|tsmc18|nmos2v|M0|1|
+
+### lib-pepper-nsadc-loopfilter-sc-autozero: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CTRL_SAMPLE|Analog|Input|1|||Digital SC Sample Control|
+|CTRL_SAR_N|Analog|Input|1|||Digital SC SAR Control|
+|DGND|Ground|Input|1|||Digital Ground Supply|
+|VAMP_GATE|Analog|Output|1|||Analog SC Amplifier Gate Net|
+|VAMP_OUT|Analog|Output|1|||Analogue Amplifier Output Net|
+|VSMP_IN|Analog|Input|1|||Analog SC Input Voltage|
+
+## lib-pepper-nsadc-loopfilter-sc-chopper
+  
+Last Change:  Revision: 0 User:   
+Design views available: layout, symbol, schematic
+
+
+Simple switch configuration for chopping the input and output of the first integrating amplifier.
+
+Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.
+  
+  
+![Loopfilter_sc_chopper Schematic](../.fig/lib-pepper-nsadc-loopfilter-sc-chopper_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-sc-chopper: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M1|1|
+
+### lib-pepper-nsadc-loopfilter-sc-chopper: Layout Specification
+  
+The design is 3.6 um by 4.29 um.
+
+#### lib-pepper-nsadc-loopfilter-sc-chopper: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|DIFF|METAL1|
+|NIMP|METAL2|
+|POLY1||
+  
+![Loopfilter_sc_chopper Layout](../.fig/lib-pepper-nsadc-loopfilter-sc-chopper_layout.png)
+
+
+#### lib-pepper-nsadc-loopfilter-sc-chopper: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|CHOP_INN|METAL2|1.085 um, 4.15 um|
+|CHOP_INP|METAL2|1.74 um, 0.76 um|
+|CHOP_OUTN|METAL1|3.28 um, 1.36 um|
+|CHOP_OUTP|METAL1|3.28 um, 2.48 um|
+|CTRL_CHOP_N|METAL1|0.64 um, -0.69 um|
+|CTRL_CHOP_P|METAL1|2.84 um, -0.69 um|
+
+### lib-pepper-nsadc-loopfilter-sc-chopper: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CHOP_INN|Analog|Inout|1|||Analogue Chopper Negative Input|
+|CHOP_INP|Analog|Inout|1|||Analogue Chopper Positive Input|
+|CHOP_OUTN|Analog|Inout|1|||Analogue Chopper Negative Output|
+|CHOP_OUTP|Analog|Inout|1|||Analogue Chopper Positive Output|
+|CTRL_CHOP_N|Analog|Input|1|||Digital SC SAR Control|
+|CTRL_CHOP_P|Analog|Input|1|||Digital SC SAR Control|
+|DGND|Ground|Input|1|||Digital Core Ground|
+
+## lib-pepper-nsadc-loopfilter-sc-connect
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic
+
+
+Simple switch configuration for shorting output of the amplifier to VCM when disabled.
+
+Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.
+  
+  
+![Loopfilter_sc_connect Schematic](../.fig/lib-pepper-nsadc-loopfilter-sc-connect_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-sc-connect: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M0|1|
+
+### lib-pepper-nsadc-loopfilter-sc-connect: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DGND|Ground|Input|1|||Digital Core Ground|
+|SWITCH_EN|Analog|Input|1|||Digital SC Switch Enable|
+|SWITCH_IN|Analog|Inout|1|||Analogue Switch Input|
+|SWITCH_OUTN|Analog|Inout|1|||Analogue Switch Negative Output|
+|SWITCH_OUTP|Analog|Inout|1|||Analogue Switch Positive Output|
+
+## lib-pepper-nsadc-loopfilter-sc-integrator
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic
+
+
+Simple switch configuration for the ingration stages of the quantization
+loop filter. This is a paracitic in sensitive inverting configuration. The loop filter can be discharged using the reset control.
+
+Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.
+  
+  
+![Loopfilter_sc_integrator Schematic](../.fig/lib-pepper-nsadc-loopfilter-sc-integrator_schematic.png)
+
+
+### lib-pepper-nsadc-loopfilter-sc-integrator: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|analogLib|res|R0|1|
+|tsmc18|mimcap_2p0_sin_3t|C1|1|
+|tsmc18|nmos2v|M4|1|
+|tsmc18|pmos2v|M8<1:0>|2|
+
+### lib-pepper-nsadc-loopfilter-sc-integrator: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|AGND|Signal|Input|1|||Analog Ground|
+|AVDD|Signal|Input|1|||Analog Supply Voltage|
+|CTRL_INTEGRATE|Analog|Input|1|||Digital SC Integrate Control|
+|CTRL_RESET|Analog|Input|1|||Digital SC Reset Control|
+|CTRL_SAMPLE|Analog|Input|1|||Digital SC Sample Control|
+|CTRL_SAR_N|Analog|Input|1|||Digital SC SAR Control|
+|CTRL_SAR_P|Analog|Input|1|||Digital SC SAR Control|
+|DGND|Ground|Input|1|||Digital Ground Supply|
+|DVDD|Supply|Input|1|DGND||Digital Power Supply|
+|REFC|Analog|Input|1|||ADC Common Mode Reference|
+|VAMP_GATE|Analog|Output|1|||Analog SC Amplifier Gate Net|
+|VAMP_OUT|Analog|Output|1|||Analog SC Amplifier Output|
+|VDACX<1:0>|Analog|Output|2|||CDAC Feedback Net|
+|VSMP_IN|Analog|Input|1|||Analog SC Input Voltage|
+
+
+## lib-pepper-nsadc-comparator-digital
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+  
+Design doc file missing.
+  
+  
+![Comparator_digital Schematic](../.fig/lib-pepper-nsadc-comparator-digital_schematic.png)
+
+
+### lib-pepper-nsadc-comparator-digital: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[comparator_digital_unit](#lib-pepper-nsadc-comparator-digital-unit)|i_compare<2:0>|3|
+|tcb018gbwp7t_r1a|BUFFD1BWP7T|I15|1|
+|tcb018gbwp7t_r1a|BUFFD4BWP7T|I14|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I3|1|
+|tcb018gbwp7t_r1a|MAOI222D2BWP7T|I0|1|
+|tcb018gbwp7t_r1a|ND2D1BWP7T|I12|1|
+|tcb018gbwp7t_r1a|ND2D2BWP7T|i_out_state_n|1|
+
+### lib-pepper-nsadc-comparator-digital: Layout Specification
+  
+The design is 17.92 um by 15.68 um.
+
+#### lib-pepper-nsadc-comparator-digital: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Comparator_digital Layout](../.fig/lib-pepper-nsadc-comparator-digital_layout.png)
+
+
+#### lib-pepper-nsadc-comparator-digital: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|CLOCK|METAL3|0.86 um, 2.6 um|
+|DEBUG|METAL3|0.315 um, 14.455 um|
+|DGND|METAL1|0.24 um, 11.77 um|
+|DVDD|METAL1|0.23 um, -0.005 um|
+|OUT|METAL2|4.245 um, 14.065 um|
+|READY|METAL2|16.075 um, 13.775 um|
+|VIN|METAL3|0.76 um, -0.425 um|
+|VIP|METAL3|0.76 um, 0.425 um|
+|mustConnect_0_DGND|METAL1|0.26 um, 3.925 um|
+|mustConnect_0_DVDD|METAL1|0.255 um, 7.84 um|
+|mustConnect_1_DVDD|METAL1|0.22 um, 15.68 um|
+
+### lib-pepper-nsadc-comparator-digital: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CLOCK|Clock|Input|1|DGND|DVDD|Input Clock Rising Edge Sensitive|
+|DEBUG|Signal|Output|1|||Comparator Debug Output|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|OUT|Signal|Output|1|DGND|DVDD|Comparator output|
+|READY|Signal|Output|1|DGND|DVDD|Ready signal for asynchronous FSM triggering|
+|VIN|Analog|Input|1|DGND|DVDD|Negative Analogue Input|
+|VIP|Analog|Input|1|DGND|DVDD|Positive Analogue Input|
+
+## lib-pepper-nsadc-comparator-digital-unit
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+  
+Design doc file missing.
+  
+  
+![Comparator_digital_unit Schematic](../.fig/lib-pepper-nsadc-comparator-digital-unit_schematic.png)
+
+
+### lib-pepper-nsadc-comparator-digital-unit: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M1|1|
+|tsmc18|pmos2v|M8|1|
+
+### lib-pepper-nsadc-comparator-digital-unit: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CLK|Clock|Input|1||||
+|DGND|Ground|Input|1||||
+|DVDD|Supply|Input|1||||
+|QN|Signal|Output|1||||
+|QP|Signal|Output|1||||
+|VIN|Analog|Input|1||||
+|VIP|Analog|Input|1||||

@@ -1,0 +1,493 @@
+# Digital Circuit Modules
+
+```{toctree}
+:hidden:
+
+```
+
+These are the digital modules.
+
+## lib-pepper-nsadc-nssar-decimator-18b
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+This circuit implements second-order decimation by means of a two point derivative calculation after the cascade of integrators.
+
+The OSR setting controls the exact sequencing of this integration windows and automatically resets the quantization noise-filter in the analog submodule.
+The controller supports a maximum over-sampling ratio of 128 with increments of
+8\.
+
+Because different OSR settings will provide different conversion gain. A digital
+gain adjustment is provided that can neutralize this factor. When the OSR is set
+to zero the controller will configure a by-pass mode and will directly output the ADC conversion result given the gain is also set to the max value.
+
+For debugging purposes the CIC done flag can be over-ridden.
+  
+  
+![Nssar_decimator_18b Schematic](../.fig/lib-pepper-nsadc-nssar-decimator-18b_schematic.png)
+
+
+### lib-pepper-nsadc-nssar-decimator-18b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tcb018gbwp7t_r1a|AN2D1BWP7T|I29<20:0>|21|
+|tcb018gbwp7t_r1a|BUFFD12BWP7T|I18|1|
+|tcb018gbwp7t_r1a|BUFFD4BWP7T|I13|1|
+|tcb018gbwp7t_r1a|DEL4BWP7T|I20|1|
+|tcb018gbwp7t_r1a|DFCNQD1BWP7T|i_state_lsb<4:0>|5|
+|tcb018gbwp7t_r1a|DFCNQD2BWP7T|I4|1|
+|tcb018gbwp7t_r1a|DFSNQD1BWP7T|i_state_msb|1|
+|tcb018gbwp7t_r1a|FA1D1BWP7T|I38<15:0>|16|
+|tcb018gbwp7t_r1a|HA1D1BWP7T|I6<4:0>|5|
+|tcb018gbwp7t_r1a|IND3D2BWP7T|I10|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I7<4:0>|5|
+|tcb018gbwp7t_r1a|INVD2BWP7T|I15|1|
+|tcb018gbwp7t_r1a|INVD4BWP7T|I26|1|
+|tcb018gbwp7t_r1a|INVD8BWP7T|I11|1|
+|tcb018gbwp7t_r1a|MUX2D1BWP7T|I14<4:0>|5|
+|tcb018gbwp7t_r1a|ND3D2BWP7T|I12|1|
+|tcb018gbwp7t_r1a|NR4D1BWP7T|I30|1|
+|tcb018gbwp7t_r1a|OR2D1BWP7T|I2|1|
+|tcb018gbwp7t_r1a|TIEHBWP7T|I39|1|
+|tcb018gbwp7t_r1a|TIELBWP7T|I36|1|
+|tcb018gbwp7t_r1a|XOR2D1BWP7T|I1|1|
+
+### lib-pepper-nsadc-nssar-decimator-18b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CIC_DONE|Signal|Output|1|DGND|DVDD|Output Ready Trigger|
+|DECIMATOR_OUT<15:0>|Signal|Output|16|DGND|DVDD|Decimator Output Code|
+|DGND|Ground|Inout|1||DVDD|Core Digital Supply|
+|DONE_OVERRIDE|Signal|Input|1|DGND|DVDD|Done Override Control|
+|DONE_OVERRIDE_VAL|Signal|Input|1|DGND|DVDD|Done Override Value|
+|DVDD|Supply|Inout|1|DGND||Core Digital Supply|
+|GAIN<3:0>|Signal|Input|4|DGND|DVDD|Digital Gain Setting|
+|INT_DEBUG|Signal|Output|1|DGND|DVDD|Integrator Debug Bit|
+|OSR<3:0>|Signal|Input|4|DGND|DVDD|Over Sampling Ratio|
+|SAMPLE_CLK|Signal|Input|1|DGND|DVDD|SAR Conversion Trigger|
+|SAR_DATA<9:0>|Signal|Input|10|DGND|DVDD|SAR Conversion Result|
+|nARST|Signal|Input|1|DGND|DVDD|Asynchronous Reset Control|
+
+## lib-pepper-nsadc-sar-controller-top
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Digital controller for the noise-shaping SAR ADC.
+
+This module provides a wrapper for the SAR FSM and consolidates the internal timing architecture that allows asynchronous SAR conversion. This
+allows the ADC to run using only the sampling clock and internally generates three operating phases; sampling, conversion, and residue integration.
+
+The sampling clock enables the comparator timing loop that adaptively triggers
+evaluations and subsequently clocks the SAR FSM to update the feedback. The delay line is intended to match the time for settling on the capacitive DAC.
+After 10 SAR cycles sar_done flag is raised and this loop is disabled such that
+we start residue integration. These two phases are performed as long as the sampling signal is low.
+
+The controller generates the non-overlapping controls for the switched capacitor logic and samples directly when the sample input is
+high. The sampling clock also toggels the chopper state when enabled.
+  
+  
+![Sar_controller_top Schematic](../.fig/lib-pepper-nsadc-sar-controller-top_schematic.png)
+
+
+### lib-pepper-nsadc-sar-controller-top: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[comparator_digital](ANALOG.md#lib-pepper-nsadc-comparator-digital)|i_comparator|1|
+|LIB_PEPPER_NSADC|[dwa_encoder_4b](#lib-pepper-nsadc-dwa-encoder-4b)|i_shifter<1:0>|2|
+|LIB_PEPPER_NSADC|[sar_controller_10b_mes1](#lib-pepper-nsadc-sar-controller-10b-mes1)|i_sar_control|1|
+|tcb018gbwp7t_r1a|AN3D4BWP7T|I11|1|
+|tcb018gbwp7t_r1a|BUFFD2BWP7T|I16|1|
+|tcb018gbwp7t_r1a|BUFFD4BWP7T|I17|1|
+|tcb018gbwp7t_r1a|DEL4BWP7T|I5<7:0>|8|
+|tcb018gbwp7t_r1a|DFCNQD1BWP7T|i_ctrl_chopper|1|
+|tcb018gbwp7t_r1a|INR2D2BWP7T|I6|1|
+|tcb018gbwp7t_r1a|INVD12BWP7T|I14|1|
+|tcb018gbwp7t_r1a|INVD2BWP7T|I10|1|
+|tcb018gbwp7t_r1a|MUX2D2BWP7T|I1|1|
+|tcb018gbwp7t_r1a|ND2D2BWP7T|I3|1|
+|tcb018gbwp7t_r1a|ND2D4BWP7T|I15|1|
+|tcb018gbwp7t_r1a|NR2D4BWP7T|I9|1|
+|tcb018gbwp7t_r1a|OR2D2BWP7T|I2|1|
+
+### lib-pepper-nsadc-sar-controller-top: Layout Specification
+  
+The design is 117.04 um by 101.92 um.
+
+#### lib-pepper-nsadc-sar-controller-top: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Sar_controller_top Layout](../.fig/lib-pepper-nsadc-sar-controller-top_layout.png)
+
+
+#### lib-pepper-nsadc-sar-controller-top: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|CHOPPER_INTERNAL|METAL2|11.25 um, -1.75 um|
+|CHP_EN|METAL2|13.65 um, -1.75 um|
+|DEBUG|METAL2|1.05 um, -1.15 um|
+|DGND|METAL2|4.65 um, -1.15 um|
+|DVDD|METAL2|4.05 um, -1.15 um|
+|DWA_DATA_THERM<0>|METAL2|7.65 um, -1.15 um|
+|DWA_DATA_THERM<10>|METAL2|5.85 um, -1.75 um|
+|DWA_DATA_THERM<11>|METAL2|25.05 um, -1.15 um|
+|DWA_DATA_THERM<12>|METAL2|24.45 um, -1.15 um|
+|DWA_DATA_THERM<13>|METAL2|23.85 um, -1.15 um|
+|DWA_DATA_THERM<14>|METAL2|8.25 um, -1.15 um|
+|DWA_DATA_THERM<1>|METAL2|10.05 um, -1.15 um|
+|DWA_DATA_THERM<2>|METAL2|9.45 um, -1.15 um|
+|DWA_DATA_THERM<3>|METAL2|8.85 um, -1.15 um|
+|DWA_DATA_THERM<4>|METAL2|9.45 um, -1.75 um|
+|DWA_DATA_THERM<5>|METAL2|8.85 um, -1.75 um|
+|DWA_DATA_THERM<6>|METAL2|8.25 um, -1.75 um|
+|DWA_DATA_THERM<7>|METAL2|7.65 um, -1.75 um|
+|DWA_DATA_THERM<8>|METAL2|7.05 um, -1.75 um|
+|DWA_DATA_THERM<9>|METAL2|6.45 um, -1.75 um|
+|DWA_EN|METAL2|13.05 um, -1.75 um|
+|DWA_ENABLE_THERM<0>|METAL2|5.25 um, -1.15 um|
+|DWA_ENABLE_THERM<10>|METAL2|6.45 um, -1.15 um|
+|DWA_ENABLE_THERM<11>|METAL2|26.85 um, -1.15 um|
+|DWA_ENABLE_THERM<12>|METAL2|26.25 um, -1.15 um|
+|DWA_ENABLE_THERM<13>|METAL2|25.65 um, -1.15 um|
+|DWA_ENABLE_THERM<14>|METAL2|5.85 um, -1.15 um|
+|DWA_ENABLE_THERM<1>|METAL2|5.25 um, -1.75 um|
+|DWA_ENABLE_THERM<2>|METAL2|4.65 um, -1.75 um|
+|DWA_ENABLE_THERM<3>|METAL2|4.05 um, -1.75 um|
+|DWA_ENABLE_THERM<4>|METAL2|3.45 um, -1.75 um|
+|DWA_ENABLE_THERM<5>|METAL2|2.85 um, -1.75 um|
+|DWA_ENABLE_THERM<6>|METAL2|2.25 um, -1.75 um|
+|DWA_ENABLE_THERM<7>|METAL2|1.65 um, -1.75 um|
+|DWA_ENABLE_THERM<8>|METAL2|1.05 um, -1.75 um|
+|DWA_ENABLE_THERM<9>|METAL2|0.45 um, -1.75 um|
+|EXT_CLK|METAL2|11.85 um, -1.75 um|
+|EXT_CLK_EN|METAL2|12.45 um, -1.75 um|
+|MES_DATA<0>|METAL2|20.25 um, -1.15 um|
+|MES_DATA<1>|METAL2|23.25 um, -1.15 um|
+|MES_DATA<2>|METAL2|22.65 um, -1.15 um|
+|MES_DATA<3>|METAL2|22.05 um, -1.15 um|
+|MES_DATA<4>|METAL2|21.45 um, -1.15 um|
+|MES_DATA<5>|METAL2|20.85 um, -1.15 um|
+|MES_EN|METAL2|0.45 um, -1.15 um|
+|MES_ENABLE<0>|METAL2|16.65 um, -1.15 um|
+|MES_ENABLE<1>|METAL2|19.65 um, -1.15 um|
+|MES_ENABLE<2>|METAL2|19.05 um, -1.15 um|
+|MES_ENABLE<3>|METAL2|18.45 um, -1.15 um|
+|MES_ENABLE<4>|METAL2|17.85 um, -1.15 um|
+|MES_ENABLE<5>|METAL2|17.25 um, -1.15 um|
+|QNF_INTERNAL|METAL2|10.65 um, -1.75 um|
+|RESULT<0>|METAL2|10.65 um, -1.15 um|
+|RESULT<1>|METAL2|16.05 um, -1.15 um|
+|RESULT<2>|METAL2|15.45 um, -1.15 um|
+|RESULT<3>|METAL2|14.85 um, -1.15 um|
+|RESULT<4>|METAL2|14.25 um, -1.15 um|
+|RESULT<5>|METAL2|13.65 um, -1.15 um|
+|RESULT<6>|METAL2|13.05 um, -1.15 um|
+|RESULT<7>|METAL2|12.45 um, -1.15 um|
+|RESULT<8>|METAL2|11.85 um, -1.15 um|
+|RESULT<9>|METAL2|11.25 um, -1.15 um|
+|SAMPLE_CLK|METAL2|7.05 um, -1.15 um|
+|SAMPLE_INTERNAL|METAL2|2.25 um, -1.15 um|
+|SAR_INTERNAL|METAL2|10.05 um, -1.75 um|
+|VDACN|METAL2|2.85 um, -1.15 um|
+|VDACP|METAL2|3.45 um, -1.15 um|
+|nARST|METAL2|1.65 um, -1.15 um|
+
+### lib-pepper-nsadc-sar-controller-top: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CHOPPER_INTERNAL|Analog|Output|1|DGND|DVDD|Switched Capacitor Chopper Control|
+|CHP_EN|Signal|Input|1|DGND|DVDD|Chopper Enable Control|
+|DEBUG|Signal|Output|1|DGND|DVDD|Comparator Debug Output Signal|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|DWA_DATA_THERM<14:0>|Signal|Output|15|DGND|DVDD|SAR DWA Feedback Data Control|
+|DWA_EN|Signal|Input|1|DGND|DVDD|Dynamic Weighted Average Enable Flag|
+|DWA_ENABLE_THERM<14:0>|Signal|Output|15|DGND|DVDD|SAR DWA Feedback Enable|
+|EXT_CLK|Signal|Input|1|DGND|DVDD|External Clock Control|
+|EXT_CLK_EN|Signal|Input|1|DGND|DVDD|External Clock Enable Control|
+|MES_DATA<5:0>|Signal|Output|6|DGND|DVDD|SAR MES Feedback Data Control|
+|MES_EN|Signal|Input|1|DGND|DVDD|Mismatch Error Shaping Enable Flag|
+|MES_ENABLE<5:0>|Signal|Output|6|DGND|DVDD|SAR MES Feedback Enable|
+|QNF_INTERNAL|Analog|Output|1|DGND|DVDD|Switched Capacitor QNF Integration Control|
+|RESULT<9:0>|Signal|Output|10|DGND|DVDD|SAR Output Data|
+|SAMPLE_CLK|Clock|Input|1|DGND|DVDD|SAR Sample Control|
+|SAMPLE_INTERNAL|Analog|Output|1|DGND|DVDD|Internal Sample Control|
+|SAR_INTERNAL|Analog|Output|1|DGND|DVDD|Switched Capacitor SAR Control|
+|VDACN|Analog|Input|1|DGND|DVDD|Capacitive DAC Negative Voltage|
+|VDACP|Analog|Input|1|DGND|DVDD|Capacitive DAC Positive Voltage|
+|nARST|Signal|Input|1|DGND|DVDD|Asynchronous Reset Control|
+
+
+## lib-pepper-nsadc-dwa-encoder-4b
+  
+Last Change:  Revision: 0 User:   
+Design views available: layout, symbol, schematic
+  
+Design doc file missing.
+  
+  
+![Dwa_encoder_4b Schematic](../.fig/lib-pepper-nsadc-dwa-encoder-4b_schematic.png)
+
+
+### lib-pepper-nsadc-dwa-encoder-4b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[barrel_shift_4b](#lib-pepper-nsadc-barrel-shift-4b)|i_shifter|1|
+|LIB_PEPPER_NSADC|[thermometer_encoder_4b](#lib-pepper-nsadc-thermometer-encoder-4b)|i_encoder|1|
+
+### lib-pepper-nsadc-dwa-encoder-4b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DATA_IN<3:0>|Signal|Input|4|DGND|DVDD|Thermometer Input Code|
+|DGND|Ground|Input|1||DVDD|Core Digital Supply|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|POINTER<3:0>|Signal|Input|4|DGND|DVDD|Shift Pointer Control|
+|THERM_OUT<14:0>|Signal|Output|15|DGND|DVDD|Themometer Output Code|
+
+## lib-pepper-nsadc-barrel-shift-4b
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+4b Barrel shift logic using multiplexors in a 4-stage cascade configuration.
+  
+  
+![Barrel_shift_4b Schematic](../.fig/lib-pepper-nsadc-barrel-shift-4b_schematic.png)
+
+
+### lib-pepper-nsadc-barrel-shift-4b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tcb018gbwp7t_r1a|MUX2D1BWP7T|i_shift_8<14:0>|15|
+
+### lib-pepper-nsadc-barrel-shift-4b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DGND|Ground|Input|1||DVDD|Core Digital Supply|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|POINTER<3:0>|Signal|Input|4|DGND|DVDD|Shift Pointer Control|
+|THERM_IN<14:0>|Signal|Input|15|DGND|DVDD|Thermometer Input Code|
+|THERM_OUT<14:0>|Signal|Output|15|DGND|DVDD|Themometer Output Code|
+
+## lib-pepper-nsadc-thermometer-encoder-4b
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+A 4 bit thermometer encoder with override control for nested operation.
+  
+  
+![Thermometer_encoder_4b Schematic](../.fig/lib-pepper-nsadc-thermometer-encoder-4b_schematic.png)
+
+
+### lib-pepper-nsadc-thermometer-encoder-4b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[thermometer_encoder_2b](#lib-pepper-nsadc-thermometer-encoder-2b)|i_therm_msb|1|
+|tcb018gbwp7t_r1a|INVD2BWP7T|I3<3:0>|4|
+
+### lib-pepper-nsadc-thermometer-encoder-4b: Layout Specification
+  
+The design is 27.72 um by 23.52 um.
+
+#### lib-pepper-nsadc-thermometer-encoder-4b: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Thermometer_encoder_4b Layout](../.fig/lib-pepper-nsadc-thermometer-encoder-4b_layout.png)
+
+
+#### lib-pepper-nsadc-thermometer-encoder-4b: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|BINARY<0>|METAL1|2.59 um, 1.97 um|
+|BINARY<1>|METAL1|1.6 um, 6.12 um|
+|BINARY<2>|METAL1|2.6 um, 17.65 um|
+|BINARY<3>|METAL1|1.55 um, 17.4 um|
+|DGND|METAL1|0.165 um, 0.02 um|
+|DVDD|METAL1|0.18 um, 3.895 um|
+|OVERRIDE_HIGH|METAL1|9.69 um, 17.64 um|
+|OVERRIDE_LOW|METAL1|6.545 um, 17.67 um|
+|THERM<0>|METAL1|10.94 um, 2.035 um|
+|THERM<10>|METAL1|23.24 um, 9.81 um|
+|THERM<11>|METAL1|27.155 um, 9.8 um|
+|THERM<12>|METAL1|10.925 um, 13.725 um|
+|THERM<13>|METAL1|17.085 um, 13.715 um|
+|THERM<14>|METAL1|23.24 um, 13.725 um|
+|THERM<15>|METAL1|27.155 um, 13.72 um|
+|THERM<1>|METAL1|17.1 um, 1.965 um|
+|THERM<2>|METAL1|23.24 um, 1.955 um|
+|THERM<3>|METAL1|27.155 um, 1.96 um|
+|THERM<4>|METAL1|10.925 um, 5.885 um|
+|THERM<5>|METAL1|17.08 um, 5.875 um|
+|THERM<6>|METAL1|23.24 um, 5.885 um|
+|THERM<7>|METAL1|27.16 um, 5.88 um|
+|THERM<8>|METAL1|10.925 um, 9.8 um|
+|THERM<9>|METAL1|17.085 um, 9.805 um|
+
+### lib-pepper-nsadc-thermometer-encoder-4b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|BINARY<3:0>|Signal|Input|4|DGND|DVDD|Binary Input Code|
+|DGND|Ground|Input|1||DVDD|Core Digital Supply|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|OVERRIDE_HIGH|Signal|Input|1|DGND|DVDD|Override Control|
+|OVERRIDE_LOW|Signal|Input|1|DGND|DVDD|Override Control|
+|THERM<15:0>|Signal|Output|16|DGND|DVDD|Themometer Output Code|
+
+## lib-pepper-nsadc-thermometer-encoder-2b
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+A 2 bit thermometer encoder with override control for nested operation.
+  
+  
+![Thermometer_encoder_2b Schematic](../.fig/lib-pepper-nsadc-thermometer-encoder-2b_schematic.png)
+
+
+### lib-pepper-nsadc-thermometer-encoder-2b: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tcb018gbwp7t_r1a|BUFFD2BWP7T|I9|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I3|1|
+|tcb018gbwp7t_r1a|ND2D1BWP7T|I1|1|
+|tcb018gbwp7t_r1a|NR2D1BWP7T|I2|1|
+|tcb018gbwp7t_r1a|OR2D2BWP7T|I8<2:0>|3|
+
+### lib-pepper-nsadc-thermometer-encoder-2b: Layout Specification
+  
+The design is 28 um by 3.92 um.
+
+#### lib-pepper-nsadc-thermometer-encoder-2b: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP||
+|POLY1||
+  
+![Thermometer_encoder_2b Layout](../.fig/lib-pepper-nsadc-thermometer-encoder-2b_layout.png)
+
+
+#### lib-pepper-nsadc-thermometer-encoder-2b: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|BINARY<0>|METAL1|2.68 um, 1.97 um|
+|BINARY<1>|METAL3|1.625 um, 1.735 um|
+|DGND|METAL1|0.195 um, 0 um|
+|DVDD|METAL1|0.155 um, 3.92 um|
+|OVERRIDE_HIGH|METAL1|9.675 um, 1.97 um|
+|OVERRIDE_LOW|METAL1|6.545 um, 1.99 um|
+|THERM<0>|METAL1|10.94 um, 1.955 um|
+|THERM<1>|METAL1|17.1 um, 1.965 um|
+|THERM<2>|METAL1|23.26 um, 1.955 um|
+|THERM<3>|METAL1|27.175 um, 1.96 um|
+
+### lib-pepper-nsadc-thermometer-encoder-2b: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|BINARY<1:0>|Signal|Input|2|DGND|DVDD|Binary Input Code|
+|DGND|Ground|Input|1||DVDD|Core Digital Supply|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|OVERRIDE_HIGH|Signal|Input|1|DGND|DVDD|Override Control|
+|OVERRIDE_LOW|Signal|Input|1|DGND|DVDD|Override Control|
+|THERM<3:0>|Signal|Output|4|DGND|DVDD|Themometer Output Code|
+
+## lib-pepper-nsadc-sar-controller-10b-mes1
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+A 10 bit successive-approximation-register finite-state-machine with dynamic-weighter-averging and mismatch-error-shaping controls on MSB and LSB
+sections respectively.
+
+The sar_state is the main FSM reference and stores comparitor results successively
+in q_internal. This ultimately holds the quantization result that feedback the computed DWA and MES code words. The CDAC uses tri-state logic so an enable bit
+is included for each data bit in the feedback.
+
+MES will correct the digital output to account for the previously sampled
+feedback component if enabled. Otherwise this controller will operate in a convetional SAR manner. MES also adjusts the MES_DATA when sampling so that the mismatch error from the last conversion can be rejected algorithmically.
+
+When DWA is enabled, q_internal is used to update the pointer and adjusts which group of capacitors in the MSB CDAC are being used for which conversion.
+  
+  
+![Sar_controller_10b_mes1 Schematic](../.fig/lib-pepper-nsadc-sar-controller-10b-mes1_schematic.png)
+
+
+### lib-pepper-nsadc-sar-controller-10b-mes1: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tcb018gbwp7t_r1a|AN2D0BWP7T|I13<5:0>|6|
+|tcb018gbwp7t_r1a|AN2D2BWP7T|mes_sample_data<0:5>|6|
+|tcb018gbwp7t_r1a|AN2D4BWP7T|i_mes_ctrl|1|
+|tcb018gbwp7t_r1a|BUFFD2BWP7T|i_enable_dwa<0:3>|4|
+|tcb018gbwp7t_r1a|BUFFD4BWP7T|i_done|1|
+|tcb018gbwp7t_r1a|DFCNQD1BWP7T|I11<1:10>|10|
+|tcb018gbwp7t_r1a|DFCNQD2BWP7T|i_sar_data<10:1>|10|
+|tcb018gbwp7t_r1a|FA1D1BWP7T|I22<3:0>|4|
+|tcb018gbwp7t_r1a|FA1D2BWP7T|I7<5:0>|6|
+|tcb018gbwp7t_r1a|HA1D2BWP7T|I27<3:0>|4|
+|tcb018gbwp7t_r1a|INR2D4BWP7T|i_rst_fsm|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I28<5:0>|6|
+|tcb018gbwp7t_r1a|OR2D2BWP7T|i_enable_mes<0:5>|6|
+|tcb018gbwp7t_r1a|TIEHBWP7T|I0|1|
+|tcb018gbwp7t_r1a|TIELBWP7T|I2|1|
+
+### lib-pepper-nsadc-sar-controller-10b-mes1: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|CLK|Clock|Input|1|DGND|DVDD|SAR Control Clock|
+|CMP|Signal|Input|1|DGND|DVDD|Comparator Output Value|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DONE|Signal|Output|1|||SAR Completion Flag|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|DWA|Signal|Input|1|||Dynamic Weighted Average Enable Flag|
+|DWA_DATA<3:0>|Signal|Output|4|DGND|DVDD|SAR DWA Feedback Data Control|
+|DWA_ENABLE<3:0>|Signal|Output|4|DGND|DVDD|SAR DWA Feedback Enable|
+|MES|Signal|Input|1|DGND|DVDD|Mismatch Error Shaping Enable Flag|
+|MES_DATA<5:0>|Signal|Output|6|DGND|DVDD|SAR MES Feedback Data Control|
+|MES_ENABLE<5:0>|Signal|Output|6|DGND|DVDD|SAR MES Feedback Enable|
+|POINTER<3:0>|Signal|Output|4|||DWA Pointer Control|
+|RESULT<9:0>|Signal|Output|10|DGND|DVDD|SAR Output Data|
+|SAMPLE|Signal|Input|1|DGND|DVDD|SAR Sample Control|
+|nARST|Signal|Input|1|DGND|DVDD|Asynchronous Reset Control|

@@ -1,0 +1,2295 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../../_static/favicon.png" type="image/png">
+    <title>Digital Circuit Modules &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/units/DIGITAL';</script>
+    <script src="../../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Application Notes" href="../USAGE.html" />
+    <link rel="prev" title="CDAC Circuit Modules" href="CDAC.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-41055</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">58737478-4b58-48b3-bf41-3b8b02977912</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-41055, KQCEX6RUC46M-1184322800-41055</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../PRESTUDY.html">System Modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../dms/README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_dsp.html">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../MODULES.html">Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="ANALOG.html">Analog Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="CDAC.html">CDAC Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">Digital Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../MODULES.html" class="nav-link">Circuit Modules</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Digital...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="digital-circuit-modules">
+<h1>Digital Circuit Modules<a class="headerlink" href="#digital-circuit-modules" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>These are the digital modules.</p>
+<section id="lib-pepper-nsadc-nssar-decimator-18b">
+<h2>lib-pepper-nsadc-nssar-decimator-18b<a class="headerlink" href="#lib-pepper-nsadc-nssar-decimator-18b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>This circuit implements second-order decimation by means of a two point derivative calculation after the cascade of integrators.</p>
+<p>The OSR setting controls the exact sequencing of this integration windows and automatically resets the quantization noise-filter in the analog submodule.
+The controller supports a maximum over-sampling ratio of 128 with increments of
+8.</p>
+<p>Because different OSR settings will provide different conversion gain. A digital
+gain adjustment is provided that can neutralize this factor. When the OSR is set
+to zero the controller will configure a by-pass mode and will directly output the ADC conversion result given the gain is also set to the max value.</p>
+<p>For debugging purposes the CIC done flag can be over-ridden.</p>
+<p><img alt="Nssar_decimator_18b Schematic" src="../../../_images/lib-pepper-nsadc-nssar-decimator-18b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-nssar-decimator-18b-schematic-references">
+<h3>lib-pepper-nsadc-nssar-decimator-18b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-nssar-decimator-18b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN2D1BWP7T</p></td>
+<td class="text-center"><p>I29&lt;20:0&gt;</p></td>
+<td class="text-center"><p>21</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD12BWP7T</p></td>
+<td class="text-center"><p>I18</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD4BWP7T</p></td>
+<td class="text-center"><p>I13</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DEL4BWP7T</p></td>
+<td class="text-center"><p>I20</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFCNQD1BWP7T</p></td>
+<td class="text-center"><p>i_state_lsb&lt;4:0&gt;</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFCNQD2BWP7T</p></td>
+<td class="text-center"><p>I4</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFSNQD1BWP7T</p></td>
+<td class="text-center"><p>i_state_msb</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>FA1D1BWP7T</p></td>
+<td class="text-center"><p>I38&lt;15:0&gt;</p></td>
+<td class="text-center"><p>16</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>HA1D1BWP7T</p></td>
+<td class="text-center"><p>I6&lt;4:0&gt;</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>IND3D2BWP7T</p></td>
+<td class="text-center"><p>I10</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I7&lt;4:0&gt;</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>I15</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD4BWP7T</p></td>
+<td class="text-center"><p>I26</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD8BWP7T</p></td>
+<td class="text-center"><p>I11</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>MUX2D1BWP7T</p></td>
+<td class="text-center"><p>I14&lt;4:0&gt;</p></td>
+<td class="text-center"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND3D2BWP7T</p></td>
+<td class="text-center"><p>I12</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR4D1BWP7T</p></td>
+<td class="text-center"><p>I30</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D1BWP7T</p></td>
+<td class="text-center"><p>I2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>TIEHBWP7T</p></td>
+<td class="text-center"><p>I39</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>TIELBWP7T</p></td>
+<td class="text-center"><p>I36</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>XOR2D1BWP7T</p></td>
+<td class="text-center"><p>I1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-nssar-decimator-18b-symbol-specification">
+<h3>lib-pepper-nsadc-nssar-decimator-18b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-nssar-decimator-18b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CIC_DONE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Output Ready Trigger</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DECIMATOR_OUT&lt;15:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>16</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Decimator Output Code</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DONE_OVERRIDE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Done Override Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DONE_OVERRIDE_VAL</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Done Override Value</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>GAIN&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital Gain Setting</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>INT_DEBUG</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Integrator Debug Bit</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OSR&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Over Sampling Ratio</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE_CLK</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Conversion Trigger</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAR_DATA&lt;9:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Conversion Result</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>nARST</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Asynchronous Reset Control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-top">
+<h2>lib-pepper-nsadc-sar-controller-top<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Digital controller for the noise-shaping SAR ADC.</p>
+<p>This module provides a wrapper for the SAR FSM and consolidates the internal timing architecture that allows asynchronous SAR conversion. This
+allows the ADC to run using only the sampling clock and internally generates three operating phases; sampling, conversion, and residue integration.</p>
+<p>The sampling clock enables the comparator timing loop that adaptively triggers
+evaluations and subsequently clocks the SAR FSM to update the feedback. The delay line is intended to match the time for settling on the capacitive DAC.
+After 10 SAR cycles sar_done flag is raised and this loop is disabled such that
+we start residue integration. These two phases are performed as long as the sampling signal is low.</p>
+<p>The controller generates the non-overlapping controls for the switched capacitor logic and samples directly when the sample input is
+high. The sampling clock also toggels the chopper state when enabled.</p>
+<p><img alt="Sar_controller_top Schematic" src="../../../_images/lib-pepper-nsadc-sar-controller-top_schematic.png" /></p>
+<section id="lib-pepper-nsadc-sar-controller-top-schematic-references">
+<h3>lib-pepper-nsadc-sar-controller-top: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="ANALOG.html#lib-pepper-nsadc-comparator-digital"><span class="std std-ref">comparator_digital</span></a></p></td>
+<td class="text-center"><p>i_comparator</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-dwa-encoder-4b">dwa_encoder_4b</a></p></td>
+<td class="text-center"><p>i_shifter&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-sar-controller-10b-mes1">sar_controller_10b_mes1</a></p></td>
+<td class="text-center"><p>i_sar_control</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN3D4BWP7T</p></td>
+<td class="text-center"><p>I11</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD2BWP7T</p></td>
+<td class="text-center"><p>I16</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD4BWP7T</p></td>
+<td class="text-center"><p>I17</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DEL4BWP7T</p></td>
+<td class="text-center"><p>I5&lt;7:0&gt;</p></td>
+<td class="text-center"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFCNQD1BWP7T</p></td>
+<td class="text-center"><p>i_ctrl_chopper</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INR2D2BWP7T</p></td>
+<td class="text-center"><p>I6</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD12BWP7T</p></td>
+<td class="text-center"><p>I14</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>I10</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>MUX2D2BWP7T</p></td>
+<td class="text-center"><p>I1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D2BWP7T</p></td>
+<td class="text-center"><p>I3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D4BWP7T</p></td>
+<td class="text-center"><p>I15</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR2D4BWP7T</p></td>
+<td class="text-center"><p>I9</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D2BWP7T</p></td>
+<td class="text-center"><p>I2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-top-layout-specification">
+<h3>lib-pepper-nsadc-sar-controller-top: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 117.04 um by 101.92 um.</p>
+<section id="lib-pepper-nsadc-sar-controller-top-layout-layers">
+<h4>lib-pepper-nsadc-sar-controller-top: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Sar_controller_top Layout" src="../../../_images/lib-pepper-nsadc-sar-controller-top_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-top-layout-pins">
+<h4>lib-pepper-nsadc-sar-controller-top: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CHOPPER_INTERNAL</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHP_EN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>13.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DEBUG</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;10&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;11&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>25.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;12&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>24.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;13&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>23.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;14&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA_THERM&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_EN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>13.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;10&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;11&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>26.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;12&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>26.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;13&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>25.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;14&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_ENABLE_THERM&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>EXT_CLK</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>EXT_CLK_EN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>12.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_DATA&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>20.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_DATA&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>23.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_DATA&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>22.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_DATA&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>22.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_DATA&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>21.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_DATA&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>20.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_EN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_ENABLE&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>16.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_ENABLE&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_ENABLE&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_ENABLE&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>18.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_ENABLE&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_ENABLE&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>QNF_INTERNAL</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RESULT&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>16.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>15.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RESULT&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>14.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>14.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RESULT&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>13.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>13.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RESULT&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>12.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RESULT&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAMPLE_CLK</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE_INTERNAL</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAR_INTERNAL</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>nARST</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.15 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-top-symbol-specification">
+<h3>lib-pepper-nsadc-sar-controller-top: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-top-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CHOPPER_INTERNAL</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Switched Capacitor Chopper Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHP_EN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Chopper Enable Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DEBUG</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Comparator Debug Output Signal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_DATA_THERM&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR DWA Feedback Data Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_EN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Dynamic Weighted Average Enable Flag</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE_THERM&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR DWA Feedback Enable</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>EXT_CLK</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>External Clock Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>EXT_CLK_EN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>External Clock Enable Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_DATA&lt;5:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR MES Feedback Data Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_EN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Mismatch Error Shaping Enable Flag</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_ENABLE&lt;5:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR MES Feedback Enable</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>QNF_INTERNAL</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Switched Capacitor QNF Integration Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;9:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Output Data</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE_CLK</p></td>
+<td class="text-center"><p>Clock</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Sample Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAMPLE_INTERNAL</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Internal Sample Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAR_INTERNAL</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Switched Capacitor SAR Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Capacitive DAC Negative Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Capacitive DAC Positive Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>nARST</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Asynchronous Reset Control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dwa-encoder-4b">
+<h2>lib-pepper-nsadc-dwa-encoder-4b<a class="headerlink" href="#lib-pepper-nsadc-dwa-encoder-4b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: layout, symbol, schematic</p>
+<p>Design doc file missing.</p>
+<p><img alt="Dwa_encoder_4b Schematic" src="../../../_images/lib-pepper-nsadc-dwa-encoder-4b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-dwa-encoder-4b-schematic-references">
+<h3>lib-pepper-nsadc-dwa-encoder-4b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-dwa-encoder-4b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-barrel-shift-4b">barrel_shift_4b</a></p></td>
+<td class="text-center"><p>i_shifter</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-thermometer-encoder-4b">thermometer_encoder_4b</a></p></td>
+<td class="text-center"><p>i_encoder</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-dwa-encoder-4b-symbol-specification">
+<h3>lib-pepper-nsadc-dwa-encoder-4b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-dwa-encoder-4b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DATA_IN&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Thermometer Input Code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>POINTER&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Shift Pointer Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM_OUT&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Themometer Output Code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-barrel-shift-4b">
+<h2>lib-pepper-nsadc-barrel-shift-4b<a class="headerlink" href="#lib-pepper-nsadc-barrel-shift-4b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>4b Barrel shift logic using multiplexors in a 4-stage cascade configuration.</p>
+<p><img alt="Barrel_shift_4b Schematic" src="../../../_images/lib-pepper-nsadc-barrel-shift-4b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-barrel-shift-4b-schematic-references">
+<h3>lib-pepper-nsadc-barrel-shift-4b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-barrel-shift-4b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>MUX2D1BWP7T</p></td>
+<td class="text-center"><p>i_shift_8&lt;14:0&gt;</p></td>
+<td class="text-center"><p>15</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-barrel-shift-4b-symbol-specification">
+<h3>lib-pepper-nsadc-barrel-shift-4b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-barrel-shift-4b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POINTER&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Shift Pointer Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM_IN&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Thermometer Input Code</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM_OUT&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Themometer Output Code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b">
+<h2>lib-pepper-nsadc-thermometer-encoder-4b<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>A 4 bit thermometer encoder with override control for nested operation.</p>
+<p><img alt="Thermometer_encoder_4b Schematic" src="../../../_images/lib-pepper-nsadc-thermometer-encoder-4b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b-schematic-references">
+<h3>lib-pepper-nsadc-thermometer-encoder-4b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-thermometer-encoder-2b">thermometer_encoder_2b</a></p></td>
+<td class="text-center"><p>i_therm_msb</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>I3&lt;3:0&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b-layout-specification">
+<h3>lib-pepper-nsadc-thermometer-encoder-4b: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 27.72 um by 23.52 um.</p>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b-layout-layers">
+<h4>lib-pepper-nsadc-thermometer-encoder-4b: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Thermometer_encoder_4b Layout" src="../../../_images/lib-pepper-nsadc-thermometer-encoder-4b_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b-layout-pins">
+<h4>lib-pepper-nsadc-thermometer-encoder-4b: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>BINARY&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>2.59 um, 1.97 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>BINARY&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>1.6 um, 6.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>BINARY&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>2.6 um, 17.65 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>BINARY&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>1.55 um, 17.4 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.165 um, 0.02 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.18 um, 3.895 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OVERRIDE_HIGH</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>9.69 um, 17.64 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OVERRIDE_LOW</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>6.545 um, 17.67 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>10.94 um, 2.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;10&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>23.24 um, 9.81 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;11&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>27.155 um, 9.8 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;12&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>10.925 um, 13.725 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;13&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>17.085 um, 13.715 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;14&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>23.24 um, 13.725 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;15&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>27.155 um, 13.72 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>17.1 um, 1.965 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>23.24 um, 1.955 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>27.155 um, 1.96 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>10.925 um, 5.885 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>17.08 um, 5.875 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>23.24 um, 5.885 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>27.16 um, 5.88 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>10.925 um, 9.8 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>17.085 um, 9.805 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-4b-symbol-specification">
+<h3>lib-pepper-nsadc-thermometer-encoder-4b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-4b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>BINARY&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Binary Input Code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OVERRIDE_HIGH</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Override Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OVERRIDE_LOW</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Override Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;15:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>16</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Themometer Output Code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b">
+<h2>lib-pepper-nsadc-thermometer-encoder-2b<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>A 2 bit thermometer encoder with override control for nested operation.</p>
+<p><img alt="Thermometer_encoder_2b Schematic" src="../../../_images/lib-pepper-nsadc-thermometer-encoder-2b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b-schematic-references">
+<h3>lib-pepper-nsadc-thermometer-encoder-2b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD2BWP7T</p></td>
+<td class="text-center"><p>I9</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D1BWP7T</p></td>
+<td class="text-center"><p>I1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR2D1BWP7T</p></td>
+<td class="text-center"><p>I2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D2BWP7T</p></td>
+<td class="text-center"><p>I8&lt;2:0&gt;</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b-layout-specification">
+<h3>lib-pepper-nsadc-thermometer-encoder-2b: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 28 um by 3.92 um.</p>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b-layout-layers">
+<h4>lib-pepper-nsadc-thermometer-encoder-2b: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Thermometer_encoder_2b Layout" src="../../../_images/lib-pepper-nsadc-thermometer-encoder-2b_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b-layout-pins">
+<h4>lib-pepper-nsadc-thermometer-encoder-2b: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>BINARY&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>2.68 um, 1.97 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>BINARY&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL3</p></td>
+<td class="text-center"><p>1.625 um, 1.735 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.195 um, 0 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.155 um, 3.92 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OVERRIDE_HIGH</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>9.675 um, 1.97 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OVERRIDE_LOW</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>6.545 um, 1.99 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>10.94 um, 1.955 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>17.1 um, 1.965 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>THERM&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>23.26 um, 1.955 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>27.175 um, 1.96 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-thermometer-encoder-2b-symbol-specification">
+<h3>lib-pepper-nsadc-thermometer-encoder-2b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-thermometer-encoder-2b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>BINARY&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Binary Input Code</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OVERRIDE_HIGH</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Override Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OVERRIDE_LOW</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Override Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>THERM&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Themometer Output Code</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-10b-mes1">
+<h2>lib-pepper-nsadc-sar-controller-10b-mes1<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-10b-mes1" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>A 10 bit successive-approximation-register finite-state-machine with dynamic-weighter-averging and mismatch-error-shaping controls on MSB and LSB
+sections respectively.</p>
+<p>The sar_state is the main FSM reference and stores comparitor results successively
+in q_internal. This ultimately holds the quantization result that feedback the computed DWA and MES code words. The CDAC uses tri-state logic so an enable bit
+is included for each data bit in the feedback.</p>
+<p>MES will correct the digital output to account for the previously sampled
+feedback component if enabled. Otherwise this controller will operate in a convetional SAR manner. MES also adjusts the MES_DATA when sampling so that the mismatch error from the last conversion can be rejected algorithmically.</p>
+<p>When DWA is enabled, q_internal is used to update the pointer and adjusts which group of capacitors in the MSB CDAC are being used for which conversion.</p>
+<p><img alt="Sar_controller_10b_mes1 Schematic" src="../../../_images/lib-pepper-nsadc-sar-controller-10b-mes1_schematic.png" /></p>
+<section id="lib-pepper-nsadc-sar-controller-10b-mes1-schematic-references">
+<h3>lib-pepper-nsadc-sar-controller-10b-mes1: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-10b-mes1-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN2D0BWP7T</p></td>
+<td class="text-center"><p>I13&lt;5:0&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN2D2BWP7T</p></td>
+<td class="text-center"><p>mes_sample_data&lt;0:5&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN2D4BWP7T</p></td>
+<td class="text-center"><p>i_mes_ctrl</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD2BWP7T</p></td>
+<td class="text-center"><p>i_enable_dwa&lt;0:3&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD4BWP7T</p></td>
+<td class="text-center"><p>i_done</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFCNQD1BWP7T</p></td>
+<td class="text-center"><p>I11&lt;1:10&gt;</p></td>
+<td class="text-center"><p>10</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>DFCNQD2BWP7T</p></td>
+<td class="text-center"><p>i_sar_data&lt;10:1&gt;</p></td>
+<td class="text-center"><p>10</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>FA1D1BWP7T</p></td>
+<td class="text-center"><p>I22&lt;3:0&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>FA1D2BWP7T</p></td>
+<td class="text-center"><p>I7&lt;5:0&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>HA1D2BWP7T</p></td>
+<td class="text-center"><p>I27&lt;3:0&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INR2D4BWP7T</p></td>
+<td class="text-center"><p>i_rst_fsm</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I28&lt;5:0&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D2BWP7T</p></td>
+<td class="text-center"><p>i_enable_mes&lt;0:5&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>TIEHBWP7T</p></td>
+<td class="text-center"><p>I0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>TIELBWP7T</p></td>
+<td class="text-center"><p>I2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-sar-controller-10b-mes1-symbol-specification">
+<h3>lib-pepper-nsadc-sar-controller-10b-mes1: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-sar-controller-10b-mes1-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CLK</p></td>
+<td class="text-center"><p>Clock</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Control Clock</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CMP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Comparator Output Value</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DONE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>SAR Completion Flag</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Dynamic Weighted Average Enable Flag</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_DATA&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR DWA Feedback Data Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DWA_ENABLE&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR DWA Feedback Enable</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Mismatch Error Shaping Enable Flag</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_DATA&lt;5:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR MES Feedback Data Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>MES_ENABLE&lt;5:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR MES Feedback Enable</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>POINTER&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>4</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DWA Pointer Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;9:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Output Data</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>SAR Sample Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>nARST</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Asynchronous Reset Control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-nssar-decimator-18b">lib-pepper-nsadc-nssar-decimator-18b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-nssar-decimator-18b-schematic-references">lib-pepper-nsadc-nssar-decimator-18b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-nssar-decimator-18b-symbol-specification">lib-pepper-nsadc-nssar-decimator-18b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top">lib-pepper-nsadc-sar-controller-top</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top-schematic-references">lib-pepper-nsadc-sar-controller-top: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top-layout-specification">lib-pepper-nsadc-sar-controller-top: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top-layout-layers">lib-pepper-nsadc-sar-controller-top: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top-layout-pins">lib-pepper-nsadc-sar-controller-top: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-top-symbol-specification">lib-pepper-nsadc-sar-controller-top: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-encoder-4b">lib-pepper-nsadc-dwa-encoder-4b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-encoder-4b-schematic-references">lib-pepper-nsadc-dwa-encoder-4b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-encoder-4b-symbol-specification">lib-pepper-nsadc-dwa-encoder-4b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-barrel-shift-4b">lib-pepper-nsadc-barrel-shift-4b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-barrel-shift-4b-schematic-references">lib-pepper-nsadc-barrel-shift-4b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-barrel-shift-4b-symbol-specification">lib-pepper-nsadc-barrel-shift-4b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b">lib-pepper-nsadc-thermometer-encoder-4b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b-schematic-references">lib-pepper-nsadc-thermometer-encoder-4b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-specification">lib-pepper-nsadc-thermometer-encoder-4b: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-layers">lib-pepper-nsadc-thermometer-encoder-4b: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b-layout-pins">lib-pepper-nsadc-thermometer-encoder-4b: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-4b-symbol-specification">lib-pepper-nsadc-thermometer-encoder-4b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b">lib-pepper-nsadc-thermometer-encoder-2b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b-schematic-references">lib-pepper-nsadc-thermometer-encoder-2b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-specification">lib-pepper-nsadc-thermometer-encoder-2b: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-layers">lib-pepper-nsadc-thermometer-encoder-2b: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b-layout-pins">lib-pepper-nsadc-thermometer-encoder-2b: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-thermometer-encoder-2b-symbol-specification">lib-pepper-nsadc-thermometer-encoder-2b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-10b-mes1">lib-pepper-nsadc-sar-controller-10b-mes1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-10b-mes1-schematic-references">lib-pepper-nsadc-sar-controller-10b-mes1: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-sar-controller-10b-mes1-symbol-specification">lib-pepper-nsadc-sar-controller-10b-mes1: Symbol Specification</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

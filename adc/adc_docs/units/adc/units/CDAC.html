@@ -1,0 +1,2148 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../../_static/favicon.png" type="image/png">
+    <title>CDAC Circuit Modules &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/units/CDAC';</script>
+    <script src="../../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Digital Circuit Modules" href="DIGITAL.html" />
+    <link rel="prev" title="Analog Circuit Modules" href="ANALOG.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-41117</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">545b47bd-532e-48e3-b30c-8017a1ffaf7d</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-41117, KQCEX6RUC46M-1184322800-41117</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../PRESTUDY.html">System Modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../dms/README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_dsp.html">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../MODULES.html">Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="ANALOG.html">Analog Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">CDAC Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="DIGITAL.html">Digital Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../MODULES.html" class="nav-link">Circuit Modules</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">CDAC Circuit Modules</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cdac-circuit-modules">
+<h1>CDAC Circuit Modules<a class="headerlink" href="#cdac-circuit-modules" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>These are the cdac modules.</p>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2">
+<h2>lib-pepper-nsadc-ns-sar-cdac-v2<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>A 10 bit differential capacitive DAC split into two sections MSB and LSB.</p>
+<p>Both sections are controlled using tri-state logic and the signal is sampled
+on the bottom plate of the MSB section. The LSB section is also used to provide
+MES feedback such that the mismatch error is rejected.</p>
+<p>The MSB section is thermometer encoded with a 4 bit DWA controller. There is one
+dummy element here for layout matching purposes.</p>
+<p><img alt="Ns_sar_cdac_v2 Schematic" src="../../../_images/lib-pepper-nsadc-ns-sar-cdac-v2_schematic.png" /></p>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2-schematic-references">
+<h3>lib-pepper-nsadc-ns-sar-cdac-v2: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-dwa-unit">dwa_unit</a></p></td>
+<td class="text-center"><p>IDWA_DAC&lt;14:0&gt;</p></td>
+<td class="text-center"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-mes-dac-v2">mes_dac_v2</a></p></td>
+<td class="text-center"><p>IMES_DAC_1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C2&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2-layout-specification">
+<h3>lib-pepper-nsadc-ns-sar-cdac-v2: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 352.8 um by 327.04 um.</p>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2-layout-layers">
+<h4>lib-pepper-nsadc-ns-sar-cdac-v2: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL5</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Ns_sar_cdac_v2 Layout" src="../../../_images/lib-pepper-nsadc-ns-sar-cdac-v2_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2-layout-pins">
+<h4>lib-pepper-nsadc-ns-sar-cdac-v2: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 10.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 9.435 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 15.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;10&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 18.435 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;11&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 17.835 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;12&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 17.235 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;13&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 16.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;14&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 16.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 23.835 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 23.235 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 22.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 22.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 21.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 20.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 20.235 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_DWA&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 19.635 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 19.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES1&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 11.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES1&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 13.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES1&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 13.635 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES1&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 14.235 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES1&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 14.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES1&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 12.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 7.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 7.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 24.435 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;10&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 5.235 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;11&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 4.635 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;12&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 4.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;13&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 3.435 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;14&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 2.835 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 10.635 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 10.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 9.435 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 8.835 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 8.235 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 7.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 7.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 6.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 5.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES1&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 3.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES1&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 4.635 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES1&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 5.235 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES1&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 5.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES1&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 6.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES1&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 4.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 8.235 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 8.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 2.835 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 11.235 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 10.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.11 um, 11.235 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 12.435 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 11.835 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 13.635 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.71 um, 13.035 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-ns-sar-cdac-v2-symbol-specification">
+<h3>lib-pepper-nsadc-ns-sar-cdac-v2: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-ns-sar-cdac-v2-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>DWA MSB DAC DATA</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES1&lt;1:6&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>MES1 SUB DAC DATA</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_DWA&lt;14:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>15</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>DWA MSB DAC ENABLE</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES1&lt;1:6&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>MES1 SUB DAC ENABLE</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SAMPLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Sample Control Signal</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Analog ADC Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Analog ADC Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 2 Feedback</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 2 Feedback</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dwa-unit">
+<h2>lib-pepper-nsadc-dwa-unit<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Capacitive DAC unit element with local digital control for the MSB section.</p>
+<p>This element correctly switches the differential unit element such that the analog input is sampled or converted on using the tri-state digital feedback
+signals.</p>
+<p>The operating principle here is that when SAMPLE is high the analog input is connected to the bottom-plate. Otherwise if ENABLE is low
+the split configuration either connects the capacitor pair to VDD and GND for a VDD/2 feedback. Finally when ENABLE is high the capacitor pair is connected to VDD or GND when data is high or low respectively.</p>
+<p>There is not high-z configuration allowed here. The bottom plate must always
+be driven according to the input controls. We should carefully check the timing
+such that charge / current dissipation is minimized. We purposely avoid
+using the REFC reference to minimize drive requirements here. This results in more decoupling requirements on REFP/REFN but mitigates bandwidth and decoupling requirements for REFC.</p>
+<p><img alt="Dwa_unit Schematic" src="../../../_images/lib-pepper-nsadc-dwa-unit_schematic.png" /></p>
+<section id="lib-pepper-nsadc-dwa-unit-schematic-references">
+<h3>lib-pepper-nsadc-dwa-unit: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-dac-drive-s-unit">dac_drive_s_unit</a></p></td>
+<td class="text-center"><p>I70</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I5</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>I11</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D1BWP7T</p></td>
+<td class="text-center"><p>I3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR2D1BWP7T</p></td>
+<td class="text-center"><p>I1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR3D1BWP7T</p></td>
+<td class="text-center"><p>I12</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D1BWP7T</p></td>
+<td class="text-center"><p>I15</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-dwa-unit-layout-specification">
+<h3>lib-pepper-nsadc-dwa-unit: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 49.28 um by 82.32 um.</p>
+<section id="lib-pepper-nsadc-dwa-unit-layout-layers">
+<h4>lib-pepper-nsadc-dwa-unit: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL5</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Dwa_unit Layout" src="../../../_images/lib-pepper-nsadc-dwa-unit_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-dwa-unit-layout-pins">
+<h4>lib-pepper-nsadc-dwa-unit: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.22 um, 5.695 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.66 um, 5.695 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.98 um, 5.135 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.78 um, 5.695 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.42 um, 5.135 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.1 um, 5.135 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.54 um, 5.695 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.1 um, 5.695 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAMPLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.54 um, 5.135 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.42 um, 5.695 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.98 um, 5.695 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dwa-unit-symbol-specification">
+<h3>lib-pepper-nsadc-dwa-unit: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-dwa-unit-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_DWA</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DWA MSB DAC DATA</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_DWA</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DWA MSB DAC ENABLE</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SAMPLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>ADC Sample Control Signal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Analog ADC Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Analog ADC Input</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-s-unit">
+<h2>lib-pepper-nsadc-dac-drive-s-unit<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Design doc file missing.</p>
+<p><img alt="Dac_drive_s_unit Schematic" src="../../../_images/lib-pepper-nsadc-dac-drive-s-unit_schematic.png" /></p>
+<section id="lib-pepper-nsadc-dac-drive-s-unit-schematic-references">
+<h3>lib-pepper-nsadc-dac-drive-s-unit: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-s-unit-layout-specification">
+<h3>lib-pepper-nsadc-dac-drive-s-unit: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 2.8 um by 3.92 um.</p>
+<section id="lib-pepper-nsadc-dac-drive-s-unit-layout-layers">
+<h4>lib-pepper-nsadc-dac-drive-s-unit: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Dac_drive_s_unit Layout" src="../../../_images/lib-pepper-nsadc-dac-drive-s-unit_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-s-unit-layout-pins">
+<h4>lib-pepper-nsadc-dac-drive-s-unit: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.29 um, 0 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.335 um, 3.92 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.235 um, 1.78 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IN_P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.585 um, 1.775 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.36 um, 1.775 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, 0.93 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.355 um, 2.93 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-s-unit-symbol-specification">
+<h3>lib-pepper-nsadc-dac-drive-s-unit: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-s-unit-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_N</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Tri Switch Input Control N-Side</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IN_P</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Tri Switch Input Control P-Side</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>CDAC Switch Output Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-mes-dac-v2">
+<h2>lib-pepper-nsadc-mes-dac-v2<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Capacitive DAC unit element with local digital control for the LSB section.</p>
+<p>This element correctly switches the differential unit element such that the we always provide the correct the tri-state digital feedback.</p>
+<p>The operating principle here is that when if ENABLE is low
+the split configuration either connects the capacitor pair to VDD and GND for a VDD/2 feedback. Finally when ENABLE is high the capacitor pair is connected to VDD or GND when data is high or low respectively.</p>
+<p>Note that the two LSB element have slightly adjusted switching control that use REFC instead of the capacitor-pair configuration. This allows us the keep the unit capacitance the same size for better matching.
+There is not high-z configuration allowed here. The bottom plate must always
+be driven according to the input controls. We should carefully check the timing
+such that charge / current dissipation is minimized.</p>
+<p><img alt="Mes_dac_v2 Schematic" src="../../../_images/lib-pepper-nsadc-mes-dac-v2_schematic.png" /></p>
+<section id="lib-pepper-nsadc-mes-dac-v2-schematic-references">
+<h3>lib-pepper-nsadc-mes-dac-v2: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-dac-drive-c-unit">dac_drive_c_unit</a></p></td>
+<td class="text-center"><p>I48</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-dac-drive-t-unit">dac_drive_t_unit</a></p></td>
+<td class="text-center"><p>I47</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I8&lt;0&gt;</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D1BWP7T</p></td>
+<td class="text-center"><p>I6&lt;5:0&gt;</p></td>
+<td class="text-center"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-mes-dac-v2-layout-specification">
+<h3>lib-pepper-nsadc-mes-dac-v2: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 49.28 um by 78.4 um.</p>
+<section id="lib-pepper-nsadc-mes-dac-v2-layout-layers">
+<h4>lib-pepper-nsadc-mes-dac-v2: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL5</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Mes_dac_v2 Layout" src="../../../_images/lib-pepper-nsadc-mes-dac-v2_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-mes-dac-v2-layout-pins">
+<h4>lib-pepper-nsadc-mes-dac-v2: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, 2.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, 2.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.85 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.45 um, 2.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.05 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, 2.17 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DATA_MES&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, 2.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, 2.17 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, 2.17 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, 2.17 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, 2.17 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ENABLE_MES&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, 2.17 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, 2.17 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, 2.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, 2.77 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, 2.77 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-mes-dac-v2-symbol-specification">
+<h3>lib-pepper-nsadc-mes-dac-v2: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-mes-dac-v2-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DACN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DACP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DATA_MES&lt;1:6&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>MES2 SUB DAC DATA</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ENABLE_MES&lt;1:6&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>6</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>MES2 SUB DAC ENABLE</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-c-unit">
+<h2>lib-pepper-nsadc-dac-drive-c-unit<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Design doc file missing.</p>
+<p><img alt="Dac_drive_c_unit Schematic" src="../../../_images/lib-pepper-nsadc-dac-drive-c-unit_schematic.png" /></p>
+<section id="lib-pepper-nsadc-dac-drive-c-unit-schematic-references">
+<h3>lib-pepper-nsadc-dac-drive-c-unit: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-c-unit-layout-specification">
+<h3>lib-pepper-nsadc-dac-drive-c-unit: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 1.68 um by 3.92 um.</p>
+<section id="lib-pepper-nsadc-dac-drive-c-unit-layout-layers">
+<h4>lib-pepper-nsadc-dac-drive-c-unit: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Dac_drive_c_unit Layout" src="../../../_images/lib-pepper-nsadc-dac-drive-c-unit_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-c-unit-layout-pins">
+<h4>lib-pepper-nsadc-dac-drive-c-unit: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>1.265 um, 0 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.335 um, 3.92 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.335 um, 1.775 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.36 um, 1.775 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, 0.93 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.445 um, 2.93 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-c-unit-symbol-specification">
+<h3>lib-pepper-nsadc-dac-drive-c-unit: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-c-unit-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Switch Input Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>CDAC Switch Output Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-t-unit">
+<h2>lib-pepper-nsadc-dac-drive-t-unit<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Design doc file missing.</p>
+<p><img alt="Dac_drive_t_unit Schematic" src="../../../_images/lib-pepper-nsadc-dac-drive-t-unit_schematic.png" /></p>
+<section id="lib-pepper-nsadc-dac-drive-t-unit-schematic-references">
+<h3>lib-pepper-nsadc-dac-drive-t-unit: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M2</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-t-unit-layout-specification">
+<h3>lib-pepper-nsadc-dac-drive-t-unit: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 3.92 um by 3.92 um.</p>
+<section id="lib-pepper-nsadc-dac-drive-t-unit-layout-layers">
+<h4>lib-pepper-nsadc-dac-drive-t-unit: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Dac_drive_t_unit Layout" src="../../../_images/lib-pepper-nsadc-dac-drive-t-unit_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-t-unit-layout-pins">
+<h4>lib-pepper-nsadc-dac-drive-t-unit: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.29 um, 0 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.335 um, 3.92 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_C</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.57 um, 1.785 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IN_N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.235 um, 1.78 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.395 um, 1.775 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.36 um, 1.775 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.47 um, 0.9 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, 0.93 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.355 um, 2.93 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-dac-drive-t-unit-symbol-specification">
+<h3>lib-pepper-nsadc-dac-drive-t-unit: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-dac-drive-t-unit-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_C</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Tri Switch Input Control C-Side</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IN_N</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Tri Switch Input Control N-Side</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IN_P</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>CDAC Tri Switch Input Control P-Side</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>CDAC Switch Output Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2">lib-pepper-nsadc-ns-sar-cdac-v2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2-schematic-references">lib-pepper-nsadc-ns-sar-cdac-v2: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-specification">lib-pepper-nsadc-ns-sar-cdac-v2: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-layers">lib-pepper-nsadc-ns-sar-cdac-v2: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2-layout-pins">lib-pepper-nsadc-ns-sar-cdac-v2: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-ns-sar-cdac-v2-symbol-specification">lib-pepper-nsadc-ns-sar-cdac-v2: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit">lib-pepper-nsadc-dwa-unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit-schematic-references">lib-pepper-nsadc-dwa-unit: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit-layout-specification">lib-pepper-nsadc-dwa-unit: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit-layout-layers">lib-pepper-nsadc-dwa-unit: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit-layout-pins">lib-pepper-nsadc-dwa-unit: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dwa-unit-symbol-specification">lib-pepper-nsadc-dwa-unit: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit">lib-pepper-nsadc-dac-drive-s-unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit-schematic-references">lib-pepper-nsadc-dac-drive-s-unit: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-specification">lib-pepper-nsadc-dac-drive-s-unit: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-layers">lib-pepper-nsadc-dac-drive-s-unit: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit-layout-pins">lib-pepper-nsadc-dac-drive-s-unit: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-s-unit-symbol-specification">lib-pepper-nsadc-dac-drive-s-unit: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2">lib-pepper-nsadc-mes-dac-v2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2-schematic-references">lib-pepper-nsadc-mes-dac-v2: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2-layout-specification">lib-pepper-nsadc-mes-dac-v2: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2-layout-layers">lib-pepper-nsadc-mes-dac-v2: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2-layout-pins">lib-pepper-nsadc-mes-dac-v2: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-mes-dac-v2-symbol-specification">lib-pepper-nsadc-mes-dac-v2: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit">lib-pepper-nsadc-dac-drive-c-unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit-schematic-references">lib-pepper-nsadc-dac-drive-c-unit: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-specification">lib-pepper-nsadc-dac-drive-c-unit: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-layers">lib-pepper-nsadc-dac-drive-c-unit: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit-layout-pins">lib-pepper-nsadc-dac-drive-c-unit: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-c-unit-symbol-specification">lib-pepper-nsadc-dac-drive-c-unit: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit">lib-pepper-nsadc-dac-drive-t-unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit-schematic-references">lib-pepper-nsadc-dac-drive-t-unit: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-specification">lib-pepper-nsadc-dac-drive-t-unit: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-layers">lib-pepper-nsadc-dac-drive-t-unit: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit-layout-pins">lib-pepper-nsadc-dac-drive-t-unit: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-dac-drive-t-unit-symbol-specification">lib-pepper-nsadc-dac-drive-t-unit: Symbol Specification</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+# Pepper ADC Changelog
+
+
+```{toctree}
+:hidden:
+:maxdepth: 1
+
+
+```
+
+All notable changes to the Pepper ADC design will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+## v0.0.1 - 2025-10-11 
+
+
+### Added
+
+ - Low power SAR mode that disables the loop-filter for 10 bit SAR operation
+ - Digital and Analog test signals and DFT controls
+ - Decimation filter with reconfigurable over-sampling ratios
+ - Overflow detection on decimation logic
+ - Multiple new analog tests checking individual amplifier and feedback 
+   performance metrics over PVT and biasing points.
+ - Multiple new digital tests checking internal timing and register states
+ - Signal and circuit documentation
+
+
+### Changed
+
+ - Using a simpler majority-vote comparator design for digital denoising 
+   opposed to the slower analog denoising
+ - Adjusted SAR asynchronous timing to operate at 50 MHz instead of 200 MHz
+ - Switched capacitor switches are now fully complementary for low-voltage 
+   operation
+ 
+
+### Removed
+
+ - Second-Order Mismatch Error Shaping
+ - Loop-filter cascode devices to allow for lower voltage operation
+ - Output data serializer
+
+
+### Fixed
+
+ - Significantly reduced loading on the common-mode reference voltage
+   Only loop-filter and MES LSB is using VCM. Previously it was used in the 
+   MSB switching.
+ - Comparator noise is evaluated using PSS not tran-noise
+ - Significantly improved circuit hierarchy and CDAC switch reuse
+

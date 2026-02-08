@@ -1,0 +1,103 @@
+# System Pre-Study report
+
+
+```{toctree}
+:hidden:
+
+```
+
+
+Author: Kritsapon Leelavattananon  
+Issue Date: 28 July 2025
+Revision: 0.1
+
+The purpose of this document is to study the block specification relationships
+and requirements for the Pepper T4 ASIC
+
+## Scope and Motivation
+
+The purpose of this study is to understand the implementation requirements for
+the Pepper T4 ASIC in order to meet the requirement in [1]. The main system
+architecture will be implemented based on the original Pepper T3 design [2]
+with minor adjustments. The report outlines the relationship between each
+major blocks and provides an initial specification for the Pepper T4 ASIC and
+its subcomponent. Some detail features of the system will also be discussed.
+
+## Brief Description
+
+Pepper ASIC is for electrophysiology sensing.  
+
+### References
+
+ 1. BS EN IEC 80601‑2‑26:2020+A1:2024
+ 2. Ian William, “DDESC-001 DREAM_Trial Pepper Chip Design Description V2_DRAFT”, 2025
+
+## Requirements
+
+Key requirements from IEC 80601 standard [1] can be summarised as follow:
+
+| EEG acquisition | Input voltage ranges | rates of variation   |
+|:------|:----------------------------------|:--------------------|
+|  Scalp  |  1,0 mV peak-to-valley |  12 mV/s |
+| Cerebral cortex or subdural locations | 20,0 mV peak-to-valley |  240 mV/s |
+
+### 201.12.1.102 Accuracy of amplitude and rate of variation
+
+Input voltages in the ranges and varying at rates selected from "Scalp" and/or
+"Cerebral cortex or subdural locations" according to Table 201.102 shall be
+reproduced on the output with an error of ≤ ±20 % of the nominal value of the
+output or ±10 μV, whichever is greater.
+
+### 201.12.1.103 Input dynamic range and differential offset voltage
+
+With a DC offset voltage in the range of ±150 mV and differential input signal
+voltages of ±0.5 mV that vary at rates up to 12 mV/s, when applied to any
+LEAD WIRE, the time-varying output signal amplitude shall not change by more
+than ±10 % of the peak-to-valley output without DC offset voltage.
+
+### 201.12.1.104 Input noise
+
+The signal noise at the bandwidth specified in 201.12.1.105 shall not exceed
+6 μV peak to-valley referred to the input (RTI).
+
+### 201.12.1.105 Frequency response
+
+ELECTROENCEPHALOGRAPHS shall have a frequency response (bandwidth) of at least
+0.5 Hz to 50 Hz when tested with sinusoidal input signals. The output at
+frequencies between 0.5 Hz and 50 Hz shall be within 71 % to 110 % of the
+output obtained with a 5 Hz sine wave input signal.
+
+### 201.12.1.106 * Common mode rejection
+
+A 1V RMS signal at mains frequency (50 Hz/60 Hz) with 200 pF source capacitance,
+connected between earth and all LEAD WIRES connected together shall not produce
+an output signal greater than 100 μV peak-to-valley over a period of not less
+than 10 s. In series with each ELECTRODE shall be a 10 kΩ resistor in parallel
+with a 47 nF capacitor.
+
+## Introduction
+
+The IEC 80601 standard sets the minimum requirements for the Pepper sensing ASIC. Key parameters are input signal range, with a required gain accuracy at the output, input signal bandwidth, sensing sensitivity, CMRR and PSRR. Further requirements will be considered from any customer inputs and/or potential market opportunities. In this pre-study, the Pepper system will target to achieve a minimum input sensitivity of 1 μVrms (6 μV peak-to-valley, with a maximum crest factor of 6, which is equal to 1 μVrms and in the case of any lower crest factor signal, the input level will already be higher than the target 1 μVrms). The maximum input range will be 14 mVrms (20 mV peak-to-valley with a minimum crest factor of 1.414).
+
+To meet the requirement on CMRR, the Pepper ASIC will be implemented as a full differential configuration, same as in the original T3. The minimum CMFB gain will be specified later (TBD). And for the PSRR requirement, the LDO will be employed to handle this.  
+
+The implementation of the Pepper T4 ASIC, same as T3, will consist of 2 main parts. The analogue front-end amplifier (AFE) which prepares the sensing signal to a suitable level that will be converted into a digital format with an ADC. To relax the implementation requirement for the ADC, which is normally a more difficult part, the input signal is amplified to within the maximum linear output range of the ADC. For T4, this range is set to be within ±200 mV (or ±250mV maximum) from the supply. Increasing the linear range can also be possible but normally by trading with increasing noise. The plan for the T4 is to target the ASIC to operate with a 1.8V supply. In order to have a higher degree of debugging/testing of the ASIC, it is therefore proposed to employ two internal LDOs (one for the analogue part and another for the digital part) with programmable output level, ranging from 1.6-2.3V (default at 1.8V). So, an external supply of 2.5V will be used to supply the T4 ASIC (check again with customers preference). This means the ASIC will be implemented using only thick oxide devices for the analogue part. And only the digital part that uses the thin oxide devices.
+
+The proposed T4 ADC implementation will be based on the ADC from previous research project at CBIT. The ADC is a 10B SAR architect, with an oversampling clock to achieve further resolution. This is an attractive feature, where higher performance (resolution) can be traded directly with power (oversampling ratio). Having this feature provides the Pepper T4 system with more programmability options. Processing the digital data with higher bit depth not only requires a larger DSP area, but also higher power consumption. The ASIC should therefore aim to meet the required performance [1] with the lowest bit depth data. However, higher bit depth data (and in consequence a higher performance AFE needed) means the system can perform at lower sensitivity level (better performance). The sensitivity level beyond what specifies in the IEC 80601 standard [1] depends on the customer requirements and/or potential market opportunities. Therefore, a higher digital bit depth data, as a programmable option, will also be considered for T4.  
+
+The AFE will be implemented into two stages; the first stage has a fixed gain and the second stage with programmable gain. This is because, having a programmable gain configuration adds extra noise. And hence not desirable to be at the first stage (or in a single stage) where the system sensitivity is influenced mainly by its noise performance. Implementing the AFE in two stages, also provides a higher degree of flexibility when considering the noise/linearity distribution. In general, the noise and linearity performance are a trade-off without increasing power. Higher linearity requires higher power consumption for the same noise performance. Having a fixed gain at first stage requires lowest power for the same noise performance.  In electronics system, especially for a baseband processing (or a system that does not have any nearby close-in
+
+interferences), the linearity performance can be defined using total harmonic distortions (THD). In RF system, the linearity performance tends to be defined using a 1dB compression point (CP1) and/or a 3rd order interception point (IP3). These parameters are all related and have a well defined relationship. For this study, CP1 will be used as blocks performance required for the system to work under the maximum input range. To further relax this, it is also proposed to employ a RSSI subsystem to detect/control the signal level to avoid any saturation at the output. 
+
+It is also plan for later stage to gain a better understanding on the SNR requirements versus the FFT resolution and its power consumption (as a processing time). This will be updated later in the report. For the initial study, it will be assumed that the target SNR at the output of the ADC will be 3dB.  
+
+The main purpose of this study is to find a suitable gain/noise distribution between the 3 main blocks; AFE1, AFE2 and ADC, that can be implemented with highest power efficiency and robustness. This is done by monitoring their impacts on the output signal quality, commonly quantified by a signal-to-noise ratio (SNR) performance.  
+
+In summary, for this study, it is assumed that: 
+
+ - The default supply is 1.8V, with roughly ±200 mV from supply, the maximum linear output range 1 Vrms (1.414 Vpp) will be used. 
+ - The ADC, as long as it meets the required resolution, will be treated as an ideal block. So, no gain error and the input referred noise (IRN) will be set to half of the LSB from the maximum output range. 
+ - The spread (due to devices process/mismatch) in the modelling will be ±12.5%. In general, based on previous TSMC usage, this can be as around 25% in total, but not necessarily distributed equally from the centre direction.  
+ - The target SNR at the output of the ADC is 3dB. To guarantee robustness of the system, performance with one sigma spread will be targeted. 
+
+For the study, a MATLAB model of the gain/noise distribution between the 3 blocks will be used to evaluation the system. The simulation results shown in figures 1 and 2 are based on the original T3 target specification [2]. Using the actual performance of the circuits from T3, the results are shown in Figures 3 and 4. In brief, it requires an ADC resolution of 13 bits minimum to achieve the SNR higher than 0dB at the output of the ADC. Over component spreads, the ADC will need to be 14 bits (with one sigma, SNR is 0.9dB). 

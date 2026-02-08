@@ -1,0 +1,155 @@
+
+# Circuit Modules
+
+This document summarizes the schematic and layout design files with a complete heiarchy for: LIB_PEPPER_NSADC/ns_sar_v2.
+
+
+```{toctree}
+:hidden:
+:caption: Modules
+
+units/ANALOG.md
+units/CDAC.md
+units/DIGITAL.md
+```
+
+```text
+└- LIB_PEPPER_NSADC: ns_sar_v2
+    ├- LIB_PEPPER_NSADC: loopfilter_v3
+    |   ├- LIB_PEPPER_NSADC: loopfilter_analogue
+    |   |   ├- LIB_PEPPER_NSADC: loopfilter_amplifier_a
+    |   |   ├- LIB_PEPPER_NSADC: loopfilter_amplifier_b
+    |   |   └- LIB_PEPPER_NSADC: loopfilter_ibias
+    |   └- LIB_PEPPER_NSADC: loopfilter_digital
+    |       ├- LIB_PEPPER_NSADC: loopfilter_sc_autozero
+    |       ├- LIB_PEPPER_NSADC: loopfilter_sc_chopper
+    |       ├- LIB_PEPPER_NSADC: loopfilter_sc_connect
+    |       └- LIB_PEPPER_NSADC: loopfilter_sc_integrator
+    ├- LIB_PEPPER_NSADC: ns_sar_cdac_v2
+    |   ├- LIB_PEPPER_NSADC: dwa_unit
+    |   |   └- LIB_PEPPER_NSADC: dac_drive_s_unit
+    |   └- LIB_PEPPER_NSADC: mes_dac_v2
+    |       ├- LIB_PEPPER_NSADC: dac_drive_c_unit
+    |       └- LIB_PEPPER_NSADC: dac_drive_t_unit
+    ├- LIB_PEPPER_NSADC: nssar_decimator_18b
+    └- LIB_PEPPER_NSADC: sar_controller_top
+        ├- LIB_PEPPER_NSADC: comparator_digital
+        |   ├- LIB_PEPPER_NSADC: comparator_digital_unit
+        ├- LIB_PEPPER_NSADC: dwa_encoder_4b
+        |   ├- LIB_PEPPER_NSADC: barrel_shift_4b
+        |   └- LIB_PEPPER_NSADC: thermometer_encoder_4b
+        |       └- LIB_PEPPER_NSADC: thermometer_encoder_2b
+        └- LIB_PEPPER_NSADC: sar_controller_10b_mes1
+```  
+
+```{image} ./.fig/lib-pepper-nsadc-ns-sar-v2_symbol.png
+:alt: Timing Diagram SAR Mode
+:width: 300px
+```
+
+
+## lib-pepper-nsadc-ns-sar-v2
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+This is a 10 bit noise-shaping successive-approximation-register dataconverter.
+By default the ADC performs second-order incremental sigma-delta noise-shaping
+and decimates the output using a matching second-order CIC filter.
+
+Note! the analog input signal is sampled on the falling edge of the SAMPLE_CLK
+and is tracked when the SAMPLE_CLK is high.
+
+The controller adaptively times the internal control such that only the sample clock is neccessary to operate the system. The sampling frequency should be adjusted according to the desired oversampling ratio, that is
+2 * fnyquist * (OSR * 4 + 2) = fsampling. When OSR is not zero there is a minimum
+oversampling ratio of 6 and each OSR code increments this factor by 4.
+
+When the OSR code is zero this noise-shaping functionality is by passed and
+the sar result is directly available at the output when the gain is at 15. For basic SAR operation the analog must also be disabled using the ANALOG_ENABLE flag. Note in this case the DONE flag is always high and
+the REFC voltage is used during sampling.
+
+When using non-zero OSR codes the converter uses an internal timer to decimate
+the output. The DONE flag is used to specify when the data is ready and should
+also be used the trigger when input should be multiplexed. This signal
+resets both the analog-loop filter and the decimation integrators which garantees independent conversions. When DONE_OVERRIDE is forced low this reset behavior is by-passed and the system can operate as a conventional
+sigma-delta converter.
+
+By default the override signals should no be used unless we are debugging internal functionality. There are several analog test signals that allow the internal loop-filter voltages to be monitored. Additionally the EXTERNAL_CLK override control disables the asynchronous operation and forces
+the use of the external clock for more conventional SAR operation. The digital debug allows introspection of fsm and decimator outputs to check
+timing and conversion results.
+  
+  
+![Ns_sar_v2 Schematic](./.fig/lib-pepper-nsadc-ns-sar-v2_schematic.png)
+
+
+### lib-pepper-nsadc-ns-sar-v2: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[loopfilter_v3](units/ANALOG.md#lib-pepper-nsadc-loopfilter-v3)|i_qnf_loopfilter|1|
+|LIB_PEPPER_NSADC|[ns_sar_cdac_v2](units/CDAC.md#lib-pepper-nsadc-ns-sar-cdac-v2)|i_cdac|1|
+|LIB_PEPPER_NSADC|[nssar_decimator_18b](units/DIGITAL.md#lib-pepper-nsadc-nssar-decimator-18b)|i_decimate|1|
+|LIB_PEPPER_NSADC|[sar_controller_top](units/DIGITAL.md#lib-pepper-nsadc-sar-controller-top)|i_sar_controller|1|
+|tcb018gbwp7t_r1a|BUFFD1BWP7T|I1|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I12|1|
+|tcb018gbwp7t_r1a|MUX2D2BWP7T|i_ctrl_areset|1|
+|tcb018gbwp7t_r1a|MUX4D2BWP7T|i_testmux_1|1|
+|tcb018gbwp7t_r1a|OR2D1BWP7T|I11|1|
+
+### lib-pepper-nsadc-ns-sar-v2: Layout Specification
+  
+The design is 352.8 um by 437.06 um.
+
+#### lib-pepper-nsadc-ns-sar-v2: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL3|
+|NIMP|METAL4|
+|POLY1|METAL5|
+  
+![Ns_sar_v2 Layout](./.fig/lib-pepper-nsadc-ns-sar-v2_layout.png)
+
+
+#### lib-pepper-nsadc-ns-sar-v2: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|GAIN<0>|METAL2|127.79 um, -0.935 um|
+|VIN|METAL2|127.19 um, -0.935 um|
+
+### lib-pepper-nsadc-ns-sar-v2: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|ANALOG_ENABLE|Signal|Input|1|DGND|DVDD|Enable Control Loopfilter|
+|ANALOG_RESET_OVERRIDE|Signal|Input|1|DGND|DVDD|Mismatch Error Shaping Enable Flag|
+|ANALOG_RESET_OVERRIDE_VAL|Signal|Input|1|DGND|DVDD|Mismatch Error Shaping Enable Flag|
+|ANALOG_TEST|Analog|Output|1|DGND|DVDD|Analog Debug Output|
+|ANALOG_TEST_SELECT<2:0>|Signal|Input|3|||Analog Test Signal Selection Control|
+|CHP_EN|Signal|Input|1|DGND|DVDD|Chopper Enable Control|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DIGITAL_DEBUG|Signal|Output|1|DGND|DVDD|Digital Debug Output|
+|DIGITAL_DEBUG_SELECT<2:0>|Signal|Input|3|||Digital Test Signal Selection Control|
+|DONE|Signal|Output|1|DGND|DVDD|ADC Output Ready Trigger|
+|DONE_OVERRIDE|Signal|Input|1|DGND|DVDD|Done Override Control|
+|DONE_OVERRIDE_VAL|Signal|Input|1|DGND|DVDD|Done Override Value|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|DWA_EN|Signal|Input|1|DGND|DVDD|Dynamic Weighted Average Enable Flag|
+|EXT_CLK|Signal|Input|1|DGND|DVDD|External Clock Control|
+|EXT_CLK_EN|Signal|Input|1|DGND|DVDD|External Clock Enable Control|
+|GAIN<3:0>|Signal|Input|4|DGND|DVDD|Digital Gain Setting|
+|IBIAS_500N_PTAT|Analog|Input|1|||Loopfilter N-SIDE Bias Current|
+|MES_EN|Signal|Input|1|DGND|DVDD|Mismatch Error Shaping Enable Flag|
+|OSR<3:0>|Signal|Input|4|DGND|DVDD|Over Sampling Ratio|
+|REFC|Analog|Input|1|||ADC Common Mode Reference Voltage|
+|REFN|Analog|Input|1|||ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|||ADC Positive Reference Voltage|
+|RESULT<15:0>|Signal|Output|16|DGND|DVDD|Decimated ADC Output|
+|SAMPLE_CLK|Clock|Input|1|DGND|DVDD|ADC Sample Control Signal|
+|VIN|Analog|Input|1|||Negative Analog ADC Input|
+|VIP|Analog|Input|1|||Positive Analog ADC Input|
+|nARST|Signal|Input|1|DGND|DVDD|Asynchronous Reset Control|

@@ -1,0 +1,575 @@
+
+# Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital
+  
+lbl11 2025-10-13 
+
+## Test: Interactive.0:pss
+  
+Simulation started on 12 Oct 2025 and ran for 22 minutes. The yield for this test is 70% to 90% (30 of 36 points passed)
+Verification state: 0/3
+
+### Design Setup
+
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: tb_comparator_digital
+View Name: schematic
+Simulator: spectre
+```  
+
+### Specifications
+
+|Output|Specification|Pass/Fail|
+| :---: | :---: | :---: |
+|flickker_alpha|800m - 1.2|Pass|
+|fnyqst|-|Info|
+|intrg_noise|< 2 mVrms|Pass|
+|noise_corner|< 1 MHz|Fail|
+|noise_floor|-|Info|
+
+### Output: flickker_alpha
+  
+Sample presents a singular distribution. Using 800m - 1.2 as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|904m|Pass|
+|PVT_1|904m|Pass|
+|PVT_10|904m|Pass|
+|PVT_11|904m|Pass|
+|PVT_12|904m|Pass|
+|PVT_13|904m|Pass|
+|PVT_14|904m|Pass|
+|PVT_15|904m|Pass|
+|PVT_16|904m|Pass|
+|PVT_17|904m|Pass|
+|PVT_18|904m|Pass|
+|PVT_19|904m|Pass|
+|PVT_2|904m|Pass|
+|PVT_20|904m|Pass|
+|PVT_21|904m|Pass|
+|PVT_22|904m|Pass|
+|PVT_23|904m|Pass|
+|PVT_24|904m|Pass|
+|PVT_25|904m|Pass|
+|PVT_26|904m|Pass|
+|PVT_27|904m|Pass|
+|PVT_28|904m|Pass|
+|PVT_29|904m|Pass|
+|PVT_3|904m|Pass|
+|PVT_30|904m|Pass|
+|PVT_31|904m|Pass|
+|PVT_32|905m|Pass|
+|PVT_33|904m|Pass|
+|PVT_34|904m|Pass|
+|PVT_35|905m|Pass|
+|PVT_4|904m|Pass|
+|PVT_5|905m|Pass|
+|PVT_6|905m|Pass|
+|PVT_7|905m|Pass|
+|PVT_8|905m|Pass|
+|PVT_9|904m|Pass|
+  
+
+### Output: fnyqst
+  
+Sample presents a singular distribution.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|25M|Info|
+|PVT_1|25M|Info|
+|PVT_10|25M|Info|
+|PVT_11|25M|Info|
+|PVT_12|25M|Info|
+|PVT_13|25M|Info|
+|PVT_14|25M|Info|
+|PVT_15|25M|Info|
+|PVT_16|25M|Info|
+|PVT_17|25M|Info|
+|PVT_18|25M|Info|
+|PVT_19|25M|Info|
+|PVT_2|25M|Info|
+|PVT_20|25M|Info|
+|PVT_21|25M|Info|
+|PVT_22|25M|Info|
+|PVT_23|25M|Info|
+|PVT_24|25M|Info|
+|PVT_25|25M|Info|
+|PVT_26|25M|Info|
+|PVT_27|25M|Info|
+|PVT_28|25M|Info|
+|PVT_29|25M|Info|
+|PVT_3|25M|Info|
+|PVT_30|25M|Info|
+|PVT_31|25M|Info|
+|PVT_32|25M|Info|
+|PVT_33|25M|Info|
+|PVT_34|25M|Info|
+|PVT_35|25M|Info|
+|PVT_4|25M|Info|
+|PVT_5|25M|Info|
+|PVT_6|25M|Info|
+|PVT_7|25M|Info|
+|PVT_8|25M|Info|
+|PVT_9|25M|Info|
+  
+
+### Output: intrg_noise
+  
+Sample presents a singular distribution. Using < 2 mVrms as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|307u|Pass|
+|PVT_1|343u|Pass|
+|PVT_10|287u|Pass|
+|PVT_11|309u|Pass|
+|PVT_12|276u|Pass|
+|PVT_13|284u|Pass|
+|PVT_14|326u|Pass|
+|PVT_15|268u|Pass|
+|PVT_16|301u|Pass|
+|PVT_17|339u|Pass|
+|PVT_18|288u|Pass|
+|PVT_19|302u|Pass|
+|PVT_2|390u|Pass|
+|PVT_20|345u|Pass|
+|PVT_21|286u|Pass|
+|PVT_22|317u|Pass|
+|PVT_23|356u|Pass|
+|PVT_24|307u|Pass|
+|PVT_25|334u|Pass|
+|PVT_26|365u|Pass|
+|PVT_27|294u|Pass|
+|PVT_28|318u|Pass|
+|PVT_29|372u|Pass|
+|PVT_3|327u|Pass|
+|PVT_30|292u|Pass|
+|PVT_31|329u|Pass|
+|PVT_32|379u|Pass|
+|PVT_33|313u|Pass|
+|PVT_34|346u|Pass|
+|PVT_35|390u|Pass|
+|PVT_4|358u|Pass|
+|PVT_5|398u|Pass|
+|PVT_6|348u|Pass|
+|PVT_7|369u|Pass|
+|PVT_8|405u|Pass|
+|PVT_9|264u|Pass|
+  
+### Output: noise_corner
+  
+Sample presents a singular distribution. Using < 1 MHz as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|1.02M|Fail|
+|PVT_1|957k|Pass|
+|PVT_10|1.04M|Fail|
+|PVT_11|783k|Pass|
+|PVT_12|1.19M|Fail|
+|PVT_13|939k|Pass|
+|PVT_14|752k|Pass|
+|PVT_15|961k|Pass|
+|PVT_16|807k|Pass|
+|PVT_17|709k|Pass|
+|PVT_18|1.22M|Fail|
+|PVT_19|969k|Pass|
+|PVT_2|826k|Pass|
+|PVT_20|790k|Pass|
+|PVT_21|929k|Pass|
+|PVT_22|809k|Pass|
+|PVT_23|725k|Pass|
+|PVT_24|666k|Pass|
+|PVT_25|675k|Pass|
+|PVT_26|678k|Pass|
+|PVT_27|1.13M|Fail|
+|PVT_28|949k|Pass|
+|PVT_29|783k|Pass|
+|PVT_3|771k|Pass|
+|PVT_30|917k|Pass|
+|PVT_31|877k|Pass|
+|PVT_32|758k|Pass|
+|PVT_33|710k|Pass|
+|PVT_34|781k|Pass|
+|PVT_35|710k|Pass|
+|PVT_4|832k|Pass|
+|PVT_5|760k|Pass|
+|PVT_6|605k|Pass|
+|PVT_7|731k|Pass|
+|PVT_8|697k|Pass|
+|PVT_9|1.46M|Fail|
+  
+### Output: noise_floor
+  
+Sample presents a singular distribution.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|51.7n|Info|
+|PVT_1|58.3n|Info|
+|PVT_10|48.7n|Info|
+|PVT_11|53.8n|Info|
+|PVT_12|46n|Info|
+|PVT_13|48.5n|Info|
+|PVT_14|56.8n|Info|
+|PVT_15|45.7n|Info|
+|PVT_16|51.8n|Info|
+|PVT_17|58.9n|Info|
+|PVT_18|48n|Info|
+|PVT_19|51.5n|Info|
+|PVT_2|67.4n|Info|
+|PVT_20|59.8n|Info|
+|PVT_21|48.8n|Info|
+|PVT_22|54.5n|Info|
+|PVT_23|61.9n|Info|
+|PVT_24|53n|Info|
+|PVT_25|57.6n|Info|
+|PVT_26|63.4n|Info|
+|PVT_27|49.2n|Info|
+|PVT_28|54.1n|Info|
+|PVT_29|64.6n|Info|
+|PVT_3|55.6n|Info|
+|PVT_30|49.6n|Info|
+|PVT_31|56.2n|Info|
+|PVT_32|65.8n|Info|
+|PVT_33|53.3n|Info|
+|PVT_34|59.3n|Info|
+|PVT_35|67.8n|Info|
+|PVT_4|61.2n|Info|
+|PVT_5|68.9n|Info|
+|PVT_6|59.1n|Info|
+|PVT_7|63.4n|Info|
+|PVT_8|70.4n|Info|
+|PVT_9|43n|Info|
+  
+## Test: Interactive.0:tran
+  
+Simulation started on 12 Oct 2025 and ran for 23 minutes. The yield for this test is 90% to 100% (36 of 36 points passed)
+Verification state: 0/3
+
+### Design Setup
+
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: tb_comparator_digital
+View Name: schematic
+Simulator: spectre
+```  
+
+### Specifications
+
+|Output|Specification|Pass/Fail|
+| :---: | :---: | :---: |
+|avg_eval_time_pre|< 5 ns|Pass|
+|energy|< 2 pJ|Pass|
+|energy_pre|< 2 pJ|Pass|
+|max_eval_time_pre|< 10 ns|Pass|
+|offset|-2m - 2m|Pass|
+|std_eval_time_pre|< 3 ns|Pass|
+|vdd_iload|-|Info|
+
+### Output: avg_eval_time_pre
+  
+Sample presents a singular distribution. Using < 5 ns as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|847p|Pass|
+|PVT_1|980p|Pass|
+|PVT_10|1.66n|Pass|
+|PVT_11|1.83n|Pass|
+|PVT_12|1.09n|Pass|
+|PVT_13|1.25n|Pass|
+|PVT_14|1.45n|Pass|
+|PVT_15|881p|Pass|
+|PVT_16|1.04n|Pass|
+|PVT_17|1.22n|Pass|
+|PVT_18|1n|Pass|
+|PVT_19|1.15n|Pass|
+|PVT_2|1.14n|Pass|
+|PVT_20|1.33n|Pass|
+|PVT_21|810p|Pass|
+|PVT_22|947p|Pass|
+|PVT_23|1.11n|Pass|
+|PVT_24|698p|Pass|
+|PVT_25|821p|Pass|
+|PVT_26|969p|Pass|
+|PVT_27|1.26n|Pass|
+|PVT_28|1.4n|Pass|
+|PVT_29|1.57n|Pass|
+|PVT_3|709p|Pass|
+|PVT_30|948p|Pass|
+|PVT_31|1.1n|Pass|
+|PVT_32|1.28n|Pass|
+|PVT_33|793p|Pass|
+|PVT_34|928p|Pass|
+|PVT_35|1.09n|Pass|
+|PVT_4|830p|Pass|
+|PVT_5|977p|Pass|
+|PVT_6|628p|Pass|
+|PVT_7|736p|Pass|
+|PVT_8|869p|Pass|
+|PVT_9|1.5n|Pass|
+  
+### Output: energy
+  
+Sample presents a singular distribution. Using < 2 pJ as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|599f|Pass|
+|PVT_1|629f|Pass|
+|PVT_10|568f|Pass|
+|PVT_11|596f|Pass|
+|PVT_12|712f|Pass|
+|PVT_13|733f|Pass|
+|PVT_14|777f|Pass|
+|PVT_15|912f|Pass|
+|PVT_16|948f|Pass|
+|PVT_17|976f|Pass|
+|PVT_18|566f|Pass|
+|PVT_19|591f|Pass|
+|PVT_2|668f|Pass|
+|PVT_20|624f|Pass|
+|PVT_21|746f|Pass|
+|PVT_22|778f|Pass|
+|PVT_23|819f|Pass|
+|PVT_24|962f|Pass|
+|PVT_25|979f|Pass|
+|PVT_26|1.05p|Pass|
+|PVT_27|572f|Pass|
+|PVT_28|599f|Pass|
+|PVT_29|634f|Pass|
+|PVT_3|799f|Pass|
+|PVT_30|754f|Pass|
+|PVT_31|788f|Pass|
+|PVT_32|819f|Pass|
+|PVT_33|977f|Pass|
+|PVT_34|1.01p|Pass|
+|PVT_35|1.04p|Pass|
+|PVT_4|834f|Pass|
+|PVT_5|880f|Pass|
+|PVT_6|1.04p|Pass|
+|PVT_7|1.05p|Pass|
+|PVT_8|1.1p|Pass|
+|PVT_9|545f|Pass|
+  
+### Output: energy_pre
+  
+Sample presents a singular distribution. Using < 2 pJ as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|599f|Pass|
+|PVT_1|629f|Pass|
+|PVT_10|568f|Pass|
+|PVT_11|596f|Pass|
+|PVT_12|712f|Pass|
+|PVT_13|733f|Pass|
+|PVT_14|777f|Pass|
+|PVT_15|912f|Pass|
+|PVT_16|948f|Pass|
+|PVT_17|976f|Pass|
+|PVT_18|566f|Pass|
+|PVT_19|591f|Pass|
+|PVT_2|668f|Pass|
+|PVT_20|624f|Pass|
+|PVT_21|746f|Pass|
+|PVT_22|778f|Pass|
+|PVT_23|819f|Pass|
+|PVT_24|962f|Pass|
+|PVT_25|979f|Pass|
+|PVT_26|1.05p|Pass|
+|PVT_27|572f|Pass|
+|PVT_28|599f|Pass|
+|PVT_29|634f|Pass|
+|PVT_3|799f|Pass|
+|PVT_30|754f|Pass|
+|PVT_31|788f|Pass|
+|PVT_32|819f|Pass|
+|PVT_33|977f|Pass|
+|PVT_34|1.01p|Pass|
+|PVT_35|1.04p|Pass|
+|PVT_4|834f|Pass|
+|PVT_5|880f|Pass|
+|PVT_6|1.04p|Pass|
+|PVT_7|1.05p|Pass|
+|PVT_8|1.1p|Pass|
+|PVT_9|545f|Pass|
+  
+### Output: max_eval_time_pre
+  
+Sample presents a singular distribution. Using < 10 ns as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|1.04n|Pass|
+|PVT_1|1.19n|Pass|
+|PVT_10|2.62n|Pass|
+|PVT_11|2.51n|Pass|
+|PVT_12|1.6n|Pass|
+|PVT_13|1.61n|Pass|
+|PVT_14|1.83n|Pass|
+|PVT_15|1.1n|Pass|
+|PVT_16|1.36n|Pass|
+|PVT_17|1.6n|Pass|
+|PVT_18|1.51n|Pass|
+|PVT_19|1.48n|Pass|
+|PVT_2|1.4n|Pass|
+|PVT_20|1.66n|Pass|
+|PVT_21|1.03n|Pass|
+|PVT_22|1.26n|Pass|
+|PVT_23|1.35n|Pass|
+|PVT_24|797p|Pass|
+|PVT_25|989p|Pass|
+|PVT_26|1.22n|Pass|
+|PVT_27|1.88n|Pass|
+|PVT_28|1.75n|Pass|
+|PVT_29|1.96n|Pass|
+|PVT_3|889p|Pass|
+|PVT_30|1.17n|Pass|
+|PVT_31|1.5n|Pass|
+|PVT_32|1.55n|Pass|
+|PVT_33|1.23n|Pass|
+|PVT_34|1.14n|Pass|
+|PVT_35|1.35n|Pass|
+|PVT_4|1.05n|Pass|
+|PVT_5|1.2n|Pass|
+|PVT_6|791p|Pass|
+|PVT_7|890p|Pass|
+|PVT_8|1.07n|Pass|
+|PVT_9|2.37n|Pass|
+  
+### Output: offset
+  
+Sample presents a singular distribution. Using -2m - 2m as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|-249u|Pass|
+|PVT_1|-329u|Pass|
+|PVT_10|-522u|Pass|
+|PVT_11|-426u|Pass|
+|PVT_12|-442u|Pass|
+|PVT_13|-329u|Pass|
+|PVT_14|-458u|Pass|
+|PVT_15|-201u|Pass|
+|PVT_16|-313u|Pass|
+|PVT_17|-458u|Pass|
+|PVT_18|-361u|Pass|
+|PVT_19|-297u|Pass|
+|PVT_2|-361u|Pass|
+|PVT_20|-410u|Pass|
+|PVT_21|-201u|Pass|
+|PVT_22|-297u|Pass|
+|PVT_23|-442u|Pass|
+|PVT_24|-233u|Pass|
+|PVT_25|-329u|Pass|
+|PVT_26|-442u|Pass|
+|PVT_27|-442u|Pass|
+|PVT_28|-377u|Pass|
+|PVT_29|-410u|Pass|
+|PVT_3|-265u|Pass|
+|PVT_30|-265u|Pass|
+|PVT_31|-345u|Pass|
+|PVT_32|-426u|Pass|
+|PVT_33|-249u|Pass|
+|PVT_34|-345u|Pass|
+|PVT_35|-458u|Pass|
+|PVT_4|-345u|Pass|
+|PVT_5|-394u|Pass|
+|PVT_6|-297u|Pass|
+|PVT_7|-345u|Pass|
+|PVT_8|-410u|Pass|
+|PVT_9|-522u|Pass|
+  
+### Output: std_eval_time_pre
+  
+Sample presents a singular distribution. Using < 3 ns as specification requirement.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|33.5p|Pass|
+|PVT_1|37.4p|Pass|
+|PVT_10|101p|Pass|
+|PVT_11|69p|Pass|
+|PVT_12|66.5p|Pass|
+|PVT_13|43.6p|Pass|
+|PVT_14|52.6p|Pass|
+|PVT_15|38.8p|Pass|
+|PVT_16|45.8p|Pass|
+|PVT_17|43.5p|Pass|
+|PVT_18|60.1p|Pass|
+|PVT_19|43.9p|Pass|
+|PVT_2|46.1p|Pass|
+|PVT_20|50.2p|Pass|
+|PVT_21|38.6p|Pass|
+|PVT_22|42.9p|Pass|
+|PVT_23|39.4p|Pass|
+|PVT_24|24.1p|Pass|
+|PVT_25|28.3p|Pass|
+|PVT_26|34.2p|Pass|
+|PVT_27|76.3p|Pass|
+|PVT_28|53.6p|Pass|
+|PVT_29|65p|Pass|
+|PVT_3|26.7p|Pass|
+|PVT_30|36.7p|Pass|
+|PVT_31|43p|Pass|
+|PVT_32|50.5p|Pass|
+|PVT_33|47.3p|Pass|
+|PVT_34|34.4p|Pass|
+|PVT_35|42.3p|Pass|
+|PVT_4|31.7p|Pass|
+|PVT_5|37.8p|Pass|
+|PVT_6|24p|Pass|
+|PVT_7|27.4p|Pass|
+|PVT_8|33p|Pass|
+|PVT_9|92.6p|Pass|
+  
+### Output: vdd_iload
+  
+Sample presents a singular distribution.
+
+|Corner|Value|Pass/Fail|
+| :---: | :---: | :---: |
+|PVT_0|18.7u|Info|
+|PVT_1|19.7u|Info|
+|PVT_10|17.7u|Info|
+|PVT_11|18.6u|Info|
+|PVT_12|19.8u|Info|
+|PVT_13|20.4u|Info|
+|PVT_14|21.6u|Info|
+|PVT_15|22.8u|Info|
+|PVT_16|23.7u|Info|
+|PVT_17|24.4u|Info|
+|PVT_18|17.7u|Info|
+|PVT_19|18.5u|Info|
+|PVT_2|20.9u|Info|
+|PVT_20|19.5u|Info|
+|PVT_21|20.7u|Info|
+|PVT_22|21.6u|Info|
+|PVT_23|22.7u|Info|
+|PVT_24|24.1u|Info|
+|PVT_25|24.5u|Info|
+|PVT_26|26.1u|Info|
+|PVT_27|17.9u|Info|
+|PVT_28|18.7u|Info|
+|PVT_29|19.8u|Info|
+|PVT_3|22.2u|Info|
+|PVT_30|21u|Info|
+|PVT_31|21.9u|Info|
+|PVT_32|22.8u|Info|
+|PVT_33|24.4u|Info|
+|PVT_34|25.3u|Info|
+|PVT_35|26.1u|Info|
+|PVT_4|23.2u|Info|
+|PVT_5|24.4u|Info|
+|PVT_6|25.9u|Info|
+|PVT_7|26.3u|Info|
+|PVT_8|27.6u|Info|
+|PVT_9|17u|Info|
+  

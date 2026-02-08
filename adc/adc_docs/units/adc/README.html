@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../_static/favicon.png" type="image/png">
+    <title>Pepper T4 ADC &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/README';</script>
+    <script src="../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="System Modelling" href="PRESTUDY.html" />
+    <link rel="prev" title="System Pre-Study report" href="../PRESTUDY.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-40844</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">662c3356-ff0d-4c9d-9cb0-716a19c567ab</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-40844, KQCEX6RUC46M-1184322800-40844</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="PRESTUDY.html">System Modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="dms/README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="dms/py_src/pepper_dsp.html">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dms/py_src/pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="MODULES.html">Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/ANALOG.html">Analog Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/CDAC.html">CDAC Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/DIGITAL.html">Digital Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../README.html" class="nav-link">Sense Chip</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Pepper T4 ADC</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pepper-t4-adc">
+<h1>Pepper T4 ADC<a class="headerlink" href="#pepper-t4-adc" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PRESTUDY.html">System Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MODULES.html">Circuit Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USAGE.html">Application Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SIMULATION.html">Simulation Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Pepper ADC Changelog</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the v0.0.1 pre-release documentation of the ADC. Certain aspects of
+the design will change and verification data is not final.</p>
+</div>
+<p>The Pepper-T4 ADC is a 10 bit Successive Approximation Register (SAR) Data
+Converter with noise-shaping techniques to provide reconfigurable precision up
+to 16 bits. This document aims to describe the specifications, implementation
+and usage. The top level interface is shown on here with digital and analog
+sections.</p>
+<a class="reference internal image-reference" href="../../_images/lib-pepper-nsadc-ns-sar-v2_symbol.png"><img alt="Timing Diagram SAR Mode" class="align-right" src="../../_images/lib-pepper-nsadc-ns-sar-v2_symbol.png" style="width: 300px;" />
+</a>
+<section id="outline">
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
+<p>This data converter consists of three main components; the capacitor array for
+SAR conversion, the analog loop filter for noise filtering, and the digital
+controller. Each providing specialized functionality to realize a Noise Shaping
+Successive Approximation Register (NSSAR) ADC.</p>
+<p>The expected configuration here is to use an oversampling-ratio of 18 to provide
+14 bits of precision. A digital filter is integrated into the ADC that decimates
+the SAR output and times the internal controls appropriately when apply a
+specific <code class="docutils literal notranslate"><span class="pre">OSR&lt;3:0&gt;</span></code> configuration. This also implies that it is up to the system
+to provide the correct <code class="docutils literal notranslate"><span class="pre">SAMPLE_CLK</span></code> frequency to garantee the desired sampling
+rate.</p>
+<p>The sampling frequency should be adjusted according to the desired oversampling ratio, that is
+<code class="docutils literal notranslate"><span class="pre">fsampling</span> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">fnyquist</span> <span class="pre">*</span> <span class="pre">(OSR</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">2)</span></code>. When OSR is not zero there is a minimum
+oversampling ratio of 6 and each OSR code increments this factor by 4.
+The DONE flag is generated to specify when the data is ready and should
+be used the trigger when input should be multiplexed. This signal
+resets both the analog-loop filter and the decimation integrators and
+garantees independent conversions. The maximum over sampling ratio is 62.</p>
+<p>When the OSR code is zero the noise-shaping functionality is by passed and
+the 10 bit sar result is directly available on the lower bits of the
+<code class="docutils literal notranslate"><span class="pre">RESULT&lt;15:0&gt;</span></code> output when the gain is at 15. For basic SAR operation
+the analog must also be disabled using the ANALOG_ENABLE flag.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Changes in OSR changes the gain during decimation as more samples are
+accumulated together. In order to normalize this effect a <code class="docutils literal notranslate"><span class="pre">GAIN&lt;3:0&gt;</span></code> setting
+is provided that adds varying levels of digital gain to the output.</p>
+<p>TODO! Consider adding digital overflow detection</p>
+</div>
+<section id="adc-signals">
+<h3>ADC Signals<a class="headerlink" href="#adc-signals" title="Link to this heading">#</a></h3>
+<p>This is an overview for the top-level signals seen at the interface. They have
+been catagorized into digital, analog, config, and dft sections.</p>
+<section id="adc-digital-control-signals">
+<h4>ADC Digital Control Signals<a class="headerlink" href="#adc-digital-control-signals" title="Link to this heading">#</a></h4>
+<p>These signals are expected to be tightly controlled during system integration
+and are normally the only dynamic digital signals. The digital outputs should
+be sampled on the rising edge of the sampling clock.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>SAMPLE_CLK</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>ADC Sample Control Signal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>nARST</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Asynchronous Reset Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>RESULT&lt;15:0&gt;</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>Decimated ADC Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DONE</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>ADC Output Ready Trigger</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="adc-analog-signals">
+<h4>ADC Analog Signals<a class="headerlink" href="#adc-analog-signals" title="Link to this heading">#</a></h4>
+<p>These are the analog signals and must be seperately from the digital
+contraints.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>ADC Negative Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFP</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>ADC Positive Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Negative Analog ADC Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Positive Analog ADC Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>500nA P-Side Input Bias Current</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_TEST</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>Analog Debug Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="adc-static-config-signals">
+<h4>ADC Static Config Signals<a class="headerlink" href="#adc-static-config-signals" title="Link to this heading">#</a></h4>
+<p>These are the digital configuration flags and should be kept static during
+sampling. They are not resynchronized internally and must be glitch-free.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>ANALOG_ENABLE</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Enable Control Loopfilter</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHP_EN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Chopper Enable Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DWA_EN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Dynamic Weighted Average Enable Flag</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>MES_EN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Mismatch Error Shaping Enable Flag</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>GAIN&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Digital Gain Setting</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>OSR&lt;3:0&gt;</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Over Sampling Ratio</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="adc-digital-test-controls">
+<h4>ADC Digital Test Controls<a class="headerlink" href="#adc-digital-test-controls" title="Link to this heading">#</a></h4>
+<p>These are the digital design-for-test controls and allow debugging of the
+internal state. Additionally we can override certain parts of the FSM for
+more flexible operation or higher oversampling-ratios.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>EXT_CLK_EN</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>External Clock Enable Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>EXT_CLK</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>External Clock Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_RESET_OVERRIDE</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Mismatch Error Shaping Enable Flag</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_RESET_OVERRIDE_VAL</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Mismatch Error Shaping Enable Flag</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_TEST_SELECT&lt;2:0&gt;</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Analog Test Signal Selection Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIGITAL_DEBUG_SELECT&lt;2:0&gt;</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Analog Test Signal Selection Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DONE_OVERRIDE</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Done Override Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DONE_OVERRIDE_VAL</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>Done Override Value</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DIGITAL_DEBUG</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>Digital Debug Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="adc-timing-diagrams">
+<h2>ADC Timing Diagrams<a class="headerlink" href="#adc-timing-diagrams" title="Link to this heading">#</a></h2>
+<p>This section specifies the timing relation for the [Digital Control Signals]
+for SAR &amp; NSSAR operating modes.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The sampling process always <code class="docutils literal notranslate"><span class="pre">TRACKS</span></code> the input signal when <code class="docutils literal notranslate"><span class="pre">SAMPLE_CLK</span></code>
+is high. This means that the signal is <code class="docutils literal notranslate"><span class="pre">SAMPLED</span></code> on the falling edge while the
+FSM is triggered on the rising edge.</p>
+</div>
+<section id="asynchronous-sar-mode">
+<h3>Asynchronous SAR Mode<a class="headerlink" href="#asynchronous-sar-mode" title="Link to this heading">#</a></h3>
+<p>Asynchronous mode is automatically detected when the OSR control is set to 0 (i.e. all
+bits are low) and GAIN to 15. This completely by-passes the decimation block
+and relies only on the asynchronous operation of the SAR.</p>
+<a class="reference internal image-reference" href="../../_images/adc_sar_mode.svg"><img alt="Timing Diagram SAR Mode" class="align-center" src="../../_images/adc_sar_mode.svg" style="width: 500px;" />
+</a>
+<p>From the timing diagram we see the SAR process completes within one clock
+cycle and to be more precise it completes when the clock is low. In this case
+DONE is always high and we can switch the analog input when <code class="docutils literal notranslate"><span class="pre">SAMPLE_CLK</span></code> is low.</p>
+<p>This mode may slightly increase the current draw on the common-mode reference
+as the analog circuits buffering this voltage are disabled. However it is
+assumed that we operate at a low frequency less than 10 kHz and this reference
+is only used during sampling so there will be more than 50 us to settle on this
+voltage.</p>
+</section>
+<section id="noise-shaping-sar-mode">
+<h3>Noise-Shaping SAR Mode<a class="headerlink" href="#noise-shaping-sar-mode" title="Link to this heading">#</a></h3>
+<p>The noise-shaping mode is slightly more conventional as the DATA is only available
+after <code class="docutils literal notranslate"><span class="pre">4*OSR+2</span></code> clock cycles. However similarly to the SAR mode the signal is
+always sampled on the falling edge so we should be careful when the input is
+switched.</p>
+<a class="reference internal image-reference" href="../../_images/adc_nssar_mode.svg"><img alt="Timing Diagram SAR Mode" class="align-center" src="../../_images/adc_nssar_mode.svg" style="width: 800px;" />
+</a>
+</section>
+</section>
+<section id="adc-specifications">
+<h2>ADC Specifications<a class="headerlink" href="#adc-specifications" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Symbol / Unit</strong></p></th>
+<th class="head"><p><strong>Typical / Requirement</strong></p></th>
+<th class="head"><p><strong>Description / Notes</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ADC Name / Identifier</strong></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NS_SAR_V2</span></code></p></td>
+<td><p>Primary system analog-to-digital converter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Architecture Type</strong></p></td>
+<td><p>—</p></td>
+<td><p>Successive Approximation (SAR)</p></td>
+<td><p>Common choice for medium-speed, high-accuracy applications.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Resolution</strong></p></td>
+<td><p>N (bits)</p></td>
+<td><p>16 bits</p></td>
+<td><p>Number of output quantization levels (2ⁿ).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of Channels</strong></p></td>
+<td><p>—</p></td>
+<td><p>1 (differential)</p></td>
+<td><p>Total multiplexed input channels.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Input Type</strong></p></td>
+<td><p>—</p></td>
+<td><p>Differential</p></td>
+<td><p>The inputs should reference the common-mode reference which must be at REFP/2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input Voltage Range</strong></p></td>
+<td><p>V<sub>IN</sub> (V)</p></td>
+<td><p>0 – 1.8 V</p></td>
+<td><p>Analog input range referenced to analog ground.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reference Voltage</strong></p></td>
+<td><p>V<sub>REF</sub> (V)</p></td>
+<td><p>1.8 V (external)</p></td>
+<td><p>Reference used for full-scale range and accuracy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reference Noise</strong></p></td>
+<td><p>V<sub>NOISE</sub> (Vrms)</p></td>
+<td><p>25 uVrms</p></td>
+<td><p>Tolerable integrated reference noise level for 16 bit accuracy.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Sampling Rate (max)</strong></p></td>
+<td><p>f<sub>S,max</sub> (S/s)</p></td>
+<td><p>144 kS/s</p></td>
+<td><p>Maximum aggregate sampling rate.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Effective Number of Bits</strong></p></td>
+<td><p>ENOB (bits)</p></td>
+<td><p>10.0 - 16.0</p></td>
+<td><p>Effective resolution including noise and distortion effects.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Integral Nonlinearity (max)</strong></p></td>
+<td><p>INL (LSB)</p></td>
+<td><p>±1 LSB</p></td>
+<td><p>Deviation of transfer function from ideal straight line.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Differential Nonlinearity (max)</strong></p></td>
+<td><p>DNL (LSB)</p></td>
+<td><p>±0.5 LSB</p></td>
+<td><p>Step size deviation between adjacent codes.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Offset Error</strong></p></td>
+<td><p>V<sub>OS</sub> (mV)</p></td>
+<td><p>±2 mV</p></td>
+<td><p>DC offset between ideal and actual conversion threshold.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gain Error</strong></p></td>
+<td><p>—</p></td>
+<td><p>±1 % FS</p></td>
+<td><p>Deviation of slope from ideal transfer characteristic.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Tracking Time</strong></p></td>
+<td><p>T<sub>SMP</sub> (s)</p></td>
+<td><p>3.47 µs</p></td>
+<td><p>Effective sampling time for 144 kS/s operation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input Capacitance</strong></p></td>
+<td><p>C<sub>IN</sub> (pF)</p></td>
+<td><p>26 pF</p></td>
+<td><p>Equivalent capacitance seen at each input channel.  (single ended)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Input Resistance</strong></p></td>
+<td><p>R<sub>IN</sub> (MΩ)</p></td>
+<td><p>130 kΩ</p></td>
+<td><p>Typical input impedance of the sampling network. (single ended)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Source Impedance</strong></p></td>
+<td><p>R<sub>S</sub> (kΩ)</p></td>
+<td><p>25 kΩ</p></td>
+<td><p>Typical signal source impedance for adc sampler.    (single ended)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SNR (Signal-to-Noise Ratio)</strong></p></td>
+<td><p>SNR (dB)</p></td>
+<td><p>87 dB</p></td>
+<td><p>Ratio of signal amplitude to noise floor.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>THD (Total Harmonic Distortion)</strong></p></td>
+<td><p>THD (dB)</p></td>
+<td><p>–100 dB</p></td>
+<td><p>Measures harmonic distortion relative to fundamental.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Power Supply Voltage</strong></p></td>
+<td><p>V<sub>DD,ANA</sub> (V)</p></td>
+<td><p>1.8 V ± 10 %</p></td>
+<td><p>Analog supply voltage.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Current Consumption</strong></p></td>
+<td><p>I<sub>TOT</sub> (uW)</p></td>
+<td><p>22.5 uA</p></td>
+<td><p>Total current draw at 144 kS/s.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Power Consumption</strong></p></td>
+<td><p>P<sub>TOT</sub> (uW)</p></td>
+<td><p>40.5 uW</p></td>
+<td><p>Total power including analog and digital domains at 144 kS/s.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Figure of Merit</strong></p></td>
+<td><p>FOM<sub>W</sub> (fJ/cov)</p></td>
+<td><p>300  fJ/conv</p></td>
+<td><p>ADC Power Efficiency Metric.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Operating Temperature Range</strong></p></td>
+<td><p>T<sub>OP</sub> (°C)</p></td>
+<td><p>–40 °C to +85 °C</p></td>
+<td><p>Ambient temperature range.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interface Type</strong></p></td>
+<td><p>—</p></td>
+<td><p>16 bit Parallel</p></td>
+<td><p>Communication interface to digital subsystem.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Conversion Latency</strong></p></td>
+<td><p>t<sub>LAT</sub> (µs)</p></td>
+<td><p>TBD</p></td>
+<td><p>Time delay between sampling instant and valid output code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clock Source</strong></p></td>
+<td><p>—</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SAMPLE_CLK</span></code></p></td>
+<td><p>Determines conversion timing and jitter.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Jitter (Aperture)</strong></p></td>
+<td><p>t<sub>J</sub> (ps RMS)</p></td>
+<td><p>&lt;3 ns</p></td>
+<td><p>Sampling uncertainty affecting SNR at high frequencies for 16 bit accuracy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ESD Protection</strong></p></td>
+<td><p>—</p></td>
+<td><p>±2 kV (HBM)</p></td>
+<td><p>Minimum electrostatic discharge rating.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Notes / Comments</strong></p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outline">Outline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-signals">ADC Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-digital-control-signals">ADC Digital Control Signals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-analog-signals">ADC Analog Signals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-static-config-signals">ADC Static Config Signals</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-digital-test-controls">ADC Digital Test Controls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-timing-diagrams">ADC Timing Diagrams</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asynchronous-sar-mode">Asynchronous SAR Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-shaping-sar-mode">Noise-Shaping SAR Mode</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-specifications">ADC Specifications</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

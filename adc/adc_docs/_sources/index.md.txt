@@ -1,0 +1,33 @@
+# Pepper T4 AFE Reference Document
+
+```{toctree}
+:caption: Section Navigation
+:maxdepth: 1
+
+README.md
+GUIDE.md
+units/README.md
+CHANGELOG.md
+TODO.md
+```
+
+
+Welcome to the **Pepper Project** documentation site.
+
+This site provides detailed guidance, reference material, and configuration instructions for using the Pepper Sense chip!
+
+
+----
+
+## Overview
+
+
+!TODO
+
+
+----
+
+
+## Contact
+
+Please report issues and bugs to `lieuwe@mintneuro.com`.

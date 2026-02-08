@@ -1,0 +1,66 @@
+# Icarus Verilog commands for Pepper_T4 block and integration testbenches
+# Run these commands from the 'code' directory (Pepper_T4/code)
+
+###############################################################################
+# Block-level requirement testbenches
+###############################################################################
+
+# ATM_Control
+iverilog -g2012 -o simulation/tb_req_block_ATM_Control.vvp source/ATM_Control.v testbenches/tb_req_block_ATM_Control.v
+vvp simulation/tb_req_block_ATM_Control.vvp
+gtkwave simulation/tb_req_block_ATM_Control.vcd
+
+# CDC_sync
+iverilog -g2012 -o simulation/tb_req_block_CDC_sync.vvp source/CDC_sync.v testbenches/tb_req_block_CDC_sync.v
+vvp simulation/tb_req_block_CDC_sync.vvp
+gtkwave simulation/tb_req_block_CDC_sync.vcd
+
+# Command_Interpreter
+iverilog -g2012 -o simulation/tb_req_block_Command_Interpreter.vvp source/Command_Interpreter.v testbenches/tb_req_block_Command_Interpreter.v
+vvp simulation/tb_req_block_Command_Interpreter.vvp
+gtkwave simulation/tb_req_block_Command_Interpreter.vcd
+
+# Configuration_Registers
+iverilog -g2012 -o simulation/tb_req_block_Configuration_Registers.vvp source/Configuration_Registers.v testbenches/tb_req_block_Configuration_Registers.v
+vvp simulation/tb_req_block_Configuration_Registers.vvp
+gtkwave simulation/tb_req_block_Configuration_Registers.vcd
+
+# Dual_phase_gated_burst_divider
+iverilog -g2012 -o simulation/tb_req_block_Dual_phase_gated_burst_divider.vvp source/Dual_phase_gated_burst_divider.v testbenches/tb_req_block_Dual_phase_gated_burst_divider.v
+vvp simulation/tb_req_block_Dual_phase_gated_burst_divider.vvp
+gtkwave simulation/tb_req_block_Dual_phase_gated_burst_divider.vcd
+
+# FIFO
+iverilog -g2012 -o simulation/tb_req_block_FIFO.vvp source/FIFO.v testbenches/tb_req_block_FIFO.v
+vvp simulation/tb_req_block_FIFO.vvp
+gtkwave simulation/tb_req_block_FIFO.vcd
+
+# Register_CRC
+iverilog -g2012 -o simulation/tb_req_block_Register_CRC.vvp source/Register_CRC.v testbenches/tb_req_block_Register_CRC.v
+vvp simulation/tb_req_block_Register_CRC.vvp
+gtkwave simulation/tb_req_block_Register_CRC.vcd
+
+# Status_Monitor
+iverilog -g2012 -o simulation/tb_req_block_Status_Monitor.vvp source/Status_Monitor.v testbenches/tb_req_block_Status_Monitor.v
+vvp simulation/tb_req_block_Status_Monitor.vvp
+gtkwave simulation/tb_req_block_Status_Monitor.vcd
+
+# Temperature_Buffer
+iverilog -g2012 -o simulation/tb_req_block_Temperature_Buffer.vvp source/Temperature_Buffer.v testbenches/tb_req_block_Temperature_Buffer.v
+vvp simulation/tb_req_block_Temperature_Buffer.vvp
+gtkwave simulation/tb_req_block_Temperature_Buffer.vcd
+
+# Mock ADC (ns_sar_v2) unit test
+# (This compiles the mock model + its self-checking testbench)
+iverilog -g2012 -o simulation/tb_req_block_ns_sar_v2_mock.vvp testbenches/ns_sar_v2_mock.v testbenches/tb_req_block_ns_sar_v2_mock.v
+vvp simulation/tb_req_block_ns_sar_v2_mock.vvp
+gtkwave simulation/tb_req_block_ns_sar_v2_mock.vcd
+
+###############################################################################
+# Top-level integration testbench
+###############################################################################
+
+# TLM integration (includes all RTL in source/ plus SPI master BFM and tb)
+iverilog -g2012 -o simulation/tb_top_level_integration.vvp source/*.v testbenches/spi_master_bfm.v testbenches/tb_top_level_integration.v
+vvp simulation/tb_top_level_integration.vvp
+gtkwave simulation/tb_top_level_integration.vcd

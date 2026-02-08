@@ -1,0 +1,3363 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../../_static/favicon.png" type="image/png">
+    <title>Analog Circuit Modules &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/units/ANALOG';</script>
+    <script src="../../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CDAC Circuit Modules" href="CDAC.html" />
+    <link rel="prev" title="Circuit Modules" href="../MODULES.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-41177</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">0dace595-4e5a-4b29-8b1b-6f8bd36809a2</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-41177, KQCEX6RUC46M-1184322800-41177</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../README.html">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../PRESTUDY.html">System Modelling</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../dms/README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_dsp.html">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dms/py_src/pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../MODULES.html">Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="current reference internal" href="#">Analog Circuit Modules</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="CDAC.html">CDAC Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="DIGITAL.html">Digital Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../MODULES.html" class="nav-link">Circuit Modules</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Analog...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analog-circuit-modules">
+<h1>Analog Circuit Modules<a class="headerlink" href="#analog-circuit-modules" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>These are the analog modules.</p>
+<section id="lib-pepper-nsadc-loopfilter-v3">
+<h2>lib-pepper-nsadc-loopfilter-v3<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Analog loop filter for quantization noise shaping with analog test bus.</p>
+<p>The amplifier block provides three amplifiers that are switched in by the switched-capacitor network to provide amplification and integration of the
+quantization residue on VDAC. The digital controls are timed by the SAR controller to provide correct sequencing after conversion.</p>
+<p>The analog test output allows us to select any of the amplifier outputs and is isolated from the active circuit through with voltage follower
+configuration. When the analog core is disabled this net is shorted to AGND.
+The disable control also powers down all amplifiers but does not garantee
+discharging of the switched-capacitor nodes.</p>
+<p>Note it is important here that the sample signal is accurately timed together
+with the CDAC sample control so that we auto-zero the capacitor array correctly.</p>
+<p>Internal logic will allow SAR operation without noise-shaping if the analogue
+enable flag is deasserted. This ties the capacitive DAC to the common-mode reference when we sample the input signal. This control also overrides the
+feedback signal VXP/VXN to be held as REFC.</p>
+<p>Note when this circuit is disabled the current bias input is tied to ground!</p>
+<p><img alt="Loopfilter_v3 Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-v3_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-v3-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-v3: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-analogue">loopfilter_analogue</a></p></td>
+<td class="text-center"><p>IAMP</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-digital">loopfilter_digital</a></p></td>
+<td class="text-center"><p>ISC_FB</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>i_enable</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR3D1BWP7T</p></td>
+<td class="text-center"><p>i_test_select&lt;6:0&gt;</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M2&lt;6:0&gt;</p></td>
+<td class="text-center"><p>7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-v3-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-v3: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 111.51 um by 56.815 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-v3-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-v3: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_v3 Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-v3_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-v3-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-v3: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_ENABLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_TEST</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_TEST_SELECT&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_TEST_SELECT&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_TEST_SELECT&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_CHOP_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_RESET_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAMPLE_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAR_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_UPDATE_QNF_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2N</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2P</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.45 um, -1.15 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-v3-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-v3: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-v3-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_ENABLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Enable Control Loopfilter</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>ANALOG_TEST</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Test Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ANALOG_TEST_SELECT&lt;2:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>3</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Test Signal Selection Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_CHOP_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Chopper Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_RESET_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Reset Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAMPLE_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Sample Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAR_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_UPDATE_QNF_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC QNF Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Ground Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Power Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Loopfilter N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 2 Feedback</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 2 Feedback</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-analogue">
+<h2>lib-pepper-nsadc-loopfilter-analogue<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Analog sub circuit of the ADC providing 3 differential amplifiers with current biasing.</p>
+<p>The common-mode feedback uses a REFC as reference and is biased using a input p-side current ranging from 100nA to 2uA depending on
+the oversampling ratio.</p>
+<p>The disable flag powers down all amplifiers and the outputs will be high-Z.
+The common mode reference should be at AVDD/2 and operate between 1.6 V to
+2.0 V of supply voltage.</p>
+<p>[!WARNING]
+Schematic MarkersMembers IBIAS_250N_AUX&lt;9&gt;..IBIAS_250N_AUX&lt;8&gt; of pin  IBIAS_250N_AUX&lt;9:0&gt;  on instance  IBIAS : shorted output.</p>
+<p><img alt="Loopfilter_analogue Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-analogue_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-analogue-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-analogue: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-amplifier-a">loopfilter_amplifier_a</a></p></td>
+<td class="text-center"><p>IAMP_MAIN</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-amplifier-b">loopfilter_amplifier_b</a></p></td>
+<td class="text-center"><p>IAMP_INT1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-ibias">loopfilter_ibias</a></p></td>
+<td class="text-center"><p>IBIAS</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-analogue-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-analogue: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 40.96 um by 109.49 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-analogue-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-analogue: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_analogue Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-analogue_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-analogue-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-analogue: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.46 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.02 um, -1.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.58 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.42 um, -1.68 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IREF_OUT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.78 um, -1.68 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.42 um, -1.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.9 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.66 um, -1.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN2</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.78 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.98 um, -1.68 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.22 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP2</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.34 um, -1.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.1 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.54 um, -1.68 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON2</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.66 um, -1.68 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.98 um, -1.12 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.54 um, -1.12 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP2</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.1 um, -1.68 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.22 um, -1.68 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-analogue-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-analogue: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-analogue-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Loopfilter N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IREF_OUT</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Analog Test Output Current</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Enable Control Loopfilter</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Analog Common Mode Reference</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier1 Negative Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN2</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier2 Negative Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier3 Negative Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier1 Positive Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP2</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier2 Positive Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier3 Positive Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier1 Negative Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON2</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier2 Negative Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier3 Negative Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier1 Positive Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP2</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier2 Positive Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier3 Positive Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a">
+<h2>lib-pepper-nsadc-loopfilter-amplifier-a<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: layout, symbol, schematic</p>
+<p>Single stage complimentary input amplifier with common-mode feedback.</p>
+<p>This circuit provides 16x amplification of the quantization residue and
+is used in a switched-capacitor configuration with auto-zeroing. M16
+provides adaptive biasing that lets the common-mode settle quickly from a discharged state. Both differential and common-mode paths are designed
+to be stable without extrenal load.</p>
+<p>Note depending on the state of the loop-filter either input or output
+can be left floating and we should not incur oscilation while the rest of the system operated.</p>
+<p><img alt="Loopfilter_amplifier_a Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-amplifier-a_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-a: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M0&lt;1:4&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M10&lt;1:4&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>rm3</p></td>
+<td class="text-center"><p>RPROBE</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-a: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 15.02 um by 67.86 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-amplifier-a: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_amplifier_a Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-amplifier-a_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-amplifier-a: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.915 um, 22.55 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.035 um, 22.55 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.475 um, 22.55 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.155 um, 23.11 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.715 um, 23.11 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_2U_AMP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.915 um, 23.11 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.355 um, 22.55 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.475 um, 23.11 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.035 um, 23.11 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.355 um, 23.11 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.595 um, 23.11 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-a-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-a: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-a-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>CMFB N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_2U_AMP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Common Mode Reference</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Negative Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Positive Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Negative Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Positive Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b">
+<h2>lib-pepper-nsadc-loopfilter-amplifier-b<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: layout, symbol, schematic</p>
+<p>Single stage complimentary input amplifier with common-mode feedback.</p>
+<p>This circuit provides cascaded integration of the quantization residue and
+is used in a switched-capacitor configuration with chopping. Both differential
+and common-mode paths are designed to be stable without extrenal load.</p>
+<p><img alt="Loopfilter_amplifier_b Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-amplifier-b_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-b: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M4</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M9&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>rm3</p></td>
+<td class="text-center"><p>RPROBE</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-b: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 24.42 um by 23.19 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-amplifier-b: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_amplifier_b Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-amplifier-b_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-amplifier-b: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.87 um, 12.94 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>11.31 um, 12.94 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.75 um, 12.94 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AMP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.19 um, 12.94 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.19 um, 12.38 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.75 um, 12.38 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>12.43 um, 12.94 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.63 um, 12.94 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.07 um, 12.94 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.07 um, 12.38 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>9.63 um, 12.38 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-amplifier-b-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-amplifier-b: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-amplifier-b-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AMP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>CMFB N-SIDE Bias Current</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Common Mode Reference</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Negative Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Positive Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Negative Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Amplifier Positive Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-ibias">
+<h2>lib-pepper-nsadc-loopfilter-ibias<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: layout, symbol, schematic</p>
+<p>Analog current redistribution using a 500 nA input reference from the PMU.</p>
+<p><img alt="Loopfilter_ibias Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-ibias_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-ibias-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-ibias: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M1&lt;1:4&gt;</p></td>
+<td class="text-center"><p>4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-ibias-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-ibias: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 39.32 um by 40.54 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-ibias-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-ibias: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_ibias Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-ibias_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-ibias-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-ibias: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>18.875 um, 20.595 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.195 um, 20.595 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.995 um, 20.595 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.435 um, 20.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;2&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>18.875 um, 20.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;3&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>18.315 um, 20.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;4&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.755 um, 20.035 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;5&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.195 um, 20.035 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;6&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>22.235 um, 20.595 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;7&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>21.675 um, 20.595 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;8&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>21.115 um, 20.595 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_250N_AUX&lt;9&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>20.555 um, 20.595 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_2U_AMP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>18.315 um, 20.595 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>17.755 um, 20.595 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>19.435 um, 20.595 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-ibias-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-ibias: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-ibias-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_250N_AUX&lt;9:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>10</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Auxillary 250 nA Current Bias</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>IBIAS_2U_AMP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Amplifier 8uA Current Bias</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IBIAS_500N_PTAT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Input Reference Current PTAT</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Enable Control Loopfilter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-digital">
+<h2>lib-pepper-nsadc-loopfilter-digital<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Switched capacitor controller with the respective switches and capacitors.
+The VGx and VOx signals are internal analog signals that refer to the amplifier inputs and outputs while the VXx signals are the feedback signals
+that need to be applied to the capacitive DAC for noise shaping.</p>
+<p>The control relies on 3-phase operation: Sample, Conversion, Amplification.
+with non-overlapping signals for the internal switches. When the ADC samples
+the DAC voltage is auto-zero d on the main amplifier while the integrating
+amplifiers perform integration with feedback. Then the loopfilter is disconnected and SAR conversion is performed. Once this is completed the loopfilter samples and amplifies the residue for the next integration phase.</p>
+<p>The reset control is gated internall with the sample signal so that the external control does not need to be synchronized.</p>
+<p><img alt="Loopfilter_digital Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-digital_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-digital-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-digital: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-sc-autozero">loopfilter_sc_autozero</a></p></td>
+<td class="text-center"><p>ISC_P1&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-sc-chopper">loopfilter_sc_chopper</a></p></td>
+<td class="text-center"><p>ICHOP_A2_OUT&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-sc-connect">loopfilter_sc_connect</a></p></td>
+<td class="text-center"><p>i_switch</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-loopfilter-sc-integrator">loopfilter_sc_integrator</a></p></td>
+<td class="text-center"><p>ISC_P3&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>AN2D2BWP7T</p></td>
+<td class="text-center"><p>I13</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD2BWP7T</p></td>
+<td class="text-center"><p>I6</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD2BWP7T</p></td>
+<td class="text-center"><p>I9</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>NR2D4BWP7T</p></td>
+<td class="text-center"><p>I5</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>OR2D2BWP7T</p></td>
+<td class="text-center"><p>I4</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-digital-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-digital: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 132.26 um by 91.04 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-digital-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-digital: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL5</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_digital Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-digital_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-digital-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-digital: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.98 um, -3.06 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.42 um, -3.06 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_CHOP_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>6.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_RESET_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>10.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAMPLE_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAR_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>0.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_UPDATE_QNF_IN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGN1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGN2X</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGN3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGP1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.05 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGP2X</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>8.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGP3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.05 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON2X</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.65 um, -1.75 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.45 um, -1.75 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP1</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>7.65 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP2X</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.85 um, -1.15 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP3</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.25 um, -1.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1N&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.66 um, -3.06 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1N&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.22 um, -3.06 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1P&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.54 um, -3.06 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1P&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>2.1 um, -3.06 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2N&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.9 um, -3.06 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2N&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>5.46 um, -3.06 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2P&lt;0&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>3.78 um, -3.06 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2P&lt;1&gt;</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.34 um, -3.06 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-digital-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-digital: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-digital-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_CHOP_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Chopper Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_RESET_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Reset Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAMPLE_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC Sample Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAR_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_UPDATE_QNF_IN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Digital SC QNF Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Ground Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Power Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>LOOPFILTER_DISABLE</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Enable Control Loopfilter</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>ADC Common Mode Reference Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VDACN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Top Plate CDAC Voltage</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGN1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Gate Terminal of AMP1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGN2X</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Gate Terminal of AMP2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGN3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Gate Terminal of AMP3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGP1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Gate Terminal of AMP1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VGP2X</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Gate Terminal of AMP2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VGP3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Gate Terminal of AMP3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Output Terminal of AMP1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VON2X</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Output Terminal of AMP2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VON3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative Output Terminal of AMP3</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP1</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Output Terminal of AMP1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VOP2X</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Output Terminal of AMP2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VOP3</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive Output Terminal of AMP3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX1N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX1P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 1 Feedback</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VX2N&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Negative QFN 2 Feedback</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VX2P&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Positive QFN 2 Feedback</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-autozero">
+<h2>lib-pepper-nsadc-loopfilter-sc-autozero<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-autozero" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic</p>
+<p>Simple switch configuration for the main amplifier to perform auto-zeroing
+and amplification.</p>
+<p>Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.</p>
+<p><img alt="Loopfilter_sc_autozero Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-sc-autozero_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-sc-autozero-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-sc-autozero: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-autozero-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-autozero-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-sc-autozero: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-autozero-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAMPLE</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC Sample Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAR_N</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Ground Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VAMP_GATE</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog SC Amplifier Gate Net</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VAMP_OUT</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Amplifier Output Net</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VSMP_IN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog SC Input Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper">
+<h2>lib-pepper-nsadc-loopfilter-sc-chopper<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: layout, symbol, schematic</p>
+<p>Simple switch configuration for chopping the input and output of the first integrating amplifier.</p>
+<p>Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.</p>
+<p><img alt="Loopfilter_sc_chopper Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-sc-chopper_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-sc-chopper: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper-layout-specification">
+<h3>lib-pepper-nsadc-loopfilter-sc-chopper: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 3.6 um by 4.29 um.</p>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper-layout-layers">
+<h4>lib-pepper-nsadc-loopfilter-sc-chopper: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Loopfilter_sc_chopper Layout" src="../../../_images/lib-pepper-nsadc-loopfilter-sc-chopper_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper-layout-pins">
+<h4>lib-pepper-nsadc-loopfilter-sc-chopper: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CHOP_INN</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.085 um, 4.15 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHOP_INP</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>1.74 um, 0.76 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CHOP_OUTN</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>3.28 um, 1.36 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHOP_OUTP</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>3.28 um, 2.48 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_CHOP_N</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.64 um, -0.69 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_CHOP_P</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>2.84 um, -0.69 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-chopper-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-sc-chopper: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-chopper-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CHOP_INN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Chopper Negative Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHOP_INP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Chopper Positive Input</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CHOP_OUTN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Chopper Negative Output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CHOP_OUTP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Chopper Positive Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_CHOP_N</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_CHOP_P</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Core Ground</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-connect">
+<h2>lib-pepper-nsadc-loopfilter-sc-connect<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-connect" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic</p>
+<p>Simple switch configuration for shorting output of the amplifier to VCM when disabled.</p>
+<p>Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.</p>
+<p><img alt="Loopfilter_sc_connect Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-sc-connect_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-sc-connect-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-sc-connect: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-connect-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-connect-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-sc-connect: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-connect-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Core Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SWITCH_EN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC Switch Enable</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SWITCH_IN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Switch Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SWITCH_OUTN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Switch Negative Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SWITCH_OUTP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Inout</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analogue Switch Positive Output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-integrator">
+<h2>lib-pepper-nsadc-loopfilter-sc-integrator<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-integrator" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic</p>
+<p>Simple switch configuration for the ingration stages of the quantization
+loop filter. This is a paracitic in sensitive inverting configuration. The loop filter can be discharged using the reset control.</p>
+<p>Note this is a nmos only implementation hence the signals levels must be
+well controlled and the timing must be overlapping.</p>
+<p><img alt="Loopfilter_sc_integrator Schematic" src="../../../_images/lib-pepper-nsadc-loopfilter-sc-integrator_schematic.png" /></p>
+<section id="lib-pepper-nsadc-loopfilter-sc-integrator-schematic-references">
+<h3>lib-pepper-nsadc-loopfilter-sc-integrator: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-integrator-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>analogLib</p></td>
+<td class="text-center"><p>res</p></td>
+<td class="text-center"><p>R0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>mimcap_2p0_sin_3t</p></td>
+<td class="text-center"><p>C1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M4</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M8&lt;1:0&gt;</p></td>
+<td class="text-center"><p>2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-loopfilter-sc-integrator-symbol-specification">
+<h3>lib-pepper-nsadc-loopfilter-sc-integrator: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-loopfilter-sc-integrator-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>AGND</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>AVDD</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog Supply Voltage</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_INTEGRATE</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC Integrate Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_RESET</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC Reset Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAMPLE</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC Sample Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>CTRL_SAR_N</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>CTRL_SAR_P</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital SC SAR Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Ground Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Digital Power Supply</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>REFC</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>ADC Common Mode Reference</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VAMP_GATE</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog SC Amplifier Gate Net</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VAMP_OUT</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog SC Amplifier Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VDACX&lt;1:0&gt;</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>2</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>CDAC Feedback Net</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VSMP_IN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Analog SC Input Voltage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital">
+<h2>lib-pepper-nsadc-comparator-digital<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Design doc file missing.</p>
+<p><img alt="Comparator_digital Schematic" src="../../../_images/lib-pepper-nsadc-comparator-digital_schematic.png" /></p>
+<section id="lib-pepper-nsadc-comparator-digital-schematic-references">
+<h3>lib-pepper-nsadc-comparator-digital: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>LIB_PEPPER_NSADC</p></td>
+<td class="text-center"><p><a class="reference internal" href="#lib-pepper-nsadc-comparator-digital-unit">comparator_digital_unit</a></p></td>
+<td class="text-center"><p>i_compare&lt;2:0&gt;</p></td>
+<td class="text-center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD1BWP7T</p></td>
+<td class="text-center"><p>I15</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>BUFFD4BWP7T</p></td>
+<td class="text-center"><p>I14</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>INVD1BWP7T</p></td>
+<td class="text-center"><p>I3</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>MAOI222D2BWP7T</p></td>
+<td class="text-center"><p>I0</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D1BWP7T</p></td>
+<td class="text-center"><p>I12</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>tcb018gbwp7t_r1a</p></td>
+<td class="text-center"><p>ND2D2BWP7T</p></td>
+<td class="text-center"><p>i_out_state_n</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital-layout-specification">
+<h3>lib-pepper-nsadc-comparator-digital: Layout Specification<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-layout-specification" title="Link to this heading">#</a></h3>
+<p>The design is 17.92 um by 15.68 um.</p>
+<section id="lib-pepper-nsadc-comparator-digital-layout-layers">
+<h4>lib-pepper-nsadc-comparator-digital: Layout Layers<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-layout-layers" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Device Layers</p></th>
+<th class="head text-center"><p>Metal Layers</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>NWELL</p></td>
+<td class="text-center"><p>METAL1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DIFF</p></td>
+<td class="text-center"><p>METAL2</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PIMP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>NIMP</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>POLY1</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Comparator_digital Layout" src="../../../_images/lib-pepper-nsadc-comparator-digital_layout.png" /></p>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital-layout-pins">
+<h4>lib-pepper-nsadc-comparator-digital: Layout Pins<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-layout-pins" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Layer</p></th>
+<th class="head text-center"><p>Location</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CLOCK</p></td>
+<td class="text-center"><p>METAL3</p></td>
+<td class="text-center"><p>0.86 um, 2.6 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DEBUG</p></td>
+<td class="text-center"><p>METAL3</p></td>
+<td class="text-center"><p>0.315 um, 14.455 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.24 um, 11.77 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.23 um, -0.005 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>4.245 um, 14.065 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>READY</p></td>
+<td class="text-center"><p>METAL2</p></td>
+<td class="text-center"><p>16.075 um, 13.775 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>METAL3</p></td>
+<td class="text-center"><p>0.76 um, -0.425 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>METAL3</p></td>
+<td class="text-center"><p>0.76 um, 0.425 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>mustConnect_0_DGND</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.26 um, 3.925 um</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>mustConnect_0_DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.255 um, 7.84 um</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>mustConnect_1_DVDD</p></td>
+<td class="text-center"><p>METAL1</p></td>
+<td class="text-center"><p>0.22 um, 15.68 um</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital-symbol-specification">
+<h3>lib-pepper-nsadc-comparator-digital: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CLOCK</p></td>
+<td class="text-center"><p>Clock</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Input Clock Rising Edge Sensitive</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DEBUG</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Comparator Debug Output</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Core Digital Ground</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Core Digital Supply</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>OUT</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Comparator output</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>READY</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Ready signal for asynchronous FSM triggering</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Negative Analogue Input</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Positive Analogue Input</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital-unit">
+<h2>lib-pepper-nsadc-comparator-digital-unit<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-unit" title="Link to this heading">#</a></h2>
+<p>Last Change:  Revision: 0 User:<br />
+Design views available: symbol, schematic, layout</p>
+<p>Design doc file missing.</p>
+<p><img alt="Comparator_digital_unit Schematic" src="../../../_images/lib-pepper-nsadc-comparator-digital-unit_schematic.png" /></p>
+<section id="lib-pepper-nsadc-comparator-digital-unit-schematic-references">
+<h3>lib-pepper-nsadc-comparator-digital-unit: Schematic References<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-unit-schematic-references" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Library</p></th>
+<th class="head text-center"><p>Cell Name</p></th>
+<th class="head text-center"><p>Instance Names</p></th>
+<th class="head text-center"><p>Count</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>nmos2v</p></td>
+<td class="text-center"><p>M1</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>tsmc18</p></td>
+<td class="text-center"><p>pmos2v</p></td>
+<td class="text-center"><p>M8</p></td>
+<td class="text-center"><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="lib-pepper-nsadc-comparator-digital-unit-symbol-specification">
+<h3>lib-pepper-nsadc-comparator-digital-unit: Symbol Specification<a class="headerlink" href="#lib-pepper-nsadc-comparator-digital-unit-symbol-specification" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Name</p></th>
+<th class="head text-center"><p>Type</p></th>
+<th class="head text-center"><p>Direction</p></th>
+<th class="head text-center"><p>Size</p></th>
+<th class="head text-center"><p>Ground Sensitivity</p></th>
+<th class="head text-center"><p>Supply Sensitivity</p></th>
+<th class="head text-center"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>CLK</p></td>
+<td class="text-center"><p>Clock</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>DGND</p></td>
+<td class="text-center"><p>Ground</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DVDD</p></td>
+<td class="text-center"><p>Supply</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>QN</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>QP</p></td>
+<td class="text-center"><p>Signal</p></td>
+<td class="text-center"><p>Output</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>VIN</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>VIP</p></td>
+<td class="text-center"><p>Analog</p></td>
+<td class="text-center"><p>Input</p></td>
+<td class="text-center"><p>1</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3">lib-pepper-nsadc-loopfilter-v3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3-schematic-references">lib-pepper-nsadc-loopfilter-v3: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3-layout-specification">lib-pepper-nsadc-loopfilter-v3: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3-layout-layers">lib-pepper-nsadc-loopfilter-v3: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3-layout-pins">lib-pepper-nsadc-loopfilter-v3: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-v3-symbol-specification">lib-pepper-nsadc-loopfilter-v3: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue">lib-pepper-nsadc-loopfilter-analogue</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue-schematic-references">lib-pepper-nsadc-loopfilter-analogue: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue-layout-specification">lib-pepper-nsadc-loopfilter-analogue: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue-layout-layers">lib-pepper-nsadc-loopfilter-analogue: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue-layout-pins">lib-pepper-nsadc-loopfilter-analogue: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-analogue-symbol-specification">lib-pepper-nsadc-loopfilter-analogue: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a">lib-pepper-nsadc-loopfilter-amplifier-a</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a-schematic-references">lib-pepper-nsadc-loopfilter-amplifier-a: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-specification">lib-pepper-nsadc-loopfilter-amplifier-a: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-layers">lib-pepper-nsadc-loopfilter-amplifier-a: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a-layout-pins">lib-pepper-nsadc-loopfilter-amplifier-a: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-a-symbol-specification">lib-pepper-nsadc-loopfilter-amplifier-a: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b">lib-pepper-nsadc-loopfilter-amplifier-b</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b-schematic-references">lib-pepper-nsadc-loopfilter-amplifier-b: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-specification">lib-pepper-nsadc-loopfilter-amplifier-b: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-layers">lib-pepper-nsadc-loopfilter-amplifier-b: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b-layout-pins">lib-pepper-nsadc-loopfilter-amplifier-b: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-amplifier-b-symbol-specification">lib-pepper-nsadc-loopfilter-amplifier-b: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias">lib-pepper-nsadc-loopfilter-ibias</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias-schematic-references">lib-pepper-nsadc-loopfilter-ibias: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias-layout-specification">lib-pepper-nsadc-loopfilter-ibias: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias-layout-layers">lib-pepper-nsadc-loopfilter-ibias: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias-layout-pins">lib-pepper-nsadc-loopfilter-ibias: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-ibias-symbol-specification">lib-pepper-nsadc-loopfilter-ibias: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital">lib-pepper-nsadc-loopfilter-digital</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital-schematic-references">lib-pepper-nsadc-loopfilter-digital: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital-layout-specification">lib-pepper-nsadc-loopfilter-digital: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital-layout-layers">lib-pepper-nsadc-loopfilter-digital: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital-layout-pins">lib-pepper-nsadc-loopfilter-digital: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-digital-symbol-specification">lib-pepper-nsadc-loopfilter-digital: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-autozero">lib-pepper-nsadc-loopfilter-sc-autozero</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-autozero-schematic-references">lib-pepper-nsadc-loopfilter-sc-autozero: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-autozero-symbol-specification">lib-pepper-nsadc-loopfilter-sc-autozero: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper">lib-pepper-nsadc-loopfilter-sc-chopper</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper-schematic-references">lib-pepper-nsadc-loopfilter-sc-chopper: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-specification">lib-pepper-nsadc-loopfilter-sc-chopper: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-layers">lib-pepper-nsadc-loopfilter-sc-chopper: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper-layout-pins">lib-pepper-nsadc-loopfilter-sc-chopper: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-chopper-symbol-specification">lib-pepper-nsadc-loopfilter-sc-chopper: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-connect">lib-pepper-nsadc-loopfilter-sc-connect</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-connect-schematic-references">lib-pepper-nsadc-loopfilter-sc-connect: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-connect-symbol-specification">lib-pepper-nsadc-loopfilter-sc-connect: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-integrator">lib-pepper-nsadc-loopfilter-sc-integrator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-integrator-schematic-references">lib-pepper-nsadc-loopfilter-sc-integrator: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-loopfilter-sc-integrator-symbol-specification">lib-pepper-nsadc-loopfilter-sc-integrator: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital">lib-pepper-nsadc-comparator-digital</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-schematic-references">lib-pepper-nsadc-comparator-digital: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-layout-specification">lib-pepper-nsadc-comparator-digital: Layout Specification</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-layout-layers">lib-pepper-nsadc-comparator-digital: Layout Layers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-layout-pins">lib-pepper-nsadc-comparator-digital: Layout Pins</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-symbol-specification">lib-pepper-nsadc-comparator-digital: Symbol Specification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-unit">lib-pepper-nsadc-comparator-digital-unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-unit-schematic-references">lib-pepper-nsadc-comparator-digital-unit: Schematic References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lib-pepper-nsadc-comparator-digital-unit-symbol-specification">lib-pepper-nsadc-comparator-digital-unit: Symbol Specification</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

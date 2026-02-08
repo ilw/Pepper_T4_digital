@@ -1,0 +1,124 @@
+# Simulation Results
+
+```{toctree}
+:maxdepth: 1
+:caption: Testbench
+
+signoff/tb_capacitor_mc.md
+signoff/tb_loopfilter_analogue.md
+signoff/tb_mes_dac_v2.md
+signoff/tb_comparator_digital.md
+signoff/tb_loopfilter_v3.md
+signoff/tb_nssar_decimator_18b.md
+signoff/tb_sar_controller.md
+signoff/tb_sar_controller_top.md
+```
+
+## Overview
+
+```
+Library Name: LIB_PEPPER_NSADC
+Cell Name: ns_sar_v2
+View Name: verifier
+```  
+
+| Title                                                           | Unit     | MinSpec   | MaxSpec   | Min Value   | Max Value   | Overall Status   |
+|:----------------------------------------------------------------|:---------|:----------|:----------|:------------|:------------|:-----------------|
+| getData("C_DWM_DAC.cmim:cap" ?result "dcOp")::StandardDeviation |          |           |           | 3.50E-16    | 3.50E-16    | Pass             |
+| getData("C_MES_DAC.cmim:cap" ?result "dcOp")::StandardDeviation |          |           |           | 8.82E-17    | 8.82E-17    | Pass             |
+| getData("C_MES_DAC.cmim:cap" ?result "dcOp")::Mean              |          |           |           | 5.14E-14    | 5.14E-14    | Pass             |
+| getData("C_DWM_DAC.cmim:cap" ?result "dcOp")::Mean              |          |           |           | 8.32E-13    | 8.32E-13    | Pass             |
+| sampled_noise                                                   | Vrms/rhz |           |           |             |             | Pass             |
+| intrg_noise                                                     | Vrms     |           | 2m        | 2.41E-04    | 3.32E-04    | Pass             |
+| noise_corner                                                    | Hz       |           | 1M        | 5.26E+05    | 6.60E+05    | Pass             |
+| energy                                                          | J        |           | 2p        | 7.38E-13    | 8.27E-13    | Pass             |
+| max_eval_time_pre                                               | s        |           | 10n       | 1.08E-09    | 1.58E-09    | Pass             |
+| avg_eval_time_pre                                               | s        |           | 5n        | 8.29E-10    | 1.25E-09    | Pass             |
+| offset                                                          |          | -2m       | 2m        | -3.77E-04   | -3.13E-04   | Pass             |
+| power_avdd                                                      | W        |           | 2u        | 6.35E-06    | 8.03E-06    | Fail             |
+| amp_cmout                                                       | V        | -0.1      | 0.1       | 5.75E-03    | 1.38E-02    | Pass             |
+| aux_cmout                                                       | V        | -0.1      | 0.1       | -2.69E-03   | 2.49E-03    | Pass             |
+| aux_offset                                                      | V        | -5m       | 5m        | 0.00E+00    | 0.00E+00    | Pass             |
+| amp_offset                                                      | V        | -5m       | 5m        | 0.00E+00    | 0.00E+00    | Pass             |
+| iload_avdd                                                      | A        |           | 5u        | 3.97E-06    | 4.02E-06    | Pass             |
+| VDC("_IBIAS_500N_PTAT")                                         | V        | 0.3       | 0.5       | 3.90E-01    | 4.94E-01    | Pass             |
+| VDC("_I0_ibias_8u_amp")                                         | V        | 0.3       | 0.5       |             |             | Not Mapped       |
+| VDC("_I0_ibias_500n_aux<5>")                                    | V        | 0.3       | 0.5       |             |             | Not Mapped       |
+| (VAR("vdd") - VDC("_I0_IAMP_MAIN_cmfb"))                        |          | 0.3       | 0.5       | 3.53E-01    | 4.88E-01    | Pass             |
+| (VAR("vdd") - VDC("_I0_IAMP_INT1_cmfb"))                        |          | 0.3       | 0.5       | 3.55E-01    | 4.88E-01    | Pass             |
+| aux1_dc_gain                                                    | dB       | 40        |           | 4.31E+01    | 4.63E+01    | Pass             |
+| aux1_ugf                                                        | Hz       | 128k      |           | 3.37E+05    | 5.69E+05    | Pass             |
+| aux1_max_osr                                                    | OSR      | 16        |           | 4.21E+01    | 7.11E+01    | Pass             |
+| aux2_max_osr                                                    | OSR      | 16        |           | 6.26E+01    | 1.05E+02    | Pass             |
+| aux2_ugf                                                        | Hz       | 128k      |           | 5.01E+05    | 8.43E+05    | Pass             |
+| aux2_dc_gain                                                    | dB       | 40        |           | 4.31E+01    | 4.63E+01    | Pass             |
+| amp_ugf                                                         | Hz       | 128k      |           | 2.07E+05    | 3.50E+05    | Pass             |
+| amp_max_osr                                                     | OSR      | 16        |           | 2.58E+01    | 4.37E+01    | Pass             |
+| amp_dc_gain                                                     | dB       | 40        |           | 4.33E+01    | 4.61E+01    | Pass             |
+| amp_noise_floor                                                 | Vrms/rHz |           | 50n       | 1.13E-08    | 1.52E-08    | Pass             |
+| amp_noise_corner                                                | Hz       |           | 16k       | 6.91E+03    | 9.93E+03    | Pass             |
+| amp_intg_noise                                                  | Vrms     |           | 100u      | 1.62E-05    | 2.20E-05    | Pass             |
+| cmfb_phase_margin                                               | Â°       | 45        |           | 8.88E+01    | 8.91E+01    | Pass             |
+| cmfb_bw                                                         | Hz       | 32k       |           | 1.56E+05    | 2.53E+05    | Pass             |
+| cmfb_gain                                                       | dB       | 60        |           | 8.02E+01    | 8.45E+01    | Pass             |
+| maxval_amp1                                                     | V        |           | 10m       | 1.29E-03    | 1.57E-03    | Pass             |
+| maxval_amp2                                                     | V        |           | 10m       | 1.43E-03    | 1.86E-03    | Pass             |
+| maxval_amp3                                                     | V        |           | 10m       | 1.50E-03    | 2.04E-03    | Pass             |
+| ileak_avdd_offstate                                             | A        |           | 5n        | 7.00E-11    | 1.25E-09    | Pass             |
+| power_on_time_vout_amp1                                         | s        |           | 50u       | 3.60E-05    | 4.95E-05    | Pass             |
+| power_on_time_vout_amp2                                         | s        |           | 50u       | 1.94E-05    | 3.33E-05    | Pass             |
+| power_on_time_vout_amp3                                         | s        |           | 50u       | 1.69E-05    | 2.49E-05    | Pass             |
+| power_on_time_ivdd                                              | s        |           | 50u       | 2.06E-05    | 4.95E-05    | Pass             |
+| power_off_time_vout_amp1                                        | s        |           | 500u      | 6.33E-05    | 9.93E-05    | Pass             |
+| power_off_time_vout_amp2                                        | s        |           | 500u      | 9.36E-05    | 9.59E-05    | Pass             |
+| power_off_time_vout_amp3                                        | s        |           | 500u      | 9.24E-05    | 9.55E-05    | Pass             |
+| power_off_time_ivdd                                             | s        |           | 500u      | 6.10E-05    | 6.14E-05    | Pass             |
+| ivdd_peakval                                                    | A        |           | 5u        | 4.68E-06    | 5.94E-06    | Fail             |
+| rr_vout1_500                                                    | dB       | 80        |           | 1.55E+02    | 2.22E+02    | Pass             |
+| rr_vout1_5000                                                   | dB       | 80        |           | 1.23E+02    | 1.75E+02    | Pass             |
+| rr_vout1_50000                                                  | dB       | 80        |           | 8.71E+01    | 1.17E+02    | Pass             |
+| rr_vout1_500000                                                 | dB       | 50        |           | 6.34E+01    | 7.87E+01    | Pass             |
+| rr_vout1_5000000                                                | dB       | 30        |           | 4.21E+01    | 5.30E+01    | Pass             |
+| rr_vout2_500                                                    | dB       | 80        |           | 1.55E+02    | 2.22E+02    | Pass             |
+| rr_vout2_5000                                                   | dB       | 80        |           | 1.29E+02    | 1.79E+02    | Pass             |
+| rr_vout2_50000                                                  | dB       | 80        |           | 1.06E+02    | 1.34E+02    | Pass             |
+| rr_vout2_500000                                                 | dB       | 50        |           | 8.46E+01    | 1.00E+02    | Pass             |
+| rr_vout2_5000000                                                | dB       | 30        |           | 6.33E+01    | 7.43E+01    | Pass             |
+| rr_vout3_500                                                    | dB       | 80        |           | 1.55E+02    | 2.22E+02    | Pass             |
+| rr_vout3_5000                                                   | dB       | 80        |           | 1.32E+02    | 1.81E+02    | Pass             |
+| rr_vout3_50000                                                  | dB       | 80        |           | 1.10E+02    | 1.38E+02    | Pass             |
+| rr_vout3_500000                                                 | dB       | 50        |           | 8.81E+01    | 1.03E+02    | Pass             |
+| rr_vout3_5000000                                                | dB       | 30        |           | 6.67E+01    | 7.77E+01    | Pass             |
+| vout1_OP1dB                                                     | dBm      | -3        |           | 2.47E-01    | 2.93E+00    | Pass             |
+| vout2_OP1dB                                                     | dBm      | -3        |           | -1.21E+00   | 2.60E+00    | Pass             |
+| vout1_OP3dB                                                     | dBm      | -3        |           | -1.21E+00   | 2.59E+00    | Pass             |
+| vout3_OIP3                                                      | dBm      | -3        |           | 1.70E+01    | 2.09E+01    | Pass             |
+| vout2_OIP3                                                      | dBm      | -3        |           | 1.70E+01    | 2.09E+01    | Pass             |
+| vout1_OIP3                                                      | dBm      | -3        |           | 1.89E+01    | 2.44E+01    | Pass             |
+| vout1_OIP2                                                      | dBm      | -3        |           | 1.55E+02    | 1.65E+02    | Pass             |
+| vout2_OIP2                                                      | dBm      | -3        |           | 1.55E+02    | 1.65E+02    | Pass             |
+| vout3_OIP2                                                      | dBm      | -3        |           | 1.55E+02    | 1.65E+02    | Pass             |
+| cmfb_gain_dc                                                    | dB       | 60        |           | 7.63E+01    | 8.09E+01    | Pass             |
+| sampling_rate                                                   | Hz       |           |           |             |             | Not Mapped       |
+| vdd_iload                                                       | A        |           | 50u       |             |             | Not Mapped       |
+| energy_FOM                                                      | J        |           | 20f       |             |             | Not Mapped       |
+| vx2_max                                                         |          |           | 200m      |             |             | Not Mapped       |
+| vx1_max                                                         |          |           | 200m      |             |             | Not Mapped       |
+| sar_cntrl_fall                                                  |          |           | 1n        |             |             | Not Mapped       |
+| sar_cntrl_rise                                                  |          |           | 2n        |             |             | Not Mapped       |
+| smp_cntrl_rise                                                  |          |           | 2n        |             |             | Not Mapped       |
+| smp_cntrl_fall                                                  |          |           | 1n        |             |             | Not Mapped       |
+| qnf_cntrl_rise                                                  |          |           | 1n        |             |             | Not Mapped       |
+| qnf_cntrl_fall                                                  |          |           | 1n        |             |             | Not Mapped       |
+| ilod_vdd                                                        | A        |           | 10u       | 7.08E-05    | 7.20E-05    | Fail             |
+| energy_perconv                                                  | J        |           | 5p        | 7.78E-16    | 7.91E-16    | Pass             |
+| smpl_frq                                                        | Hz       |           |           |             |             | Not Mapped       |
+| energy_per_conversion                                           | J        |           | 100p      |             |             | Not Mapped       |
+| FOM                                                             | J        |           | 25f       | 1.02E-14    | 1.02E-14    | Pass             |
+| vlsb1_avg                                                       |          |           |           | -1.77E-03   | -1.77E-03   | Pass             |
+| vlsb2_sd                                                        |          |           | 100u      | 1.93E-04    | 1.93E-04    | Fail             |
+| vlsb2_avg                                                       |          |           |           | -1.14E-01   | -1.14E-01   | Pass             |
+| vlsb1_sd                                                        |          |           | 100u      | 9.75E-06    | 9.75E-06    | Pass             |
+| ratio                                                           |          | 15.84     | 16.16     | 1.62E+01    | 1.62E+01    | Fail             |
+| vlsb1_rng                                                       |          | 0.9       | 1.1       | 1.10E+00    | 1.10E+00    | Pass             |
+| vlsb2_rng                                                       |          | 0.9       | 1.1       | 1.07E+00    | 1.07E+00    | Pass             |

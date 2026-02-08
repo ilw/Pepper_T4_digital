@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../../../_static/favicon.png" type="image/png">
+    <title>Python Digital Modelling &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/dms/py_src/pepper_dsp';</script>
+    <script src="../../../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Python Analog Modelling" href="pepper_modelling.html" />
+    <link rel="prev" title="Python Source Code" href="../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-42349</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">78e08057-f112-419a-9de6-d7275d2973a1</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-42349, KQCEX6RUC46M-1184322800-42349</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../README.html">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../../PRESTUDY.html">System Modelling</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="../README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../MODULES.html">Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../units/ANALOG.html">Analog Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../units/CDAC.html">CDAC Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../units/DIGITAL.html">Digital Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../PRESTUDY.html" class="nav-link">System Modelling</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Python...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python-digital-modelling">
+<h1>Python Digital Modelling<a class="headerlink" href="#python-digital-modelling" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pepper_adc</span> <span class="kn">import</span> <span class="n">PepperController</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># TODO evaluate Jitter requirement</span>
+<span class="c1"># TODO evaluate Reference noise requirement</span>
+
+<span class="c1"># Generate test sine wave</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mf">1.8411235123e3</span>   <span class="c1"># 800 Hz test frequency</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="mf">1e4</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="mi">500</span> 
+<span class="n">vdd</span> <span class="o">=</span> <span class="mf">1.8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">osr_sweep</span> <span class="o">=</span> <span class="p">[</span><span class="mi">18</span><span class="p">,</span><span class="mi">68</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">osr_sweep</span><span class="p">),</span> <span class="n">samples</span><span class="p">,))</span>
+<span class="k">for</span> <span class="n">selection</span><span class="p">,</span> <span class="n">osr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">osr_sweep</span><span class="p">):</span>
+    <span class="n">adc</span> <span class="o">=</span> <span class="n">PepperController</span><span class="p">(</span>
+        <span class="n">osr</span><span class="o">=</span><span class="n">osr</span><span class="p">,</span>
+        <span class="n">vdd</span><span class="o">=</span><span class="n">vdd</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">samples</span><span class="o">*</span><span class="n">osr</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sampling_rate</span><span class="o">*</span><span class="n">osr</span><span class="p">)</span>
+    <span class="n">analog_input</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">times</span> <span class="o">*</span> <span class="n">freq</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">vdd</span> <span class="o">+</span> <span class="n">vdd</span><span class="o">/</span><span class="mi">15</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span><span class="n">osr</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">selection</span><span class="p">,</span> <span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">analog_input</span><span class="p">[</span><span class="n">index</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">analog_input</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">times</span> <span class="o">*</span> <span class="n">freq</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">vdd</span> <span class="o">+</span> <span class="n">vdd</span><span class="o">/</span><span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span><span class="n">osr</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">data</span><span class="p">[</span><span class="n">selection</span><span class="p">,</span> <span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">analog_input</span><span class="p">[</span><span class="n">index</span><span class="p">,:])</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:75,</span> in <span class="ni">PepperController.convert</span><span class="nt">(self, signal)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="bp">self</span><span class="o">.</span><span class="n">cic</span><span class="o">.</span><span class="n">zero_data</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">osr</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">75</span>     <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>     <span class="n">acc_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span>     <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:940,</span> in <span class="ni">PepperDataConverter_V2.mes1_conversion</span><span class="nt">(self, vin)</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span> <span class="k">def</span> <span class="nf">mes1_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="bp">self</span><span class="o">.</span><span class="n">mes1_sample</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">938</span>         <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">939</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">940</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">941</span>     <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes1</span>
+<span class="g g-Whitespace">    </span><span class="mi">942</span>     <span class="k">return</span> <span class="n">dout</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:613,</span> in <span class="ni">PepperDataConverter_V1._adc_convertion</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span> <span class="k">def</span> <span class="nf">_adc_convertion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">613</span>     <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sar_process</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="bp">self</span><span class="o">.</span><span class="n">update_loopfilter</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="bp">self</span><span class="o">.</span><span class="n">inc_pointer</span><span class="p">()</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:926,</span> in <span class="ni">PepperDataConverter_V2.sar_process</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">925</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">926</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantization_residue</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:220,</span> in <span class="ni">PepperDataConverter_V1.quantization_residue</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span> <span class="k">def</span> <span class="nf">quantization_residue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">220</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:879,</span> in <span class="ni">PepperDataConverter_V2.dac_output</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span> <span class="k">def</span> <span class="nf">dac_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>     <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>         <span class="p">[</span>
+<span class="ne">--&gt; </span><span class="mi">879</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">883</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">884</span>     <span class="k">return</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">885</span>         <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">886</span>     <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+<span class="nn">File ~/git/Leene-Docs/mint-neuro/pepper_t4/units/adc/dms/py_src/pepper_adc.py:498,</span> in <span class="ni">PepperDataConverter_V1._msb_encoded</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.25</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">code</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ne">--&gt; </span><span class="mi">498</span> <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span> <span class="c1"># print(code)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="n">code</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">windows</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="o">.</span><span class="n">blackmanharris</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">windowed_output</span> <span class="o">=</span> <span class="n">data</span>  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">window</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,:],</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Compute FFT</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">fft_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">windowed_output</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+<span class="c1"># Compute magnitude spectrum (single-sided)</span>
+<span class="n">magnitude</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_data</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">frequencies</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">magnitude</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Output Spectrum (dB)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [kHz]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude [dBFS]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">osr_sweep</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="mf">0.5e-3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Find signal bin and SNDR</span>
+<span class="n">sndr_db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">magnitude</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span><span class="n">osr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">osr_sweep</span><span class="p">):</span>
+    <span class="n">signal_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">magnitude</span><span class="p">[</span><span class="mi">10</span><span class="p">:,</span><span class="n">index</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
+    <span class="n">signal_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">magnitude</span><span class="p">[</span><span class="n">signal_bin</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="n">signal_bin</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="n">index</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">noise_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">magnitude</span><span class="p">[</span><span class="mi">5</span><span class="p">:,</span><span class="n">index</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">signal_power</span>
+    <span class="n">sndr_db</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">signal_power</span> <span class="o">/</span> <span class="n">noise_power</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="mi">2</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="n">osr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">: SNDR ≈ </span><span class="si">{</span><span class="n">sndr_db</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dB, ENOB = </span><span class="si">{</span><span class="p">(</span><span class="n">sndr_db</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">-</span><span class="mf">1.72</span><span class="p">)</span><span class="o">/</span><span class="mf">6.02</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/3140829f2c7cd2d7d96d67f5a9617361d127f3bfebc4e0551a9749ac95386ca6.png" src="../../../../_images/3140829f2c7cd2d7d96d67f5a9617361d127f3bfebc4e0551a9749ac95386ca6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1180591620717411303424: SNDR ≈ 94.97 dB, ENOB = 15.49
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pepper_adc</span> <span class="kn">import</span> <span class="n">PepperController</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="mf">1e3</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">power</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">osr_selection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">64</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">selection</span><span class="p">,</span> <span class="n">osr</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">osr_selection</span><span class="p">):</span>
+    <span class="n">adc</span> <span class="o">=</span> <span class="n">PepperController</span><span class="p">(</span><span class="n">osr</span><span class="o">=</span><span class="n">osr</span><span class="p">)</span>
+    <span class="n">power</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="p">(</span>
+            <span class="n">adc</span><span class="o">.</span><span class="n">analog_energy</span><span class="p">,</span>
+            <span class="n">adc</span><span class="o">.</span><span class="n">switching_energy</span><span class="p">,</span>
+            <span class="n">adc</span><span class="o">.</span><span class="n">digital_energy</span><span class="p">,</span>
+            <span class="n">adc</span><span class="o">.</span><span class="n">total_energy</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="n">power_figure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">power</span><span class="p">)</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="n">channels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">osr_selection</span><span class="p">,</span> <span class="n">power_figure</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;analog&quot;</span><span class="p">,</span><span class="s2">&quot;cdac&quot;</span><span class="p">,</span><span class="s2">&quot;digital&quot;</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Power Estimator for </span><span class="si">{</span><span class="n">channels</span><span class="si">}</span><span class="s2"> Channels at </span><span class="si">{</span><span class="n">sampling_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e-3</span><span class="si">}</span><span class="s2"> kS/s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Oversampling Ratio [N]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Power [uW]&quot;</span> <span class="p">)</span>
+
+
+<span class="n">power_total</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">PepperController</span><span class="p">(</span><span class="n">osr</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">total_energy</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="n">channels</span><span class="p">)</span>
+<span class="n">analog_energy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">PepperController</span><span class="p">(</span><span class="n">osr</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">analog_energy</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="n">channels</span><span class="p">)</span>
+<span class="n">figure_of_merit</span> <span class="o">=</span> <span class="n">power_total</span> <span class="o">/</span> <span class="p">(</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="n">channels</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">14</span><span class="p">))</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected Power for 14 bit conversion on 8 Channels: </span><span class="si">{</span><span class="n">power_total</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> uW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Analog Power for 14 bit conversion on 8 Channels: </span><span class="si">{</span><span class="n">analog_energy</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> uW&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The FOM is : </span><span class="si">{</span><span class="n">figure_of_merit</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e15</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> fJ/conv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected Power for 14 bit conversion on 8 Channels: 26.986 uW
+Analog Power for 14 bit conversion on 8 Channels: 4.654 uW
+The FOM is : 205.89 fJ/conv
+</pre></div>
+</div>
+<img alt="../../../../_images/337725d886457c7e1dd25446191efe3ffb08e6633d5bc926fdb4e425b3f177b3.png" src="../../../../_images/337725d886457c7e1dd25446191efe3ffb08e6633d5bc926fdb4e425b3f177b3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pepper_adc</span> <span class="kn">import</span> <span class="n">PepperController</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">mc_count</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">osr</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mf">1.8411235123e3</span>   <span class="c1"># 800 Hz test frequency</span>
+<span class="n">sampling_rate</span> <span class="o">=</span> <span class="mf">1e4</span>
+<span class="n">samples</span><span class="o">=</span><span class="mi">200</span> 
+<span class="n">vdd</span> <span class="o">=</span> <span class="mf">1.8</span>
+
+<span class="n">mc_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">mc_count</span><span class="p">,</span> <span class="n">samples</span><span class="p">,))</span>
+<span class="k">for</span> <span class="n">selection</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mc_count</span><span class="p">):</span>
+    <span class="n">adc</span> <span class="o">=</span> <span class="n">PepperController</span><span class="p">(</span>
+        <span class="n">osr</span><span class="o">=</span><span class="n">osr</span>
+    <span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">samples</span><span class="o">*</span><span class="n">osr</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sampling_rate</span><span class="o">*</span><span class="n">osr</span><span class="p">)</span>
+    <span class="n">analog_input</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">times</span> <span class="o">*</span> <span class="n">freq</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">vdd</span> <span class="o">+</span> <span class="n">vdd</span><span class="o">/</span><span class="mi">15</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">samples</span><span class="p">,</span><span class="n">osr</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+        <span class="n">mc_data</span><span class="p">[</span><span class="n">selection</span><span class="p">,</span> <span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">analog_input</span><span class="p">[</span><span class="n">index</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">describe</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">windows</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pformat</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">windows</span><span class="o">.</span><span class="n">blackmanharris</span><span class="p">(</span><span class="n">mc_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">windowed_output</span> <span class="o">=</span> <span class="n">mc_data</span>  <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">window</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,:],</span><span class="n">mc_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Compute FFT</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">mc_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">mc_fft_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">windowed_output</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+<span class="c1"># Compute magnitude spectrum (single-sided)</span>
+<span class="n">mc_magnitude</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mc_fft_data</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">[:</span><span class="n">N</span> <span class="o">//</span> <span class="mi">2</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">frequencies</span> <span class="o">/</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Output Spectrum (dB)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency [kHz]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude [dBFS]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sampling_rate</span> <span class="o">*</span> <span class="mf">0.5e-3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span> <span class="o">-</span><span class="mi">180</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Find signal bin and SNDR</span>
+<span class="n">mc_sndr_db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">mc_enob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">signal_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="p">[</span><span class="mi">10</span><span class="p">:,</span><span class="n">index</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span>
+    <span class="n">signal_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="p">[</span><span class="n">signal_bin</span><span class="o">-</span><span class="mi">5</span><span class="p">:</span><span class="n">signal_bin</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="n">index</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">noise_power</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mc_magnitude</span><span class="p">[</span><span class="mi">5</span><span class="p">:,</span><span class="n">index</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">signal_power</span>
+    <span class="n">mc_sndr_db</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">signal_power</span> <span class="o">/</span> <span class="n">noise_power</span><span class="p">)</span>
+    <span class="n">mc_enob</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mc_sndr_db</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">-</span><span class="mf">1.72</span><span class="p">)</span><span class="o">/</span><span class="mf">6.02</span>
+    <span class="c1"># print(f&quot;{2 ** (osr + 2)}: SNDR ≈ {mc_sndr_db[index]:.2f} dB, ENOB = {(mc_sndr_db[index]-1.72)/6.02:.2f}&quot;)</span>
+
+<span class="n">dist_sndr</span> <span class="o">=</span> <span class="n">describe</span><span class="p">(</span><span class="n">mc_sndr_db</span><span class="p">)</span>
+<span class="n">histogram</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">mc_sndr_db</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bin_centers</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">dist_sndr</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">dist_sndr</span><span class="o">.</span><span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mc_sndr_db</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pepper ADC SNDR (N=</span><span class="si">{</span><span class="n">mc_count</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Magnitude [dBFS]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Occurance [N]&quot;</span><span class="p">)</span>
+
+<span class="n">dist_enob</span> <span class="o">=</span> <span class="n">describe</span><span class="p">(</span><span class="n">mc_enob</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pformat</span><span class="p">(</span><span class="n">dist_enob</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3-sigma ENOB: </span><span class="si">{</span><span class="n">dist_enob</span><span class="o">.</span><span class="n">mean</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dist_enob</span><span class="o">.</span><span class="n">variance</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">dist_enob</span><span class="o">.</span><span class="n">mean</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dist_enob</span><span class="o">.</span><span class="n">variance</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../../_images/5bfff085b6addc72049f71291e9fe429c758f87383a50343ee61b0e972e6b8f3.png" src="../../../../_images/5bfff085b6addc72049f71291e9fe429c758f87383a50343ee61b0e972e6b8f3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;kurtosis&#39;: np.float64(0.9524303312894795),
+ &#39;mean&#39;: np.float64(13.291489565421575),
+ &#39;minmax&#39;: (np.float64(13.168488732089484), np.float64(13.370226139931422)),
+ &#39;nobs&#39;: 10,
+ &#39;skewness&#39;: np.float64(-1.0164418500460917),
+ &#39;variance&#39;: np.float64(0.002914376003960338)}
+3-sigma ENOB: 13.129534682705298, 13.453444448137851
+</pre></div>
+</div>
+<img alt="../../../../_images/2df54eef49b531e2255b71ff8ad455af3337122a3c8964e9c7a8a7fec6c59659.png" src="../../../../_images/2df54eef49b531e2255b71ff8ad455af3337122a3c8964e9c7a8a7fec6c59659.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="c1"># Define symbols</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">f_in</span><span class="p">,</span> <span class="n">t_j</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;N f_in t_j&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">SNR_ideal</span> <span class="o">=</span> <span class="mf">6.02</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="mf">1.76</span>
+
+<span class="c1"># SNR_jitter formula</span>
+<span class="n">SNR_jitter</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sp</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_in</span> <span class="o">*</span> <span class="n">t_j</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Solve for t_j in terms of N and f_in</span>
+<span class="n">t_j_expr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">SNR_jitter</span><span class="p">,</span> <span class="n">SNR_ideal</span><span class="p">),</span> <span class="n">t_j</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Substitute numeric values</span>
+<span class="n">t_j_value</span> <span class="o">=</span> <span class="n">t_j_expr</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span><span class="n">N</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="n">f_in</span><span class="p">:</span> <span class="mi">500</span><span class="p">})</span>  <span class="c1"># 500 Hz input (Nyquist/2)</span>
+<span class="n">t_j_value_numerical</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">t_j_value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aperture jitter requirement (seconds): </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">t_j_value_numerical</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1e9</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ns RMS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aperture jitter requirement (seconds): 3.971 ns RMS
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ADC Noise and Source Impedance Model (Single Ended)</span>
+<span class="sd">------------------------------------</span>
+<span class="sd">Symbolic and numeric derivation using Sympy for:</span>
+<span class="sd">1. Reference RMS noise requirement (based on quantization noise).</span>
+<span class="sd">2. Maximum source impedance for 0.5 LSB settling accuracy.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="c1"># ==========================================================</span>
+<span class="c1"># Define symbolic parameters</span>
+<span class="c1"># ==========================================================</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">Vfs</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">t_acq</span><span class="p">,</span> <span class="n">osr</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;N Vfs C t_acq osr M&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ln2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ==========================================================</span>
+<span class="c1"># 1. Reference RMS noise requirement</span>
+<span class="c1"># ==========================================================</span>
+<span class="c1"># LSB = Vfs / 2^N</span>
+<span class="n">LSB</span> <span class="o">=</span> <span class="n">Vfs</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Quantization RMS (standard deviation of quantization noise)</span>
+<span class="n">quant_rms</span> <span class="o">=</span> <span class="n">LSB</span> <span class="o">/</span> <span class="n">sp</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Allowable reference RMS noise (must be ≤ quantization noise)</span>
+<span class="n">Vref_rms_max</span> <span class="o">=</span> <span class="n">quant_rms</span>
+
+<span class="c1"># ==========================================================</span>
+<span class="c1"># 2. Source impedance requirement for settling</span>
+<span class="c1"># ==========================================================</span>
+<span class="c1"># For exponential RC settling: exp(-t/(R*C)) ≤ 1/(2^(N+1))</span>
+<span class="c1"># Solve for R: R ≤ t / (C * (N+1) * ln(2))</span>
+
+<span class="n">t_eff</span> <span class="o">=</span> <span class="n">t_acq</span> <span class="o">/</span> <span class="n">osr</span> <span class="o">/</span> <span class="n">M</span>
+<span class="n">R_max</span> <span class="o">=</span> <span class="n">t_eff</span> <span class="o">/</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ln2</span><span class="p">)</span> 
+<span class="n">R_five_tau</span> <span class="o">=</span> <span class="n">t_eff</span> <span class="o">/</span> <span class="p">(</span><span class="n">C</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">R_in</span> <span class="o">=</span> <span class="n">t_eff</span><span class="o">/</span><span class="n">C</span>
+
+<span class="c1"># ==========================================================</span>
+<span class="c1"># Substitute example values</span>
+<span class="c1"># ==========================================================</span>
+<span class="c1"># Example: 16-bit ADC, 1.8 V full-scale, 5 pF input cap, 1 ms acquisition time</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">N</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>          <span class="c1"># adc resolution (bits)</span>
+    <span class="n">Vfs</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span>        <span class="c1"># supply voltage (volts)</span>
+    <span class="n">C</span><span class="p">:</span> <span class="mf">26e-12</span><span class="p">,</span>        <span class="c1"># sampling capacitance (farads )</span>
+    <span class="n">t_acq</span><span class="p">:</span> <span class="mf">0.5</span><span class="o">/</span><span class="mf">1e3</span><span class="p">,</span>      <span class="c1"># aquisition time (seconds)</span>
+    <span class="n">osr</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>           <span class="c1"># over sampling ratio </span>
+    <span class="n">M</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>           <span class="c1"># channel count</span>
+<span class="p">}</span>
+
+<span class="c1"># Evaluate numeric results</span>
+<span class="n">t_eff_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">t_eff</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">LSB_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">LSB</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">quant_rms_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">quant_rms</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">Vref_rms_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">Vref_rms_max</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">R_max_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">R_max</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">R_five_tau_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">R_five_tau</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">R_in_val</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">R_in</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+
+<span class="c1"># ==========================================================</span>
+<span class="c1"># Print results</span>
+<span class="c1"># ==========================================================</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== ADC Noise and Source Impedance Model ===</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resolution (N): </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="si">}</span><span class="s2"> bits&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Full-scale voltage (Vfs): </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="n">Vfs</span><span class="p">]</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input capacitance (C): </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="n">C</span><span class="p">]</span><span class="o">*</span><span class="mf">1e12</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> pF&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Acquisition time (t_acq): </span><span class="si">{</span><span class="n">t_eff_val</span><span class="o">*</span><span class="mf">1e6</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LSB = </span><span class="si">{</span><span class="n">LSB_val</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> V  (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">LSB_val</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> µV)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Quantization RMS noise = </span><span class="si">{</span><span class="n">quant_rms_val</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> V  (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">quant_rms_val</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> µV)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max Reference RMS Noise = </span><span class="si">{</span><span class="n">Vref_rms_val</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> V  (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">Vref_rms_val</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> µV)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max Source Impedance (R_max) = </span><span class="si">{</span><span class="n">R_max_val</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2"> Ω  (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">R_max_val</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kΩ)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Five Tau Source Impedance (R_max) = </span><span class="si">{</span><span class="n">R_five_tau_val</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2"> Ω  (</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">R_five_tau_val</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kΩ)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Interpretation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - Keep Vref RMS noise below the quantization RMS (~</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">quant_rms_val</span><span class="o">*</span><span class="mf">1e6</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> µV for </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="n">N</span><span class="p">]</span><span class="si">}</span><span class="s2">-bit, </span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="n">Vfs</span><span class="p">]</span><span class="si">}</span><span class="s2"> V FS).&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - Source impedance up to </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">R_max_val</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kΩ theoretically satisfies 0.5 LSB settling at 1 ms acquisition.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - Source impedance up to </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">R_five_tau_val</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kΩ satisfies 5 tau settling with </span><span class="si">{</span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">% gain error.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Load impedance is estimated at </span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">R_in_val</span><span class="o">/</span><span class="mf">1e3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kΩ.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== ADC Noise and Source Impedance Model ===
+
+Resolution (N): 16 bits
+Full-scale voltage (Vfs): 1.8 V
+Input capacitance (C): 26.00 pF
+Acquisition time (t_acq): 3.47 µs
+------------------------------------------------
+LSB = 2.746582e-5 V  (27.466 µV)
+Quantization RMS noise = 7.928699e-6 V  (7.929 µV)
+Max Reference RMS Noise = 7.928699e-6 V  (7.929 µV)
+------------------------------------------------
+Max Source Impedance (R_max) = 1.133e+4 Ω  (11.33 kΩ)
+Five Tau Source Impedance (R_max) = 2.671e+4 Ω  (26.71 kΩ)
+
+Interpretation:
+ - Keep Vref RMS noise below the quantization RMS (~7.929 µV for 16-bit, 1.8 V FS).
+ - Source impedance up to 11.33 kΩ theoretically satisfies 0.5 LSB settling at 1 ms acquisition.
+ - Source impedance up to 26.71 kΩ satisfies 5 tau settling with 0.674% gain error.
+------------------------------------------------
+Load impedance is estimated at 133.55 kΩ.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pepper_adc</span> <span class="kn">import</span> <span class="n">AdcBuffer</span>
+
+<span class="n">buffer_14b</span> <span class="o">=</span> <span class="n">AdcBuffer</span><span class="p">(</span><span class="n">c_load</span><span class="o">=</span><span class="mf">26e-12</span><span class="p">)</span>
+<span class="n">buffer_16b</span> <span class="o">=</span> <span class="n">AdcBuffer</span><span class="p">(</span><span class="n">c_load</span><span class="o">=</span><span class="mf">52e-12</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buffer Power for the 26pF Sampling config is:</span><span class="si">{</span><span class="n">buffer_14b</span><span class="o">.</span><span class="n">power</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buffer Power for the 52pF Sampling config is:</span><span class="si">{</span><span class="n">buffer_16b</span><span class="o">.</span><span class="n">power</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Buffer Power for the 26pF Sampling config is:10.109 uW
+Buffer Power for the 52pF Sampling config is:20.218 uW
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

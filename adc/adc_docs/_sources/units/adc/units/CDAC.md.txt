@@ -1,0 +1,489 @@
+# CDAC Circuit Modules
+
+
+```{toctree}
+:hidden:
+
+```
+
+
+These are the cdac modules.
+
+## lib-pepper-nsadc-ns-sar-cdac-v2
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+A 10 bit differential capacitive DAC split into two sections MSB and LSB.
+
+Both sections are controlled using tri-state logic and the signal is sampled
+on the bottom plate of the MSB section. The LSB section is also used to provide
+MES feedback such that the mismatch error is rejected.
+
+The MSB section is thermometer encoded with a 4 bit DWA controller. There is one
+dummy element here for layout matching purposes.
+  
+  
+![Ns_sar_cdac_v2 Schematic](../.fig/lib-pepper-nsadc-ns-sar-cdac-v2_schematic.png)
+
+
+### lib-pepper-nsadc-ns-sar-cdac-v2: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[dwa_unit](#lib-pepper-nsadc-dwa-unit)|IDWA_DAC<14:0>|15|
+|LIB_PEPPER_NSADC|[mes_dac_v2](#lib-pepper-nsadc-mes-dac-v2)|IMES_DAC_1|1|
+|tsmc18|mimcap_2p0_sin_3t|C2<1:0>|2|
+
+### lib-pepper-nsadc-ns-sar-cdac-v2: Layout Specification
+  
+The design is 352.8 um by 327.04 um.
+
+#### lib-pepper-nsadc-ns-sar-cdac-v2: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL4|
+|NIMP|METAL5|
+|POLY1||
+  
+![Ns_sar_cdac_v2 Layout](../.fig/lib-pepper-nsadc-ns-sar-cdac-v2_layout.png)
+
+
+#### lib-pepper-nsadc-ns-sar-cdac-v2: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DACN|METAL2|19.11 um, 10.035 um|
+|DACP|METAL2|19.11 um, 9.435 um|
+|DATA_DWA<0>|METAL2|19.11 um, 15.435 um|
+|DATA_DWA<10>|METAL2|19.11 um, 18.435 um|
+|DATA_DWA<11>|METAL2|19.11 um, 17.835 um|
+|DATA_DWA<12>|METAL2|19.11 um, 17.235 um|
+|DATA_DWA<13>|METAL2|19.11 um, 16.635 um|
+|DATA_DWA<14>|METAL2|19.11 um, 16.035 um|
+|DATA_DWA<1>|METAL2|19.11 um, 23.835 um|
+|DATA_DWA<2>|METAL2|19.11 um, 23.235 um|
+|DATA_DWA<3>|METAL2|19.11 um, 22.635 um|
+|DATA_DWA<4>|METAL2|19.11 um, 22.035 um|
+|DATA_DWA<5>|METAL2|19.11 um, 21.435 um|
+|DATA_DWA<6>|METAL2|19.11 um, 20.835 um|
+|DATA_DWA<7>|METAL2|19.11 um, 20.235 um|
+|DATA_DWA<8>|METAL2|19.11 um, 19.635 um|
+|DATA_DWA<9>|METAL2|19.11 um, 19.035 um|
+|DATA_MES1<1>|METAL2|19.11 um, 11.835 um|
+|DATA_MES1<2>|METAL2|19.11 um, 13.035 um|
+|DATA_MES1<3>|METAL2|19.11 um, 13.635 um|
+|DATA_MES1<4>|METAL2|19.11 um, 14.235 um|
+|DATA_MES1<5>|METAL2|19.11 um, 14.835 um|
+|DATA_MES1<6>|METAL2|19.11 um, 12.435 um|
+|DGND|METAL2|19.11 um, 7.035 um|
+|DVDD|METAL2|19.11 um, 7.635 um|
+|ENABLE_DWA<0>|METAL2|19.11 um, 24.435 um|
+|ENABLE_DWA<10>|METAL2|19.71 um, 5.235 um|
+|ENABLE_DWA<11>|METAL2|19.71 um, 4.635 um|
+|ENABLE_DWA<12>|METAL2|19.71 um, 4.035 um|
+|ENABLE_DWA<13>|METAL2|19.71 um, 3.435 um|
+|ENABLE_DWA<14>|METAL2|19.71 um, 2.835 um|
+|ENABLE_DWA<1>|METAL2|19.71 um, 10.635 um|
+|ENABLE_DWA<2>|METAL2|19.71 um, 10.035 um|
+|ENABLE_DWA<3>|METAL2|19.71 um, 9.435 um|
+|ENABLE_DWA<4>|METAL2|19.71 um, 8.835 um|
+|ENABLE_DWA<5>|METAL2|19.71 um, 8.235 um|
+|ENABLE_DWA<6>|METAL2|19.71 um, 7.635 um|
+|ENABLE_DWA<7>|METAL2|19.71 um, 7.035 um|
+|ENABLE_DWA<8>|METAL2|19.71 um, 6.435 um|
+|ENABLE_DWA<9>|METAL2|19.71 um, 5.835 um|
+|ENABLE_MES1<1>|METAL2|19.11 um, 3.435 um|
+|ENABLE_MES1<2>|METAL2|19.11 um, 4.635 um|
+|ENABLE_MES1<3>|METAL2|19.11 um, 5.235 um|
+|ENABLE_MES1<4>|METAL2|19.11 um, 5.835 um|
+|ENABLE_MES1<5>|METAL2|19.11 um, 6.435 um|
+|ENABLE_MES1<6>|METAL2|19.11 um, 4.035 um|
+|REFC|METAL2|19.11 um, 8.235 um|
+|REFN|METAL2|19.11 um, 8.835 um|
+|REFP|METAL2|19.11 um, 2.835 um|
+|SAMPLE|METAL2|19.71 um, 11.235 um|
+|VIN|METAL2|19.11 um, 10.635 um|
+|VIP|METAL2|19.11 um, 11.235 um|
+|VX1N|METAL2|19.71 um, 12.435 um|
+|VX1P|METAL2|19.71 um, 11.835 um|
+|VX2N|METAL2|19.71 um, 13.635 um|
+|VX2P|METAL2|19.71 um, 13.035 um|
+
+### lib-pepper-nsadc-ns-sar-cdac-v2: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DACN|Signal|Output|1|DGND|DVDD|Negative Top Plate CDAC Voltage|
+|DACP|Signal|Output|1|DGND|DVDD|Positive Top Plate CDAC Voltage|
+|DATA_DWA<14:0>|Signal|Input|15|DGND|DVDD|DWA MSB DAC DATA|
+|DATA_MES1<1:6>|Signal|Input|6|DGND|DVDD|MES1 SUB DAC DATA|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|ENABLE_DWA<14:0>|Signal|Input|15|DGND|DVDD|DWA MSB DAC ENABLE|
+|ENABLE_MES1<1:6>|Signal|Input|6|DGND|DVDD|MES1 SUB DAC ENABLE|
+|REFC|Signal|Input|1|DGND|DVDD|ADC Common Mode Reference Voltage|
+|REFN|Signal|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Signal|Input|1|DGND|DVDD|ADC Positive Reference Voltage|
+|SAMPLE|Signal|Input|1|DGND|DVDD|ADC Sample Control Signal|
+|VIN|Signal|Input|1|DGND|DVDD|Negative Analog ADC Input|
+|VIP|Signal|Input|1|DGND|DVDD|Positive Analog ADC Input|
+|VX1N<1:0>|Analog|Input|2|||Negative QFN 1 Feedback|
+|VX1P<1:0>|Analog|Input|2|||Positive QFN 1 Feedback|
+|VX2N<1:0>|Analog|Input|2|||Negative QFN 2 Feedback|
+|VX2P<1:0>|Analog|Input|2|||Positive QFN 2 Feedback|
+
+## lib-pepper-nsadc-dwa-unit
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Capacitive DAC unit element with local digital control for the MSB section.
+
+This element correctly switches the differential unit element such that the analog input is sampled or converted on using the tri-state digital feedback
+signals.
+
+The operating principle here is that when SAMPLE is high the analog input is connected to the bottom-plate. Otherwise if ENABLE is low
+the split configuration either connects the capacitor pair to VDD and GND for a VDD/2 feedback. Finally when ENABLE is high the capacitor pair is connected to VDD or GND when data is high or low respectively.
+
+There is not high-z configuration allowed here. The bottom plate must always
+be driven according to the input controls. We should carefully check the timing
+such that charge / current dissipation is minimized. We purposely avoid
+using the REFC reference to minimize drive requirements here. This results in more decoupling requirements on REFP/REFN but mitigates bandwidth and decoupling requirements for REFC.
+  
+  
+![Dwa_unit Schematic](../.fig/lib-pepper-nsadc-dwa-unit_schematic.png)
+
+
+### lib-pepper-nsadc-dwa-unit: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[dac_drive_s_unit](#lib-pepper-nsadc-dac-drive-s-unit)|I70|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I5|1|
+|tcb018gbwp7t_r1a|INVD2BWP7T|I11|1|
+|tcb018gbwp7t_r1a|ND2D1BWP7T|I3|1|
+|tcb018gbwp7t_r1a|NR2D1BWP7T|I1|1|
+|tcb018gbwp7t_r1a|NR3D1BWP7T|I12|1|
+|tcb018gbwp7t_r1a|OR2D1BWP7T|I15|1|
+|tsmc18|mimcap_2p0_sin_3t|C1|1|
+
+### lib-pepper-nsadc-dwa-unit: Layout Specification
+  
+The design is 49.28 um by 82.32 um.
+
+#### lib-pepper-nsadc-dwa-unit: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL4|
+|NIMP|METAL5|
+|POLY1||
+  
+![Dwa_unit Layout](../.fig/lib-pepper-nsadc-dwa-unit_layout.png)
+
+
+#### lib-pepper-nsadc-dwa-unit: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DACN|METAL2|3.22 um, 5.695 um|
+|DACP|METAL2|2.66 um, 5.695 um|
+|DATA_DWA|METAL2|0.98 um, 5.135 um|
+|DGND|METAL2|3.78 um, 5.695 um|
+|DVDD|METAL2|0.42 um, 5.135 um|
+|ENABLE_DWA|METAL2|2.1 um, 5.135 um|
+|REFN|METAL2|1.54 um, 5.695 um|
+|REFP|METAL2|2.1 um, 5.695 um|
+|SAMPLE|METAL2|1.54 um, 5.135 um|
+|VIN|METAL2|0.42 um, 5.695 um|
+|VIP|METAL2|0.98 um, 5.695 um|
+
+### lib-pepper-nsadc-dwa-unit: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DACN|Analog|Inout|1|DGND|DVDD|Negative Top Plate CDAC Voltage|
+|DACP|Analog|Inout|1|DGND|DVDD|Positive Top Plate CDAC Voltage|
+|DATA_DWA|Signal|Input|1|||DWA MSB DAC DATA|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|ENABLE_DWA|Signal|Input|1|||DWA MSB DAC ENABLE|
+|REFN|Analog|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|DGND|DVDD|ADC Positive Reference Voltage|
+|SAMPLE|Signal|Input|1|||ADC Sample Control Signal|
+|VIN|Analog|Input|1|DGND|DVDD|Negative Analog ADC Input|
+|VIP|Analog|Input|1|DGND|DVDD|Positive Analog ADC Input|
+
+## lib-pepper-nsadc-dac-drive-s-unit
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+  
+Design doc file missing.
+  
+  
+![Dac_drive_s_unit Schematic](../.fig/lib-pepper-nsadc-dac-drive-s-unit_schematic.png)
+
+
+### lib-pepper-nsadc-dac-drive-s-unit: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M0|1|
+|tsmc18|pmos2v|M1|1|
+
+### lib-pepper-nsadc-dac-drive-s-unit: Layout Specification
+  
+The design is 2.8 um by 3.92 um.
+
+#### lib-pepper-nsadc-dac-drive-s-unit: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP||
+|NIMP||
+|POLY1||
+  
+![Dac_drive_s_unit Layout](../.fig/lib-pepper-nsadc-dac-drive-s-unit_layout.png)
+
+
+#### lib-pepper-nsadc-dac-drive-s-unit: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DGND|METAL1|0.29 um, 0 um|
+|DVDD|METAL1|0.335 um, 3.92 um|
+|IN_N|METAL2|0.235 um, 1.78 um|
+|IN_P|METAL2|2.585 um, 1.775 um|
+|OUT|METAL2|1.36 um, 1.775 um|
+|REFN|METAL2|0.45 um, 0.93 um|
+|REFP|METAL2|2.355 um, 2.93 um|
+
+### lib-pepper-nsadc-dac-drive-s-unit: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|IN_N|Signal|Input|1|DGND|DVDD|CDAC Tri Switch Input Control N-Side|
+|IN_P|Signal|Input|1|DGND|DVDD|CDAC Tri Switch Input Control P-Side|
+|OUT|Signal|Inout|1|||CDAC Switch Output Control|
+|REFN|Analog|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|DGND|DVDD|ADC Positive Reference Voltage|
+
+## lib-pepper-nsadc-mes-dac-v2
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+
+
+Capacitive DAC unit element with local digital control for the LSB section.
+
+This element correctly switches the differential unit element such that the we always provide the correct the tri-state digital feedback.
+
+The operating principle here is that when if ENABLE is low
+the split configuration either connects the capacitor pair to VDD and GND for a VDD/2 feedback. Finally when ENABLE is high the capacitor pair is connected to VDD or GND when data is high or low respectively.
+
+Note that the two LSB element have slightly adjusted switching control that use REFC instead of the capacitor-pair configuration. This allows us the keep the unit capacitance the same size for better matching.
+There is not high-z configuration allowed here. The bottom plate must always
+be driven according to the input controls. We should carefully check the timing
+such that charge / current dissipation is minimized.
+  
+  
+![Mes_dac_v2 Schematic](../.fig/lib-pepper-nsadc-mes-dac-v2_schematic.png)
+
+
+### lib-pepper-nsadc-mes-dac-v2: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|LIB_PEPPER_NSADC|[dac_drive_c_unit](#lib-pepper-nsadc-dac-drive-c-unit)|I48|1|
+|LIB_PEPPER_NSADC|[dac_drive_t_unit](#lib-pepper-nsadc-dac-drive-t-unit)|I47|1|
+|tcb018gbwp7t_r1a|INVD1BWP7T|I8<0>|1|
+|tcb018gbwp7t_r1a|ND2D1BWP7T|I6<5:0>|6|
+|tsmc18|mimcap_2p0_sin_3t|C2|1|
+
+### lib-pepper-nsadc-mes-dac-v2: Layout Specification
+  
+The design is 49.28 um by 78.4 um.
+
+#### lib-pepper-nsadc-mes-dac-v2: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP|METAL4|
+|NIMP|METAL5|
+|POLY1||
+  
+![Mes_dac_v2 Layout](../.fig/lib-pepper-nsadc-mes-dac-v2_layout.png)
+
+
+#### lib-pepper-nsadc-mes-dac-v2: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DACN|METAL2|4.05 um, 2.77 um|
+|DACP|METAL2|1.65 um, 2.77 um|
+|DATA_MES<1>|METAL2|4.65 um, 2.77 um|
+|DATA_MES<2>|METAL2|5.85 um, 2.77 um|
+|DATA_MES<3>|METAL2|6.45 um, 2.77 um|
+|DATA_MES<4>|METAL2|7.05 um, 2.77 um|
+|DATA_MES<5>|METAL2|0.45 um, 2.17 um|
+|DATA_MES<6>|METAL2|5.25 um, 2.77 um|
+|DGND|METAL2|1.05 um, 2.77 um|
+|DVDD|METAL2|0.45 um, 2.77 um|
+|ENABLE_MES<1>|METAL2|1.05 um, 2.17 um|
+|ENABLE_MES<2>|METAL2|2.25 um, 2.17 um|
+|ENABLE_MES<3>|METAL2|2.85 um, 2.17 um|
+|ENABLE_MES<4>|METAL2|3.45 um, 2.17 um|
+|ENABLE_MES<5>|METAL2|4.05 um, 2.17 um|
+|ENABLE_MES<6>|METAL2|1.65 um, 2.17 um|
+|REFC|METAL2|3.45 um, 2.77 um|
+|REFN|METAL2|2.85 um, 2.77 um|
+|REFP|METAL2|2.25 um, 2.77 um|
+
+### lib-pepper-nsadc-mes-dac-v2: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DACN|Analog|Inout|1|DGND|DVDD|Negative Top Plate CDAC Voltage|
+|DACP|Analog|Inout|1|DGND|DVDD|Positive Top Plate CDAC Voltage|
+|DATA_MES<1:6>|Signal|Input|6|||MES2 SUB DAC DATA|
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|ENABLE_MES<1:6>|Signal|Input|6|||MES2 SUB DAC ENABLE|
+|REFC|Analog|Input|1|DGND|DVDD|ADC Common Mode Reference Voltage|
+|REFN|Analog|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|DGND|DVDD|ADC Positive Reference Voltage|
+
+## lib-pepper-nsadc-dac-drive-c-unit
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+  
+Design doc file missing.
+  
+  
+![Dac_drive_c_unit Schematic](../.fig/lib-pepper-nsadc-dac-drive-c-unit_schematic.png)
+
+
+### lib-pepper-nsadc-dac-drive-c-unit: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M0|1|
+|tsmc18|pmos2v|M1|1|
+
+### lib-pepper-nsadc-dac-drive-c-unit: Layout Specification
+  
+The design is 1.68 um by 3.92 um.
+
+#### lib-pepper-nsadc-dac-drive-c-unit: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP||
+|NIMP||
+|POLY1||
+  
+![Dac_drive_c_unit Layout](../.fig/lib-pepper-nsadc-dac-drive-c-unit_layout.png)
+
+
+#### lib-pepper-nsadc-dac-drive-c-unit: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DGND|METAL1|1.265 um, 0 um|
+|DVDD|METAL1|0.335 um, 3.92 um|
+|IN|METAL2|0.335 um, 1.775 um|
+|OUT|METAL2|1.36 um, 1.775 um|
+|REFN|METAL2|0.45 um, 0.93 um|
+|REFP|METAL2|0.445 um, 2.93 um|
+
+### lib-pepper-nsadc-dac-drive-c-unit: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|IN|Analog|Input|1|DGND|DVDD|CDAC Switch Input Control|
+|OUT|Signal|Output|1|||CDAC Switch Output Control|
+|REFN|Analog|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|DGND|DVDD|ADC Positive Reference Voltage|
+
+## lib-pepper-nsadc-dac-drive-t-unit
+  
+Last Change:  Revision: 0 User:   
+Design views available: symbol, schematic, layout
+  
+Design doc file missing.
+  
+  
+![Dac_drive_t_unit Schematic](../.fig/lib-pepper-nsadc-dac-drive-t-unit_schematic.png)
+
+
+### lib-pepper-nsadc-dac-drive-t-unit: Schematic References
+
+|Library|Cell Name|Instance Names|Count|
+| :---: | :---: | :---: | :---: |
+|tsmc18|nmos2v|M2|1|
+|tsmc18|pmos2v|M1|1|
+
+### lib-pepper-nsadc-dac-drive-t-unit: Layout Specification
+  
+The design is 3.92 um by 3.92 um.
+
+#### lib-pepper-nsadc-dac-drive-t-unit: Layout Layers
+
+|Device Layers|Metal Layers|
+| :---: | :---: |
+|NWELL|METAL1|
+|DIFF|METAL2|
+|PIMP||
+|NIMP||
+|POLY1||
+  
+![Dac_drive_t_unit Layout](../.fig/lib-pepper-nsadc-dac-drive-t-unit_layout.png)
+
+
+#### lib-pepper-nsadc-dac-drive-t-unit: Layout Pins
+
+|Name|Layer|Location|
+| :---: | :---: | :---: |
+|DGND|METAL1|0.29 um, 0 um|
+|DVDD|METAL1|0.335 um, 3.92 um|
+|IN_C|METAL2|3.57 um, 1.785 um|
+|IN_N|METAL2|0.235 um, 1.78 um|
+|IN_P|METAL2|2.395 um, 1.775 um|
+|OUT|METAL2|1.36 um, 1.775 um|
+|REFC|METAL2|3.47 um, 0.9 um|
+|REFN|METAL2|0.45 um, 0.93 um|
+|REFP|METAL2|2.355 um, 2.93 um|
+
+### lib-pepper-nsadc-dac-drive-t-unit: Symbol Specification
+
+|Name|Type|Direction|Size|Ground Sensitivity|Supply Sensitivity|Description|
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|DGND|Ground|Input|1||DVDD|Core Digital Ground|
+|DVDD|Supply|Input|1|DGND||Core Digital Supply|
+|IN_C|Signal|Input|1|DGND|DVDD|CDAC Tri Switch Input Control C-Side|
+|IN_N|Signal|Input|1|DGND|DVDD|CDAC Tri Switch Input Control N-Side|
+|IN_P|Signal|Input|1|DGND|DVDD|CDAC Tri Switch Input Control P-Side|
+|OUT|Signal|Output|1|||CDAC Switch Output Control|
+|REFC|Analog|Input|1|DGND|DVDD|ADC Common Mode Reference Voltage|
+|REFN|Analog|Input|1|DGND|DVDD|ADC Negative Reference Voltage|
+|REFP|Analog|Input|1|DGND|DVDD|ADC Positive Reference Voltage|

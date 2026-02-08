@@ -1,0 +1,85 @@
+stateDiagram-v2
+    [*] --> RESET
+    
+    state "WRITE DOMAIN (SAMPLE_CLK)" as WriteDomain {
+        RESET --> WR_IDLE: reset_n=1
+        
+        WR_IDLE --> WR_WORD: done=1
+        WR_WORD --> WR_IDLE: last_word=0
+        WR_WORD --> WR_ADVANCE: last_word=1
+        WR_ADVANCE --> WR_IDLE
+        
+        note right of WR_WORD
+            Write 16-bit word to
+            mem[write_ptr][atmchsel]
+            Can write every clock cycle
+        end note
+        
+        note right of WR_ADVANCE
+            Increment write_ptr
+            Update write_ptr_gray
+            Frame ready for reading
+        end note
+    }
+    
+    state "READ DOMAIN (READ_CLK)" as ReadDomain {
+        RESET --> RD_IDLE: reset_n=1
+        
+        RD_IDLE --> RD_POP: frame_pop=1 AND frames_available
+        RD_POP --> RD_IDLE
+        RD_IDLE --> RD_IDLE: frame_pop=1 AND NOT frames_available
+        
+        note right of RD_POP
+            Output frame_data_out = mem[read_ptr]
+            Increment read_ptr
+            Update read_ptr_gray
+        end note
+    }
+    
+    state "CLOCK DOMAIN CROSSING" as CDC {
+        state "Write to Read Sync" as W2R
+        state "Read to Write Sync" as R2W
+        state "Frame Pop Sync" as PopSync
+        
+        note left of W2R
+            write_ptr_gray crosses to read domain
+            Two-stage FF synchronizer
+            Gray code prevents glitches
+        end note
+        
+        note right of R2W
+            read_ptr_gray crosses to write domain
+            Two-stage FF synchronizer
+            Tracks previous value for zeroing
+        end note
+        
+        note right of PopSync
+            frame_pop crosses to write domain
+            Three-stage FF with edge detect
+            Triggers frame zeroing
+        end note
+    }
+    
+    state "FRAME ZEROING" as Zeroing {
+        note left of Zeroing
+            When frame_pop_edge detected:
+            Zero mem[read_ptr_sync_prev]
+            Uses PREVIOUS pointer value
+            Avoids race with pointer update
+        end note
+    }
+    
+    state "CONTROL LOGIC" as Control {
+        state "Write Domain Count" as WrCount
+        state "Read Domain Available" as RdAvail
+        
+        note left of WrCount
+            frame_count = write_ptr - read_ptr_sync_bin
+            fifo_ready = frame_count >= threshold
+        end note
+        
+        note right of RdAvail
+            frames_available = write_ptr_sync_bin != read_ptr
+            Prevents underflow on reads
+        end note
+    }

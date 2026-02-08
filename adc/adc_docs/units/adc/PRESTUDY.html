@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="../../_static/favicon.png" type="image/png">
+    <title>System Modelling &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'units/adc/PRESTUDY';</script>
+    <script src="../../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python Source Code" href="dms/README.html" />
+    <link rel="prev" title="Pepper T4 ADC" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-40899</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">af8578c7-650a-424f-b4cc-fdb68561e423</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-40899, KQCEX6RUC46M-1184322800-40899</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PRESTUDY.html">System Pre-Study report</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="README.html">Pepper T4 ADC</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">System Modelling</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="dms/README.html">Python Source Code</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="dms/py_src/pepper_dsp.html">Python Digital Modelling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dms/py_src/pepper_modelling.html">Python Analog Modelling</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="MODULES.html">Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/ANALOG.html">Analog Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/CDAC.html">CDAC Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="units/DIGITAL.html">Digital Circuit Modules</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="USAGE.html">Application Notes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="SIMULATION.html">Simulation Results</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_capacitor_mc.html">Verification Summary: LIB_PEPPER_NSADC tb_capacitor_mc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_loopfilter_analogue.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_analogue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_mes_dac_v2.html">Verification Summary: LIB_PEPPER_NSADC tb_mes_dac_v2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_comparator_digital.html">Verification Summary: LIB_PEPPER_NSADC tb_comparator_digital</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_loopfilter_v3.html">Verification Summary: LIB_PEPPER_NSADC tb_loopfilter_v3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_nssar_decimator_18b.html">Verification Summary: LIB_PEPPER_NSADC tb_nssar_decimator_18b</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_sar_controller.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signoff/tb_sar_controller_top.html">Verification Summary: LIB_PEPPER_NSADC tb_sar_controller_top</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="CHANGELOG.html">Pepper ADC Changelog</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../README.html" class="nav-link">Pepper T4</a></li>
+    
+    
+    <li class="breadcrumb-item"><i class="fa-solid fa-ellipsis"></i></li>
+    
+    
+    <li class="breadcrumb-item"><a href="README.html" class="nav-link">Pepper T4 ADC</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">System Modelling</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="system-modelling">
+<h1>System Modelling<a class="headerlink" href="#system-modelling" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This document describes the design principles behind the Pepper ADC.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>The pepper T4 ADC is based on a fully-capacitive NS-SAR topology using active higher-order noise shaping that achieves state-of-the-art efficiency for high resolution signal acquisition. The proposed configuration is shown in Fig. 1. This figure summarises which signals are processed by each block in a closed-loop fashion to resolve the sampled analogue input signal VIN. The main data-conversion mechanism is based on the conventional SAR controller that uses the comparator decisions K to successively set the MSB and LSB bits. However to augment this operation two separate noise-shaping mechanisms are added; one for quantisation noise, and another for mismatch noise by means of data-weighted averaging (DWA) together with mismatch-error shaping techniques (MES).</p>
+<a class="reference internal image-reference" href="../../_images/sar_sys.svg"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/sar_sys.svg" style="width: 600px;" />
+</a>
+<p>The NS-SAR approach is advantageous because the first several bits can be resolved rapidly using SAR and the remaining bits are resolved using ΔΣ modulation over several samples with reduced oversampling-ratio (OSR) to yield a significant overall improvement in conversion efficiency. Reusing the sampling mechanism of the SAR allows the quantisation residue left on VDAC to be directly integrated by the loop filter H(1/z) that off-sets future conversions and shapes the quantisation noise as 1/(1+H(1/z)). The main drawback here in comparison to high-resolution ΔΣ modulators is that, while the conversion is faster, the mismatch in the high-resolution DAC must be carefully mitigated. This is where the DWA and MES are introduced to eliminate mismatch errors. DWA manipulates the selection of elements used within the MSB capacitive DAC such that the capacitor mismatch is not only decorrelated from the input but is also shaped with a (1-1/z) characteristic. The MES module in the LSB section directly off-sets the sampled input using past conversion results to realise a FIR feedback structure such as (1-1/z) or (1-2/z+1/z²) high-pass characteristics to minimise signal-band noise components.</p>
+</section>
+<section id="adc-design-overview">
+<h2>ADC Design Overview<a class="headerlink" href="#adc-design-overview" title="Link to this heading">#</a></h2>
+<p>Comparing with other data-converters, the NS-SAR topology is quite complex with a large number of design parameters that need to be optimised for efficient operation. Below, several of these parameters are discussed in relation to the ADC precision explaining the proposed configuration. Following the single-ended configuration shown in Fig. 1, we will estimate the expected sampling noise power (SNP), quantisation noise power (QNP), and mismatch noise power (MNP) for the signal bandwidth of fs/(2 OSR) where fs is the sampling speed. This formulation is purposely presented in brief since it based on established theory but it does well to illustrate several trade-off considerations quantitatively when configuring this topology for a particular precision requirement.</p>
+<div class="math notranslate nohighlight">
+\[  SNP \approx \frac{kT}{C_T} \cdot \frac{2.4}{OSR} \]</div>
+<p>The expression in Eq. 1 should be a familiar representation for evaluating the input-referred sampling noise associated with a switched-capacitor integrator. In particular, this corresponds to the input being sampled with a total capacitive value of CT using kT as the Boltzman temperature factor. The second term simply arises from averaging the input over OSR cycles together with a correction factor of 2.4 due to the integrator topology in H(1/z). Fig. 2 shows the estimated resolution for several capacitor values assuming we use an input sinusoid with maximum signal power (SP) given a 1.8 V ADC reference voltage as VDD. Inevitably, achieving high resolution implies a large sampling capacitance or a large oversampling ratio. Typically the former is preferred because increasing the capacitive load also decreases the mismatch power from the capacitive DACs.</p>
+<div class="math notranslate nohighlight">
+\[  QNP \approx \underbrace{\left( V^2_{DD} e^{-3\tau} + \frac{V^2_{DD}}{2^{2N}} \right)}_{\text{SAR settling + quantisation }\epsilon} \cdot \frac{\pi^{2M}}{12   (1+2M) OSR^{1+2M}} \]</div>
+<p>The expression in Eq. 2 parametrises the overall SAR resolution as N, the loop fillter order as M, and the number of time constants we allow the capacitive DAC to settle as τ :in order to estimate QNP. This construction shows that settling and quantisation errors are shaped by the loop filter reducing the noise power by the term outside the brackets. Both in Fig. 3 and in the formulation we observe a strong dependency with regard to M as long as we provide sufficient settling time during SAR conversion. This result suggests that the noise-shaping feed-back must avoid driving the capacitive DAC with active amplifiers during successive-approximation to avoid slowing down the conversion speed or equivalently increasing the power requirement of each amplifier. We can also confirm here that the order of the loop filter does not need to be very high if the QNP needs to match the SNP.</p>
+<div class="math notranslate nohighlight">
+\[  MNP \approx \Delta^2 \underbrace{ \left( \frac{\pi^2 2^{-2D}}{3 \cdot 2^K   OSR^3} + \frac{\pi^{2E} 2^{-2K}}{(1+2E) OSR^{1+2E}} \right) }_{\text{DWA-MSB + MES-LSB DAC}} \]</div>
+<p>The MNP is evaluated in Eq. 3 with respect to the MES noise shaping order E, the number of bits D used to calibrate each capacitor in the MSB DAC in an idealised way. K represents the MSB DAC resolution in bits.</p>
+<div class="math notranslate nohighlight">
+\[ \Delta^2 = \frac{\sigma^2 V^2_{DD}}{3} \]</div>
+<p>represents the the capacitor mismatch power using a standard deviation and K=4, the MNP of several configurations is shown in Fig. 4. The observation here is that for small OSR values the mismatch noise is typically dominated by the MSB DAC as the mismatch is not sufficiently shaped. It is relatively expensive to increase the number of elements in the MSB DAC since the scaling is linear and increasing the OSR diminishes the advantage of performing SAR. Instead we propose to calibrate the 15 capacitors in the MSB section as D will reduce the MNP more efficiently. The mismatch from the LSB section contains many more elements and is more effectively shaped using a second-order MES technique.</p>
+<p>The above trends are used to optimise the FOMs by correlating hardware requirements with power and accuracy estimators for several configurations.</p>
+<a class="reference internal image-reference" href="../../_images/osr_snp.svg"><img alt="Sampling Noise Power" class="align-center" src="../../_images/osr_snp.svg" style="width: 400px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/osr_qnp.svg"><img alt="Quantization Noise Power" class="align-center" src="../../_images/osr_qnp.svg" style="width: 400px;" />
+</a>
+<a class="reference internal image-reference" href="../../_images/osr_mnp.svg"><img alt="Mismatch Noise Power" class="align-center" src="../../_images/osr_mnp.svg" style="width: 400px;" />
+</a>
+</section>
+<section id="montecarlo-simulation-results">
+<h2>Montecarlo Simulation Results<a class="headerlink" href="#montecarlo-simulation-results" title="Link to this heading">#</a></h2>
+<p>An accurate Monte-Carlo model has been prepared for running system simulations
+with capacitor mismatch effects. This allows use to evaluate the expected
+ADC accuracy and include some analog effects such as sampling noise.</p>
+<a class="reference internal image-reference" href="../../_images/sndr_components.png"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/sndr_components.png" style="width: 800px;" />
+</a>
+<p>First the individual noise contributor were extracted and evaluated for a
+particular input and operating supply. This is for the proposed Pepper-T4
+configuration referred to as PepperDataConverter_V2 which presents a
+cut-down version of the original design V1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PepperDataConverter_V2</span><span class="p">(</span><span class="n">PepperDataConverter_V1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a new version of the Pepper ADC with only 1st order MES </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">msb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">832.0e-15</span><span class="p">)</span>
+    <span class="n">lsb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">52.0e-15</span><span class="p">)</span>
+    <span class="n">osr</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">c_density</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">2e-15</span><span class="p">)</span>
+    <span class="n">vdd</span> <span class="o">=</span> <span class="mf">1.8</span>
+    <span class="n">lsb_bits</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">msb_bits</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>As expected the results show sufficient modulation of the mismatch components
+and no spurs are generated in-band. The MOM capacitor mismatch is extracted
+from simulations for several sizes and used here as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_msb_mom_capacitor_mismatch_sigma_c18</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mismatch sigma from MC simulation. 0.1% for 10x10 µm².&quot;&quot;&quot;</span>
+        <span class="n">reference_area</span> <span class="o">=</span> <span class="mf">831.9e-15</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span> <span class="c1"># 20.4 by 20.4 finger</span>
+        <span class="n">reference_sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mf">349.3e-3</span><span class="o">/</span><span class="mf">831.9</span><span class="p">)</span> <span class="c1"># MC simulation</span>
+        <span class="k">return</span> <span class="n">reference_sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reference_area</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_unit_capacitor_area</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now looking at the decimated result for multiple oversampling-ratios gives a
+good representation of the ADC performance.</p>
+<a class="reference internal image-reference" href="../../_images/sndr_osr.png"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/sndr_osr.png" style="width: 800px;" />
+</a>
+<p>For each ratio we evaluated the conversion precision and this result is
+quantified below.
+Notice here that for our target OSR of 16 we achieve 13 bits but in reality
+we expect +1 extra bit because the model uses a single-ended topology and
+therefore converts only half the maximum possible input swing.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>OSR</p></th>
+<th class="head text-left"><p>SNDR</p></th>
+<th class="head text-left"><p>ENOB</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>4</p></td>
+<td class="text-left"><p>59.96 dB</p></td>
+<td class="text-left"><p>9.68 bits</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>8</p></td>
+<td class="text-left"><p>69.01 dB</p></td>
+<td class="text-left"><p>11.18 bits</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>16</p></td>
+<td class="text-left"><p>82.42 dB</p></td>
+<td class="text-left"><p>13.41 bits</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>32</p></td>
+<td class="text-left"><p>88.61 dB</p></td>
+<td class="text-left"><p>14.43 bits</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>64</p></td>
+<td class="text-left"><p>93.41 dB</p></td>
+<td class="text-left"><p>15.23 bits</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now taking 50 montecarlo runs shows that we have plenty of margin to meet our
+specification. In fact we have 2.394 sigma of margin on the design.</p>
+<a class="reference internal image-reference" href="../../_images/sndr_nominal.png"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/sndr_nominal.png" style="width: 400px;" />
+</a>
+<p>Finally a priliminary estimate for the power consumption was made usign
+expected estimates on switching energy and analog baising. Here we assume the
+decimated data rate is at 1 kS/s for the 500 Hz bandwdith. Note that this
+estimate is adjusted based on measurements using the original design V1.
+For our application we can expect around 4 uW of power consumption for the
+oversampling-ratio of 18.</p>
+<a class="reference internal image-reference" href="../../_images/power_estimate.png"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/power_estimate.png" style="width: 400px;" />
+</a>
+<section id="analog-circuit-implementation">
+<h3>Analog Circuit Implementation<a class="headerlink" href="#analog-circuit-implementation" title="Link to this heading">#</a></h3>
+<p>Ignoring the digital signal processing here we show the internal analog
+circuitry that provides the data conversion with noise-shaping.
+Note that the implemented ADC uses an equivalent fully-differential configuration to gain extra input-dynamic range as well as digital noise suppression. This realisation is entirely based on manipulating the capacitive DAC and enables low-power operation for varying sampling rates. A second distinguishing feature of the proposed topology is that the comparator only requires one input terminal opposed to two seen in prior-art which leads to better linearity and noise performance. In addition the input is bottom plate sampled such that sensitivity to parasitic capacitance and comparator non-linearity is considerably reduced.</p>
+<p>This figure also shows three capacitor arrays where the DACM section corresponds to the DWA modulated MSBs and the DACL1/DACL2 section represents the MES modulated LSBs being fed back from the SAR controller. Implementing the second-order MES noise-shaping uses the ping-pong configuration. Implementation of the capacitor network used to perform signal conversion using the bottom sampled capacitor arrays DACM for the DWA bits and DACL1 &amp; DACL2 for the MES bits. The loop filter is also shown where A1 amplifies the quantisation residue that is then integrated by A2 &amp; A3 for noise-shaping.</p>
+<a class="reference internal image-reference" href="../../_images/sar_cdac.svg"><img alt="Pepper T4 ADC" class="align-center" src="../../_images/sar_cdac.svg" style="width: 600px;" />
+</a>
+<p>Three switched-capacitor amplifiers are used to realise a second-order cascaded-feed-forward-integrator (CFFI) loop filter topology where the first stage provides auto-zeroing as well as signal amplification by CT/C1 = 30. This design uses an asynchronous SAR conversion process which is why there are only 3 phases in the switched capacitor circuit; the sampling phase (SMP), the successive approximation phase (SAR), and the quantisation filtering phase (QNF). The SAR only takes 100 ns and the FSM immediately initiates the QNF phase reducing the input clock to twice the sampling rate. The three phases operate as follows:</p>
+<ol class="arabic simple">
+<li><p>First A1 actively samples its offset on the top plate while bottom plate samples VIN on DACM together with the MES code on DACL1/DACL2. A2/A3 are simultaneously integrating quantisation errors and sampling the result VX2/VX3 with respect to VDAC on C6 and C7.</p></li>
+<li><p>VDAC then converges to virtual ground by switching the input to DACM/DACL1/DACL2 while quantisation errors from prior conversions are removed by grounding the bottom plate of C6/C7. This also disconnects A1/A2/A3 from VDAC.</p></li>
+<li><p>Finally DACM/DACL1/DACL2 is held and the resulting quantisation residue left on VDAC is amplified by A1 on VX1. C2/C4 samples the voltages VX1/VX2 which are used to integrate during the following SMP phase.</p></li>
+</ol>
+<p>This configuration scales well for varying loop filter structures as 80% of the power is dissipated by A1 and the total sampling noise is dominated by CT. The comparator uses a conventional strong-arm topology that is carefully designed to minimise off-set since this off-set will be seen at the output of A3 after amplification which can diminish the output-swing. Conversely the noise and distortion characteristics of the analogue filtering chain is proportionally reduced when the signal is fed back onto the capacitor array during sampling as the attenuation ratio C67/CT inverts the amplification ratio with good matching.</p>
+<p>The MSB DAC calibration mechanism is uses a digital shuffling technique to identify mismatch by switching out different sets of capacitors that will only incur voltage fluctuation on VDAC in the presence of mismatch. These errors are then amplified by A1 after the SAR &amp; QNF process and digitally tunes each MSB capacitor using a capacitive sub-DAC. The sign of each shuffling result is accumulated to adjust the the 15 calibration codes thereby eliminating the mismatch in the MSB DAC. This process can be performed in the background without requirements on the input signal because DWA randomises the capacitor selection mechanism during shuffling.</p>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Leene et. al. “A 68μW 31kS/s Fully-Capacitive Noise-Shaping SAR ADC with 102 dB SNDR,” 2019 Proc. IEEE ISCAS</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adc-design-overview">ADC Design Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#montecarlo-simulation-results">Montecarlo Simulation Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analog-circuit-implementation">Analog Circuit Implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+
+This is a 10 bit noise-shaping successive-approximation-register dataconverter.
+By default the ADC performs second-order incremental sigma-delta noise-shaping
+and decimates the output using a matching second-order CIC filter.
+
+Note! the analog input signal is sampled on the falling edge of the SAMPLE_CLK
+and is tracked when the SAMPLE_CLK is high.
+
+The controller adaptively times the internal control such that only the 
+sample clock is neccessary to operate the system. The sampling frequency 
+should be adjusted according to the desired oversampling ratio, that is
+2 * fnyquist * (OSR * 4 + 2) = fsampling. When OSR is not zero there is a minimum
+oversampling ratio of 6 and each OSR code increments this factor by 4.
+
+When the OSR code is zero this noise-shaping functionality is by passed and
+the sar result is directly available at the output when the gain is at 15. 
+For basic SAR operation the analog must also be disabled using the 
+ANALOG_ENABLE flag. Note in this case the DONE flag is always high and
+the REFC voltage is used during sampling.
+
+When using non-zero OSR codes the converter uses an internal timer to decimate
+the output. The DONE flag is used to specify when the data is ready and should
+also be used the trigger when input should be multiplexed. This signal
+resets both the analog-loop filter and the decimation integrators which 
+garantees independent conversions. When DONE_OVERRIDE is forced low this 
+reset behavior is by-passed and the system can operate as a conventional
+sigma-delta converter. 
+
+By default the override signals should no be used unless we are debugging 
+internal functionality. There are several analog test signals that allow 
+the internal loop-filter voltages to be monitored. Additionally the 
+EXTERNAL_CLK override control disables the asynchronous operation and forces
+the use of the external clock for more conventional SAR operation. The 
+digital debug allows introspection of fsm and decimator outputs to check
+timing and conversion results.

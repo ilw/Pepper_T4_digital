@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="100x100" href="_static/favicon.png" type="image/png">
+    <title>Developer Guide &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GUIDE';</script>
+    <script src="_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="CHANGELOG.html" />
+    <link rel="prev" title="Pepper ADC Changelog" href="units/adc/CHANGELOG.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-41836</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">ea504cf4-4c17-46d7-9d11-15b66703d6dc</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-41836, KQCEX6RUC46M-1184322800-41836</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="units/README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="units/README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Developer Guide</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>This site is developed using git and python tools. Here is a short overview on how
+to use this repository and contribute.
+The documentation is built with <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> using the <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/">PyData Sphinx Theme</a>.
+It is designed for a technical audience: engineers, researchers, and circuit designers.</p>
+<p>This documentation aims to make Pepper development reproducible, transparent, and easy to extend.
+For questions or issues, please open a discussion in the project’s repository.</p>
+<section id="quick-start-summary">
+<h2>Quick Start Summary<a class="headerlink" href="#quick-start-summary" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Task</p></th>
+<th class="head text-left"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Clean build</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Build documentation</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">livehtml</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Build notebooks</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">build_nb</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Create environment</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">venv</span> <span class="pre">.venv</span> <span class="pre">or</span> <span class="pre">uv</span> <span class="pre">venv</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Install dependencies</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="project-organization">
+<h2>Project Organization<a class="headerlink" href="#project-organization" title="Link to this heading">#</a></h2>
+<p>This repository is organized as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pepper/
+├──<span class="w"> </span>units/
+│<span class="w">   </span>├──<span class="w"> </span>adc/
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>dms/
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>signoff/
+│<span class="w">   </span>├──<span class="w"> </span>PRESTUDY.md
+│<span class="w">   </span>└──<span class="w"> </span>README.md
+├──<span class="w"> </span>_static/
+├──<span class="w"> </span>build/
+├──<span class="w"> </span>src/
+├──<span class="w"> </span>conf.py
+├──<span class="w"> </span>index.md
+├──<span class="w"> </span>Makefile
+├──<span class="w"> </span>requirements.txt
+└──<span class="w"> </span>README.md
+</pre></div>
+</div>
+<p>All module documentation must be placed in the <code class="docutils literal notranslate"><span class="pre">units</span></code> directory and is
+organized in a hierarchical fashion that reflects the circuit hierarchy.
+The <code class="docutils literal notranslate"><span class="pre">src</span></code> directory and <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> file are specific to the website configuration
+and should not be changed.</p>
+<p>Any external files that need to be served can be placed
+in <code class="docutils literal notranslate"><span class="pre">_static</span></code> while other resources such a figures and data should be organized
+in the same directory as the markdown document that is referencing it. The
+<code class="docutils literal notranslate"><span class="pre">.fig</span></code> naming convention to collect figures is required.</p>
+<p>Sub-modules, verification data, and modelling files for a particular block should be
+placed in local sub-folders <code class="docutils literal notranslate"><span class="pre">units</span></code>, <code class="docutils literal notranslate"><span class="pre">signoff</span></code>, and <code class="docutils literal notranslate"><span class="pre">dms</span></code> respectively.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>All units should have a <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file as entry point for the module documentation.</p>
+</div>
+</section>
+<section id="building-documentation-with-sphinx">
+<h2>Building Documentation with Sphinx<a class="headerlink" href="#building-documentation-with-sphinx" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> is
+a documentation generator or a tool that translates a set of plain text source
+files into various output formats, automatically producing cross-references, indices, etc.</p>
+<p>Here we use plain markdown as documentation source together with <code class="docutils literal notranslate"><span class="pre">directives</span></code> to
+provide sphinx specific formatting. The <code class="docutils literal notranslate"><span class="pre">toctree</span></code> will be the most used way to
+organize the site structure. In order to reference documents and include them
+in the site structure we simply reference them according to their relative path:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>.. toctree::
+   :maxdepth: 2
+
+   usage/installation
+   usage/quickstart
+   ...
+</pre></div>
+</div>
+<p>Please see the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">Quick Start Guide</a> for more details.</p>
+</section>
+<section id="setup-and-git-usage">
+<h2>Setup and Git Usage<a class="headerlink" href="#setup-and-git-usage" title="Link to this heading">#</a></h2>
+<section id="cloning-and-branching">
+<h3>Cloning and Branching<a class="headerlink" href="#cloning-and-branching" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/&lt;organization&gt;/pepper.git
+<span class="nb">cd</span><span class="w"> </span>pepper
+
+<span class="c1"># Create a new development branch for your changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>dev/user/my-feature
+</pre></div>
+</div>
+<p>Follow a standard Git branching workflow:</p>
+<ul class="simple">
+<li><p>main → stable release-ready documentation</p></li>
+<li><p>dev/ → active feature and bug-fix integration</p></li>
+</ul>
+<p>Commit Guidelines</p>
+<ul class="simple">
+<li><p>Write atomic commits that encapsulate a single logical change.</p></li>
+<li><p>Use imperative mood in commit messages (e.g., “Add documentation for virtual environment setup”).</p></li>
+<li><p>Reference issues or PRs when applicable.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add initial setup instructions for Python venv&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span> <span class="pre">--all</span></code> regularly to sync remote branches.</p></li>
+<li><p>Clean old branches with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">--merged</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">stash</span></code> when you need to switch context quickly without committing incomplete work</p></li>
+</ul>
+</section>
+</section>
+<section id="python-environment-setup">
+<h2>Python Environment Setup<a class="headerlink" href="#python-environment-setup" title="Link to this heading">#</a></h2>
+<p>This repository supports two primary ways to manage dependencies: venv and uv. This will manage
+the dependencies required to build documentation from source.</p>
+<section id="option-a-using-venv">
+<h3>Option A: Using venv<a class="headerlink" href="#option-a-using-venv" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> is Python’s default environment/package manager.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">   </span><span class="c1"># (Linux/Mac)</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">      </span><span class="c1"># (Windows)</span>
+
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+<section id="option-b-using-uv-recommended-for-lightweight-environments">
+<h3>Option B: Using uv (Recommended for lightweight environments)<a class="headerlink" href="#option-b-using-uv-recommended-for-lightweight-environments" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://github.com/astral-sh/uv">uv</a> is a fast, modern Python package manager compatible with pip’s interface.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">   </span><span class="c1"># (Linux/Mac)</span>
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">      </span><span class="c1"># (Windows)</span>
+uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exporting-cadence-data">
+<h2>Exporting Cadence Data<a class="headerlink" href="#exporting-cadence-data" title="Link to this heading">#</a></h2>
+<p>!TODO</p>
+</section>
+<section id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Link to this heading">#</a></h2>
+<p>To contribute:</p>
+<ul class="simple">
+<li><p>Fork the repository.</p></li>
+<li><p>Create a feature branch.</p></li>
+<li><p>Follow coding and documentation conventions.</p></li>
+<li><p>Submit a pull request to develop.</p></li>
+</ul>
+<p>Make sure to update <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> with any notable change.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1556 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" data-theme="light" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pepper_adc &#8212; Pepper Sense Chip IC documentation 0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=e50f73fa" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pepper_adc';</script>
+    <script src="../_static/js/custom.js?v=bb7c8fd7"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">KQCEX6RUC46M-1184322800-41032</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">a075385e-5bdf-427c-89b2-69bbcbb6a511</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://mintneuro.sharepoint.com/sites/ICDesign/_layouts/15/DocIdRedir.aspx?ID=KQCEX6RUC46M-1184322800-41032, KQCEX6RUC46M-1184322800-41032</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/MintNeuro_logo_Colour.png" class="logo__image only-light" alt="MintNeuro"/>
+    <script>document.write(`<img src="../_static/MintNeuro_logo_WhiteOrange.png" class="logo__image only-dark" alt="MintNeuro"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../units/README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../README.html">
+    Pepper T4
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../GUIDE.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../units/README.html">
+    Sense Chip
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../CHANGELOG.html">
+    Changelog
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../TODO.html">
+    TODO List
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">pepper_adc</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pepper_adc</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">constants</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
+<span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
+<span class="kn">from</span> <span class="nn">mpmath</span> <span class="kn">import</span> <span class="n">mp</span><span class="p">,</span> <span class="n">mpf</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">ln</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">rand</span>
+<span class="kn">from</span> <span class="nn">quantiphy</span> <span class="kn">import</span> <span class="n">Quantity</span>
+<span class="c1"># Set numerical precision</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">prec</span> <span class="o">=</span> <span class="mi">65</span>
+
+<span class="c1"># TODO Add doc strings</span>
+
+<div class="viewcode-block" id="AdcBuffer">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.AdcBuffer">[docs]</a>
+<span class="k">class</span> <span class="nc">AdcBuffer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vdd</span> <span class="o">=</span> <span class="mf">1.8</span><span class="p">,</span> <span class="n">t_settle</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">/</span><span class="p">(</span><span class="mf">144e3</span><span class="p">),</span> <span class="n">t_tau</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">c_load</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mf">15e-12</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vdd</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="n">vdd</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_settle</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="n">t_settle</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">t_tau</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="n">t_tau</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_load</span> <span class="o">=</span> <span class="n">Quantity</span><span class="p">(</span><span class="n">c_load</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_time_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_settle</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">t_tau</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">bandwidth_ugf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quantity</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_time_constant</span><span class="p">),</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;Hz&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_gm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quantity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">c_load</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time_constant</span><span class="p">,</span><span class="n">units</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_ibias</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quantity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gm</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Quantity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vdd</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ibias</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;W&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QnfCapacitors">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.QnfCapacitors">[docs]</a>
+<span class="k">class</span> <span class="nc">QnfCapacitors</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+    <span class="n">buffer_interation_cap</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">int1_sampling_cap</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">int1_integration_cap</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">int1_feedback_cap</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">int2_sampling_cap</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">int2_integration_cap</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">int2_feedback_cap</span><span class="p">:</span> <span class="nb">float</span></div>
+
+
+
+<div class="viewcode-block" id="high_precision_normal">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.high_precision_normal">[docs]</a>
+<span class="k">def</span> <span class="nf">high_precision_normal</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">mpf</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sigma</span><span class="o">=</span><span class="n">mpf</span><span class="p">(</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="c1"># Use Python&#39;s random module for uniform [0, 1) sampling</span>
+    <span class="c1"># but cast to mpmath mpf for high-precision computation</span>
+    <span class="n">u1</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span>
+    <span class="n">u2</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span>
+
+    <span class="c1"># Box-Muller transform</span>
+    <span class="n">z0</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ln</span><span class="p">(</span><span class="n">u1</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">u2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">z0</span></div>
+
+
+
+<div class="viewcode-block" id="PepperController">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperController">[docs]</a>
+<span class="k">class</span> <span class="nc">PepperController</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pepper ADC controller module.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">osr</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">vdd</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.8</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">osr</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="n">osr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cic</span> <span class="o">=</span> <span class="n">SecondOrderCIC</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adc</span> <span class="o">=</span> <span class="n">PepperDataConverter_V3</span><span class="p">(</span><span class="n">vdd</span><span class="o">=</span><span class="n">vdd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conversion</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adc</span><span class="o">.</span><span class="n">mes1_conversion</span>
+
+<div class="viewcode-block" id="PepperController.convert">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperController.convert">[docs]</a>
+    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">signal</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adc</span><span class="o">.</span><span class="n">zero_qnf</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cic</span><span class="o">.</span><span class="n">zero_data</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">osr</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conversion</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+            <span class="n">acc_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cic</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span> <span class="o">//</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">mid_point</span> <span class="o">=</span> <span class="n">acc_result</span>
+        <span class="k">return</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mid_point</span> <span class="o">-</span> <span class="n">acc_result</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span> <span class="o">**</span> <span class="mi">2</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">switching_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switching energy dissipated per sample.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adc</span><span class="o">.</span><span class="n">switching_energy</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">analog_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analog energy dissipated per sample.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adc</span><span class="o">.</span><span class="n">analog_energy</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">digital_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Digital energy dissipated per sample.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">adc</span><span class="o">.</span><span class="n">digital_energy</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">osr</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Total energy dissipated per sample.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">switching_energy</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">analog_energy</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">digital_energy</span>
+        <span class="p">)</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="SecondOrderCIC">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.SecondOrderCIC">[docs]</a>
+<span class="k">class</span> <span class="nc">SecondOrderCIC</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Basic CIC model for the Pepper ADC.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">2</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+
+<div class="viewcode-block" id="SecondOrderCIC.zero_data">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.SecondOrderCIC.zero_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">zero_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SecondOrderCIC.update">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.SecondOrderCIC.update">[docs]</a>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">new_val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">comb_integrator</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+</div>
+
+
+
+<span class="c1"># Make Version 3</span>
+<span class="c1"># Lower Sampling Cap</span>
+<span class="c1"># Use last SAR conversion - Not beneficial because of feedback calculation</span>
+<span class="c1"># adjust QNF gain</span>
+<span class="c1"># non zero offset</span>
+<span class="c1"># calculate analytic accuracy</span>
+<span class="c1"># QNF limited gain 40 dB</span>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1">[docs]</a>
+<span class="k">class</span> <span class="nc">PepperDataConverter_V1</span><span class="p">:</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Models the Pepper capacitor CDAC array with MES2+DWA functionality.</span>
+
+<span class="sd">    This is a single-ended representation of the fully-differential </span>
+<span class="sd">    capacitive dac used in the Pepper NS ADC. Metrics will see 6dB improvement.</span>
+
+<span class="sd">    The design does not use split capacitors and instead segments the </span>
+<span class="sd">    array into 4 sections: one DWA MSBs, two MES2 LSBs, and coupling to</span>
+<span class="sd">    the analogue quantization noise-shaping filter.</span>
+
+<span class="sd">    The MSB section uses two 832 fF unit capacitors for feeding back the </span>
+<span class="sd">    first 4 bits. The same 832 fF capacitor is used to couple the analogue</span>
+<span class="sd">    loopfilter during sampling. This is done so that the common-mode reference</span>
+<span class="sd">    voltage is used as little as possible and kept quiet.</span>
+
+<span class="sd">    The LSB section uses two 6 bit CDACs with a ping-pong configuration.</span>
+<span class="sd">    Here the unit capacitor is 51.4 fF. </span>
+
+<span class="sd">    The total sampling capacitance is 15x 2x 832 fF or around 25 pF on both</span>
+<span class="sd">    positive and negative analogue inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_k</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">k</span><span class="p">)</span>  <span class="c1"># Boltzmann constant</span>
+    <span class="n">_T</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">convert_temperature</span><span class="p">(</span><span class="mf">25.0</span><span class="p">,</span> <span class="s2">&quot;Celsius&quot;</span><span class="p">,</span> <span class="s2">&quot;Kelvin&quot;</span><span class="p">))</span>  <span class="c1"># Convert to Kelvin</span>
+    <span class="n">_kT</span> <span class="o">=</span> <span class="n">_k</span> <span class="o">*</span> <span class="n">_T</span>
+    <span class="n">_amplifier_gain</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="mi">50</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span> <span class="c1"># 50 dB target</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+            <span class="n">vdd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.8</span><span class="p">,</span>
+        <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">832.0e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">52.0e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">2e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="n">vdd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">=</span> <span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_capacitor_array</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comparator_offset</span> <span class="o">=</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">=</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comparator_noise</span> <span class="o">=</span> <span class="mf">1e-4</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">switching_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Switching energy dissipated per conversion.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">**</span> <span class="mf">3.2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_capacitance</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_time_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">12.0</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">analog_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analog energy dissipated per conversion.&quot;&quot;&quot;</span>
+        <span class="c1"># 1/time_constant = 2 * currnent / 1.2 * 26e-3 / self.total_capacitance</span>
+        <span class="c1"># based on empirical fitting </span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_capacitance</span> <span class="o">*</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="mf">0.1</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_time_constant</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">digital_energy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Digital energy dissipated per conversion.&quot;&quot;&quot;</span>
+        <span class="c1"># Based on empirical scaling and estimate for CIC</span>
+        <span class="n">gate_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">5</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">25</span>
+        <span class="k">return</span> <span class="n">gate_count</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">5e-15</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">comparator_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+            <span class="o">-</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_comparator_offset</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_comparator_noise</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">quantization_residue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sar_residue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sar_output</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_limited_gain_integration</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">new_val</span><span class="p">,</span> <span class="n">gain</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">state</span><span class="o">+</span><span class="n">new_val</span><span class="p">)</span> <span class="o">*</span> <span class="n">gain</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">gain</span><span class="p">)</span>
+
+<div class="viewcode-block" id="PepperDataConverter_V1.update_loopfilter">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.update_loopfilter">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_loopfilter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">gain_factor_A1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_capacitance</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+        <span class="n">gain_factor_A2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">gain_factor_A3</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limited_gain_integration</span><span class="p">(</span>
+            <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+            <span class="n">new_val</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">gain_factor_A3</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_ktc_noise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+            <span class="n">gain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_amplifier_gain</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_limited_gain_integration</span><span class="p">(</span>
+            <span class="n">state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">new_val</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">sar_residue</span> <span class="o">*</span> <span class="n">gain_factor_A1</span> <span class="o">*</span> <span class="n">gain_factor_A2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_ktc_noise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+            <span class="n">gain</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_amplifier_gain</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span></div>
+
+        
+<div class="viewcode-block" id="PepperDataConverter_V1.inc_pointer">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.inc_pointer">[docs]</a>
+    <span class="k">def</span> <span class="nf">inc_pointer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span> 
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+        <span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_build_capacitor_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Calculate Array Weights</span>
+        <span class="n">lsb_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">qnf_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span> <span class="n">mpf</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,)</span><span class="o">*</span><span class="mi">4</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span><span class="o">*</span><span class="mi">3</span><span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+        <span class="c1"># Sample Mismatch</span>
+        <span class="n">msb_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_mom_capacitor_mismatch_sigma_c18</span><span class="p">)</span> 
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+        <span class="n">lsb_sd1_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_mom_capacitor_mismatch_sigma_c18</span> <span class="o">/</span> <span class="n">weight</span> <span class="o">**</span> <span class="mf">0.5</span>
+                <span class="p">)</span> 
+                <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">lsb_weights</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+        <span class="n">lsb_sd2_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_mom_capacitor_mismatch_sigma_c18</span> <span class="o">/</span> <span class="n">weight</span> <span class="o">**</span> <span class="mf">0.5</span>
+                <span class="p">)</span> 
+                <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">lsb_weights</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+        <span class="n">qnf_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_msb_mom_capacitor_mismatch_sigma_c18</span> <span class="o">/</span> <span class="n">weight</span> <span class="o">**</span> <span class="mf">0.5</span>
+                <span class="p">)</span> 
+                <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">qnf_weights</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Calculate Effective Weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">msb_mismatch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span> <span class="o">*</span> <span class="n">lsb_sd1_mismatch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span> <span class="o">*</span> <span class="n">lsb_sd2_mismatch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">qnf_weights</span> <span class="o">*</span> <span class="n">qnf_mismatch</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_caps</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_caps</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span><span class="p">,</span> <span class="n">repeats</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">qnf_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">qnf_capacitors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QnfCapacitors</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">QnfCapacitors</span><span class="p">(</span>
+            <span class="o">*</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">)</span>
+        <span class="p">)</span>
+    
+<div class="viewcode-block" id="PepperDataConverter_V1.zero_qnf">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.zero_qnf">[docs]</a>
+    <span class="k">def</span> <span class="nf">zero_qnf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.zero_bits">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.zero_bits">[docs]</a>
+    <span class="k">def</span> <span class="nf">zero_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">msb_value</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span>  <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd1_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd1_value_delay1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd1_value_delay2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay2</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd2_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd2_value_delay1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">lsb_sd2_value_delay2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay2</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">total_capacitance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sampling capacitance .&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_msb_unit_capacitor_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Capacitor area in um².&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_msb_mom_capacitor_mismatch_sigma_c18</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mismatch sigma from MC simulation. 0.1% for 10x10 µm².&quot;&quot;&quot;</span>
+        <span class="n">reference_area</span> <span class="o">=</span> <span class="mf">831.9e-15</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span> <span class="c1"># 20.4 by 20.4 finger</span>
+        <span class="n">reference_sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mf">349.3e-3</span><span class="o">/</span><span class="mf">831.9</span><span class="p">)</span> <span class="c1"># MC simulation</span>
+        <span class="k">return</span> <span class="n">reference_sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reference_area</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_unit_capacitor_area</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_lsb_unit_capacitor_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Capacitor area in um².&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_lsb_mom_capacitor_mismatch_sigma_c18</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Mismatch sigma from MC simulation. 0.1% for 10x10 µm².&quot;&quot;&quot;</span>
+        <span class="n">reference_area</span> <span class="o">=</span> <span class="mf">51.42e-15</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span> <span class="c1"># 20.4 by 20.4 finger</span>
+        <span class="n">reference_sigma</span> <span class="o">=</span> <span class="p">(</span><span class="mf">88.17e-3</span><span class="o">/</span><span class="mf">51.42</span><span class="p">)</span> <span class="c1"># MC simulation</span>
+        <span class="k">return</span> <span class="n">reference_sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">reference_area</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_unit_capacitor_area</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">_sample_ktc_noise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_capacitance</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">noise_excess_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">sampling_sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">noise_excess_factor</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_kT</span> <span class="o">/</span> <span class="n">sampling_capacitance</span> <span class="p">)</span>
+        <span class="k">return</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="n">sigma</span><span class="o">=</span><span class="n">sampling_sigma</span><span class="p">)</span> 
+
+    <span class="k">def</span> <span class="nf">_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stores the input voltage to be sampled by the DAC.&quot;&quot;&quot;</span>
+        <span class="n">analog_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>   <span class="c1"># Pre Charge top cap to vdd/2 and sample control signals</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_ktc_noise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_capacitance</span><span class="p">,</span> <span class="n">noise_excess_factor</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">analog_bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">noise</span>
+
+<div class="viewcode-block" id="PepperDataConverter_V1.update_delay_data">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.update_delay_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_delay_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes0_sample">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes0_sample">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_delay_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="n">vin</span><span class="p">,</span> 
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes1_sample">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes1_sample">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_delay_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># Converting on SD2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Converting on SD1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span>
+        <span class="n">sampling_noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="n">vin</span><span class="p">,</span> 
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># Converting on SD2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Converting on SD1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span>
+        <span class="c1"># After SAR sd1/sd2 needs valid values </span>
+        <span class="c1"># for dout to resolve correctly</span>
+        <span class="k">return</span> <span class="n">sampling_noise</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes2_sample">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes2_sample">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes2_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_delay_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># Converting on SD2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay2</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Converting on SD1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span>
+        <span class="n">sampling_noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="n">vin</span><span class="p">,</span> 
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># Converting on SD2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># Converting on SD1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout_delay1</span>
+        <span class="k">return</span> <span class="n">sampling_noise</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_msb_encoded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return thermometer-coded vector for MSB.&quot;&quot;&quot;</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span><span class="p">):</span>
+            <span class="n">big_endian</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="n">index</span> 
+            <span class="n">selection</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="p">(</span><span class="n">big_endian</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="n">big_endian</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">:</span>
+                <span class="n">code</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.25</span><span class="p">:</span>
+                <span class="n">code</span><span class="p">[</span><span class="n">selection</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">assert</span> <span class="nb">sum</span><span class="p">(</span><span class="n">code</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+        <span class="c1"># print(code)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span>
+            <span class="n">code</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sar_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dac_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dac_output_ideal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dout_mes0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">lsb_scale_dout</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># converting on SD2</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="c1"># + self.lsb_sd2_value / lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="c1"># + self.lsb_sd2_value / lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dout_mes1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">lsb_scale_dout</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># converting on SD2</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value_delay1</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># converting on SD1</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value_delay1</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dout_mes2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">lsb_scale_dout</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># converting on SD2</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value_delay1</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value_delay2</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># converting on SD1</span>
+            <span class="k">return</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd2_value_delay1</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value_delay2</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+                <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+            <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+
+<div class="viewcode-block" id="PepperDataConverter_V1.sar_process">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.sar_process">[docs]</a>
+    <span class="k">def</span> <span class="nf">sar_process</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="c1"># Conversion register should be zero&#39;d</span>
+        <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">:</span> <span class="c1"># converting on SD2</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd2_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># converting on SD1</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantization_residue</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_adc_convertion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sar_process</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_loopfilter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inc_pointer</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">quantization_error</span>
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes0_conversion">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes0_conversion">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mes0_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes1_conversion">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes1_conversion">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mes1_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes2_conversion">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes2_conversion">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes2_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mes2_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dout</span></div>
+
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes0_metrics">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes0_metrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample_count</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">total_signal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_sample_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_quantization_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_mismatch_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
+
+            <span class="n">sample_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mes0_sample</span><span class="p">(</span>
+                <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+
+            <span class="n">total_sample_error</span> <span class="o">+=</span> <span class="n">sample_error</span>
+            <span class="n">total_quantization_error</span> <span class="o">+=</span> <span class="n">quantization_error</span>
+            <span class="n">total_mismatch_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output_ideal</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+
+            <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">total_signal</span> <span class="o">+=</span> <span class="n">dout</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">total_signal</span><span class="p">,</span> 
+            <span class="n">total_sample_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_quantization_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_mismatch_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes1_metrics">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes1_metrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample_count</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">total_signal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_sample_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_quantization_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_mismatch_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
+            <span class="n">sample_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mes1_sample</span><span class="p">(</span>
+                <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+
+            <span class="n">total_sample_error</span> <span class="o">+=</span> <span class="n">sample_error</span>
+            <span class="n">total_quantization_error</span> <span class="o">+=</span> <span class="n">quantization_error</span>
+            <span class="n">total_mismatch_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output_ideal</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+            <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">total_signal</span> <span class="o">+=</span> <span class="n">dout</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">total_signal</span><span class="p">,</span> 
+            <span class="n">total_sample_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_quantization_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_mismatch_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V1.mes2_metrics">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V1.mes2_metrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes2_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample_count</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">total_signal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_sample_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_quantization_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_mismatch_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
+            <span class="n">sample_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mes2_sample</span><span class="p">(</span>
+                <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+
+            <span class="n">total_sample_error</span> <span class="o">+=</span> <span class="n">sample_error</span>
+            <span class="n">total_quantization_error</span> <span class="o">+=</span> <span class="n">quantization_error</span>
+            <span class="n">total_mismatch_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output_ideal</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+            <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">total_signal</span> <span class="o">+=</span> <span class="n">dout</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span> <span class="o">=</span> <span class="ow">not</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_mes_selector</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">total_signal</span><span class="p">,</span> 
+            <span class="n">total_sample_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_quantization_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_mismatch_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2">[docs]</a>
+<span class="k">class</span> <span class="nc">PepperDataConverter_V2</span><span class="p">(</span><span class="n">PepperDataConverter_V1</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a new version of the Pepper ADC with only 1st order MES </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+            <span class="n">vdd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.8</span><span class="p">,</span>
+        <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">832.0e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">52.0e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_c_density</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">2e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="n">vdd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">=</span> <span class="mi">6</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">mpf</span><span class="p">(</span><span class="mf">0.0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dwa_pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_capacitor_array</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comparator_offset</span> <span class="o">=</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">=</span> <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_comparator_noise</span> <span class="o">=</span> <span class="mf">1e-4</span>
+
+    <span class="k">def</span> <span class="nf">_build_capacitor_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="c1"># Calculate Array Weights</span>
+        <span class="n">lsb_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+        <span class="n">qnf_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span> <span class="n">mpf</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,)</span><span class="o">*</span><span class="mi">5</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,)),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+        <span class="c1"># Sample Mismatch</span>
+        <span class="n">msb_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_mom_capacitor_mismatch_sigma_c18</span><span class="p">)</span> 
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+        <span class="n">lsb_sd1_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_mom_capacitor_mismatch_sigma_c18</span> <span class="o">/</span> <span class="n">weight</span> <span class="o">**</span> <span class="mf">0.5</span>
+                <span class="p">)</span> 
+                <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">lsb_weights</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+        <span class="n">qnf_mismatch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">high_precision_normal</span><span class="p">(</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_msb_mom_capacitor_mismatch_sigma_c18</span> <span class="o">/</span> <span class="n">weight</span> <span class="o">**</span> <span class="mf">0.5</span>
+                <span class="p">)</span> 
+                <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">qnf_weights</span>
+            <span class="p">),</span> 
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Calculate Effective Weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">msb_mismatch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span> <span class="o">*</span> <span class="n">lsb_sd1_mismatch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span> <span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">qnf_weights</span> <span class="o">*</span> <span class="n">qnf_mismatch</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_caps</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_caps</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span><span class="p">,</span> <span class="n">repeats</span><span class="o">=</span><span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">*</span> <span class="n">lsb_weights</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">*</span> <span class="n">qnf_weights</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:],</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.zero_bits">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.zero_bits">[docs]</a>
+    <span class="k">def</span> <span class="nf">zero_bits</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stores the input voltage to be sampled by the DAC.&quot;&quot;&quot;</span>
+        <span class="n">analog_bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>   <span class="c1"># Pre Charge top cap to vdd/2 and sample control signals</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_caps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample_ktc_noise</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_capacitance</span><span class="p">,</span> <span class="n">noise_excess_factor</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">analog_bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loopfilter_offset</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+        <span class="k">return</span> <span class="n">noise</span>
+
+<div class="viewcode-block" id="PepperDataConverter_V2.update_delay_data">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.update_delay_data">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_delay_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout_delay1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes0_sample">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes0_sample">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_delay_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="n">vin</span><span class="p">,</span> 
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes1_sample">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes1_sample">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_delay_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="c1"># self._lsb_sd1_dout = 1 - self._lsb_sd1_dout_delay1</span>
+        <span class="n">sampling_noise</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="n">vin</span><span class="p">,</span> 
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sampling_noise</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sar_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dac_output</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dac_output_ideal</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns DAC output voltage given a digital code in terms of N bits.&quot;&quot;&quot;</span>
+        <span class="n">bits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_msb_encoded</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qnf_aout</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dac_caps_ideal</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v_sampled</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dout_mes0</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">lsb_scale_dout</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dout_mes1</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="n">lsb_scale_dout</span> <span class="o">=</span> <span class="p">(</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">lsb_sd1_value_delay1</span> <span class="o">/</span> <span class="n">lsb_scale_dout</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">msb_value</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msb_bits</span>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.sar_process">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.sar_process">[docs]</a>
+    <span class="k">def</span> <span class="nf">sar_process</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="c1"># Conversion register should be zero&#39;d</span>
+        <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_msb_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_lsb_bits</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lsb_sd1_dout</span><span class="p">[</span><span class="n">cycle</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">comparator_output</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantization_residue</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes0_conversion">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes0_conversion">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mes0_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes0</span>
+        <span class="k">return</span> <span class="n">dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes1_conversion">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes1_conversion">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_conversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mes1_sample</span><span class="p">(</span>
+            <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+        <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes1</span>
+        <span class="k">return</span> <span class="n">dout</span></div>
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes0_metrics">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes0_metrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes0_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample_count</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">total_signal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_sample_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_quantization_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_mismatch_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
+
+            <span class="n">sample_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mes0_sample</span><span class="p">(</span>
+                <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+
+            <span class="n">total_sample_error</span> <span class="o">+=</span> <span class="n">sample_error</span>
+            <span class="n">total_quantization_error</span> <span class="o">+=</span> <span class="n">quantization_error</span>
+            <span class="n">total_mismatch_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output_ideal</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+
+            <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes0</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">total_signal</span> <span class="o">+=</span> <span class="n">dout</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">total_signal</span><span class="p">,</span> 
+            <span class="n">total_sample_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_quantization_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_mismatch_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V2.mes1_metrics">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V2.mes1_metrics">[docs]</a>
+    <span class="k">def</span> <span class="nf">mes1_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vin</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">sample_count</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+
+        <span class="n">total_signal</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_sample_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_quantization_error</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total_mismatch_error</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">):</span>
+            <span class="n">sample_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mes1_sample</span><span class="p">(</span>
+                <span class="n">vin</span><span class="o">=</span><span class="p">(</span><span class="n">vin</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_chopper_state</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="k">else</span> <span class="o">-</span><span class="n">vin</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">quantization_error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_adc_convertion</span><span class="p">()</span>
+
+            <span class="n">total_sample_error</span> <span class="o">+=</span> <span class="n">sample_error</span>
+            <span class="n">total_quantization_error</span> <span class="o">+=</span> <span class="n">quantization_error</span>
+            <span class="n">total_mismatch_error</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output_ideal</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">dac_output</span>
+            <span class="n">dout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dout_mes1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vdd</span><span class="o">/</span><span class="mi">2</span>
+            <span class="n">total_signal</span> <span class="o">+=</span> <span class="n">dout</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">total_signal</span><span class="p">,</span> 
+            <span class="n">total_sample_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_quantization_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+            <span class="n">total_mismatch_error</span> <span class="o">/</span> <span class="n">sample_count</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+
+<div class="viewcode-block" id="PepperDataConverter_V3">
+<a class="viewcode-back" href="../units/adc/dms/README.html#pepper_adc.PepperDataConverter_V3">[docs]</a>
+<span class="k">class</span> <span class="nc">PepperDataConverter_V3</span><span class="p">(</span><span class="n">PepperDataConverter_V2</span><span class="p">):</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a new version of the Pepper ADC with reduced sampling capacitance</span>
+<span class="sd">    and SAR bit extension</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+            <span class="n">vdd</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.8</span><span class="p">,</span>
+        <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">vdd</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">534.84e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lsb_unit_capacitor</span> <span class="o">=</span> <span class="n">mpf</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">33.43e-15</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_capacitor_array</span><span class="p">()</span></div>
+
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2025 Mint Neurotechnologies Ltd.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
