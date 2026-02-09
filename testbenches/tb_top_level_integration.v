@@ -53,6 +53,22 @@ module tb_top_level_integration();
     reg [15:0] spi_rx_data;
     integer i, j;
     reg [127:0] fifo_readback;
+
+    // Mock ADC exercise counters (helps verify OSR mode behavior)
+    integer adc_done_posedges;
+    integer adc_done_negedges;
+    integer adc_sample_edges;
+
+    always @(posedge ADC_DONE) adc_done_posedges = adc_done_posedges + 1;
+    always @(negedge ADC_DONE) adc_done_negedges = adc_done_negedges + 1;
+    always @(posedge SAMPLE_CLK_w) adc_sample_edges = adc_sample_edges + 1;
+
+    // SPI write visibility (TLM internal)
+    integer cfg_wr_pulses;
+    always @(posedge dut.cim_wr_en) begin
+        cfg_wr_pulses = cfg_wr_pulses + 1;
+        $display("CFG write: addr=0x%02h value=0x%02h (t=%0t)", dut.cim_reg_addr, dut.cim_reg_value, $time);
+    end
     
     // Waveform dumping
 `ifdef CADENCE
@@ -190,6 +206,10 @@ module tb_top_level_integration();
         
         // Initialize
         RESETN = 0;
+        adc_done_posedges = 0;
+        adc_done_negedges = 0;
+        adc_sample_edges  = 0;
+        cfg_wr_pulses     = 0;
         
         #500;
         RESETN = 1;
@@ -200,12 +220,11 @@ module tb_top_level_integration();
         //======================================================================
         $display("\n=== Test 1: Configure ADC ===");
         
-        // Write ADCOSR=1, ENDWA=0, ENCHP=0, ENMES=0, ENADCANALOG=0 to reg 0x1B
+        // Set up SAR mode first (OSR=0). This must be written while sampling is OFF.
         // cfg_data[223:216] = reg 0x1B
         // bit [0]=ENADCANALOG, [1]=ENMES, [2]=ENCHP, [3]=ENDWA, [7:4]=ADCOSR
-        // OSR=1 → 4'b0001 in bits [7:4] → byte = 8'h10
-        spi.send_word(16'h9B10, spi_rx_data);
-        $display("Wrote reg 0x1B = 0x10 (OSR=1)");
+        spi.send_word(16'h9B00, spi_rx_data);
+        $display("Wrote reg 0x1B = 0x00 (OSR=0, SAR mode)");
         #500;
         
         // Write ADCGAIN=15 to reg 0x1C
@@ -238,22 +257,76 @@ module tb_top_level_integration();
         #500;
         
         //======================================================================
-        // Test 3: Enable Sampling
+        // Test 3: Enable Sampling (SAR mode check)
         //======================================================================
-        $display("\n=== Test 3: Enable Sampling ===");
+        $display("\n=== Test 3: Enable Sampling (SAR mode) ===");
         
         // Write ENSAMP bit in reg 0x23
-        // cfg_data[282] = ENSAMP → bit 2 of reg 0x23 → byte = 8'h04
-        spi.send_word(16'hA304, spi_rx_data);
-        $display("Enabled sampling (reg 0x23 = 0x04)");
+        // In TLM.v: ENSAMP is cfg_data[287] → bit[7] of reg 0x23 → byte = 8'h80
+        spi.send_word(16'hA380, spi_rx_data);
+        $display("Enabled sampling (reg 0x23 = 0x80)");
+
+        // Quick sanity: read back reg 0x23 and check that nARST/SAMPLE_CLK start
+        spi.begin_transaction();
+        spi.transfer_word(16'h2300, spi_rx_data); // RDREG @ 0x23 (returns status)
+        spi.transfer_word(16'h0000, spi_rx_data); // returns reg data
+        spi.end_transaction();
+        $display("Reg 0x23 readback: 0x%h (expect 0xC0xx with bit7=1 in low byte)", spi_rx_data);
+        #2000;
+        $display("Post-ENSAMP: nARST=%b SAMPLE_CLK=%b ADC_DONE=%b ADCOSR=%0d",
+                 nARST_w, SAMPLE_CLK_w, ADC_DONE, ADCOSR_w);
+
+        // Ensure nARST comes high reasonably soon after ENSAMP is written
+        if (nARST_w !== 1'b1) begin
+            $display("ERROR: nARST did not assert after enabling ENSAMP.");
+            $stop;
+        end
         
         // Wait for ADC activity
         #5000;
         
-        // Check that ADC conversions are happening
-        $display("Monitoring ADC activity...");
-        wait(ADC_DONE == 1);
-        $display("  ADC conversion detected: RESULT=0x%h", ADC_RESULT);
+        // SAR-mode expectation: DONE stays high whenever nARST is high.
+        // Note: DONE_QUAL in TLM swallows the first DONE after enable; in SAR mode
+        // the mock DONE is constantly high, so we should observe ADC_DONE high here.
+        #1000;
+        if (ADC_DONE !== 1'b1) begin
+            $display("ERROR: Expected ADC_DONE=1 in SAR mode while nARST is high.");
+            $stop;
+        end
+        $display("SAR mode OK: ADC_DONE is high.");
+
+        // -------------------------------------------------------------------
+        // Switch to NS mode (OSR=1) for the rest of the system-level tests.
+        // Writes to 0x1B are blocked while sampling is enabled, so:
+        //   disable sampling → write OSR=1 → re-enable sampling
+        // -------------------------------------------------------------------
+        $display("\n=== Switch to NS mode (OSR=1) ===");
+        spi.send_word(16'hA300, spi_rx_data); // ENSAMP=0
+        #2000;
+        spi.send_word(16'h9B10, spi_rx_data); // OSR=1
+        $display("Wrote reg 0x1B = 0x10 (OSR=1)");
+        #500;
+        spi.send_word(16'hA380, spi_rx_data); // ENSAMP=1
+        $display("Re-enabled sampling (reg 0x23 = 0x80)");
+        #5000;
+        
+        // Debug: Check actual register values
+        $display("DEBUG: reg[0x1B]=0x%02h (expect 0x10), reg[0x23]=0x%02h (expect 0x80), ADCOSR=%0d, SAMPLE_CLK=%b",
+                 dut.u_cfg_regs.regs[8'h1B], dut.u_cfg_regs.regs[8'h23], ADCOSR_w, SAMPLE_CLK_w);
+
+        // NS-mode expectation: DONE pulses
+        adc_done_posedges = 0;
+        adc_done_negedges = 0;
+        adc_sample_edges  = 0;
+        repeat (80) @(posedge SAMPLE_CLK_w);
+        if (adc_done_posedges < 2 || adc_done_negedges < 2) begin
+            $display("ERROR: Expected pulsed DONE in NS mode (OSR=%0d). posedges=%0d negedges=%0d",
+                     ADCOSR_w, adc_done_posedges, adc_done_negedges);
+            $stop;
+        end else begin
+            $display("NS mode OK: DONE pulses observed. posedges=%0d negedges=%0d over %0d SAMPLE_CLK edges",
+                     adc_done_posedges, adc_done_negedges, adc_sample_edges);
+        end
         
         //======================================================================
         // Test 4: Verify Mux Control (channel sequencing)
@@ -278,15 +351,19 @@ module tb_top_level_integration();
         $display("\n=== Test 5: FIFO Readout via SPI ===");
         
         // Send RDDATA command (0xC0)
-        spi.send_word(16'hC000, spi_rx_data);
+        // As with RDREG, the first returned word is STATUS, and subsequent
+        // 16-bit transfers while CS remains low return FIFO data words.
+        spi.begin_transaction();
+        spi.transfer_word(16'hC000, spi_rx_data);
         $display("Sent RDDATA command, Status response: 0x%h", spi_rx_data);
         
         // Read 8 words (one frame)
         for (i = 0; i < 8; i = i + 1) begin
-            spi.read_word(spi_rx_data);
+            spi.transfer_word(16'h0000, spi_rx_data);
             fifo_readback[i*16 +: 16] = spi_rx_data;
             $display("  Word %0d: 0x%h", i, spi_rx_data);
         end
+        spi.end_transaction();
         
         // Verify data pattern
         if (fifo_readback[15:0] != 16'h0000 && fifo_readback[31:16] != 16'h0000)
@@ -313,16 +390,18 @@ module tb_top_level_integration();
         //======================================================================
         $display("\n=== Test 7: Re-enable Sampling (Stale Data Check) ===");
         
-        spi.send_word(16'hA304, spi_rx_data);
+        spi.send_word(16'hA380, spi_rx_data);
         $display("Re-enabled sampling");
         #20000;
         
         // Read FIFO again
-        spi.send_word(16'hC000, spi_rx_data);
+        spi.begin_transaction();
+        spi.transfer_word(16'hC000, spi_rx_data);
         for (i = 0; i < 8; i = i + 1) begin
-            spi.read_word(spi_rx_data);
+            spi.transfer_word(16'h0000, spi_rx_data);
             $display("  New Word %0d: 0x%h", i, spi_rx_data);
         end
+        spi.end_transaction();
         
         //======================================================================
         // Test 8: Register Readback
@@ -331,11 +410,15 @@ module tb_top_level_integration();
         
         // Read CHEN register (addr 0x16)
         // Command: RDREG (00) | Addr (010110) = 0x16
-        spi.send_word(16'h1600, spi_rx_data);
+        // NOTE: Command_Interpreter returns STATUS on the first 16 clocks of a CS-low
+        // transaction. The register data is returned on the *next* 16 clocks while
+        // CS remains low. So we must keep CS asserted across two word transfers.
+        spi.begin_transaction();
+        spi.transfer_word(16'h1600, spi_rx_data);
         $display("Status: 0x%h", spi_rx_data);
-        
-        spi.read_word(spi_rx_data);
-        $display("CHEN readback: 0x%h (expected 0x07 in low byte)", spi_rx_data);
+        spi.transfer_word(16'h0000, spi_rx_data); // clock out reg data
+        spi.end_transaction();
+        $display("CHEN readback: 0x%h (expected 0xC007 i.e. 0xC0 header + 0x07 data)", spi_rx_data);
         
         //======================================================================
         // Summary

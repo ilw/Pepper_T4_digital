@@ -44,15 +44,21 @@ data_byte
 //{
 input NRST, SCK, CS, PICO;
 input [15:0]tx_buff;
-(* keep = 1 *) output reg word_rcvd /* cadence preserve_sequential */;  
+(* keep = 1 *) output wire word_rcvd /* cadence preserve_sequential */;  
 output POCI;
-output reg [7:0] cmd_byte;
-output reg [7:0] data_byte;
-output reg byte_rcvd;
+output wire [7:0] cmd_byte;
+output wire [7:0] data_byte;
+output wire byte_rcvd;
 
 //Receiving registers / wires
 reg [3:0] bitcnt, bitcnt_n; // SPI in 16-bits format, so  4 bit counter 
 reg [15:0] data_in;
+
+// Expose stable "current" bytes and strobes combinationally so downstream
+// SCK-domain logic can use them on the same rising edge (mode 3 sampling edge).
+// This avoids same-edge NB visibility issues without sampling PICO on negedge.
+reg [7:0] cmd_byte_reg;
+reg [7:0] data_byte_reg;
 
 //Sending registers / wires
 reg [15:0] data_send;
@@ -90,27 +96,23 @@ end
 
 
 
-always @(posedge SCK)
-begin
-	cmd_byte[7:0] <= (bitcnt == 4'b0111) ? {data_in[6:0], PICO} : cmd_byte[7:0] ;
-	data_byte[7:0]<= (bitcnt == 4'b1111) ? {data_in[6:0], PICO} : data_byte[7:0];
-end
-
+// Registered copies (for non-boundary cycles)
 always @(posedge SCK or posedge CS)
 begin
-	if (CS) 
-	begin
-		byte_rcvd <=0;
-		word_rcvd <=0;
+	if (CS) begin
+		cmd_byte_reg  <= 8'h00;
+		data_byte_reg <= 8'h00;
+	end else begin
+		if (bitcnt == 4'b0111) cmd_byte_reg  <= {data_in[6:0], PICO};
+		if (bitcnt == 4'b1111) data_byte_reg <= {data_in[6:0], PICO};
 	end
-	else 
-	begin
-		// if the first data words  has been received 
-		byte_rcvd <=(bitcnt == 4'b0111);
-		//if the whole word has been received
-		word_rcvd<=(bitcnt == 4'b1111);		
-	end		
 end
+
+// Combinational "this-edge" visibility
+assign byte_rcvd = (!CS) && (bitcnt == 4'b0111);
+assign word_rcvd = (!CS) && (bitcnt == 4'b1111);
+assign cmd_byte  = byte_rcvd ? {data_in[6:0], PICO} : cmd_byte_reg;
+assign data_byte = word_rcvd ? {data_in[6:0], PICO} : data_byte_reg;
 
 
 

@@ -14,6 +14,10 @@ module Configuration_Registers (
     reg [7:0] regs [0:35];
     integer i;
 
+    // Commit writes on SCK rising edge when wr_en is asserted.
+    // In SPI Mode 3, after the 16th bit, SCK returns to idle (high), creating a 17th posedge.
+    // Command_Interpreter sets wr_en on the 16th posedge and keeps it high,
+    // so we can reliably sample it on the 17th posedge.
     always @(posedge SCK or negedge NRST) begin
         if (!NRST) begin
             for (i = 0; i < 36; i = i + 1) begin

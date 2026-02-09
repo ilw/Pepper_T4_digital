@@ -61,6 +61,7 @@ gtkwave simulation/tb_req_block_ns_sar_v2_mock.vcd
 ###############################################################################
 
 # TLM integration (includes all RTL in source/ plus SPI master BFM and tb)
-iverilog -g2012 -o simulation/tb_top_level_integration.vvp source/*.v testbenches/spi_master_bfm.v testbenches/tb_top_level_integration.v
+# Include mock ADC + dummy mux models used by the integration TB.
+iverilog -g2012 -o simulation/tb_top_level_integration.vvp source/*.v testbenches/spi_master_bfm.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_integration.v
 vvp simulation/tb_top_level_integration.vvp
 gtkwave simulation/tb_top_level_integration.vcd

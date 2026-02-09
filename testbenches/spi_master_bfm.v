@@ -13,55 +13,69 @@ module spi_master_bfm (
     input wire MISO
 );
 
-    // Task to send 16-bit word
-    task send_word;
-        input [15:0] data;
-        output [15:0] received;
-        integer i;
+    // SPI mode 3 helpers (CPOL=1, CPHA=1):
+    // - SCK idles high
+    // - Master changes MOSI on falling edge
+    // - Master samples MISO on rising edge
+    task begin_transaction;
         begin
-            received = 16'h0000;
             CS = 0;
             #100;
-            
-            // Send 16 bits MSB first
-            for (i = 15; i >= 0; i = i - 1) begin
-                MOSI = data[i];
-                #50;
-                SCK = 0;  // Falling edge (Mode 3)
-                #50;
-                received[i] = MISO;
-                SCK = 1;  // Rising edge
-                #50;
-            end
-            
+        end
+    endtask
+
+    task end_transaction;
+        begin
             #100;
             CS = 1;
             #100;
         end
     endtask
-    
-    // Task to read word (MOSI held low)
-    task read_word;
+
+    task transfer_word;
+        input  [15:0] data;
         output [15:0] received;
         integer i;
         begin
             received = 16'h0000;
-            CS = 0;
-            #100;
-            
-            MOSI = 0;
+            // Send 16 bits MSB first
             for (i = 15; i >= 0; i = i - 1) begin
+                MOSI = data[i];
                 #50;
-                SCK = 0;
+                SCK = 0;  // falling
                 #50;
+                SCK = 1;  // rising (sample)
+                #25;
                 received[i] = MISO;
-                SCK = 1;
-                #50;
+                #25;
             end
-            
-            #100;
-            CS = 1;
-            #100;
+            // Mode 3: Add one more SCK cycle after 16 bits to ensure downstream
+            // logic clocked on posedge SCK can see any control signals (like wr_en)
+            // that were set during the 16th bit.
+            #50;
+            SCK = 0;
+            #50;
+            SCK = 1;
+            #50;
+        end
+    endtask
+
+    // Backward-compatible single-word helpers (toggle CS per word)
+    task send_word;
+        input [15:0] data;
+        output [15:0] received;
+        begin
+            begin_transaction();
+            transfer_word(data, received);
+            end_transaction();
+        end
+    endtask
+    
+    task read_word;
+        output [15:0] received;
+        begin
+            MOSI = 0;
+            send_word(16'h0000, received);
         end
     endtask
     

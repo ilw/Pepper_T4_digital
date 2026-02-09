@@ -88,7 +88,8 @@ module Command_Interpreter (
     // Register access
     reg [5:0] reg_addr_reg;
     reg [7:0] reg_value_reg;
-    reg wr_en_reg;
+    reg       wr_en_reg;
+    reg       read_reg_word_count;  // 0=first word (status), 1=second word (data)
     
     // FIFO readout control
     reg [2:0] word_counter;  // 0-7 for 8 words
@@ -191,7 +192,9 @@ module Command_Interpreter (
             end
             
             READ_REG: begin
-                if (word_rcvd || first_transaction)
+                // Stay in READ_REG for second word (to return register data).
+                // After second word completes, return to IDLE.
+                if ((word_rcvd && read_reg_word_count == 1'b1) || first_transaction)
                     nstate = IDLE;
             end
             
@@ -236,8 +239,12 @@ module Command_Interpreter (
     always @(posedge SCK or negedge NRST) begin
         if (!NRST) begin
             reg_addr_reg <= 6'b0;
+            read_reg_word_count <= 1'b0;
         end else if (byte_rcvd && (state == IDLE)) begin
             reg_addr_reg <= cmd_byte[5:0];
+            read_reg_word_count <= 1'b0;  // Reset counter on new command
+        end else if ((state == READ_REG) && word_rcvd) begin
+            read_reg_word_count <= read_reg_word_count + 1'b1;
         end
     end
     
@@ -252,6 +259,7 @@ module Command_Interpreter (
         end else if (state == WRITE_REG && word_rcvd) begin
             // Configuration register writes (0x00 - 0x23) only.
             // Write protection: only allow writes when not sampling OR to address 0x23.
+            // Keep wr_en high; it will be cleared when state changes or CS goes high.
             if (reg_addr_reg <= 6'h23) begin
                 if (!ENSAMP_sync_reg[1] || (reg_addr_reg == 6'h23)) begin
                     reg_value_reg <= data_byte;
@@ -263,7 +271,8 @@ module Command_Interpreter (
                 // Non-config writes handled internally (e.g. STATUS_CLR), do not assert wr_en.
                 wr_en_reg <= 1'b0;
             end
-        end else begin
+        end else if (state != WRITE_REG) begin
+            // Clear wr_en when leaving WRITE_REG state
             wr_en_reg <= 1'b0;
         end
     end
@@ -402,24 +411,30 @@ module Command_Interpreter (
             end
             
             READ_REG: begin
-                // Register read response
-                if (reg_addr_reg <= 6'h23) begin
-                    // Physical registers 0x00-0x23
-                    tx_buff_reg = {RESP_REGDATA, cfg_data[reg_addr_reg*8 +: 8]};
-                end else if (reg_addr_reg == 6'h24) begin
-                    // STATUS_LO (SAT[7:0])
-                    tx_buff_reg = {RESP_REGDATA, status_sync[1][7:0]};
-                end else if (reg_addr_reg == 6'h25) begin
-                    // STATUS_HI (status[13:8] packed into [5:0])
-                    tx_buff_reg = {RESP_REGDATA, {2'b00, status_sync[1][13:8]}};
-                end else if (reg_addr_reg == 6'h2C) begin
-                    // TEMPVAL high byte
-                    tx_buff_reg = {RESP_REGDATA, TEMPVAL_sync[1][15:8]};
-                end else if (reg_addr_reg == 6'h2D) begin
-                    // TEMPVAL low byte
-                    tx_buff_reg = {RESP_REGDATA, TEMPVAL_sync[1][7:0]};
+                // First word: send status. Second word: send register data.
+                if (read_reg_word_count == 1'b0) begin
+                    // First word: status
+                    tx_buff_reg = {status_sync[1], RESP_STATUS};
                 end else begin
-                    tx_buff_reg = {RESP_REGDATA, 8'h00};
+                    // Second word: register data
+                    if (reg_addr_reg <= 6'h23) begin
+                        // Physical registers 0x00-0x23
+                        tx_buff_reg = {RESP_REGDATA, cfg_data[reg_addr_reg*8 +: 8]};
+                    end else if (reg_addr_reg == 6'h24) begin
+                        // STATUS_LO (SAT[7:0])
+                        tx_buff_reg = {RESP_REGDATA, status_sync[1][7:0]};
+                    end else if (reg_addr_reg == 6'h25) begin
+                        // STATUS_HI (status[13:8] packed into [5:0])
+                        tx_buff_reg = {RESP_REGDATA, {2'b00, status_sync[1][13:8]}};
+                    end else if (reg_addr_reg == 6'h2C) begin
+                        // TEMPVAL high byte
+                        tx_buff_reg = {RESP_REGDATA, TEMPVAL_sync[1][15:8]};
+                    end else if (reg_addr_reg == 6'h2D) begin
+                        // TEMPVAL low byte
+                        tx_buff_reg = {RESP_REGDATA, TEMPVAL_sync[1][7:0]};
+                    end else begin
+                        tx_buff_reg = {RESP_REGDATA, 8'h00};
+                    end
                 end
             end
             
@@ -448,10 +463,10 @@ module Command_Interpreter (
     // OUTPUT ASSIGNMENTS
     /////////////////////////////////////////////////////////////////////////////////
     
-    assign tx_buff = tx_buff_reg;
-    assign reg_addr = reg_addr_reg;
+    assign tx_buff   = tx_buff_reg;
+    assign reg_addr  = reg_addr_reg;
     assign reg_value = reg_value_reg;
-    assign wr_en = wr_en_reg;
+    assign wr_en     = wr_en_reg;
     assign FIFO_POP = fifo_pop_reg;
 
     // Status clear bridge outputs
