@@ -106,39 +106,25 @@ module TLM (
     output wire ATMBUFBYP,
     output wire [2:0] ATMMODE,
     output wire [7:0] ATMCHSEL,
-    output wire TEMPSEL,
+    
 
     // Raw register outputs (0x00 - 0x23)
-    output wire [7:0] REG_00,
-    output wire [7:0] REG_01,
-    output wire [7:0] REG_02,
+    // Only expose bits that are NOT already broken out as named outputs from `cfg_data`.
+    // For split registers, the port range matches the original bit positions.
+    output wire [7:3] REG_00,
     output wire [7:0] REG_03,
-    output wire [7:0] REG_04,
-    output wire [7:0] REG_05,
-    output wire [7:0] REG_06,
-    output wire [7:0] REG_07,
-    output wire [7:0] REG_08,
-    output wire [7:0] REG_09,
-    output wire [7:0] REG_0A,
-    output wire [7:0] REG_0B,
-    output wire [7:0] REG_0C,
-    output wire [7:0] REG_0D,
-    output wire [7:0] REG_0E,
+    output wire [7:3] REG_04,
+    output wire [7:4] REG_0E,
     output wire [7:0] REG_0F,
     output wire [7:0] REG_10,
-    output wire [7:0] REG_11,
-    output wire [7:0] REG_12,
-    output wire [7:0] REG_13,
-    output wire [7:0] REG_14,
-    output wire [7:0] REG_15,
-    output wire [7:0] REG_16,
+    output wire [7:7] REG_11,
+    output wire [7:7] REG_13,
+    output wire [7:1] REG_15,
     output wire [7:0] REG_17,
-    output wire [7:0] REG_18,
-    output wire [7:0] REG_19,
+    output wire [7:7] REG_18,
+    output wire [7:3] REG_19,
     output wire [7:0] REG_1A,
-    output wire [7:0] REG_1B,
-    output wire [7:0] REG_1C,
-    output wire [7:0] REG_1D,
+    output wire [7:7] REG_1D,
     output wire [7:0] REG_1E,
     output wire [7:0] REG_1F,
     output wire [7:0] REG_20,
@@ -431,9 +417,11 @@ module TLM (
     assign reg_phase2count1 = cfg_data[279:272];
     
     // 0x23
-    assign reg_phase2count2 = cfg_data[281:280];
-    assign reg_ensamp       = cfg_data[282]; 
-    assign reg_fifowatermark= cfg_data[286:283];
+    assign reg_phase2count2 = cfg_data[281:280]; 
+    assign reg_fifowatermark= cfg_data[285:282];
+    assign reg_forcewren    = cfg_data[286];
+    assign reg_ensamp       = cfg_data[287];
+
     assign fifo_watermark_in = {1'b0, reg_fifowatermark}; // 5 bits required by FIFO, reg has 4? block_ios says 4, diagram says 4:0. Mapping 4 bits.
     
     // Construct Combined Signals for CDC
@@ -579,8 +567,6 @@ module TLM (
     // Drive ATMCHSEL port
     assign ATMCHSEL = ensamp_sync ? atm_control_atmchsel : 8'b0;
 
-    // TEMPSEL is used by the analogue mux to select the temperature input
-    assign TEMPSEL = enmontsense_sync;
     
     // -------------------------------------------------------------------------
     // 8. FIFO

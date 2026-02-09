@@ -22,7 +22,9 @@ module tb_top_level_integration();
     
     // ADC interface (directly wired between TLM and ns_sar_v2 mock)
     wire [7:0]  ATMCHSEL;
-    wire        TEMPSEL;
+    // TLM no longer exports TEMPSEL; use the ENMONTSENSE control bit instead
+    // to steer the dummy mux temperature input selection.
+    wire        ENMONTSENSE_w;
     wire        SAMPLE_CLK_w;
     wire        nARST_w;
     wire [15:0] ADC_RESULT;
@@ -89,7 +91,7 @@ module tb_top_level_integration();
         .ADCOVERFLOW(ADC_OVERFLOW),
         .SATDETECT(8'h00),
         .ATMCHSEL(ATMCHSEL),
-        .TEMPSEL(TEMPSEL),
+        .ENMONTSENSE(ENMONTSENSE_w),
         .SAMPLE_CLK(SAMPLE_CLK_w),
         .nARST(nARST_w),
         .ADCOSR(ADCOSR_w),
@@ -152,7 +154,7 @@ module tb_top_level_integration();
     
     dummy_Mux mux (
         .ATMCHSEL(ATMCHSEL),
-        .TEMPSEL(TEMPSEL),
+        .TEMPSEL(ENMONTSENSE_w),
         .CH0_IN(16'hA000),
         .CH1_IN(16'hA111),
         .CH2_IN(16'hA222),
