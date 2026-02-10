@@ -18,7 +18,14 @@ module tb_top_level_integration();
     reg RESETN;
     
     // SPI signals
-    wire CS, SCK, MOSI, MISO;
+    wire CS, SCK, MOSI;
+    wire MISO_CORE;
+    wire MISO_PAD;
+    wire OEN_w;
+    
+    // Scan pins (tie inactive for normal mode)
+    reg SCANEN;
+    reg SCANMODE;
     
     // ADC interface (directly wired between TLM and ns_sar_v2 mock)
     wire [7:0]  ATMCHSEL;
@@ -53,6 +60,7 @@ module tb_top_level_integration();
     reg [15:0] spi_rx_data;
     integer i, j;
     reg [127:0] fifo_readback;
+    integer pad_errors;
 
     // Mock ADC exercise counters (helps verify OSR mode behavior)
     integer adc_done_posedges;
@@ -101,7 +109,10 @@ module tb_top_level_integration();
         .CS(CS),
         .SCK(SCK),
         .MOSI(MOSI),
-        .MISO(MISO),
+        .MISO(MISO_CORE),
+        .OEN(OEN_w),
+        .SCANEN(SCANEN),
+        .SCANMODE(SCANMODE),
         .RESULT(ADC_RESULT),
         .DONE(ADC_DONE),
         .ADCOVERFLOW(ADC_OVERFLOW),
@@ -124,6 +135,39 @@ module tb_top_level_integration();
         .DIGDEBUGSEL(DIGDEBUGSEL_w),
         .ANATESTSEL(ANATESTSEL_w)
     );
+
+    //==========================================================================
+    // MISO pad model (tri-state) controlled by OEN (active-low enable)
+    //==========================================================================
+    // OEN=0 -> pad drives core MISO
+    // OEN=1 -> pad is high-Z
+    assign MISO_PAD = (OEN_w === 1'b0) ? MISO_CORE : 1'bz;
+
+    // Pad behavior checks in normal (non-scan) mode.
+    always @(CS or OEN_w or SCANMODE or MISO_PAD) begin
+        #0;
+        if (SCANMODE === 1'b0) begin
+            if (CS === 1'b1) begin
+                if (OEN_w !== 1'b1) begin
+                    $display("ERROR: OEN should be 1 when CS=1 (t=%0t)", $time);
+                    pad_errors = pad_errors + 1;
+                end
+                if (MISO_PAD !== 1'bz) begin
+                    $display("ERROR: MISO pad should be Z when CS=1 (t=%0t) got=%b", $time, MISO_PAD);
+                    pad_errors = pad_errors + 1;
+                end
+            end else if (CS === 1'b0) begin
+                if (OEN_w !== 1'b0) begin
+                    $display("ERROR: OEN should be 0 when CS=0 (t=%0t)", $time);
+                    pad_errors = pad_errors + 1;
+                end
+                if (MISO_PAD === 1'bz) begin
+                    $display("ERROR: MISO pad should be driven when CS=0 (t=%0t)", $time);
+                    pad_errors = pad_errors + 1;
+                end
+            end
+        end
+    end
     
     //==========================================================================
     // Behavioral ADC Mock (ns_sar_v2)
@@ -192,7 +236,7 @@ module tb_top_level_integration();
         .CS(CS),
         .SCK(SCK),
         .MOSI(MOSI),
-        .MISO(MISO)
+        .MISO(MISO_PAD)
     );
     
     //==========================================================================
@@ -210,6 +254,9 @@ module tb_top_level_integration();
         adc_done_negedges = 0;
         adc_sample_edges  = 0;
         cfg_wr_pulses     = 0;
+        pad_errors        = 0;
+        SCANEN            = 1'b0;
+        SCANMODE          = 1'b0;
         
         #500;
         RESETN = 1;
@@ -435,6 +482,10 @@ module tb_top_level_integration();
         $display("  [+] Stale data prevention");
         $display("  [+] Register readback");
         $display("========================================");
+        if (pad_errors == 0)
+            $display("MISO pad/OEN checks PASSED (0 errors)");
+        else
+            $display("ERROR: MISO pad/OEN checks FAILED (%0d errors)", pad_errors);
         
         #1000;
         $stop;
