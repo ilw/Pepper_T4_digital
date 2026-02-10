@@ -14,6 +14,7 @@ module TLM (
     
     // SPI Output
     output wire MISO,
+    output wire OEN,
 
     // GPIO Output
     output wire DATA_RDY,
@@ -174,6 +175,10 @@ module TLM (
     wire enmontsense_sync;
     wire adcoverflow_sync;
     wire [3:0] adcosr_sync;
+
+    // Effective sampling enable: only run sampling path if at least one channel enabled
+    wire any_chan_en = |chen_sync;
+    wire ensamp_active = ensamp_sync & any_chan_en;
     
     // CRC Wires
     wire [15:0] crccfg;
@@ -501,7 +506,7 @@ module TLM (
         .PHASE1COUNT_sync(phase1count_sync),
         .PHASE2COUNT_sync(phase2count_sync),
         .HF_CLK(HF_CLK),
-        .ENSAMP_sync(ensamp_sync),
+        .ENSAMP_sync(ensamp_active),
         .NRST_sync(nrst_sync),
         .TEMP_RUN(temp_run),
         
@@ -552,7 +557,7 @@ module TLM (
     // -------------------------------------------------------------------------
     ATM_Control u_atm_ctrl (
         .SAMPLE_CLK(SAMPLE_CLK),
-        .ENSAMP_sync(ensamp_sync),
+        .ENSAMP_sync(ensamp_active),
         .CHEN_sync(chen_sync),
         .OSR_sync(adcosr_sync),
         .NRST_sync(nrst_sync),
@@ -565,7 +570,8 @@ module TLM (
     );
     
     // Drive ATMCHSEL port
-    assign ATMCHSEL = ensamp_sync ? atm_control_atmchsel : 8'b0;
+    // Hold mux select at 0 when not actively sampling or when no channels enabled
+    assign ATMCHSEL = ensamp_active ? atm_control_atmchsel : 8'b0;
 
     
     // -------------------------------------------------------------------------
@@ -581,7 +587,7 @@ module TLM (
         .FIFO_POP(cim_fifo_pop),
         .FIFOWATERMARK(fifo_watermark_in), // From Regs
         .SCK(SCK),
-        .ENSAMP_sync(ensamp_sync),
+        .ENSAMP_sync(ensamp_active),
 
         
         .DATA_RDY(data_rdy),
@@ -625,10 +631,14 @@ module TLM (
     );
 
     // ADC enable/start (nARST): enable during sampling, or during temp one-shot run
-    assign nARST = ensamp_sync | temp_run;
+    // If no channels enabled, disable ADC + sampling path for clean behavior and power.
+    assign nARST = ensamp_active | temp_run;
 
     // Drive top-level DATA_RDY from FIFO
     assign DATA_RDY = data_rdy;
+
+    // Output enable for external bus: high when CS is deasserted and not in scan mode.
+    assign OEN = CS & ~SCANMODE;
 
 
 
