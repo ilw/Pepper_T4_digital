@@ -66,12 +66,21 @@ module ATM_Control (
         input [2:0] current;
         input [7:0] enabled;
         integer i;
+        reg [2:0] idx;
+        reg       found;
         begin
+            // Cadence-friendly implementation:
+            // - no '%' operator
+            // - no modification of loop variable to break
             next_enabled_channel = current;
-            for (i = 1; i <= 8; i = i + 1) begin
-                if (enabled[(current + i) % 8]) begin
-                    next_enabled_channel = (current + i) % 8;
-                    i = 9; // Break
+            idx   = current;
+            found = 1'b0;
+            for (i = 0; i < 8; i = i + 1) begin
+                // advance with wrap
+                idx = (idx == 3'd7) ? 3'd0 : (idx + 3'd1);
+                if (!found && enabled[idx]) begin
+                    next_enabled_channel = idx;
+                    found = 1'b1;
                 end
             end
         end
