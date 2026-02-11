@@ -65,6 +65,14 @@ module Command_Interpreter (
     // Response headers
     localparam RESP_REGDATA = 8'hC0;  // 11000000
     localparam RESP_STATUS  = 2'b01;  // bits [1:0] for status response
+
+    // Register addresses that are safe to update while sampling is active
+    // (i.e. do not require multi-bit CDC stability assumptions)
+    // IMPORTANT - if the register map changes these registers must be reviewed
+    // carefully !!!
+    localparam REG_AFERSTCH = 6'h12;
+    localparam REG_13_SAFE  = 6'h13;
+    localparam REG_23_SAFE = 6'h23;
     
     // State encoding (one-hot)
     localparam IDLE       = 5'b00001;
@@ -258,10 +266,15 @@ module Command_Interpreter (
             wr_en_reg <= 1'b0;
         end else if (state == WRITE_REG && word_rcvd) begin
             // Configuration register writes (0x00 - 0x23) only.
-            // Write protection: only allow writes when not sampling OR to address 0x23.
+            // Write protection: only allow writes when not sampling OR to specific
+            // addresses that are safe to modify during sampling (e.g. ENSAMP itself
+            // and AFERSTCH for live channel reset control).
             // Keep wr_en high; it will be cleared when state changes or CS goes high.
             if (reg_addr_reg <= 6'h23) begin
-                if (!ENSAMP_sync_reg[1] || (reg_addr_reg == 6'h23)) begin
+                if (!ENSAMP_sync_reg[1] ||
+                    (reg_addr_reg == REG_23_SAFE) ||
+                    (reg_addr_reg == REG_AFERSTCH) ||
+                    (reg_addr_reg == REG_13_SAFE)) begin
                     reg_value_reg <= data_byte;
                     wr_en_reg <= 1'b1;
                 end else begin

@@ -106,9 +106,13 @@ module CDC_sync (
     assign SATDETECT_sync      = satdetect_ff2;
     
     // Area reduction: these configuration buses are no longer synchronized.
-    // They are passed through directly. System-level requirement: only update
-    // these fields when the sampling path is disabled (ENSAMP low) to avoid
-    // multi-bit CDC hazards.
+    // They are passed through directly.
+    //
+    // System-level requirement:
+    // - Only update PHASE1DIV1/PHASE1COUNT/PHASE2COUNT/CHEN/ADCOSR when the
+    //   sampling path is disabled (ENSAMP low) to avoid multi-bit CDC hazards.
+    // - AFERSTCH remains fully synchronized (2-stage) and can be modified even
+    //   when ENSAMP is high.
     assign PHASE1DIV1_sync     = PHASE1DIV1;
     assign PHASE1COUNT_sync    = PHASE1COUNT;
     assign PHASE2COUNT_sync    = PHASE2COUNT;
