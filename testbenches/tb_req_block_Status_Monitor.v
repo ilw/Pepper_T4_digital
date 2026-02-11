@@ -76,6 +76,9 @@ module tb_req_block_Status_Monitor();
         
         // Test 1: Flag set and sticky
         $display("Test 1: Sticky Flags");
+        // Status_Monitor only latches most flags when ENSAMP_sync is active.
+        ENSAMP_sync = 1;
+        @(posedge HF_CLK);
         FIFO_OVERFLOW_sync = 1;
         @(posedge HF_CLK);
         FIFO_OVERFLOW_sync = 0;

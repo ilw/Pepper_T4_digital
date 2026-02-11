@@ -51,32 +51,47 @@ module tb_req_block_Temperature_Buffer();
         
         #200;
         NRST_sync = 1;
+        // Drive ENMONTSENSE_sync transitions aligned away from SAMPLE_CLK posedges
+        // to avoid race with DUT sampling.
+        @(negedge SAMPLE_CLK);
         ENMONTSENSE_sync = 1;
         
         // Test 1: One-shot capture on first DONE after rising edge
         RESULT = 16'hAAAA;
+        // Pulse DONE with stable setup/hold around posedge SAMPLE_CLK
+        @(negedge SAMPLE_CLK);
+        DONE = 1;
         @(posedge SAMPLE_CLK);
-        DONE = 1; @(posedge SAMPLE_CLK); DONE = 0;
+        @(negedge SAMPLE_CLK);
+        DONE = 0;
         
         if (TEMPVAL == 16'hAAAA) $display("Pass: Temp captured");
         else $display("ERROR: Fail: Temp not captured");
 
         // Test 2: Value should not be overwritten while ENMONTSENSE_sync remains high
         RESULT = 16'h5555;
+        @(negedge SAMPLE_CLK);
+        DONE = 1;
         @(posedge SAMPLE_CLK);
-        DONE = 1; @(posedge SAMPLE_CLK); DONE = 0;
+        @(negedge SAMPLE_CLK);
+        DONE = 0;
 
         if (TEMPVAL == 16'hAAAA) $display("Pass: Temp held (no overwrite)");
         else $display("ERROR: Fail: Temp overwritten unexpectedly");
 
         // Test 3: Drop ENMONTSENSE_sync and re-assert to re-arm one-shot
+        @(negedge SAMPLE_CLK);
         ENMONTSENSE_sync = 0;
         repeat (3) @(posedge SAMPLE_CLK);
+        @(negedge SAMPLE_CLK);
         ENMONTSENSE_sync = 1;
 
         RESULT = 16'h5555;
+        @(negedge SAMPLE_CLK);
+        DONE = 1;
         @(posedge SAMPLE_CLK);
-        DONE = 1; @(posedge SAMPLE_CLK); DONE = 0;
+        @(negedge SAMPLE_CLK);
+        DONE = 0;
 
         if (TEMPVAL == 16'h5555) $display("Pass: Temp captured after re-arm");
         else $display("ERROR: Fail: Temp not captured after re-arm");

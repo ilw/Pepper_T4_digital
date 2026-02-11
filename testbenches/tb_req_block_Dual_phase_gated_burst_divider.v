@@ -120,16 +120,22 @@ module tb_req_block_Dual_phase_gated_burst_divider();
         
         // Test 2: Pulse Count (DIG-38)
         $display("Test 2: Pulse Count = 8");
+        // Re-start divider between tests so internal counters reset cleanly.
+        ENSAMP_sync = 0;
+        repeat (4) @(posedge HF_CLK);
         PHASE1DIV1_sync = 2;
         PHASE1COUNT_sync = 8;
         PHASE2COUNT_sync = 10;
+        ENSAMP_sync = 1;
+        repeat (4) @(posedge HF_CLK);
         
-        // Wait for phase 2 to start
-        wait(phase == 0);
+        // Align to a full burst window: wait for silence then start counting at
+        // the beginning of the next active burst.
+        wait(phase == 1);
+        wait(phase == 0); // start of active burst
         pulse_count = 0;
         counting_pulses = 1;
-        
-        wait(phase == 1);
+        wait(phase == 1); // end of active burst
         counting_pulses = 0;
         
         if (pulse_count == 8)
@@ -139,7 +145,8 @@ module tb_req_block_Dual_phase_gated_burst_divider();
         
         // Test 3: Phase 2 Duration (DIG-39)
         $display("Test 3: Phase 2 Duration");
-        
+        // Check SAMPLE_CLK is held low during phase 2 (sample immediately after entering phase 2).
+        #1;
         if (SAMPLE_CLK == 0)
             $display("  SAMPLE_CLK is low during Phase 2");
         else
@@ -161,9 +168,13 @@ module tb_req_block_Dual_phase_gated_burst_divider();
         
         // Test 4: Passthrough Mode (DIG-72)
         $display("Test 4: Passthrough (DIV=0)");
+        // Re-start divider for a clean passthrough check.
+        ENSAMP_sync = 0;
+        repeat (4) @(posedge HF_CLK);
         PHASE1DIV1_sync = 0;
         PHASE1COUNT_sync = 0;
         PHASE2COUNT_sync = 0;
+        ENSAMP_sync = 1;
         
         #100;
         

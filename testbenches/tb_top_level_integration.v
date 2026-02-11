@@ -315,8 +315,9 @@ module tb_top_level_integration();
 
         // Quick sanity: read back reg 0x23 and check that nARST/SAMPLE_CLK start
         spi.begin_transaction();
-        spi.transfer_word(16'h2300, spi_rx_data); // RDREG @ 0x23 (returns status)
-        spi.transfer_word(16'h0000, spi_rx_data); // returns reg data
+        // Multi-word transaction: use exact 16-clock transfers (no extra SCK edge)
+        spi.transfer_word16(16'h2300, spi_rx_data); // RDREG @ 0x23 (returns status)
+        spi.transfer_word16(16'h0000, spi_rx_data); // returns reg data
         spi.end_transaction();
         $display("Reg 0x23 readback: 0x%h (expect 0xC0xx with bit7=1 in low byte)", spi_rx_data);
         #2000;
@@ -401,12 +402,13 @@ module tb_top_level_integration();
         // As with RDREG, the first returned word is STATUS, and subsequent
         // 16-bit transfers while CS remains low return FIFO data words.
         spi.begin_transaction();
-        spi.transfer_word(16'hC000, spi_rx_data);
+        // Burst read: exact 16-clock transfers for correct framing
+        spi.transfer_word16(16'hC000, spi_rx_data);
         $display("Sent RDDATA command, Status response: 0x%h", spi_rx_data);
         
         // Read 8 words (one frame)
         for (i = 0; i < 8; i = i + 1) begin
-            spi.transfer_word(16'h0000, spi_rx_data);
+            spi.transfer_word16(16'h0000, spi_rx_data);
             fifo_readback[i*16 +: 16] = spi_rx_data;
             $display("  Word %0d: 0x%h", i, spi_rx_data);
         end
@@ -443,9 +445,9 @@ module tb_top_level_integration();
         
         // Read FIFO again
         spi.begin_transaction();
-        spi.transfer_word(16'hC000, spi_rx_data);
+        spi.transfer_word16(16'hC000, spi_rx_data);
         for (i = 0; i < 8; i = i + 1) begin
-            spi.transfer_word(16'h0000, spi_rx_data);
+            spi.transfer_word16(16'h0000, spi_rx_data);
             $display("  New Word %0d: 0x%h", i, spi_rx_data);
         end
         spi.end_transaction();
@@ -461,9 +463,9 @@ module tb_top_level_integration();
         // transaction. The register data is returned on the *next* 16 clocks while
         // CS remains low. So we must keep CS asserted across two word transfers.
         spi.begin_transaction();
-        spi.transfer_word(16'h1600, spi_rx_data);
+        spi.transfer_word16(16'h1600, spi_rx_data);
         $display("Status: 0x%h", spi_rx_data);
-        spi.transfer_word(16'h0000, spi_rx_data); // clock out reg data
+        spi.transfer_word16(16'h0000, spi_rx_data); // clock out reg data
         spi.end_transaction();
         $display("CHEN readback: 0x%h (expected 0xC007 i.e. 0xC0 header + 0x07 data)", spi_rx_data);
         

@@ -32,6 +32,7 @@ module tb_req_block_FIFO();
     
     integer i, j;
     reg [15:0] expected_data [0:7];
+    reg udf_tgl_before;
     
     // Latch overflow pulses (SAMPLE_CLK domain)
     always @(posedge SAMPLE_CLK or negedge NRST_sync) begin
@@ -274,6 +275,8 @@ module tb_req_block_FIFO();
         
         // Allow write pointer to cross into SCK domain before popping
         repeat(20) @(posedge SCK);
+        // FIFO_UNDERFLOW is an event-toggle output (not a level). Capture baseline.
+        udf_tgl_before = FIFO_UNDERFLOW;
         @(posedge SCK);
         FIFO_POP = 1;
         @(posedge SCK);
@@ -284,8 +287,8 @@ module tb_req_block_FIFO();
         // post-enable conversion (ADC startup DONE), which can leave word0 empty.
         // We therefore check that the *session data* is fresh and correctly packed
         // in the remaining words, and allow word0 to be either AAAA or 0000.
-        if (FIFO_UNDERFLOW) begin
-            $display("ERROR: Test 5b Failed: Underflow on pop after re-enable");
+        if (FIFO_UNDERFLOW !== udf_tgl_before) begin
+            $display("ERROR: Test 5b Failed: Underflow event on pop after re-enable");
         end else if (ADC_data[31:16]  == 16'hBBBB &&
                      ADC_data[47:32]  == 16'hCCCC &&
                      ADC_data[63:48]  == 16'hDDDD &&

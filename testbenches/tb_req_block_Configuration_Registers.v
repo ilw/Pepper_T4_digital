@@ -66,12 +66,16 @@ module tb_req_block_Configuration_Registers();
         // Write walking 1s to registers
         $display("Test 2: Writing Registers");
         for (i = 0; i < 36; i = i + 1) begin
-            reg_addr = i;
+            // Avoid race with DUT sampling at posedge SCK by only changing
+            // reg_addr/reg_value/wr_en on SCK low, and deasserting wr_en on a later edge.
+            @(negedge SCK);
+            reg_addr  = i[5:0];
             reg_value = 8'hFF;
-            wr_en = 1;
-            @(posedge SCK);
-            wr_en = 0;
-            @(posedge SCK);
+            wr_en     = 1'b1;
+            @(posedge SCK); // commit write
+            @(negedge SCK);
+            wr_en     = 1'b0;
+            @(posedge SCK); // allow cfg_data to reflect NBA update
             
             // Verify output mapped correctly
             if (cfg_data[i*8 +: 8] !== 8'hFF)
