@@ -71,7 +71,13 @@ iverilog -g2012 -o simulation/tb_top_level_medium.vvp source/*.v testbenches/spi
 vvp simulation/tb_top_level_medium.vvp
 gtkwave simulation/tb_top_level_medium.vcd
 
-# Top-level signoff verification tier
-iverilog -g2012 -o simulation/tb_top_level_signoff.vvp source/*.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_signoff.v
-vvp simulation/tb_top_level_signoff.vvp
-gtkwave simulation/tb_top_level_signoff.vcd
+# Top-level mock-signoff verification tier (Icarus-friendly; uses mock ADC)
+iverilog -g2012 -o simulation/tb_top_level_mock_signoff.vvp source/*.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_mock_signoff.v
+vvp simulation/tb_top_level_mock_signoff.vvp
+gtkwave simulation/tb_top_level_mock_signoff.vcd
+
+# Top-level *true* signoff verification tier (real ADC netlist)
+# NOTE: This is not expected to compile on Icarus because the real ADC netlist
+# includes foundry/library files. Use Cadence/Xcelium with the proper libraries:
+# - Testbench: testbenches/tb_top_level_signoff.v
+# - ADC netlist: adc/verilog/ns_sar.v

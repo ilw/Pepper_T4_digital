@@ -1,0 +1,26 @@
+Command,ID,1st byte hex,B15,B14,B13,B12,B11,B10,B9,B8,B7,B6,B5,B4,B3,B2,B1,B0
+,,,R/W,,Register Address,,,,,,,,,,,,,
+Read register,RDREG,,0,0,reg_addr[5:0],,,,,,X,X,X,X,X,X,X,X
+Write register,WRREG,,1,0,reg_addr[5:0],,,,,,dataByte[7:0],,,,,,,
+Read data ,RDDATA,,1,1,0,0,0,0,0,0,X,X,X,X,X,X,X,X
+Read CRC,RDCRC,,0,1,0,0,0,0,0,0,X,X,X,X,X,X,X,X
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+Response,ID,hex,B15,B14,B13,B12,B11,B10,B9,B8,B7,B6,B5,B4,B3,B2,B1,B0
+Register data,REGDATA,0xC0XX,1,1,0,0,0,0,0,0,dataByte[7:0],,,,,,,
+Data,DATA,0xXXXX,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+CRC,CRC,0xXXXX,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X
+Status,STS,0xXXXX,statusBits[13:0],,,,,,,,,,,,,,0,1
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+Status bits,ENSAMP,,,1,,Bit[13] ,,,Sampling active flag,,,,,,,,,
+,CFGCHNG,,,1,,Bit[12] ,,,Configuration changed flag,,,,,,,,,
+,ANALOG_RESET,,,1,,Bit[11] ,,,Analog reset active flag ,,,,,,,,,
+,FIFO_UDF,,,1,,Bit[10] ,,,FIFO underflow flag ,,,,,,,,,
+,FIFO_OVF,,,1,,Bit[9] ,,,FIFO overflow flag ,,,,,,,,,
+,ADC_OVF,,,1,,Bit[8] ,,,ADC overflow flag ,,,,,,,,,
+,SAT[7:0],,,8,,Bit[7:0] ,,,Channel saturation flags ,,,,,,,,,

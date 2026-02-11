@@ -1,0 +1,50 @@
+ID,Category,Requirement,Notes
+SYS-HL-1,Physical,The bare die of the chip should be square,Die geometry requirement
+SYS-HL-2,Physical,The bare die of the chip should be less than or equal to 2.4mm x 2.4mm in area,Maximum die size constraint for implantable applications
+SYS-HL-3,Physical,The chip shall be available in a 6mm x 6mm 52-pin QFN package,Package option for testing and general use
+SYS-HL-4,Physical,The chip shall be available in a 3mm x 3mm 49-pin BGA package,Package option for highly constrained implant use
+SYS-HL-5,Power,The chip shall be optimised for low power operation,Target: 120µA @ 1kSPS 14-bit 8 channels
+SYS-HL-6,Power,The chip shall operate from a 2.4V to 4.2V supply using an integrated 1.8V LDO,Compatible with li-ion battery operation
+SYS-HL-7,Application,The chip shall be optimised for implantable usage,Small footprint and low power for biomedical implants
+SYS-HL-8,Application,The chip shall be optimised for recording low frequency intracranial brain activity,"Target frequency range: 0.1-1Hz to 250Hz, target noise less than 1uVrms in the 0.5-50Hz band"
+SYS-HL-9,Application,The chip shall support long-term recording of biopotential signals,Electrophysiology research
+SYS-HL-10,Application,The chip should support safety critical biopotential monitoring,Clinical applications
+SYS-HL-11,Application,The chip shall be suitable for closed-loop deep brain stimulation applications,Sensing capability for feedback control
+SYS-HL-12,Application,The chip must be able to operate in monopolar (single reference) or bipolar (fully differential channels) modes,EMG vs ENG applications
+SYS-HL-13,Application,The chip shall be designed to facilitate testing and characterisation of each sub block of its design,Non-production chip that will be characterised in depth to understand the performance of various IP blocks
+SYS-HL-14,Configurability,The chip shall support a range of gains to allow users to optimise power-performance tradeoffs,Variable gain: 50x to 150x
+SYS-HL-15,Configurability,The chip shall support a range of resolutions to allow users to optimise power-performance tradeoffs,Configurable 10-bit to 16-bit ADC resolution
+SYS-HL-16,Configurability,The chip shall support a range of sampling rates to allow users to optimise power-performance tradeoffs,0.5 kS/s to 256 kS/s per channel (10-bit mode)
+SYS-HL-17,Performance,The chip shall provide 8 independent differential sensing channels,Multi-channel neural recording
+SYS-HL-18,Performance,The chip shall support bi-polar tri-polar and multi-polar electrode configurations,Flexible electrode interfacing via input multiplexer
+SYS-HL-19,Performance,The chip shall achieve low input referred noise of approximately 1µVrms in the EEG band (0.5-50Hz),Noise performance target for neural signal quality
+SYS-HL-20,Performance,The chip shall provide high input impedance of at least 30M? at 1kHz,Minimise loading on high-impedance electrodes
+SYS-HL-21,Performance,The chip shall provide a high-pass filter corner frequency less than 0.2Hz,DC rejection and baseline wander removal
+SYS-HL-22,Performance,The chip shall provide adjustable low-pass filter corner frequency from 100Hz to 300Hz,Anti-aliasing and bandwidth control
+SYS-HL-23,Performance,The chip shall achieve CMRR of at least 60dB across the signal bandwidth,Common-mode noise rejection (e.g. 50/60Hz mains)
+SYS-HL-24,Performance,The chip shall achieve PSRR of at least 70dB with integrated LDO,Power supply noise rejection
+SYS-HL-25,Performance,The chip shall provide 14-bit effective resolution (ENOB) for neural signal acquisition,Dynamic range for neural signals
+SYS-HL-26,Performance,The chip shall have gain variation (due to drift and across expected operating temperature) of less than 10% of nominal.,Clinical standard for intracranial EEG monitoring - 80601-2-26
+SYS-HL-27,Performance,The chip shall accept signal amplitudes of at least 20mV peak to peak,Seizure induced oscillations and intramuscular EMG amplitudes
+SYS-HL-28,Performance,The chip shall tolerate a common mode range greater than 300mV.,Electrode potential drift
+SYS-HL-29,Performance,The chip shall demonstrate gain flatness within +0.8dB and -3dB across the bandwith of 0.5-50Hz,Clinical standard for intracranial EEG monitoring - 80601-2-26
+SYS-HL-30,Performance,The chip shall support a range of standard clock frequencies that are powers of 2 or multiples of 100Hz,"Ease of system integration (part availability, size, power, etc) and/or generation by embedded platforms "
+SYS-HL-31,Performance,The chip shall derive a sampling rate from an external clock and either be a power of 2 in Hz or a multiple of 100,"Ease of data analysis and algorithm development, compatibility and synchronisation with other systems"
+SYS-HL-32,Performance,The chip shall sample data with a resolution smaller than 3uV,Smallest oscillations are expected to be ~10uV
+SYS-HL-33,Interface,The chip shall use a standard SPI interface for configuration and data readout,SPI clock speed: 0.1MHz to 25MHz
+SYS-HL-34,Interface,The chip shall support SPI clock speeds up to 25MHz,High-speed data transfer capability
+SYS-HL-35,Reliability,The chip shall operate reliably across the full specified temperature range (at least 18°C – 50°C),Ambient temperature: +27°C (typical test condition)
+SYS-HL-36,Reliability,The chip shall provide robust operation suitable for bio-electronic medicine applications,Medical device reliability requirements
+SYS-HL-37,Safety,When operating within its specified operating conditions the chip shall limit currents passing through electrodes to less than 3.75uA,"Suitable for 5mm2 electrodes. BS EN 45502-1:2015 (Implants for surgery — Active implantable medical devices), 
+section 16.2:  “Except for its intended function, implantable parts of an ACTIVE IMPLANTABLE MEDICAL DEVICE shall be electrically neutral when in contact with the body.  The direct current density at the surface of any conductive surface or electrode shall be ? 0,75?A/mm 2 ”"
+SYS-HL-38,Safety,The chip should be so designed and manufactured that it remains SINGLE FAULT SAFE,60601 safety
+SYS-HL-39,Safety,The chip shall detect if any channel of amplification goes into saturation and provide an indication of this,Clinical standard for intracranial EEG monitoring - 80601-2-26
+SYS-HL-40,Safety,The chip should detect whether any lead wires become disconnected and provide an indication of this,Clinical standard for intracranial EEG monitoring - 80601-2-26
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
