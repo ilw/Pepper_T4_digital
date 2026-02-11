@@ -436,10 +436,15 @@ module TLM (
     // -------------------------------------------------------------------------
     // 4. Register CRC
     // -------------------------------------------------------------------------
+`ifdef ENABLE_REGISTER_CRC
     Register_CRC u_reg_crc (
         .cfg_data(cfg_data),
         .CRCCFG(crccfg)
     );
+`else
+    // Default when CRC block is cut: tie to constant.
+    assign crccfg = 16'h0000;
+`endif
     
     // -------------------------------------------------------------------------
     // 5. CDC Sync
@@ -577,7 +582,9 @@ module TLM (
     // -------------------------------------------------------------------------
     // 8. FIFO
     // -------------------------------------------------------------------------
-    FIFO u_fifo (
+    FIFO #(
+        .FRAME_DEPTH(4)
+    ) u_fifo (
         .RESULT(RESULT),
         .DONE(DONE_QUAL),
         .SAMPLE_CLK(SAMPLE_CLK),
@@ -602,7 +609,7 @@ module TLM (
     Status_Monitor u_stat_mon (
         .NRST_sync(nrst_sync),
         .HF_CLK(HF_CLK),
-        .ENSAMP_sync(ensamp_sync),
+        .ENSAMP_sync(ensamp_active),
         .CRCCFG(crccfg),
         .AFERSTCH_sync(aferstch_sync),
         .FIFO_OVERFLOW_sync(fifo_overflow_sync),
