@@ -61,11 +61,6 @@ module CDC_sync (
     reg        fifo_overflow_ff1, fifo_overflow_ff2;
     reg        fifo_underflow_ff1, fifo_underflow_ff2;
     reg [7:0]  satdetect_ff1, satdetect_ff2;
-    reg [11:0] phase1div1_ff1, phase1div1_ff2;
-    reg [3:0]  phase1count_ff1, phase1count_ff2;
-    reg [9:0]  phase2count_ff1, phase2count_ff2;
-    reg [7:0]  chen_ff1, chen_ff2;
-    reg [3:0]  adcosr_ff1, adcosr_ff2;
 
     always @(posedge HF_CLK or negedge NRST) begin
         if (!NRST) begin
@@ -78,11 +73,6 @@ module CDC_sync (
             fifo_overflow_ff1 <= 0;     fifo_overflow_ff2 <= 0;
             fifo_underflow_ff1 <= 0;    fifo_underflow_ff2 <= 0;
             satdetect_ff1 <= 8'b0;      satdetect_ff2 <= 8'b0;
-            phase1div1_ff1 <= 12'b0;    phase1div1_ff2 <= 12'b0;
-            phase1count_ff1 <= 4'b0;    phase1count_ff2 <= 4'b0;
-            phase2count_ff1 <= 10'b0;   phase2count_ff2 <= 10'b0;
-            chen_ff1 <= 8'b0;           chen_ff2 <= 8'b0;
-            adcosr_ff1 <= 4'b0;         adcosr_ff2 <= 4'b0;
         end else begin
             // Single bit synchronizers
             ensamp_ff <= {ensamp_ff[0], ENSAMP};
@@ -95,22 +85,12 @@ module CDC_sync (
             fifo_overflow_ff1 <= FIFO_OVERFLOW;
             fifo_underflow_ff1 <= FIFO_UNDERFLOW;
             satdetect_ff1 <= SATDETECT;
-            phase1div1_ff1 <= PHASE1DIV1;
-            phase1count_ff1 <= PHASE1COUNT;
-            phase2count_ff1 <= PHASE2COUNT;
-            chen_ff1 <= CHEN;
-            adcosr_ff1 <= ADCOSR;
             
             // Stage 2
             aferstch_ff2 <= aferstch_ff1;
             fifo_overflow_ff2 <= fifo_overflow_ff1;
             fifo_underflow_ff2 <= fifo_underflow_ff1;
             satdetect_ff2 <= satdetect_ff1;
-            phase1div1_ff2 <= phase1div1_ff1;
-            phase1count_ff2 <= phase1count_ff1;
-            phase2count_ff2 <= phase2count_ff1;
-            chen_ff2 <= chen_ff1;
-            adcosr_ff2 <= adcosr_ff1;
         end
     end
 
@@ -124,11 +104,16 @@ module CDC_sync (
     assign FIFO_OVERFLOW_sync  = fifo_overflow_ff2;
     assign FIFO_UNDERFLOW_sync = fifo_underflow_ff2;
     assign SATDETECT_sync      = satdetect_ff2;
-    assign PHASE1DIV1_sync     = phase1div1_ff2;
-    assign PHASE1COUNT_sync    = phase1count_ff2;
-    assign PHASE2COUNT_sync    = phase2count_ff2;
-    assign CHEN_sync           = chen_ff2;
-    assign ADCOSR_sync         = adcosr_ff2;
+    
+    // Area reduction: these configuration buses are no longer synchronized.
+    // They are passed through directly. System-level requirement: only update
+    // these fields when the sampling path is disabled (ENSAMP low) to avoid
+    // multi-bit CDC hazards.
+    assign PHASE1DIV1_sync     = PHASE1DIV1;
+    assign PHASE1COUNT_sync    = PHASE1COUNT;
+    assign PHASE2COUNT_sync    = PHASE2COUNT;
+    assign CHEN_sync           = CHEN;
+    assign ADCOSR_sync         = ADCOSR;
     
     // CFG_CHNGE_sync logic removed as requested/unused
     assign CFG_CHNGE_sync = 1'b0; // Output tied low
