@@ -32,6 +32,28 @@ module spi_master_bfm (
         end
     endtask
 
+    // Exactly 16 SCK cycles (16 rising edges).
+    // Use this for multi-word transfers where CS stays low across words
+    // (e.g. RDREG second-word readback, RDDATA bursts).
+    task transfer_word16;
+        input  [15:0] data;
+        output [15:0] received;
+        integer i;
+        begin
+            received = 16'h0000;
+            for (i = 15; i >= 0; i = i - 1) begin
+                MOSI = data[i];
+                #50;
+                SCK = 0;
+                #50;
+                SCK = 1;
+                #25;
+                received[i] = MISO;
+                #25;
+            end
+        end
+    endtask
+
     task transfer_word;
         input  [15:0] data;
         output [15:0] received;

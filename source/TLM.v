@@ -543,7 +543,13 @@ module TLM (
     // then follows DONE thereafter.  When nARST goes low the filter re-arms.
     // -------------------------------------------------------------------------
     reg discard_first_done;
-    always @(posedge SAMPLE_CLK or negedge nrst_sync) begin
+    // IMPORTANT: SAMPLE_CLK is gated/stopped when nARST=0.
+    // If we only re-arm discard_first_done synchronously to SAMPLE_CLK, we can miss the
+    // nARST falling edge and accidentally carry discard_first_done=0 across disables.
+    // That allows a startup DONE pulse to leak through on the next enable.
+    //
+    // Therefore we asynchronously re-arm on nARST falling.
+    always @(posedge SAMPLE_CLK or negedge nrst_sync or negedge nARST) begin
         if (!nrst_sync) begin
             discard_first_done <= 1'b1;
         end else if (!nARST) begin
@@ -555,7 +561,9 @@ module TLM (
             end
         end
     end
-    assign DONE_QUAL = DONE & ~discard_first_done;
+    // Gate DONE_QUAL to 0 when ADC is disabled (nARST=0) to prevent stale/glitch
+    // DONE pulses from leaking through when SAMPLE_CLK is stopped/restarting.
+    assign DONE_QUAL = DONE & ~discard_first_done & nARST;
     
     // -------------------------------------------------------------------------
     // 7. ATM Control

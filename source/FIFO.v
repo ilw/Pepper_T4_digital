@@ -130,17 +130,22 @@ module FIFO #(
     // Watermark flag (DATA_RDY)
     assign DATA_RDY = (frame_count >= {1'b0, FIFOWATERMARK}) && ENSAMP_sync;
     
-    // Overflow: attempting to write when full
-    assign FIFO_OVERFLOW = ENSAMP_sync && DONE && LASTWORD && (frame_count == FRAME_DEPTH);
+    // Overflow/underflow event toggles for robust CDC into HF_CLK.
+    // These outputs are synchronized and edge-decoded in CDC_sync.
+    reg fifo_overflow_evt_tgl;
+    reg fifo_underflow_evt_tgl;
+    assign FIFO_OVERFLOW  = fifo_overflow_evt_tgl;
+    assign FIFO_UNDERFLOW = fifo_underflow_evt_tgl;
     
-    // Underflow: attempting to read when empty
-    assign FIFO_UNDERFLOW = ENSAMP_sync && FIFO_POP && !frames_available;
-    
+    // Precompute next write pointer (for frame clearing on advance)
+    wire [PTR_WIDTH-1:0] write_ptr_next = write_ptr + 1'b1;
+
     // Write logic
     always @(posedge SAMPLE_CLK or negedge NRST_sync) begin
         if (!NRST_sync) begin
             write_ptr      <= {PTR_WIDTH{1'b0}};
             write_ptr_gray <= {PTR_WIDTH{1'b0}};
+            fifo_overflow_evt_tgl <= 1'b0;
             
             for (i = 0; i < FRAME_DEPTH; i = i + 1) begin
                 mem[i] <= 128'h0;
@@ -170,6 +175,13 @@ module FIFO #(
                 
                 // Advance to next frame on last word
                 if (LASTWORD) begin
+                    // Toggle overflow event when attempting to push while full.
+                    if (frame_count == FRAME_DEPTH) begin
+                        fifo_overflow_evt_tgl <= ~fifo_overflow_evt_tgl;
+                    end
+                    // Clear the next frame so disabled channels read as 0 and stale
+                    // data from prior uses of this slot cannot leak through.
+                    mem[write_ptr_next[ADDR_WIDTH-1:0]] <= 128'h0;
                     write_ptr      <= write_ptr + 1'b1;
                     write_ptr_gray <= bin_to_gray(write_ptr + 1'b1);
                 end
@@ -226,12 +238,23 @@ module FIFO #(
     
     // Read logic
     always @(posedge SCK or negedge NRST_sync or negedge ensamp_rstn_sck) begin
-        if (!NRST_sync || !ensamp_rstn_sck) begin
+        if (!NRST_sync) begin
             // When disabled (or global reset), reset and output zeros
             read_ptr       <= {PTR_WIDTH{1'b0}};
             read_ptr_gray  <= {PTR_WIDTH{1'b0}};
             ADC_data       <= 128'h0;
+            fifo_underflow_evt_tgl <= 1'b0;
+        end else if (!ensamp_rstn_sck) begin
+            // Clear read-side state on ENSAMP disable; keep event toggle stable
+            // so CDC does not see a false edge from a forced reset.
+            read_ptr       <= {PTR_WIDTH{1'b0}};
+            read_ptr_gray  <= {PTR_WIDTH{1'b0}};
+            ADC_data       <= 128'h0;
         end else begin
+            if (ENSAMP_sync && FIFO_POP && !frames_available) begin
+                // Toggle underflow event when popping empty FIFO.
+                fifo_underflow_evt_tgl <= ~fifo_underflow_evt_tgl;
+            end
             if (FIFO_POP) begin
                 if (frames_available) begin
                     // Output current frame before incrementing

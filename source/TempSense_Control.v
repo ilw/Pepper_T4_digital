@@ -30,10 +30,12 @@ module TempSense_Control (
             // Default: if ENMONTSENSE is low, ensure not running.
             if (!ENMONTSENSE_sync) begin
                 run_reg <= 1'b0;
+                done_ff <= 2'b00; // clear stale DONE history while idle
             end else begin
                 // Rising edge arms a new one-shot conversion window.
                 if (ENMONTSENSE_sync && !en_prev) begin
                     run_reg <= 1'b1;
+                    done_ff <= 2'b00; // ignore any stale DONE history at start
                 end
 
                 // When running, stop after first DONE (one-shot).

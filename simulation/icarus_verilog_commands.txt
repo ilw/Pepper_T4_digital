@@ -65,3 +65,13 @@ gtkwave simulation/tb_req_block_ns_sar_v2_mock.vcd
 iverilog -g2012 -o simulation/tb_top_level_integration.vvp source/*.v testbenches/spi_master_bfm.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_integration.v
 vvp simulation/tb_top_level_integration.vvp
 gtkwave simulation/tb_top_level_integration.vcd
+
+# Top-level medium verification tier
+iverilog -g2012 -o simulation/tb_top_level_medium.vvp source/*.v testbenches/spi_master_bfm.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_medium.v
+vvp simulation/tb_top_level_medium.vvp
+gtkwave simulation/tb_top_level_medium.vcd
+
+# Top-level signoff verification tier
+iverilog -g2012 -o simulation/tb_top_level_signoff.vvp source/*.v testbenches/ns_sar_v2_mock.v testbenches/dummy_Mux.v testbenches/tb_top_level_signoff.v
+vvp simulation/tb_top_level_signoff.vvp
+gtkwave simulation/tb_top_level_signoff.vcd

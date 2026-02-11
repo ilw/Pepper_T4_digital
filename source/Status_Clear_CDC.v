@@ -28,6 +28,8 @@ module Status_Clear_CDC (
 
     reg ack_tgl_reg;
     reg pulse_reg;
+    reg pending;
+    reg [1:0] pending_cnt;
 
     wire req_edge;
     assign req_edge = (req_ff[1] ^ req_prev);
@@ -42,6 +44,8 @@ module Status_Clear_CDC (
             hi_ff2 <= 6'h00;
             ack_tgl_reg <= 1'b0;
             pulse_reg <= 1'b0;
+            pending <= 1'b0;
+            pending_cnt <= 2'b00;
         end else begin
             // Toggle sync
             req_ff <= {req_ff[0], status_clr_req_tgl_sck};
@@ -52,12 +56,26 @@ module Status_Clear_CDC (
             hi_ff1 <= status_clr_hi_sck;
             hi_ff2 <= hi_ff1;
 
-            // Edge detect + pulse generation
-            pulse_reg <= req_edge;
+            // Edge detect
             req_prev <= req_ff[1];
 
+            // Default: no pulse
+            pulse_reg <= 1'b0;
+
+            // When a request edge arrives, arm a pending clear.
+            // We delay the clear pulse so the synchronized mask (hi_ff2/lo_ff2)
+            // is guaranteed valid and stable when Status_Monitor samples it.
             if (req_edge) begin
-                ack_tgl_reg <= ~ack_tgl_reg;
+                pending <= 1'b1;
+                pending_cnt <= 2'b00;
+            end else if (pending) begin
+                pending_cnt <= pending_cnt + 1'b1;
+                if (pending_cnt == 2'b10) begin
+                    // Fire pulse + ack after ~2 HF_CLK cycles of mask syncing
+                    pulse_reg <= 1'b1;
+                    ack_tgl_reg <= ~ack_tgl_reg;
+                    pending <= 1'b0;
+                end
             end
         end
     end

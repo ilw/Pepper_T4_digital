@@ -58,8 +58,8 @@ module CDC_sync (
     
     // Buses (quasi-static or from stable domains)
     reg [7:0]  aferstch_ff1, aferstch_ff2;
-    reg        fifo_overflow_ff1, fifo_overflow_ff2;
-    reg        fifo_underflow_ff1, fifo_underflow_ff2;
+    reg        fifo_overflow_ff1, fifo_overflow_ff2, fifo_overflow_prev;
+    reg        fifo_underflow_ff1, fifo_underflow_ff2, fifo_underflow_prev;
     reg [7:0]  satdetect_ff1, satdetect_ff2;
 
     always @(posedge HF_CLK or negedge NRST) begin
@@ -70,8 +70,8 @@ module CDC_sync (
             adcoverflow_ff <= 2'b00;
             
             aferstch_ff1 <= 8'b0;       aferstch_ff2 <= 8'b0;
-            fifo_overflow_ff1 <= 0;     fifo_overflow_ff2 <= 0;
-            fifo_underflow_ff1 <= 0;    fifo_underflow_ff2 <= 0;
+            fifo_overflow_ff1 <= 0;     fifo_overflow_ff2 <= 0;   fifo_overflow_prev <= 0;
+            fifo_underflow_ff1 <= 0;    fifo_underflow_ff2 <= 0;  fifo_underflow_prev <= 0;
             satdetect_ff1 <= 8'b0;      satdetect_ff2 <= 8'b0;
         end else begin
             // Single bit synchronizers
@@ -90,6 +90,8 @@ module CDC_sync (
             aferstch_ff2 <= aferstch_ff1;
             fifo_overflow_ff2 <= fifo_overflow_ff1;
             fifo_underflow_ff2 <= fifo_underflow_ff1;
+            fifo_overflow_prev <= fifo_overflow_ff2;
+            fifo_underflow_prev <= fifo_underflow_ff2;
             satdetect_ff2 <= satdetect_ff1;
         end
     end
@@ -101,8 +103,9 @@ module CDC_sync (
     assign ADCOVERFLOW_sync   = adcoverflow_ff[1];
     
     assign AFERSTCH_sync       = aferstch_ff2;
-    assign FIFO_OVERFLOW_sync  = fifo_overflow_ff2;
-    assign FIFO_UNDERFLOW_sync = fifo_underflow_ff2;
+    // FIFO overflow/underflow come in as event toggles; convert to 1-cycle pulses.
+    assign FIFO_OVERFLOW_sync  = fifo_overflow_ff2 ^ fifo_overflow_prev;
+    assign FIFO_UNDERFLOW_sync = fifo_underflow_ff2 ^ fifo_underflow_prev;
     assign SATDETECT_sync      = satdetect_ff2;
     
     // Area reduction: these configuration buses are no longer synchronized.
