@@ -1,3 +1,6 @@
 *.vvp
 *.vcd
 *.log
+*.csv
+*.out
+*.csv#
