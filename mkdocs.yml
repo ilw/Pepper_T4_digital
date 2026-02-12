@@ -1,0 +1,40 @@
+site_name: "Pepper_T4 Digital Documentation"
+theme:
+  name: "material"
+  features:
+    - navigation.tabs
+    - search.highlight
+    - search.share
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - attr_list
+
+nav:
+  - Home: index.md
+  - System Overview:
+      - Overview: system_overview.md
+      - Block Diagram: system_overview/block_diagram.md
+  - Functional Logic:
+      - Status Logic: functional/status_logic.md
+  - Core Blocks:
+      - Command Interpreter: core_blocks/command_interpreter.md
+      - FIFO: core_blocks/fifo.md
+      - CDC Sync: core_blocks/cdc_sync.md
+  - Peripherals:
+      - ATM Control: peripherals/atm_control.md
+      - Configuration Registers: peripherals/configuration_registers.md
+      - Temperature Sensor: peripherals/temp_sense.md
