@@ -90,18 +90,29 @@ module tb_fifo_validate_improved();
         //===================================================================
         $display("\n=== TEST 4: Read Frame 0 ===");
         
-        // Assert frame_pop to request the frame
+        // Look-ahead: Validate data BEFORE pop
+        expected_data = {16'hFFFF, 16'hFFFF, 16'hFFFF, 16'hFFFF, 
+                        16'hFFFF, 16'hFFFF, 16'hFFFF, 16'hFFFF};
+        
+        $display("Frame 0 output: %h", f_out);
+        $display("Expected:       %h", expected_data);
+        
+        if (f_out === expected_data) begin
+            $display("✓ Frame 0 PASSED");
+        end else begin
+            $display("✗ Frame 0 FAILED");
+            errors = errors + 1;
+        end
+
+        // Assert frame_pop to ADVANCE to next frame
         @(posedge read_clk); 
         frame_pop = 1; 
         @(posedge read_clk); 
         frame_pop = 0;
         
-        // Wait one more clock for output to be registered
+        // Wait for output to settle (next frame)
         @(posedge read_clk);
-        #2;  // Small delay for output to settle
-        
-        expected_data = {16'hFFFF, 16'hFFFF, 16'hFFFF, 16'hFFFF, 
-                        16'hFFFF, 16'hFFFF, 16'hFFFF, 16'hFFFF};
+        #2;
         
         $display("Frame 0 output: %h", f_out);
         $display("Expected:       %h", expected_data);
@@ -121,7 +132,21 @@ module tb_fifo_validate_improved();
         //===================================================================
         $display("\n=== TEST 5: Read Frame 1 (Partial, Should be Pre-zeroed) ===");
         
-        // Assert frame_pop to request Frame 1
+        // Look-ahead: Validate Frame 1 BEFORE pop
+        expected_data = {16'h0000, 16'h0000, 16'hBBBB, 16'h0000, 
+                        16'h0000, 16'hAAAA, 16'h0000, 16'h0000};
+        
+        $display("Frame 1 output: %h", f_out);
+        $display("Expected:       %h", expected_data);
+        
+        if (f_out === expected_data) begin
+            $display("✓ Frame 1 PASSED - Pre-zeroing works!");
+        end else begin
+            $display("✗ Frame 1 FAILED - Pre-zeroing issue");
+            errors = errors + 1;
+        end
+
+        // Assert frame_pop to ADVANCE
         @(posedge read_clk); 
         frame_pop = 1; 
         @(posedge read_clk); 
@@ -130,9 +155,6 @@ module tb_fifo_validate_improved();
         // Wait for output to be registered
         @(posedge read_clk);
         #2;
-        
-        expected_data = {16'h0000, 16'h0000, 16'hBBBB, 16'h0000, 
-                        16'h0000, 16'hAAAA, 16'h0000, 16'h0000};
         
         $display("Frame 1 output: %h", f_out);
         $display("Expected:       %h", expected_data);
@@ -152,7 +174,21 @@ module tb_fifo_validate_improved();
         //===================================================================
         $display("\n=== TEST 6: Read Frame 2 ===");
         
-        // Assert frame_pop to request Frame 2
+        // Look-ahead: Validate Frame 2 BEFORE pop
+        expected_data = {16'h7777, 16'h0000, 16'h0000, 16'h0000, 
+                        16'h3333, 16'h0000, 16'h0000, 16'h1111};
+        
+        $display("Frame 2 output: %h", f_out);
+        $display("Expected:       %h", expected_data);
+        
+        if (f_out === expected_data) begin
+            $display("✓ Frame 2 PASSED");
+        end else begin
+            $display("✗ Frame 2 FAILED");
+            errors = errors + 1;
+        end
+
+        // Assert frame_pop to ADVANCE
         @(posedge read_clk); 
         frame_pop = 1; 
         @(posedge read_clk); 
@@ -161,9 +197,6 @@ module tb_fifo_validate_improved();
         // Wait for output to be registered
         @(posedge read_clk);
         #2;
-        
-        expected_data = {16'h7777, 16'h0000, 16'h0000, 16'h0000, 
-                        16'h3333, 16'h0000, 16'h0000, 16'h1111};
         
         $display("Frame 2 output: %h", f_out);
         $display("Expected:       %h", expected_data);

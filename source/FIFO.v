@@ -255,16 +255,17 @@ module FIFO #(
                 // Toggle underflow event when popping empty FIFO.
                 fifo_underflow_evt_tgl <= ~fifo_underflow_evt_tgl;
             end
-            if (FIFO_POP) begin
-                if (frames_available) begin
-                    // Output current frame before incrementing
-                    ADC_data      <= mem[read_ptr[ADDR_WIDTH-1:0]];
-                    read_ptr      <= read_ptr + 1'b1;
-                    read_ptr_gray <= bin_to_gray(read_ptr + 1'b1);
-                end else begin
-                    // Pop while empty: drive zeros (\"clear on read\" behavior)
-                    ADC_data <= 128'h0;
-                end
+            // Look-ahead read: always output valid data if available
+            if (frames_available) begin
+                ADC_data <= mem[read_ptr[ADDR_WIDTH-1:0]];
+            end else begin
+                ADC_data <= 128'h0;
+            end
+
+            // POP only advances the pointer
+            if (FIFO_POP && frames_available) begin
+                read_ptr      <= read_ptr + 1'b1;
+                read_ptr_gray <= bin_to_gray(read_ptr + 1'b1);
             end
         end
     end

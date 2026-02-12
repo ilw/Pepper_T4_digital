@@ -491,10 +491,8 @@ module tb_top_level_medium();
         start_sampling(4'd2);
         wait_for_data_rdy(done_seen[0]);
         fail_if(done_seen[0] == 1'b0, "M5 DATA_RDY did not assert");
-        // FIFO only updates ADC_data on FIFO_POP (end of burst). Prime once, then read.
-        read_fifo_frame_reordered(status_word, frame_data); // prime-pop (may be zeros)
-        repeat (4) @(posedge HF_CLK);
-        read_fifo_frame_reordered(status_word, frame_data); // should contain a real frame
+        // Look-ahead FIFO: Data is valid immediately (no prime needed)
+        read_fifo_frame_reordered(status_word, frame_data);
         fail_if(frame_data[15:0]   == 16'h0000, "M5 CH0 data unexpectedly zero");
         fail_if(frame_data[31:16]  == 16'h0000, "M5 CH1 data unexpectedly zero");
         fail_if(frame_data[47:32]  == 16'h0000, "M5 CH2 data unexpectedly zero");
@@ -577,9 +575,8 @@ module tb_top_level_medium();
         adc_config_for_test();
         start_sampling(4'd1);
         wait_for_data_rdy(done_seen[0]);
-        read_fifo_frame_reordered(status_word, frame_data); // prime-pop
-        repeat (4) @(posedge HF_CLK);
-        read_fifo_frame_reordered(status_word, frame_data); // actual frame
+        // Look-ahead FIFO: First frame is valid data
+        read_fifo_frame_reordered(status_word, frame_data);
         // Save pre-disable frame (not used for equality compare — ADC restarts can repeat)
         frame_session_a = frame_data;
         set_ensamp_and_watermark(1'b0, 4'd0);
@@ -598,9 +595,7 @@ module tb_top_level_medium();
         // Read a frame and verify it's non-zero (new conversions are happening).
         // We already verified post-disable reads returned zeros, so non-zero here
         // confirms the system reset cleanly and is generating fresh data.
-        read_fifo_frame_reordered(status_word, frame_after); // prime
-        repeat (4) @(posedge HF_CLK);
-        read_fifo_frame_reordered(status_word, frame_after); // data
+        read_fifo_frame_reordered(status_word, frame_after);
         fail_if(frame_after === 128'h0, "M8 re-enable produced all-zero frame (no new data)");
 
         $display("=== MEDIUM TB: M9 status and INT ===");

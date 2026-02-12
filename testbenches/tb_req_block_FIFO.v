@@ -163,16 +163,10 @@ module tb_req_block_FIFO();
                     16'h0000, 16'h0000, 16'h0000, 16'h7777, 8'b10000101);
         
         // Allow write pointer to cross into SCK domain before popping
+        // Allow write pointer to cross into SCK domain
         repeat(4) @(posedge SCK);
-        
-        // Read the frame
-        @(posedge SCK);
-        FIFO_POP = 1;
-        @(posedge SCK);
-        FIFO_POP = 0;
-        @(posedge SCK);
-        
-        // Verify data
+
+        // Verify data (Look-ahead: Data is valid BEFORE pop)
         if (ADC_data[15:0] == 16'h1111 && 
             ADC_data[31:16] == 16'h0000 && 
             ADC_data[47:32] == 16'h3333 &&
@@ -181,6 +175,13 @@ module tb_req_block_FIFO();
         else
             $display("ERROR: Test 1 Failed: Ch0=%h Ch1=%h Ch2=%h Ch7=%h", 
                    ADC_data[15:0], ADC_data[31:16], ADC_data[47:32], ADC_data[127:112]);
+        
+        // Pop to clear the frame
+        @(posedge SCK);
+        FIFO_POP = 1;
+        @(posedge SCK);
+        FIFO_POP = 0;
+        @(posedge SCK);
         
         // Test 2: Clear-on-Read (DIG-24)
         $display("Test 2: Clear-on-Read");
@@ -273,8 +274,23 @@ module tb_req_block_FIFO();
         write_frame(16'hAAAA, 16'hBBBB, 16'hCCCC, 16'hDDDD,
                    16'hEEEE, 16'hFFFF, 16'h0000, 16'h1111, 8'hFF);
         
-        // Allow write pointer to cross into SCK domain before popping
+        // Allow write pointer to cross into SCK domain
         repeat(20) @(posedge SCK);
+        
+        // Look-ahead check: Data should be valid now
+        if (ADC_data[31:16]  == 16'hBBBB &&
+             ADC_data[47:32]  == 16'hCCCC &&
+             ADC_data[63:48]  == 16'hDDDD &&
+             ADC_data[79:64]  == 16'hEEEE &&
+             ADC_data[95:80]  == 16'hFFFF &&
+             ADC_data[127:112]== 16'h1111 &&
+             (ADC_data[15:0]  == 16'hAAAA || ADC_data[15:0] == 16'h0000)) begin
+            $display("Test 5b Passed: New data captured correctly (word0=0x%h)", ADC_data[15:0]);
+        end else begin
+            $display("ERROR: Test 5b Failed: Unexpected frame after re-enable: 0x%h", ADC_data);
+        end
+        
+        // Pop the frame
         // FIFO_UNDERFLOW is an event-toggle output (not a level). Capture baseline.
         udf_tgl_before = FIFO_UNDERFLOW;
         @(posedge SCK);
@@ -283,22 +299,8 @@ module tb_req_block_FIFO();
         FIFO_POP = 0;
         @(posedge SCK);
 
-        // After a disable/enable cycle, some integrations may discard the first
-        // post-enable conversion (ADC startup DONE), which can leave word0 empty.
-        // We therefore check that the *session data* is fresh and correctly packed
-        // in the remaining words, and allow word0 to be either AAAA or 0000.
         if (FIFO_UNDERFLOW !== udf_tgl_before) begin
             $display("ERROR: Test 5b Failed: Underflow event on pop after re-enable");
-        end else if (ADC_data[31:16]  == 16'hBBBB &&
-                     ADC_data[47:32]  == 16'hCCCC &&
-                     ADC_data[63:48]  == 16'hDDDD &&
-                     ADC_data[79:64]  == 16'hEEEE &&
-                     ADC_data[95:80]  == 16'hFFFF &&
-                     ADC_data[127:112]== 16'h1111 &&
-                     (ADC_data[15:0]  == 16'hAAAA || ADC_data[15:0] == 16'h0000)) begin
-            $display("Test 5b Passed: New data captured correctly (word0=0x%h)", ADC_data[15:0]);
-        end else begin
-            $display("ERROR: Test 5b Failed: Unexpected frame after re-enable: 0x%h", ADC_data);
         end
         
         $display("FIFO Testbench Complete");
