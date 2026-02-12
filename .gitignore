@@ -5,3 +5,4 @@
 *.csv#
 requirements_traceability_Digital_to_HL.csv
 requirements_traceability_HL_to_Digital.csv
+*.Zip

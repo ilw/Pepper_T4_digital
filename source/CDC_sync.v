@@ -55,6 +55,9 @@ module CDC_sync (
     reg [1:0] enlowpwr_ff;
     reg [1:0] enmontsense_ff;
     reg [1:0] adcoverflow_ff;
+`ifdef ENABLE_REGISTER_CRC
+    reg [1:0] cfg_chnge_ff;
+`endif
     
     // Buses (quasi-static or from stable domains)
     reg [7:0]  aferstch_ff1, aferstch_ff2;
@@ -68,6 +71,9 @@ module CDC_sync (
             enlowpwr_ff <= 2'b00;
             enmontsense_ff <= 2'b00;
             adcoverflow_ff <= 2'b00;
+`ifdef ENABLE_REGISTER_CRC
+            cfg_chnge_ff <= 2'b00;
+`endif
             
             aferstch_ff1 <= 8'b0;       aferstch_ff2 <= 8'b0;
             fifo_overflow_ff1 <= 0;     fifo_overflow_ff2 <= 0;   fifo_overflow_prev <= 0;
@@ -79,6 +85,9 @@ module CDC_sync (
             enlowpwr_ff <= {enlowpwr_ff[0], ENLOWPWR};
             enmontsense_ff <= {enmontsense_ff[0], ENMONTSENSE};
             adcoverflow_ff <= {adcoverflow_ff[0], ADCOVERFLOW};
+`ifdef ENABLE_REGISTER_CRC
+            cfg_chnge_ff <= {cfg_chnge_ff[0], CFG_CHNGE};
+`endif
             
             // Bus/Signal synchronizers (Stage 1)
             aferstch_ff1 <= AFERSTCH;
@@ -122,7 +131,10 @@ module CDC_sync (
     assign CHEN_sync           = CHEN;
     assign ADCOSR_sync         = ADCOSR;
     
-    // CFG_CHNGE_sync logic removed as requested/unused
-    assign CFG_CHNGE_sync = 1'b0; // Output tied low
+`ifdef ENABLE_REGISTER_CRC
+    assign CFG_CHNGE_sync     = cfg_chnge_ff[1];
+`else
+    assign CFG_CHNGE_sync     = 1'b0;
+`endif
 
 endmodule
