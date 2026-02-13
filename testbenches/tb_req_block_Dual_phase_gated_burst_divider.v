@@ -25,9 +25,12 @@ module tb_req_block_Dual_phase_gated_burst_divider();
     // Measurement variables
     integer pulse_count;
     integer phase2_duration;
+    integer stop_extra_edges;
+    integer k;
     reg prev_sample_clk;
     reg counting_pulses;
     reg measuring_phase2;
+    reg monitor_stop_runout;
     
     // Waveform dumping
 `ifdef CADENCE
@@ -80,6 +83,9 @@ module tb_req_block_Dual_phase_gated_burst_divider();
         if (counting_pulses && !phase) begin
             pulse_count = pulse_count + 1;
         end
+        if (monitor_stop_runout) begin
+            stop_extra_edges = stop_extra_edges + 1;
+        end
     end
     
     // Phase 2 duration counter
@@ -101,6 +107,7 @@ module tb_req_block_Dual_phase_gated_burst_divider();
         counting_pulses = 0;
         measuring_phase2 = 0;
         prev_sample_clk = 0;
+        monitor_stop_runout = 0;
         
         #200;
         NRST_sync = 1;
@@ -188,6 +195,50 @@ module tb_req_block_Dual_phase_gated_burst_divider();
                 $display("ERROR:   Passthrough failed at time %t", $time);
         end
         $display("  Passthrough mode verified");
+        
+        // Test 4b: Passthrough stop run-out
+        // Expect exactly one additional SAMPLE_CLK rising edge after disable.
+        $display("Test 4b: Passthrough stop run-out");
+        stop_extra_edges = 0;
+        
+        // Disable on falling edge of HF_CLK so we don't chop a high pulse in half
+        @(negedge HF_CLK);
+        ENSAMP_sync = 0;
+        
+        // Wait for disable to propagate so we don't count the falling edge of the last active pulse
+        @(posedge HF_CLK); // Wait one more edge to let normal_sample_clk fall
+        #1;
+        monitor_stop_runout = 1;
+        
+        // Wait enough cycles to see the runout pulse
+        for (k = 0; k < 8; k = k + 1) begin
+            @(posedge HF_CLK);
+        end
+        monitor_stop_runout = 0;
+        
+        // In the new simple-one-shot RTL, we expect exactly 1 pulse.
+        // If the RTL produces 1 pulse, and we count rising edges of SAMPLE_CLK:
+        // - Edge 1: runout pulse rising edge.
+        //
+        // NOTE: The RTL runout_pulse is generated combinatorially from runout_active & HF_CLK.
+        // runout_active is registered on posedge HF_CLK.
+        // So the pulse is high for one HF_CLK cycle.
+        // The testbench counts rising edges of SAMPLE_CLK.
+        //
+        // If we see 2 edges, it might be counting the falling edge of the previous cycle?
+        // Or maybe normal_sample_clk is still high when runout_pulse goes high?
+        //
+        // Let's debug by printing again but with #1 delay to see stable values
+        if (stop_extra_edges == 1)
+            $display("  PASSED: exactly one extra SAMPLE_CLK edge after disable");
+        else
+            $display("ERROR:   FAILED: expected 1 extra SAMPLE_CLK edge, got %0d", stop_extra_edges);
+        
+        if (SAMPLE_CLK !== 1'b0)
+            $display("ERROR:   FAILED: SAMPLE_CLK did not settle low after run-out");
+            
+        ENSAMP_sync = 1;
+        repeat (4) @(posedge HF_CLK);
         
         // Test 5: Phase Indicator
         $display("Test 5: Phase Indicator");

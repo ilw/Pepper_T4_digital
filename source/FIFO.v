@@ -178,12 +178,13 @@ module FIFO #(
                     // Toggle overflow event when attempting to push while full.
                     if (frame_count == FRAME_DEPTH) begin
                         fifo_overflow_evt_tgl <= ~fifo_overflow_evt_tgl;
+                    end else begin
+                        // Clear the next frame so disabled channels read as 0 and stale
+                        // data from prior uses of this slot cannot leak through.
+                        mem[write_ptr_next[ADDR_WIDTH-1:0]] <= 128'h0;
+                        write_ptr      <= write_ptr + 1'b1;
+                        write_ptr_gray <= bin_to_gray(write_ptr + 1'b1);
                     end
-                    // Clear the next frame so disabled channels read as 0 and stale
-                    // data from prior uses of this slot cannot leak through.
-                    mem[write_ptr_next[ADDR_WIDTH-1:0]] <= 128'h0;
-                    write_ptr      <= write_ptr + 1'b1;
-                    write_ptr_gray <= bin_to_gray(write_ptr + 1'b1);
                 end
             end
             
@@ -251,7 +252,7 @@ module FIFO #(
             read_ptr_gray  <= {PTR_WIDTH{1'b0}};
             ADC_data       <= 128'h0;
         end else begin
-            if (ENSAMP_sync && FIFO_POP && !frames_available) begin
+            if (FIFO_POP && !frames_available) begin
                 // Toggle underflow event when popping empty FIFO.
                 fifo_underflow_evt_tgl <= ~fifo_underflow_evt_tgl;
             end

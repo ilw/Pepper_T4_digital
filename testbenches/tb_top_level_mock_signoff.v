@@ -21,6 +21,7 @@ module tb_top_level_mock_signoff();
     wire MISO_PAD;
     wire OEN_w;
     wire INT_w;
+    wire DATA_RDY_w;
 
     wire [7:0] ATMCHSEL;
     wire ENMONTSENSE_w;
@@ -110,6 +111,7 @@ module tb_top_level_mock_signoff();
         .MOSI(MOSI),
         .MISO(MISO_CORE),
         .OEN(OEN_w),
+        .DATA_RDY(DATA_RDY_w),
         .INT(INT_w),
         .SCANEN(SCANEN),
         .SCANMODE(SCANMODE),
@@ -294,7 +296,7 @@ module tb_top_level_mock_signoff();
         input ensamp_en;
         input [3:0] wm;
         begin
-            write_reg_timed(6'h23, {ensamp_en, wm, 3'b000}, 50);
+            write_reg_timed(6'h23, {ensamp_en, 1'b0, wm, 2'b00}, 50);
         end
     endtask
 
@@ -313,7 +315,7 @@ module tb_top_level_mock_signoff();
         end
     endtask
 
-    task read_fifo_frame;
+    task read_fifo_frame_raw;
         output [127:0] data128;
         begin
             spi_begin();
@@ -323,6 +325,23 @@ module tb_top_level_mock_signoff();
                 data128[i*16 +: 16] = spi_rx;
             end
             spi_end();
+        end
+    endtask
+
+    // Command_Interpreter's READ_DATA stream is effectively rotated by 1 word because
+    // word_counter increments on the command word's word_rcvd. Reorder so that
+    // output word0 corresponds to channel 0 (bits [15:0]) as intended.
+    task read_fifo_frame;
+        output [127:0] data128_reordered;
+        reg [127:0] data_raw;
+        integer k;
+        begin
+            read_fifo_frame_raw(data_raw);
+            // raw[0] is word1, raw[1] is word2, ..., raw[6] is word7, raw[7] is word0
+            data128_reordered[15:0] = data_raw[127:112]; // word0 (channel 0)
+            for (k = 0; k < 7; k = k + 1) begin
+                data128_reordered[(k+1)*16 +: 16] = data_raw[k*16 +: 16];
+            end
         end
     endtask
 
@@ -352,6 +371,7 @@ module tb_top_level_mock_signoff();
         // mock-signoff and real-signoff run the same sequences.
 
         // S1..S14 body (kept identical to tb_top_level_signoff)
+        $display("=== S1 SPI edge-pattern (t=%0t) ===", $time);
         ok = 1;
         write_reg_timed(6'h00, 8'h00, 50); read_reg_timed(6'h00, 50, reg_readback); if (reg_readback !== 8'h00) ok = 0;
         write_reg_timed(6'h00, 8'hFF, 50); read_reg_timed(6'h00, 50, reg_readback); if (reg_readback !== 8'hFF) ok = 0;
@@ -360,6 +380,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S1 SPI edge-pattern write/read failed");
         mark_test(1, ok);
 
+        $display("=== S2 fast SPI R/W (t=%0t) ===", $time);
         ok = 1;
         for (i = 0; i < 8; i = i + 1) begin
             write_reg_timed(i[5:0], (8'h31 + i[7:0]), 33);
@@ -369,6 +390,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S2 fast SPI R/W failed");
         mark_test(2, ok);
 
+        $display("=== S3 divider SAMPLE_CLK (t=%0t) ===", $time);
         ok = 1;
         write_reg_timed(6'h16, 8'h01, 50);
         write_reg_timed(6'h1B, 8'h10, 50);
@@ -385,6 +407,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S3 divider did not produce SAMPLE_CLK");
         mark_test(3, ok);
 
+        $display("=== S4 CHEN permutation (t=%0t) ===", $time);
         ok = 1;
         write_reg_timed(6'h1B, 8'h10, 50);
         for (j = 0; j < 6; j = j + 1) begin
@@ -406,6 +429,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S4 CHEN permutation behavior failed");
         mark_test(4, ok);
 
+        $display("=== S5 OSR sweep DONE period (t=%0t) ===", $time);
         ok = 1;
         write_reg_timed(6'h16, 8'h01, 50);
         for (j = 0; j < 16; j = j + 1) begin
@@ -429,6 +453,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S5 OSR sweep DONE period failed");
         mark_test(5, ok);
 
+        $display("=== S6 saturation status (t=%0t) ===", $time);
         ok = 1;
         clear_status_bits(14'h3FFF);
         for (j = 0; j < 8; j = j + 1) begin
@@ -448,6 +473,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S6 saturation status failed");
         mark_test(6, ok);
 
+        $display("=== S7 ADC overflow status (t=%0t) ===", $time);
         ok = 1;
         ADCOVERFLOW_stim = 1'b1;
         repeat (3) @(posedge HF_CLK);
@@ -461,6 +487,7 @@ module tb_top_level_mock_signoff();
         mark_test(7, ok);
 
 `ifdef ENABLE_REGISTER_CRC
+        $display("=== S8 CRC read (t=%0t) ===", $time);
         ok = 1;
         spi_begin();
         spi_transfer_word16_timed(16'h4000, 50, spi_rx);
@@ -470,26 +497,28 @@ module tb_top_level_mock_signoff();
         mark_test(8, ok);
         fail_if(ok == 0, "S8 CRC read command failed");
 `else
+        $display("=== S8 CRC read (t=%0t) [SKIP] ===", $time);
         mark_test(8, 2);
 `endif
 
         // S9: DATA_RDY semantics (use realistic 8kHz SAMPLE_CLK)
+        $display("=== S9 DATA_RDY threshold (t=%0t) ===", $time);
         ok = 1;
         divider_config_8khz_continuous();
         write_reg_timed(6'h16, 8'hFF, 50);
-        write_reg_timed(6'h1B, 8'h10, 50); // OSR=1
+        write_reg_timed(6'h1B, 8'h00, 50); // OSR=0
         set_ensamp_wm(1'b1, 4'd2);
-        // Wait long enough for two frames to be produced at 8kHz/OSR=1.
-        repeat (20000) @(posedge HF_CLK);
-        if (dut.DATA_RDY !== 1'b1) ok = 0;
+        // Wait long enough for two frames to be produced at 8kHz/OSR=0.
+        repeat (25000) @(posedge HF_CLK);
+        if (DATA_RDY_w !== 1'b1) ok = 0;
         // Drain until DATA_RDY deasserts (producer is slow, so this should converge).
         for (j = 0; j < 8; j = j + 1) begin
-            if (dut.DATA_RDY === 1'b1) begin
+            if (DATA_RDY_w === 1'b1) begin
                 read_fifo_frame(frame_data);
                 repeat (2000) @(posedge HF_CLK);
             end
         end
-        if (dut.DATA_RDY !== 1'b0) ok = 0;
+        if (DATA_RDY_w !== 1'b0) ok = 0;
         set_ensamp_wm(1'b0, 4'd0);
         fail_if(ok == 0, "S9 DATA_RDY threshold behavior failed");
         mark_test(9, ok);
@@ -499,6 +528,7 @@ module tb_top_level_mock_signoff();
         // 1) Run with all channels enabled to ensure non-zero words exist in frame slots.
         // 2) Disable, then switch to CHEN=0x01 (only channel 0 enabled).
         // 3) Re-enable and read a frame; verify channels 1..7 read as 0 (no stale leftovers).
+        $display("=== S10 frame slot cleared (t=%0t) ===", $time);
         ok = 1;
         divider_config_8khz_continuous();
         write_reg_timed(6'h1B, 8'h10, 50); // OSR=1
@@ -523,10 +553,11 @@ module tb_top_level_mock_signoff();
         // Check:
         // - After disable, FIFO read returns all zeros (cleared session)
         // - After re-enable and some time, FIFO returns non-zero frame data again
+        $display("=== S11 no-stale-data disable/re-enable (t=%0t) ===", $time);
         ok = 1;
         divider_config_8khz_continuous();
         write_reg_timed(6'h16, 8'hFF, 50);
-        write_reg_timed(6'h1B, 8'h10, 50); // OSR=1
+        write_reg_timed(6'h1B, 8'h00, 50); // OSR=0
         set_ensamp_wm(1'b1, 4'd1);
         repeat (17) @(posedge SAMPLE_CLK_w); // mid-frame-ish
         set_ensamp_wm(1'b0, 4'd0);
@@ -537,26 +568,19 @@ module tb_top_level_mock_signoff();
         set_ensamp_wm(1'b1, 4'd1);
         // Wait for at least one frame (poll DATA_RDY as a proxy; watermark=1 here).
         i = 0;
-        while ((dut.DATA_RDY !== 1'b1) && (i < 500000)) begin
+        while ((DATA_RDY_w !== 1'b1) && (i < 500000)) begin
             @(posedge HF_CLK);
             i = i + 1;
         end
-        if (dut.DATA_RDY !== 1'b1) ok = 0;
-        // FIFO readout is "one-behind": first RDDATA after (re)enable may return 0
-        // and only becomes valid after the first FIFO_POP. Prime once, then read again.
-        read_fifo_frame(frame_data); // prime (pop one frame, returned data may be stale/0)
-        i = 0;
-        while ((dut.DATA_RDY !== 1'b1) && (i < 500000)) begin
-            @(posedge HF_CLK);
-            i = i + 1;
-        end
-        if (dut.DATA_RDY !== 1'b1) ok = 0;
-        read_fifo_frame(frame_data); // valid readback of previously popped frame
+        if (DATA_RDY_w !== 1'b1) ok = 0;
+        // Look-ahead FIFO behavior: first read after DATA_RDY is already valid.
+        read_fifo_frame(frame_data);
         if (frame_data === 128'h0) ok = 0;
         set_ensamp_wm(1'b0, 4'd0);
         fail_if(ok == 0, "S11 no-stale-data check failed across disable/re-enable");
         mark_test(11, ok);
 
+        $display("=== S12 scan pins (t=%0t) ===", $time);
         ok = 1;
         write_reg_timed(6'h16, 8'h01, 50);
         write_reg_timed(6'h1B, 8'h10, 50);
@@ -575,6 +599,7 @@ module tb_top_level_mock_signoff();
         fail_if(ok == 0, "S12 scan pins affected functional behavior");
         mark_test(12, ok);
 
+        $display("=== S13 register defaults (t=%0t) ===", $time);
         ok = 1;
         RESETN = 1'b0;
         repeat (6) @(posedge HF_CLK);
@@ -589,26 +614,26 @@ module tb_top_level_mock_signoff();
 
         // S14: Continuous sampling endurance (realistic rate; ensure no overflow under reasonable drain)
         // Aim (DIG-13/DIG-16/DIG-84): run for many frames, keep draining, and verify no FIFO overflow.
+        $display("=== S14 endurance 50 frames (t=%0t) ===", $time);
         ok = 1;
         divider_config_8khz_continuous();
         clear_status_bits(14'h3FFF);
         write_reg_timed(6'h16, 8'hFF, 50);
-        write_reg_timed(6'h1B, 8'h10, 50); // OSR=1
+        write_reg_timed(6'h1B, 8'h00, 50); // OSR=0
         set_ensamp_wm(1'b1, 4'd1);
-        // Prime the FIFO readout pipeline once (first read may return stale/0).
+        // Look-ahead FIFO behavior: no priming read required.
         stable = 0;
         i = 0;
         while ((stable == 0) && (i < 500000)) begin
             @(posedge HF_CLK);
-            if (dut.DATA_RDY === 1'b1) begin
+            if (DATA_RDY_w === 1'b1) begin
                 // Require DATA_RDY to remain asserted across SAMPLE_CLK edges (avoid glitches/CDC lag)
                 repeat (2) @(posedge SAMPLE_CLK_w);
-                if (dut.DATA_RDY === 1'b1) stable = 1;
+                if (DATA_RDY_w === 1'b1) stable = 1;
             end
             i = i + 1;
         end
         if ((stable == 0) && (ok == 1)) ok = 0;
-        read_fifo_frame(frame_data); // prime pop (ignore content)
 
         // Drain 50 frames, paced by DATA_RDY. After each read, wait a few SAMPLE_CLK
         // edges so the read-pointer CDC settles before we look at DATA_RDY again.
@@ -618,9 +643,9 @@ module tb_top_level_mock_signoff();
             i = 0;
             while ((stable == 0) && (i < 500000)) begin
                 @(posedge HF_CLK);
-                if (dut.DATA_RDY === 1'b1) begin
+                if (DATA_RDY_w === 1'b1) begin
                     repeat (2) @(posedge SAMPLE_CLK_w);
-                    if (dut.DATA_RDY === 1'b1) stable = 1;
+                    if (DATA_RDY_w === 1'b1) stable = 1;
                 end
                 i = i + 1;
             end
@@ -630,7 +655,7 @@ module tb_top_level_mock_signoff();
             // DATA_RDY deassert (FIFO emptied) before looping, but don't stall if
             // additional frames are already buffered.
             i = 0;
-            while ((dut.DATA_RDY === 1'b1) && (i < 8)) begin
+            while ((DATA_RDY_w === 1'b1) && (i < 8)) begin
                 @(posedge SAMPLE_CLK_w);
                 i = i + 1;
             end

@@ -212,11 +212,29 @@ module tb_top_level_medium();
         end
     endtask
 
+    // Convenience banner to make log/wave correlation easy.
+    // Use this for each major test phase (M1..M11).
+    task phase_banner;
+        input [255:0] name;
+        begin
+            $display("=== %0s (t=%0t) ===", name, $time);
+        end
+    endtask
+
     task write_reg;
         input [5:0] addr;
         input [7:0] data;
         reg [15:0] rx;
         begin
+            // Register write protocol (WRREG):
+            // - MOSI word format: { 2'b10, addr[5:0], data[7:0] }
+            // - MISO response during the same 16 clocks is the status word
+            //   (Command_Interpreter returns {status_sync, RESP_STATUS}).
+            //
+            // Notes:
+            // - This task uses `spi.send_word` (single 16-bit word transaction).
+            // - Writes may be blocked when ENSAMP is high (write protection); tests
+            //   M2/M6 call `stop_sampling()` before writing protected regs.
             spi.send_word({2'b10, addr, data}, rx);
         end
     endtask
@@ -226,6 +244,16 @@ module tb_top_level_medium();
         output [7:0] data;
         reg [15:0] rx;
         begin
+            // Register read protocol (RDREG) is a 2-word SPI transaction:
+            // - Word 0 MOSI: { 2'b00, addr[5:0], 8'h00 } (command)
+            //   Word 0 MISO: status word
+            // - Word 1 MOSI: 16'h0000 (dummy)
+            //   Word 1 MISO: {RESP_REGDATA, rdata[7:0]} for config regs, or a
+            //               special mapping for STATUS/TEMP regs.
+            //
+            // IMPORTANT: Multi-word SPI transactions must be framed as *exactly*
+            // 16 SCK cycles per word with CS held low. `transfer_word()` adds an
+            // extra edge; always use `transfer_word16()` here.
             spi.begin_transaction();
             // IMPORTANT: multi-word transaction must be exactly 16 clocks per word.
             // Using transfer_word() inserts an extra SCK edge and breaks framing.
@@ -241,6 +269,11 @@ module tb_top_level_medium();
         reg [7:0] lo;
         reg [7:0] hi;
         begin
+            // Status is exposed as two "register" addresses (packed):
+            // - 0x24: STATUS_LO = status[7:0]   (SATDETECT bits)
+            // - 0x25: STATUS_HI = status[13:8] packed into [5:0] (upper 2 bits are 0)
+            //
+            // The TB reconstructs the 14-bit status word as {hi[5:0], lo}.
             read_reg(6'h24, lo);
             read_reg(6'h25, hi);
             st = {hi[5:0], lo};
@@ -250,6 +283,14 @@ module tb_top_level_medium();
     task clear_status_bits;
         input [13:0] clr_mask;
         begin
+            // Status clear is W1C via two write addresses:
+            // - 0x26: STATUS_CLR_LO = clr_mask[7:0]
+            // - 0x27: STATUS_CLR_HI = clr_mask[13:8] in bits [5:0]
+            //
+            // This is NOT an immediate combinational clear:
+            // - Clear request is launched in SCK domain, crosses into HF_CLK domain
+            //   via Status_Clear_CDC, then Status_Monitor clears sticky bits.
+            // - Tests that depend on clear must allow CDC latency and handshake.
             write_reg(6'h26, clr_mask[7:0]);
             write_reg(6'h27, {2'b00, clr_mask[13:8]});
             repeat (8) @(posedge HF_CLK);
@@ -277,6 +318,16 @@ module tb_top_level_medium();
         reg [15:0] rx;
         integer wi;
         begin
+            // FIFO read protocol (RDDATA burst):
+            // - Word 0 MOSI: 16'hC000 (CMD_RDDATA)
+            //   Word 0 MISO: status word (same format as other transactions)
+            // - Words 1..8 MOSI: 16'h0000 (dummy)
+            //   Words 1..8 MISO: 8x 16-bit words from ADC_data[127:0]
+            //
+            // Subtlety:
+            // - In Command_Interpreter, `word_counter` increments on each received
+            //   word, including the command word. Therefore the first returned data
+            //   word after the command corresponds to word_counter==1 (word1).
             spi.begin_transaction();
             // RDDATA burst: keep framing aligned (16 clocks per word).
             spi.transfer_word16(16'hC000, rx);
@@ -310,10 +361,14 @@ module tb_top_level_medium();
     task adc_config_for_test;
         begin
             // Ensure the mock produces clearly non-zero data.
-            // 0x1C low nibble is ADCGAIN.
+            // Register map used here:
+            // - 0x1C: ADCGAIN in low nibble [3:0]
+            //   (upper bits are other ADC config spares/controls)
             write_reg(6'h1C, 8'h0F);
             // 0x1B: enable ADC analog + set OSR (bits[7:4]).
             // Set ENADCANALOG=1 (bit0) and default OSR=1 (0x10) => 0x11.
+            // - 0x1B[7:4] = OSR code
+            // - 0x1B[0]   = ENADCANALOG
             write_reg(6'h1B, 8'h11);
         end
     endtask
@@ -322,6 +377,16 @@ module tb_top_level_medium();
     // HF_CLK is 10MHz in TB, so set PHASE1DIV1=625 => 10MHz/(2*625)=8kHz.
     task divider_config_slow_continuous;
         begin
+            // NOTE:
+            // - This config targets ~8kHz SAMPLE_CLK when HF_CLK=10MHz (PHASE1DIV1=625).
+            // - M6 underflow relies on SPI consumption outrunning production, so we
+            //   deliberately slow SAMPLE_CLK here (and restore it afterwards).
+            //
+            // Divider register map used here:
+            // - 0x20: PHASE1DIV1[7:0]
+            // - 0x21: { PHASE1COUNT[3:0], PHASE1DIV1[11:8] }
+            // - 0x22: PHASE2COUNT[7:0]
+            // - 0x23: also contains PHASE2COUNT[9:8] in [1:0] (shared with ENSAMP/WM)
             // PHASE1DIV1[7:0] in reg 0x20, PHASE1DIV1[11:8] in reg 0x21[3:0]
             // PHASE1COUNT in reg 0x21[7:4]; PHASE2COUNT in {reg0x23[1:0], reg0x22}
             write_reg(6'h20, 8'h71); // low byte of 0x271
@@ -347,6 +412,13 @@ module tb_top_level_medium();
         input [3:0] wm;
         reg [7:0] v;
         begin
+            // 0x23: ENSAMP/WATERMARK control register (TB view)
+            // - [7]   ENSAMP enable
+            // - [6:3] watermark (4-bit)
+            // - [2:0] currently unused here
+            //
+            // NOTE: In RTL, 0x23 is also overloaded with some divider bits in [1:0]
+            // (PHASE2COUNT[9:8]). This TB currently writes [2:0]=0 for simplicity.
             v = {ensamp_en, wm, 3'b000};
             write_reg(6'h23, v);
         end
@@ -374,6 +446,10 @@ module tb_top_level_medium();
     task set_osr;
         input [3:0] osr;
         begin
+            // Convenience: program OSR code into reg 0x1B[7:4].
+            // WARNING: This writes the whole low nibble to 0, so if you need to keep
+            // ENADCANALOG or other control bits set, use `adc_config_for_test()` or
+            // explicitly write the full desired value.
             write_reg(6'h1B, {osr, 4'b0000});
         end
     endtask
@@ -385,6 +461,9 @@ module tb_top_level_medium();
             timeout_ctr = 0;
             // Allow long enough for slow SAMPLE_CLK configs and DONE_QUAL swallowing
             while ((found == 1'b0) && (timeout_ctr < 200000)) begin
+                // DATA_RDY is generated inside FIFO in the SAMPLE_CLK domain and then
+                // observed here in the TB (HF_CLK domain). Expect some latency when
+                // SAMPLE_CLK is slow and/or when ENSAMP transitions have just occurred.
                 if (dut.DATA_RDY === 1'b1) begin
                     found = 1'b1;
                 end
@@ -423,7 +502,7 @@ module tb_top_level_medium();
         RESETN = 1'b1;
         repeat (10) @(posedge HF_CLK);
 
-        $display("=== MEDIUM TB: M1 register round-trip ===");
+        phase_banner("MEDIUM TB: M1 register round-trip");
         set_ensamp_and_watermark(1'b0, 4'd0);
         for (i = 0; i < 36; i = i + 1) begin
             expected_readback = (i * 8'h17) ^ 8'h5A;
@@ -434,7 +513,7 @@ module tb_top_level_medium();
             fail_if(reg_readback !== expected_readback, "M1 register readback mismatch");
         end
 
-        $display("=== MEDIUM TB: M2 write protection ===");
+        phase_banner("MEDIUM TB: M2 write protection");
         write_reg(6'h16, 8'h07);
         set_osr(4'h1);
         set_ensamp_and_watermark(1'b1, 4'd1);
@@ -456,7 +535,7 @@ module tb_top_level_medium();
         fail_if(reg_readback !== (cfg13_cached ^ 8'h80), "M2 exempt write failed for 0x23");
         set_ensamp_and_watermark(1'b1, 4'd1);
 
-        $display("=== MEDIUM TB: M3 reset behavior ===");
+        phase_banner("MEDIUM TB: M3 reset behavior");
         RESETN = 1'b0;
         repeat (8) @(posedge HF_CLK);
         fail_if(nARST_w !== 1'b0, "M3 nARST not low during reset");
@@ -468,7 +547,7 @@ module tb_top_level_medium();
             fail_if(reg_readback !== 8'h00, "M3 register not reset to zero");
         end
 
-        $display("=== MEDIUM TB: M4 channel sequencing ===");
+        phase_banner("MEDIUM TB: M4 channel sequencing");
         stop_sampling();
         write_reg(6'h16, 8'h85);
         adc_config_for_test();
@@ -484,7 +563,7 @@ module tb_top_level_medium();
         fail_if(onehot_errors != 0, "M4 one-hot violation observed");
         fail_if(seq_errors != 0, "M4 unexpected channel index observed");
 
-        $display("=== MEDIUM TB: M5 FIFO fill/watermark/readout ===");
+        phase_banner("MEDIUM TB: M5 FIFO fill/watermark/readout");
         stop_sampling();
         write_reg(6'h16, 8'h07);
         adc_config_for_test();
@@ -499,7 +578,7 @@ module tb_top_level_medium();
         fail_if(frame_data[63:48]  != 16'h0000, "M5 disabled CH3 should be zero");
         fail_if(frame_data[127:112] != 16'h0000, "M5 disabled CH7 should be zero");
 
-        $display("=== MEDIUM TB: M6 overflow/underflow/W1C ===");
+        phase_banner("MEDIUM TB: M6 overflow/underflow/W1C");
         clear_status_bits(14'h3FFF);
         dbg_status_clear_signals("after_clear_all");
         stop_sampling();
@@ -512,6 +591,28 @@ module tb_top_level_medium();
         fail_if(status_shadow[9] !== 1'b1, "M6 FIFO overflow flag not set");
 
         // Underflow test: slow down sampling so SPI can outrun production.
+        // Why: with reduced FIFO depth, a fast SAMPLE_CLK can produce frames faster
+        // than we can drain over SPI, making underflow impossible to hit reliably.
+        //
+        // What "underflow" means here:
+        // - FIFO_UNDERFLOW is an *event* (toggle in FIFO's SCK domain)
+        // - That toggle is synchronized into HF_CLK and edge-detected into a 1-cycle
+        //   pulse in `CDC_sync`, then latched sticky in `Status_Monitor`.
+        // - Therefore after an empty pop we must allow time for:
+        //     SCK-domain event -> HF_CLK pulse -> sticky set -> status sync back to SCK.
+        //
+        // If this test ever fails again, debug in waves around the "after_underflow_pop"
+        // tag:
+        // - `dut.cim_fifo_pop` (FIFO_POP source)
+        // - `dut.u_fifo.frames_available`, `dut.u_fifo.read_ptr`, `dut.u_fifo.write_ptr_sync_bin`
+        // - `dut.fifo_underflow_sync` (HF_CLK pulse)
+        // - `dut.u_stat_mon.status` (sticky latch)
+        //
+        // Design note:
+        // - If SAMPLE_CLK is fully gated/stopped immediately when ENSAMP drops, any
+        //   write-domain cleanup that relies on SAMPLE_CLK edges will be delayed until
+        //   the next enable. That can make "empty" detection timing-sensitive when
+        //   FIFO depth is small.
         stop_sampling();
         divider_config_slow_continuous();
         write_reg(6'h16, 8'h01); // single channel => 1 DONE per frame
@@ -550,7 +651,7 @@ module tb_top_level_medium();
         // Restore fast SAMPLE_CLK for the rest of the tests (M6 underflow uses slow clock).
         divider_config_fast_passthrough();
 
-        $display("=== MEDIUM TB: M7 OSR integrity checks ===");
+        phase_banner("MEDIUM TB: M7 OSR integrity checks");
         set_ensamp_and_watermark(1'b0, 4'd0);
         write_reg(6'h1C, 8'h0F);
         set_osr(4'h0);
@@ -569,7 +670,7 @@ module tb_top_level_medium();
         fail_if(done_seen < 3, "M7 OSR=4 insufficient DONE pulses");
         stop_sampling();
 
-        $display("=== MEDIUM TB: M8 disable/re-enable stale data ===");
+        phase_banner("MEDIUM TB: M8 disable/re-enable stale data");
         stop_sampling();
         write_reg(6'h16, 8'h0F);
         adc_config_for_test();
@@ -598,7 +699,7 @@ module tb_top_level_medium();
         read_fifo_frame_reordered(status_word, frame_after);
         fail_if(frame_after === 128'h0, "M8 re-enable produced all-zero frame (no new data)");
 
-        $display("=== MEDIUM TB: M9 status and INT ===");
+        phase_banner("MEDIUM TB: M9 status and INT");
         clear_status_bits(14'h3FFF);
         SATDETECT_stim = 8'h20;
         repeat (4) @(posedge HF_CLK);
@@ -620,7 +721,7 @@ module tb_top_level_medium();
         read_status(status_shadow);
         fail_if(status_shadow[8] !== 1'b0, "M9 ADC overflow bit not cleared");
 
-        $display("=== MEDIUM TB: M10 temperature one-shot ===");
+        phase_banner("MEDIUM TB: M10 temperature one-shot");
         stop_sampling();
         // Ensure ADC mock produces a non-zero TEMPVAL and OSR=1 for predictable DONE pulses.
         adc_config_for_test();
@@ -658,7 +759,7 @@ module tb_top_level_medium();
         status_word[7:0] = reg_readback;
         fail_if(status_word == 16'h0000, "M10 TEMPVAL remained zero");
 
-        $display("=== MEDIUM TB: M11 OEN/MISO pad checker ===");
+        phase_banner("MEDIUM TB: M11 OEN/MISO pad checker");
         fail_if(pad_errors != 0, "M11 OEN/MISO pad checker found errors");
 
         if (error_count == 0) begin
