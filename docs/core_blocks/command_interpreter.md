@@ -1,4 +1,4 @@
-# Command Interpreter
+# Command Interpreter and SPI core
 
 ## Overview
 The **Command Interpreter** is the control center of the Pepper T4 digital logic. It acts as an SPI slave, decoding host commands and orchestrating data flow between:
@@ -12,20 +12,20 @@ The module operates entirely in the **SCK domain** (SPI clock), with careful syn
 ## SPI Protocol
 
 ### Mode & Timing
-*   **SPI Mode**: Mode 0 (CPOL=0, CPHA=0)
-    *   Clock idle state is LOW
+*   **SPI Mode**: Mode 3 (CPOL=1, CPHA=1)
+    *   Clock idle state is HIGH
     *   Data is captured on the rising edge of SCK
     *   Data is shifted out on the falling edge of SCK
 *   **Bit Order**: MSB first
 *   **Word Size**: 16 bits (8-bit command + 8-bit data)
 
 ### Command Structure
-Each SPI transaction begins with an 8-bit **command byte**:
+Each SPI transaction begins with an 8-bit **command byte** from the SPI master:
 
 | Bits | Field | Description |
 |:---:|:---|:---|
 | `[7:6]` | **Opcode** | `00`=Read Register, `01`=Read CRC, `10`=Write Register, `11`=Read Data |
-| `[5:0]` | **Address** | Register address or stream identifier |
+| `[5:0]` | **Blank or Address** | Blank or register address or stream identifier |
 
 ### Response Format
 The module prepends a **Status Word** to every response:

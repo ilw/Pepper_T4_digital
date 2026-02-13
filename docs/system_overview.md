@@ -1,7 +1,7 @@
 # System Overview
 
 ## Introduction
-**Pepper T4 digital logic** is a mixed-signal controller system designed to interface an external host (via SPI) with an on-chip Analog Front End (AFE) and ADC. It manages configuration, timing generation (`SAMPLE_CLK`), and high-speed data buffering.
+**Pepper T4 digital logic** is a mixed-signal controller system designed to interface an external host (via SPI) with an 8 channel Analog Front End (AFE) and ADC. It manages configuration, timing generation (`SAMPLE_CLK`), and high-speed data buffering.
 
 The digital core operates on two primary clock domains:
 *   **SCK Domain**: The SPI clock domain, used for command interpretation and register access.
@@ -19,7 +19,7 @@ The system functions as an SPI Slave. The data flow is as follows:
     *   **Data Read**: ADC samples are popped from the `FIFO` and streamed to the host.
 
 ## polling vs Interrupts
-The system provides a hardware interrupt pin (`INT`) which asserts when any error flag (Overflow, Underflow, Saturation) is set. Alternatively, the Host can poll the Status Register (returned as the first byte of every transaction) to monitor system health.
+The system provides 2 hardware interrupt pins (`DATA_RDY` and `INT`). `DATA_RDY` asserts when the internal FIFO has a number of frames of data available to read. `INT` asserts when any error flag (Overflow, Underflow, Saturation) is set. Alternatively, the Host can poll the Status Register (returned as the first byte of every transaction) to monitor system health.
 
 ## Key Limitations & Constraints
 

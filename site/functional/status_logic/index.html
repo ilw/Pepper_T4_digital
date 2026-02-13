@@ -1,0 +1,1161 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../core_blocks/cdc_sync/" rel="prev"/>
+<link href="../../peripherals/atm_control/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Status Logic - Pepper_T4 Digital Documentation</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#status-generation-and-clearing-logic">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Pepper_T4 Digital Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Status Logic
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../system_overview/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../core_blocks/command_interpreter/">
+          
+  
+  
+  Core Blocks
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  
+  Functional Logic
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../peripherals/atm_control/">
+          
+  
+  
+  Peripherals
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Pepper_T4 Digital Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    System Overview
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/block_diagram/">
+<span class="md-ellipsis">
+    
+  
+    Block Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Core Blocks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Blocks
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/command_interpreter/">
+<span class="md-ellipsis">
+    
+  
+    Command Interpreter
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/fifo/">
+<span class="md-ellipsis">
+    
+  
+    FIFO
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/cdc_sync/">
+<span class="md-ellipsis">
+    
+  
+    CDC Sync
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Functional Logic
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Functional Logic
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Status Logic
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Status Logic
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-cycle-of-a-status-bit">
+<span class="md-ellipsis">
+      
+        The Cycle of a Status Bit
+      
+    </span>
+</a>
+<nav aria-label="The Cycle of a Status Bit" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-event-detection-source-domain">
+<span class="md-ellipsis">
+      
+        1. Event Detection (Source Domain)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-synchronization-to-hf_clk">
+<span class="md-ellipsis">
+      
+        2. Synchronization to HF_CLK
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-sticky-bits-memory-behavior">
+<span class="md-ellipsis">
+      
+        3. Sticky Bits (Memory Behavior)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-registration-and-output">
+<span class="md-ellipsis">
+      
+        4. Registration and Output
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clearing-mechanism">
+<span class="md-ellipsis">
+      
+        Clearing Mechanism
+      
+    </span>
+</a>
+<nav aria-label="Clearing Mechanism" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-1-to-clear-w1c-protocol">
+<span class="md-ellipsis">
+      
+        Write-1-to-Clear (W1C) Protocol
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cross-domain-clear-propagation">
+<span class="md-ellipsis">
+      
+        Cross-Domain Clear Propagation
+      
+    </span>
+</a>
+<nav aria-label="Cross-Domain Clear Propagation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-toggle-request-sck-domain">
+<span class="md-ellipsis">
+      
+        Step 1: Toggle Request (SCK Domain)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-synchronization-cdc-module">
+<span class="md-ellipsis">
+      
+        Step 2: Synchronization (CDC Module)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-3-clear-execution-status-monitor">
+<span class="md-ellipsis">
+      
+        Step 3: Clear Execution (Status Monitor)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-4-acknowledgment-back-to-sck-domain">
+<span class="md-ellipsis">
+      
+        Step 4: Acknowledgment (Back to SCK Domain)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gating-with-ensamp">
+<span class="md-ellipsis">
+      
+        Gating with ENSAMP
+      
+    </span>
+</a>
+<nav aria-label="Gating with ENSAMP" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ensamp-behavior">
+<span class="md-ellipsis">
+      
+        ENSAMP Behavior
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#effect-on-status-generation">
+<span class="md-ellipsis">
+      
+        Effect on Status Generation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-lifecycle-diagram">
+<span class="md-ellipsis">
+      
+        Status Lifecycle Diagram
+      
+    </span>
+</a>
+<nav aria-label="Status Lifecycle Diagram" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagram-legend">
+<span class="md-ellipsis">
+      
+        Diagram Legend
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-design-considerations">
+<span class="md-ellipsis">
+      
+        Key Design Considerations
+      
+    </span>
+</a>
+<nav aria-label="Key Design Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-metastability-protection">
+<span class="md-ellipsis">
+      
+        1. Metastability Protection
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-race-condition-handling">
+<span class="md-ellipsis">
+      
+        2. Race Condition Handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-timing-constraints">
+<span class="md-ellipsis">
+      
+        3. Timing Constraints
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-software-considerations">
+<span class="md-ellipsis">
+      
+        4. Software Considerations
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#related-modules">
+<span class="md-ellipsis">
+      
+        Related Modules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Peripherals
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripherals
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/atm_control/">
+<span class="md-ellipsis">
+    
+  
+    ATM Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/configuration_registers/">
+<span class="md-ellipsis">
+    
+  
+    Configuration Registers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/temp_sense/">
+<span class="md-ellipsis">
+    
+  
+    Temperature Sensor
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-cycle-of-a-status-bit">
+<span class="md-ellipsis">
+      
+        The Cycle of a Status Bit
+      
+    </span>
+</a>
+<nav aria-label="The Cycle of a Status Bit" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-event-detection-source-domain">
+<span class="md-ellipsis">
+      
+        1. Event Detection (Source Domain)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-synchronization-to-hf_clk">
+<span class="md-ellipsis">
+      
+        2. Synchronization to HF_CLK
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-sticky-bits-memory-behavior">
+<span class="md-ellipsis">
+      
+        3. Sticky Bits (Memory Behavior)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-registration-and-output">
+<span class="md-ellipsis">
+      
+        4. Registration and Output
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clearing-mechanism">
+<span class="md-ellipsis">
+      
+        Clearing Mechanism
+      
+    </span>
+</a>
+<nav aria-label="Clearing Mechanism" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-1-to-clear-w1c-protocol">
+<span class="md-ellipsis">
+      
+        Write-1-to-Clear (W1C) Protocol
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cross-domain-clear-propagation">
+<span class="md-ellipsis">
+      
+        Cross-Domain Clear Propagation
+      
+    </span>
+</a>
+<nav aria-label="Cross-Domain Clear Propagation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-1-toggle-request-sck-domain">
+<span class="md-ellipsis">
+      
+        Step 1: Toggle Request (SCK Domain)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-2-synchronization-cdc-module">
+<span class="md-ellipsis">
+      
+        Step 2: Synchronization (CDC Module)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-3-clear-execution-status-monitor">
+<span class="md-ellipsis">
+      
+        Step 3: Clear Execution (Status Monitor)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#step-4-acknowledgment-back-to-sck-domain">
+<span class="md-ellipsis">
+      
+        Step 4: Acknowledgment (Back to SCK Domain)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gating-with-ensamp">
+<span class="md-ellipsis">
+      
+        Gating with ENSAMP
+      
+    </span>
+</a>
+<nav aria-label="Gating with ENSAMP" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ensamp-behavior">
+<span class="md-ellipsis">
+      
+        ENSAMP Behavior
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#effect-on-status-generation">
+<span class="md-ellipsis">
+      
+        Effect on Status Generation
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-lifecycle-diagram">
+<span class="md-ellipsis">
+      
+        Status Lifecycle Diagram
+      
+    </span>
+</a>
+<nav aria-label="Status Lifecycle Diagram" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagram-legend">
+<span class="md-ellipsis">
+      
+        Diagram Legend
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-design-considerations">
+<span class="md-ellipsis">
+      
+        Key Design Considerations
+      
+    </span>
+</a>
+<nav aria-label="Key Design Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-metastability-protection">
+<span class="md-ellipsis">
+      
+        1. Metastability Protection
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-race-condition-handling">
+<span class="md-ellipsis">
+      
+        2. Race Condition Handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-timing-constraints">
+<span class="md-ellipsis">
+      
+        3. Timing Constraints
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-software-considerations">
+<span class="md-ellipsis">
+      
+        4. Software Considerations
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#related-modules">
+<span class="md-ellipsis">
+      
+        Related Modules
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="status-generation-and-clearing-logic">Status Generation and Clearing Logic</h1>
+<h2 id="overview">Overview</h2>
+<p>The status monitoring system in the Pepper T4 design tracks various error and state conditions across multiple clock domains. Status bits are generated in the high-frequency clock domain (<code>HF_CLK</code>) and can be cleared via commands from the SPI clock domain (<code>SCK</code>). This document describes the lifecycle of status bits, the clearing mechanism, and the gating behavior.</p>
+<hr/>
+<h2 id="the-cycle-of-a-status-bit">The Cycle of a Status Bit</h2>
+<p>This section describes the process that occurs for each status bit from event detection through synchronization to final registration:</p>
+<h3 id="1-event-detection-source-domain">1. Event Detection (Source Domain)</h3>
+<p>Status events originate from various sources in the design:
+- <strong>FIFO Overflow/Underflow</strong>: Pulses from the FIFO module (already synchronized to <code>HF_CLK</code>)
+- <strong>ADC Overflow</strong>: Pulse from the ADC indicating overflow condition
+- <strong>Saturation Detection</strong>: 8-bit vector indicating which channels detected saturation
+- <strong>Analog Frontend Reset</strong>: 8-bit vector indicating AFE reset events
+- <strong>Configuration Change</strong>: Detected by comparing current <code>CRCCFG</code> with previous value</p>
+<h3 id="2-synchronization-to-hf_clk">2. Synchronization to HF_CLK</h3>
+<p>Most status sources are already synchronized to <code>HF_CLK</code> before reaching the <code>Status_Monitor</code> module:
+- <code>FIFO_OVERFLOW_sync</code> and <code>FIFO_UNDERFLOW_sync</code> are pre-synchronized
+- <code>AFERSTCH_sync</code> and <code>SATDETECT_sync</code> are pre-synchronized
+- <code>ADCOVERFLOW</code> is generated in the <code>HF_CLK</code> domain
+- <code>CRCCFG</code> change detection happens directly in <code>HF_CLK</code> domain</p>
+<h3 id="3-sticky-bits-memory-behavior">3. Sticky Bits (Memory Behavior)</h3>
+<p>The <code>Status_Monitor</code> module implements <strong>sticky</strong> status bits using synchronous registers:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// Example: FIFO Overflow status bit</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FIFO_OVERFLOW_sync</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">fifo_ovf_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span><span class="w">  </span><span class="c1">// Set on event</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="k">end</span>
+</code></pre></div>
+<p>Key characteristics:
+- <strong>Synchronous Set</strong>: Status bits are set on the rising edge of <code>HF_CLK</code> when the event signal is high
+- <strong>Sticky</strong>: Once set, the bit remains high until explicitly cleared by software
+- <strong>Priority</strong>: If an event occurs in the same cycle as a clear command, the set operation takes priority (event is not lost)</p>
+<h3 id="4-registration-and-output">4. Registration and Output</h3>
+<p>All status bits are registered in the <code>HF_CLK</code> domain and assembled into a 14-bit status word:</p>
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>ENSAMP</td>
+<td>Enable Sampling state (not sticky)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>CFGCHNG</td>
+<td>Configuration changed</td>
+</tr>
+<tr>
+<td>11</td>
+<td>ANALOG_RESET</td>
+<td>Analog frontend reset detected</td>
+</tr>
+<tr>
+<td>10</td>
+<td>FIFO_UDF</td>
+<td>FIFO underflow</td>
+</tr>
+<tr>
+<td>9</td>
+<td>FIFO_OVF</td>
+<td>FIFO overflow</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ADC_OVF</td>
+<td>ADC overflow</td>
+</tr>
+<tr>
+<td>7:0</td>
+<td>SAT[7:0]</td>
+<td>Saturation detection per channel</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="clearing-mechanism">Clearing Mechanism</h2>
+<h3 id="write-1-to-clear-w1c-protocol">Write-1-to-Clear (W1C) Protocol</h3>
+<p>Status bits use the <strong>W1C</strong> (Write-1-to-Clear) protocol:
+- Software writes a <code>1</code> to a status bit position to clear it
+- Writing <code>0</code> has no effect (preserves current state)
+- Multiple bits can be cleared simultaneously by writing a mask with multiple <code>1</code>s</p>
+<h3 id="cross-domain-clear-propagation">Cross-Domain Clear Propagation</h3>
+<p>Since status bits live in the <code>HF_CLK</code> domain but are cleared from the <code>SCK</code> domain, the <code>Status_Clear_CDC</code> module handles the clock domain crossing:</p>
+<h4 id="step-1-toggle-request-sck-domain">Step 1: Toggle Request (SCK Domain)</h4>
+<p>The command interpreter in the <code>SCK</code> domain initiates a clear by:
+1. Setting up the clear mask (<code>status_clr_lo_sck[7:0]</code> and <code>status_clr_hi_sck[5:0]</code>)
+2. Toggling the request signal (<code>status_clr_req_tgl_sck</code>)
+3. Waiting for acknowledgment toggle</p>
+<h4 id="step-2-synchronization-cdc-module">Step 2: Synchronization (CDC Module)</h4>
+<p>The <code>Status_Clear_CDC</code> module:
+1. <strong>Synchronizes the toggle request</strong> using a 2-FF synchronizer chain
+2. <strong>Synchronizes the mask bits</strong> using separate 2-FF chains (mask is held stable during the handshake)
+3. <strong>Detects the toggle edge</strong> by comparing current and previous synchronized toggle values
+4. <strong>Delays the clear pulse</strong> by 2 <code>HF_CLK</code> cycles to ensure mask bits are fully synchronized and stable</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1">// Edge detection</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">req_edge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">req_ff</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="n">req_prev</span><span class="p">);</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="c1">// Delayed pulse generation</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">req_edge</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">pending</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="n">pending_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b00</span><span class="p">;</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pending</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">pending_cnt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pending_cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pending_cnt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="n">pulse_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span><span class="w">           </span><span class="c1">// Fire clear pulse</span>
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="n">ack_tgl_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">~</span><span class="n">ack_tgl_reg</span><span class="p">;</span><span class="w"> </span><span class="c1">// Toggle acknowledgment</span>
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="n">pending</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="k">end</span>
+<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="k">end</span>
+</code></pre></div>
+<h4 id="step-3-clear-execution-status-monitor">Step 3: Clear Execution (Status Monitor)</h4>
+<p>When <code>status_clr_pulse</code> is asserted, the <code>Status_Monitor</code> clears bits according to the mask:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_pulse</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="mh">12</span><span class="p">])</span><span class="w"> </span><span class="n">cfgchng_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="mh">11</span><span class="p">])</span><span class="w"> </span><span class="n">analog_reset_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="mh">10</span><span class="p">])</span><span class="w"> </span><span class="n">fifo_udf_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="mh">9</span><span class="p">])</span><span class="w">  </span><span class="n">fifo_ovf_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="mh">8</span><span class="p">])</span><span class="w">  </span><span class="n">adc_ovf_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">8</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">status_clr_mask</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="n">sat_flags</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="k">end</span>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="k">end</span>
+</code></pre></div>
+<h4 id="step-4-acknowledgment-back-to-sck-domain">Step 4: Acknowledgment (Back to SCK Domain)</h4>
+<p>The acknowledgment toggle (<code>status_clr_ack_tgl_hf</code>) is synchronized back to the <code>SCK</code> domain, allowing the command interpreter to proceed with the next operation.</p>
+<hr/>
+<h2 id="gating-with-ensamp">Gating with ENSAMP</h2>
+<h3 id="ensamp-behavior">ENSAMP Behavior</h3>
+<p>The <code>ENSAMP</code> (Enable Sampling) signal has <strong>unique characteristics</strong> compared to other status bits:</p>
+<ol>
+<li>
+<p><strong>Not Sticky</strong>: <code>ENSAMP</code> directly reflects the synchronized state of the sampling enable signal
+   <div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">ensamp_flag</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ENSAMP_sync</span><span class="p">;</span><span class="w">  </span><span class="c1">// Updated every cycle</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Not Clearable</strong>: The <code>ENSAMP</code> bit (bit 13) is <strong>not</strong> included in the clearable status bits. It cannot be cleared via W1C.</p>
+</li>
+<li>
+<p><strong>State Indicator</strong>: It serves as a real-time indicator of whether sampling is currently enabled, not as an error flag.</p>
+</li>
+</ol>
+<h3 id="effect-on-status-generation">Effect on Status Generation</h3>
+<p><strong>Important</strong>: <code>ENSAMP</code> does <strong>NOT</strong> gate the generation of other status bits in the <code>Status_Monitor</code> module.</p>
+<ul>
+<li>Status events (FIFO overflow, ADC overflow, saturation, etc.) can be <strong>set even when sampling is disabled</strong> (<code>ENSAMP_sync = 0</code>)</li>
+<li>This design choice ensures that error conditions are always captured, regardless of sampling state</li>
+<li>The gating of actual data sampling happens elsewhere in the design (e.g., in the ADC interface or FIFO write logic)</li>
+</ul>
+<p>This behavior is intentional and allows the system to detect and report error conditions that may occur during startup, shutdown, or configuration changes when sampling is temporarily disabled.</p>
+<hr/>
+<h2 id="status-lifecycle-diagram">Status Lifecycle Diagram</h2>
+<p>The following Mermaid flowchart visualizes the complete loop from event detection through clearing:</p>
+<pre class="mermaid"><code>flowchart TD
+    Start([Event Occurs]) --&gt; Sync{Already in&lt;br/&gt;HF_CLK?}
+    Sync --&gt;|Yes| Stick[Set Status Bit&lt;br/&gt;Sticky Register]
+    Sync --&gt;|No| CDC[CDC Synchronizer] --&gt; Stick
+
+    Stick --&gt; Status[Status Register&lt;br/&gt;14-bit Word]
+    Status --&gt; Bus[Read by MCU&lt;br/&gt;via SPI Bus]
+
+    Bus --&gt; Decision{Error&lt;br/&gt;Handled?}
+    Decision --&gt;|No| Bus
+    Decision --&gt;|Yes| Write[MCU Writes W1C&lt;br/&gt;Clear Mask]
+
+    Write --&gt; TogReq[Toggle Request&lt;br/&gt;SCK Domain]
+    TogReq --&gt; SyncReq[Sync Toggle to&lt;br/&gt;HF_CLK Domain]
+    SyncReq --&gt; SyncMask[Sync Mask Bits&lt;br/&gt;2-FF Chain]
+
+    SyncMask --&gt; Delay[Delay 2 Cycles&lt;br/&gt;Ensure Mask Stable]
+    Delay --&gt; Pulse[Assert Clear Pulse&lt;br/&gt;+ Mask]
+
+    Pulse --&gt; Clear{Mask Bit&lt;br/&gt;Set?}
+    Clear --&gt;|Yes| Reset[Clear Status Bit&lt;br/&gt;flag &lt;= 0]
+    Clear --&gt;|No| Keep[Keep Status Bit]
+
+    Reset --&gt; Ack[Toggle Ack to&lt;br/&gt;SCK Domain]
+    Keep --&gt; Ack
+    Ack --&gt; Done([Clear Complete])
+
+    Stick -.-&gt;|New Event| Stick
+
+    style Start fill:#e1f5e1
+    style Done fill:#e1f5e1
+    style Stick fill:#fff4e1
+    style Clear fill:#ffe1e1
+    style Reset fill:#e1e5ff</code></pre>
+<h3 id="diagram-legend">Diagram Legend</h3>
+<ul>
+<li><strong>Green</strong>: Start/End points</li>
+<li><strong>Yellow</strong>: Latching/Storage operations</li>
+<li><strong>Red</strong>: Decision points</li>
+<li><strong>Blue</strong>: Clear operations</li>
+<li><strong>Dashed line</strong>: Concurrent event handling (new events can occur while status is latched)</li>
+</ul>
+<hr/>
+<h2 id="key-design-considerations">Key Design Considerations</h2>
+<h3 id="1-metastability-protection">1. Metastability Protection</h3>
+<ul>
+<li>All clock domain crossings use proper 2-FF synchronizer chains</li>
+<li>Toggle-based handshaking ensures reliable cross-domain communication</li>
+<li>Mask bits are held stable during the handshake to prevent metastability</li>
+</ul>
+<h3 id="2-race-condition-handling">2. Race Condition Handling</h3>
+<ul>
+<li>Clear logic executes <strong>before</strong> set logic in the same <code>always</code> block</li>
+<li>If an event occurs in the same cycle as a clear, the set takes priority</li>
+<li>This ensures no events are lost during clearing</li>
+</ul>
+<h3 id="3-timing-constraints">3. Timing Constraints</h3>
+<ul>
+<li>The 2-cycle delay in <code>Status_Clear_CDC</code> ensures synchronized mask bits are stable before use</li>
+<li>Toggle-based handshaking is frequency-independent (works across arbitrary clock ratios)</li>
+</ul>
+<h3 id="4-software-considerations">4. Software Considerations</h3>
+<ul>
+<li>Software must read status, handle the condition, then write W1C to clear</li>
+<li>Multiple status bits can be cleared in a single write operation</li>
+<li><code>ENSAMP</code> bit cannot be cleared (it's a state indicator, not an error flag)</li>
+</ul>
+<hr/>
+<h2 id="related-modules">Related Modules</h2>
+<ul>
+<li><a href="file:///c:/Users/ian_l/Dropbox%20(UK%20Dementia%20Research%20Institute)/Box%20Sync/MINT/Design/Verilog/Pepper_T4/code/source/Status_Monitor.v"><code>Status_Monitor.v</code></a> - Main status bit registration and assembly</li>
+<li><a href="file:///c:/Users/ian_l/Dropbox%20(UK%20Dementia%20Research%20Institute)/Box%20Sync/MINT/Design/Verilog/Pepper_T4/code/source/Status_Clear_CDC.v"><code>Status_Clear_CDC.v</code></a> - Clock domain crossing for clear commands</li>
+<li><code>Command_Interpreter.v</code> - Initiates clear requests from SPI domain</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../js/wavedrom.unpkg.js"></script>
+<script src="../../js/skin-default.js"></script>
+</body>
+</html>

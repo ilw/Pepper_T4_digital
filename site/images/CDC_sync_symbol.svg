@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="750" height="770" viewBox="0 0 750 770" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="750" height="770" fill="white"/>
+  <rect x="200" y="100.0" width="350" height="590" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2.5" rx="10" ry="10"/>
+  <rect x="255.0" y="60.0" width="240" height="30" fill="white" stroke="none"/>
+  <text x="375.0" y="82.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50">CDC_sync</text>
+  <line x1="175" y1="134.70588235294116" x2="200" y2="134.70588235294116" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="124.70588235294116" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="139.70588235294116" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">NRST</text>
+  <circle cx="200" cy="134.70588235294116" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="169.41176470588235" x2="200" y2="169.41176470588235" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="159.41176470588235" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="174.41176470588235" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENSAMP</text>
+  <circle cx="200" cy="169.41176470588235" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="204.11764705882354" x2="200" y2="204.11764705882354" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="194.11764705882354" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="209.11764705882354" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">CFG_CHNGE</text>
+  <circle cx="200" cy="204.11764705882354" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="238.8235294117647" x2="200" y2="238.8235294117647" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="228.8235294117647" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="243.8235294117647" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">AFERSTCH</text>
+  <circle cx="200" cy="238.8235294117647" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="273.52941176470586" x2="200" y2="273.52941176470586" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="263.52941176470586" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="278.52941176470586" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">FIFO_OVERFLOW</text>
+  <circle cx="200" cy="273.52941176470586" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="308.2352941176471" x2="200" y2="308.2352941176471" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="298.2352941176471" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="313.2352941176471" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">FIFO_UNDERFLOW</text>
+  <circle cx="200" cy="308.2352941176471" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="342.94117647058823" x2="200" y2="342.94117647058823" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="332.94117647058823" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="347.94117647058823" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">SATDETECT</text>
+  <circle cx="200" cy="342.94117647058823" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="377.6470588235294" x2="200" y2="377.6470588235294" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="367.6470588235294" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="382.6470588235294" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ADCOVERFLOW</text>
+  <circle cx="200" cy="377.6470588235294" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="412.35294117647055" x2="200" y2="412.35294117647055" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="402.35294117647055" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="417.35294117647055" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE1DIV1</text>
+  <circle cx="200" cy="412.35294117647055" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="447.0588235294117" x2="200" y2="447.0588235294117" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="437.0588235294117" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="452.0588235294117" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE1COUNT</text>
+  <circle cx="200" cy="447.0588235294117" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="481.7647058823529" x2="200" y2="481.7647058823529" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="471.7647058823529" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="486.7647058823529" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE2COUNT</text>
+  <circle cx="200" cy="481.7647058823529" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="516.4705882352941" x2="200" y2="516.4705882352941" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="506.47058823529414" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="521.4705882352941" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">CHEN</text>
+  <circle cx="200" cy="516.4705882352941" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="551.1764705882352" x2="200" y2="551.1764705882352" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="541.1764705882352" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="556.1764705882352" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENLOWPWR</text>
+  <circle cx="200" cy="551.1764705882352" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="585.8823529411765" x2="200" y2="585.8823529411765" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="575.8823529411765" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="590.8823529411765" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENMONTSENSE</text>
+  <circle cx="200" cy="585.8823529411765" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="620.5882352941176" x2="200" y2="620.5882352941176" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="610.5882352941176" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="625.5882352941176" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ADCOSR</text>
+  <circle cx="200" cy="620.5882352941176" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="655.2941176470588" x2="200" y2="655.2941176470588" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="645.2941176470588" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="660.2941176470588" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">HF_CLK</text>
+  <circle cx="200" cy="655.2941176470588" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="136.875" x2="575" y2="136.875" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="126.875" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="141.875" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">NRST_sync</text>
+  <circle cx="550" cy="136.875" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="173.75" x2="575" y2="173.75" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="163.75" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="178.75" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENSAMP_sync</text>
+  <circle cx="550" cy="173.75" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="210.625" x2="575" y2="210.625" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="200.625" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="215.625" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">CFG_CHNGE_sync</text>
+  <circle cx="550" cy="210.625" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="247.5" x2="575" y2="247.5" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="237.5" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="252.5" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">AFERSTCH_sync</text>
+  <circle cx="550" cy="247.5" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="284.375" x2="575" y2="284.375" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="274.375" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="289.375" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">FIFO_OVERFLOW_sync</text>
+  <circle cx="550" cy="284.375" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="321.25" x2="575" y2="321.25" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="311.25" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="326.25" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">FIFO_UNDERFLOW_sync</text>
+  <circle cx="550" cy="321.25" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="358.125" x2="575" y2="358.125" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="348.125" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="363.125" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">SATDETECT_sync</text>
+  <circle cx="550" cy="358.125" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="395.0" x2="575" y2="395.0" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="385.0" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="400.0" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ADCOVERFLOW_sync</text>
+  <circle cx="550" cy="395.0" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="431.875" x2="575" y2="431.875" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="421.875" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="436.875" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE1DIV1_sync</text>
+  <circle cx="550" cy="431.875" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="468.75" x2="575" y2="468.75" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="458.75" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="473.75" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE1COUNT_sync</text>
+  <circle cx="550" cy="468.75" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="505.625" x2="575" y2="505.625" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="495.625" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="510.625" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">PHASE2COUNT_sync</text>
+  <circle cx="550" cy="505.625" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="542.5" x2="575" y2="542.5" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="532.5" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="547.5" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">CHEN_sync</text>
+  <circle cx="550" cy="542.5" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="579.375" x2="575" y2="579.375" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="569.375" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="584.375" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENLOWPWR_sync</text>
+  <circle cx="550" cy="579.375" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="616.25" x2="575" y2="616.25" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="606.25" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="621.25" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENMONTSENSE_sync</text>
+  <circle cx="550" cy="616.25" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="653.125" x2="575" y2="653.125" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="643.125" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="658.125" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ADCOSR_sync</text>
+  <circle cx="550" cy="653.125" r="3.5" fill="#2c3e50"/>
+  <text x="375.0" y="750" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7f8c8d">Inputs: 16  |  Outputs: 15</text>
+</svg>

@@ -7,15 +7,28 @@ theme:
     - search.share
 
 plugins:
+  - markdownwavedrom
   - search
 
+
+extra_javascript:
+    - js/wavedrom.unpkg.js
+    - js/skin-default.js
+    # above, place *.js in docs directory, or below from internet.
+    #- https://cdn.jsdelivr.net/npm/wavedrom@2.1.2/wavedrom.unpkg.js
+    #- https://wavedrom.com/skins/default.js
+    #- js/wavedrom_loader.js  # Add this line - triggers WaveDrom.ProcessAll()
+  
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences:
-      custom_fences:
+      custom_fences:  
         - name: mermaid
           class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+        - name: wavedrom
+          class: wavedrom
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.arithmatex:
       generic: true
@@ -27,13 +40,13 @@ nav:
   - Home: index.md
   - System Overview:
       - Overview: system_overview.md
-      - Block Diagram: system_overview/block_diagram.md
-  - Functional Logic:
-      - Status Logic: functional/status_logic.md
+      - Block Diagram: system_overview/block_diagram.md  # must be in nav to appear in sidebar/tabs
   - Core Blocks:
       - Command Interpreter: core_blocks/command_interpreter.md
       - FIFO: core_blocks/fifo.md
       - CDC Sync: core_blocks/cdc_sync.md
+  - Functional Logic:
+      - Status Logic: functional/status_logic.md
   - Peripherals:
       - ATM Control: peripherals/atm_control.md
       - Configuration Registers: peripherals/configuration_registers.md

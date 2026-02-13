@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../command_interpreter/" rel="prev"/>
+<link href="../cdc_sync/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>FIFO - Pepper_T4 Digital Documentation</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#fifo">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Pepper_T4 Digital Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              FIFO
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../system_overview/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../command_interpreter/">
+          
+  
+  
+  Core Blocks
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../functional/status_logic/">
+          
+  
+  
+  Functional Logic
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../peripherals/atm_control/">
+          
+  
+  
+  Peripherals
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Pepper_T4 Digital Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    System Overview
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/block_diagram/">
+<span class="md-ellipsis">
+    
+  
+    Block Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Core Blocks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Blocks
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../command_interpreter/">
+<span class="md-ellipsis">
+    
+  
+    Command Interpreter
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    FIFO
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    FIFO
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture">
+<span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+</a>
+<nav aria-label="Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clock-domains">
+<span class="md-ellipsis">
+      
+        Clock Domains
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-structure">
+<span class="md-ellipsis">
+      
+        Memory Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gray-code-pointer-synchronization">
+<span class="md-ellipsis">
+      
+        Gray Code Pointer Synchronization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-behavior-sample_clk-domain">
+<span class="md-ellipsis">
+      
+        Write Behavior (SAMPLE_CLK Domain)
+      
+    </span>
+</a>
+<nav aria-label="Write Behavior (SAMPLE_CLK Domain)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#word-level-writes">
+<span class="md-ellipsis">
+      
+        Word-Level Writes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-advance">
+<span class="md-ellipsis">
+      
+        Frame Advance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-cleanup-after-read">
+<span class="md-ellipsis">
+      
+        Frame Cleanup After Read
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read-behavior-sck-domain">
+<span class="md-ellipsis">
+      
+        Read Behavior (SCK Domain)
+      
+    </span>
+</a>
+<nav aria-label="Read Behavior (SCK Domain)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#look-ahead-read-interface">
+<span class="md-ellipsis">
+      
+        Look-Ahead Read Interface
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read-logic-lines-240-270">
+<span class="md-ellipsis">
+      
+        Read Logic (lines 240-270)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flags-status">
+<span class="md-ellipsis">
+      
+        Flags &amp; Status
+      
+    </span>
+</a>
+<nav aria-label="Flags &amp; Status" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data_rdy-watermark">
+<span class="md-ellipsis">
+      
+        DATA_RDY (Watermark)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-count">
+<span class="md-ellipsis">
+      
+        Frame Count
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overflow">
+<span class="md-ellipsis">
+      
+        Overflow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#underflow">
+<span class="md-ellipsis">
+      
+        Underflow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reset-disable-behavior">
+<span class="md-ellipsis">
+      
+        Reset &amp; Disable Behavior
+      
+    </span>
+</a>
+<nav aria-label="Reset &amp; Disable Behavior" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#global-reset-nrst_sync">
+<span class="md-ellipsis">
+      
+        Global Reset (NRST_sync)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sampling-disable-ensamp_sync-low">
+<span class="md-ellipsis">
+      
+        Sampling Disable (ENSAMP_sync → low)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timing-reference">
+<span class="md-ellipsis">
+      
+        Timing Reference
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cdc_sync/">
+<span class="md-ellipsis">
+    
+  
+    CDC Sync
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Functional Logic
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Functional Logic
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../functional/status_logic/">
+<span class="md-ellipsis">
+    
+  
+    Status Logic
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Peripherals
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripherals
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/atm_control/">
+<span class="md-ellipsis">
+    
+  
+    ATM Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/configuration_registers/">
+<span class="md-ellipsis">
+    
+  
+    Configuration Registers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/temp_sense/">
+<span class="md-ellipsis">
+    
+  
+    Temperature Sensor
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture">
+<span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+</a>
+<nav aria-label="Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clock-domains">
+<span class="md-ellipsis">
+      
+        Clock Domains
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-structure">
+<span class="md-ellipsis">
+      
+        Memory Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gray-code-pointer-synchronization">
+<span class="md-ellipsis">
+      
+        Gray Code Pointer Synchronization
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-behavior-sample_clk-domain">
+<span class="md-ellipsis">
+      
+        Write Behavior (SAMPLE_CLK Domain)
+      
+    </span>
+</a>
+<nav aria-label="Write Behavior (SAMPLE_CLK Domain)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#word-level-writes">
+<span class="md-ellipsis">
+      
+        Word-Level Writes
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-advance">
+<span class="md-ellipsis">
+      
+        Frame Advance
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-cleanup-after-read">
+<span class="md-ellipsis">
+      
+        Frame Cleanup After Read
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read-behavior-sck-domain">
+<span class="md-ellipsis">
+      
+        Read Behavior (SCK Domain)
+      
+    </span>
+</a>
+<nav aria-label="Read Behavior (SCK Domain)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#look-ahead-read-interface">
+<span class="md-ellipsis">
+      
+        Look-Ahead Read Interface
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read-logic-lines-240-270">
+<span class="md-ellipsis">
+      
+        Read Logic (lines 240-270)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#flags-status">
+<span class="md-ellipsis">
+      
+        Flags &amp; Status
+      
+    </span>
+</a>
+<nav aria-label="Flags &amp; Status" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data_rdy-watermark">
+<span class="md-ellipsis">
+      
+        DATA_RDY (Watermark)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#frame-count">
+<span class="md-ellipsis">
+      
+        Frame Count
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overflow">
+<span class="md-ellipsis">
+      
+        Overflow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#underflow">
+<span class="md-ellipsis">
+      
+        Underflow
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reset-disable-behavior">
+<span class="md-ellipsis">
+      
+        Reset &amp; Disable Behavior
+      
+    </span>
+</a>
+<nav aria-label="Reset &amp; Disable Behavior" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#global-reset-nrst_sync">
+<span class="md-ellipsis">
+      
+        Global Reset (NRST_sync)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sampling-disable-ensamp_sync-low">
+<span class="md-ellipsis">
+      
+        Sampling Disable (ENSAMP_sync → low)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timing-reference">
+<span class="md-ellipsis">
+      
+        Timing Reference
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="fifo">FIFO</h1>
+<h2 id="overview">Overview</h2>
+<p>The Pepper T4 FIFO is a <strong>frame-based asynchronous FIFO</strong> that buffers multi-channel ADC data between the sampling domain (<code>SAMPLE_CLK</code>) and the SPI readout domain (<code>SCK</code>). Unlike a conventional word-level FIFO, each entry is a <strong>128-bit frame</strong> containing 8 × 16-bit ADC samples (one per channel).</p>
+<h2 id="architecture">Architecture</h2>
+<h3 id="clock-domains">Clock Domains</h3>
+<ul>
+<li><strong>Write Domain</strong> (<code>SAMPLE_CLK</code>): ADC results are written word-by-word using one-hot <code>ATMCHSEL</code>, then the frame pointer advances on <code>LASTWORD</code>.</li>
+<li><strong>Read Domain</strong> (<code>SCK</code>): The Command Interpreter issues <code>FIFO_POP</code> to read complete 128-bit frames.</li>
+</ul>
+<h3 id="memory-structure">Memory Structure</h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>Parameter: FRAME_DEPTH (default 4, must be power of 2)
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>Each frame slot:
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>┌──────────┬──────────┬──────────┬───┬──────────┐
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>│CH0[15:0]│CH1[15:0]│CH2[15:0]│...│CH7[15:0]│
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>└──────────┴──────────┴──────────┴───┴──────────┘
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>  bits 15:0   31:16      47:32          127:112
+</code></pre></div>
+<h3 id="gray-code-pointer-synchronization">Gray Code Pointer Synchronization</h3>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Write Domain - SAMPLE_CLK
+        WP[write_ptr binary] --&gt; WPG[write_ptr_gray]
+        RPG_S1[read_ptr_gray_sync1] --&gt; RPS[read_ptr_sync]
+        RPS --&gt; RPSB[read_ptr_sync_bin]
+    end
+
+    subgraph Read Domain - SCK
+        RP[read_ptr binary] --&gt; RPG[read_ptr_gray]
+        WPG_S1[write_ptr_gray_sync1] --&gt; WPS[write_ptr_sync]
+        WPS --&gt; WPSB[write_ptr_sync_bin]
+    end
+
+    RPG -.-&gt;|2-stage sync| RPG_S1
+    WPG -.-&gt;|2-stage sync| WPG_S1</code></pre>
+<p>Pointers use an <strong>extra MSB</strong> beyond the address width. This allows distinguishing "full" (pointers differ only in MSB) from "empty" (pointers equal). Gray coding ensures only one bit changes per increment, preventing meta-stability glitches during CDC.</p>
+<p><strong>Conversion functions</strong> (lines 62-78):
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">bin_to_gray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bin</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">bin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mh">1</span><span class="p">);</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1">// Gray-to-binary: XOR cascade from MSB down</span>
+</code></pre></div></p>
+<h2 id="write-behavior-sample_clk-domain">Write Behavior (SAMPLE_CLK Domain)</h2>
+<h3 id="word-level-writes">Word-Level Writes</h3>
+<p>ADC results are written to specific 16-bit slots within the current frame using the one-hot <code>ATMCHSEL</code> signal:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mh">1</span><span class="mb">'b1</span><span class="p">)</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">ATMCHSEL</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">write_ptr</span><span class="p">][</span><span class="mh">15</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">    </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">RESULT</span><span class="p">;</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">ATMCHSEL</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">write_ptr</span><span class="p">][</span><span class="mh">31</span><span class="o">:</span><span class="mh">16</span><span class="p">]</span><span class="w">   </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">RESULT</span><span class="p">;</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="c1">// ... up to ATMCHSEL[7]</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">endcase</span>
+</code></pre></div>
+<p>This allows <strong>sparse writes</strong>: only enabled channels update their slots. Disabled channels read as zero because the frame is pre-cleared.</p>
+<h3 id="frame-advance">Frame Advance</h3>
+<p>On <code>LASTWORD</code>, the write pointer advances and the <strong>next</strong> frame slot is pre-cleared to zero:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LASTWORD</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="n">mem</span><span class="p">[</span><span class="n">write_ptr_next</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">128'h0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Pre-clear next slot</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="n">write_ptr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">write_ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="n">write_ptr_gray</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">bin_to_gray</span><span class="p">(</span><span class="n">write_ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="p">);</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">end</span>
+</code></pre></div>
+<h3 id="frame-cleanup-after-read">Frame Cleanup After Read</h3>
+<p>When a <code>frame_pop_edge</code> is detected (synchronized from SCK domain), the write domain zeros out the previously-read frame slot to prevent stale data leakage:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">frame_pop_edge</span><span class="p">)</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="n">mem</span><span class="p">[</span><span class="n">read_ptr_sync_prev_idx</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">128'h0</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="read-behavior-sck-domain">Read Behavior (SCK Domain)</h2>
+<h3 id="look-ahead-read-interface">Look-Ahead Read Interface</h3>
+<p>The FIFO implements <strong>Look-Ahead Read</strong> behavior. The data at <code>read_ptr</code> is continuously driven to <code>ADC_data</code> whenever frames are available.</p>
+<ul>
+<li><strong>Before POP</strong>: <code>ADC_data</code> contains the <em>current</em> valid frame (or zero if empty).</li>
+<li><strong>FIFO_POP Pulse</strong>: Advances the read pointer to the <em>next</em> frame.</li>
+<li><strong>Latency</strong>: Data is valid immediately upon <code>DATA_RDY</code> assertion (subject to synchronization latency).</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Integration Simplified</p>
+<p>Unlike previous versions, there is <strong>no dummy pop required</strong>. The first frame of data is valid and present on <code>ADC_data</code> as soon as the FIFO is not empty.</p>
+</div>
+<h3 id="read-logic-lines-240-270">Read Logic (lines 240-270)</h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// Look-ahead: Output valid data if available</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">frames_available</span><span class="p">)</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="n">ADC_data</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mem</span><span class="p">[</span><span class="n">read_ptr</span><span class="p">[</span><span class="n">ADDR_WIDTH</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]];</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">else</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="n">ADC_data</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">128'h0</span><span class="p">;</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1">// POP only advances the pointer</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FIFO_POP</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">frames_available</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="n">read_ptr</span><span class="w">      </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">read_ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="n">read_ptr_gray</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">bin_to_gray</span><span class="p">(</span><span class="n">read_ptr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">);</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="flags-status">Flags &amp; Status</h2>
+<h3 id="data_rdy-watermark">DATA_RDY (Watermark)</h3>
+<p><div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">DATA_RDY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">frame_count</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">FIFOWATERMARK</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ENSAMP_sync</span><span class="p">;</span>
+</code></pre></div>
+*   Asserted when the number of buffered frames meets or exceeds the configured watermark threshold.
+*   <strong>Gated by <code>ENSAMP_sync</code></strong>: DATA_RDY is forced low when sampling is disabled.</p>
+<h3 id="frame-count">Frame Count</h3>
+<p><div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">frame_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">write_ptr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">read_ptr_sync_bin</span><span class="p">;</span>
+</code></pre></div>
+Computed in the write domain using the synchronized read pointer. This is a conservative estimate (may lag by up to 2 SAMPLE_CLK cycles due to synchronization latency).</p>
+<h3 id="overflow">Overflow</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Condition</th>
+<th style="text-align: left;"><code>frame_count == FRAME_DEPTH</code> when <code>LASTWORD</code> asserts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mechanism</strong></td>
+<td style="text-align: left;">Toggle <code>fifo_overflow_evt_tgl</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Meaning</strong></td>
+<td style="text-align: left;">A new frame was committed but the FIFO was already full; the oldest unread frame is silently overwritten</td>
+</tr>
+</tbody>
+</table>
+<h3 id="underflow">Underflow</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Condition</th>
+<th style="text-align: left;"><code>FIFO_POP</code> asserted when <code>!frames_available</code> while <code>ENSAMP_sync</code> is high</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mechanism</strong></td>
+<td style="text-align: left;">Toggle <code>fifo_underflow_evt_tgl</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Meaning</strong></td>
+<td style="text-align: left;">Host attempted to read but no data was available; <code>ADC_data</code> returns zeros</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Toggle-Based Event Signaling</p>
+<p>Overflow and underflow are signaled as <strong>toggle events</strong>, not level flags. The <code>CDC_sync</code> module detects edges on these toggles to generate single-cycle pulses in the <code>HF_CLK</code> domain for the Status Monitor. This avoids the need for handshake protocols and is robust to clock ratio variations.</p>
+</div>
+<h2 id="reset-disable-behavior">Reset &amp; Disable Behavior</h2>
+<h3 id="global-reset-nrst_sync">Global Reset (<code>NRST_sync</code>)</h3>
+<p>Clears all pointers, memory, and event toggles in both domains.</p>
+<h3 id="sampling-disable-ensamp_sync-low">Sampling Disable (<code>ENSAMP_sync</code> → low)</h3>
+<p><strong>Write domain</strong> (synchronous to <code>SAMPLE_CLK</code>):
+*   Write pointer reset to zero
+*   All memory cleared</p>
+<p><strong>Read domain</strong> (asynchronous assert, synchronous deassert to <code>SCK</code>):
+*   Uses a dedicated reset synchronizer (<code>ensamp_rst_ff</code>) to safely bring the read domain to a clean state:
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="c1">// Assert async on ENSAMP_sync low; release sync after 2 SCK cycles</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">SCK</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">NRST_sync</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">ENSAMP_sync</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">NRST_sync</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">ENSAMP_sync</span><span class="p">)</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">        </span><span class="n">ensamp_rst_ff</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b00</span><span class="p">;</span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="k">else</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">        </span><span class="n">ensamp_rst_ff</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">ensamp_rst_ff</span><span class="p">[</span><span class="mh">0</span><span class="p">],</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">};</span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="k">end</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="k">assign</span><span class="w"> </span><span class="n">ensamp_rstn_sck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensamp_rst_ff</span><span class="p">[</span><span class="mh">1</span><span class="p">];</span>
+</code></pre></div>
+*   Read pointer and <code>ADC_data</code> cleared to zero
+*   Underflow toggle is <strong>preserved</strong> (not reset) to avoid false CDC edges</p>
+<div class="admonition warning">
+<p class="admonition-title">Procedural Constraint</p>
+<p>After disabling sampling (<code>ENSAMP=0</code>), the MCU must end the current SPI transaction before issuing any RDDATA commands. FIFO reads while disabled return undefined/zero data.</p>
+</div>
+<h2 id="timing-reference">Timing Reference</h2>
+<pre class="wavedrom"><code>{
+  "signal": [
+    {"name": "SAMPLE_CLK", "wave": "p............"},
+    {"name": "DONE",       "wave": "010101010...."},
+    {"name": "ATMCHSEL",   "wave": "3.4.5.6.x....", "data": ["CH0","CH1","CH2","CH3"]},
+    {"name": "LASTWORD",   "wave": "0......10...."},
+    {"name": "write_ptr",  "wave": "2......2.....", "data": ["N", "N+1"]},
+    {},
+    {"name": "SCK",         "wave": "p............"},
+    {"name": "DATA_RDY",    "wave": "0.......1...."},
+    {"name": "FIFO_POP",    "wave": "0........10.."},
+    {"name": "ADC_data",    "wave": "x........2...", "data": ["Frame N"]},
+    {"name": "read_ptr",    "wave": "2........2...", "data": ["N", "N+1"]}
+  ],
+  "config": {"hscale": 1.2}
+}</code></pre>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../js/wavedrom.unpkg.js"></script>
+<script src="../../js/skin-default.js"></script>
+</body>
+</html>

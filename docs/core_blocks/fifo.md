@@ -15,7 +15,7 @@ Parameter: FRAME_DEPTH (default 4, must be power of 2)
 
 Each frame slot:
 ┌──────────┬──────────┬──────────┬───┬──────────┐
-│ CH0[15:0]│ CH1[15:0]│ CH2[15:0]│...│ CH7[15:0]│
+│CH0[15:0]│CH1[15:0]│CH2[15:0]│...│CH7[15:0]│
 └──────────┴──────────┴──────────┴───┴──────────┘
   bits 15:0   31:16      47:32          127:112
 ```
@@ -109,25 +109,6 @@ if (FIFO_POP && frames_available) begin
 end
 ```
 
-### Multi-Frame Streaming Timing
-
-```wavedrom
-{
-  "signal": [
-    {"name": "SCK",          "wave": "p..................."},
-    {"name": "DATA_RDY",     "wave": "01.................."},
-    {"name": "FIFO_POP",     "wave": "0......10.......10.."},
-    {"name": "ADC_data",     "wave": "23333334444444455...", "data": ["0", "Frame N", "Frame N+1", "Frame N+2"]},
-    {"name": "read_ptr",     "wave": "22222223333333344...", "data": ["N", "N+1", "N+2"]}
-  ],
-  "config": {"hscale": 1.0}
-}
-```
-
-1.  **Frame N Ready**: `ADC_data` updates to Frame N.
-2.  **Host Reads**: Host shifts out 128 bits (8 words).
-3.  **POP**: Host issues `FIFO_POP` (via `Command_Interpreter`).
-4.  **Advance**: FIFO updates `read_ptr` -> `ADC_data` changes to Frame N+1.
 
 ## Flags & Status
 
@@ -195,7 +176,7 @@ Clears all pointers, memory, and event toggles in both domains.
   "signal": [
     {"name": "SAMPLE_CLK", "wave": "p............"},
     {"name": "DONE",       "wave": "010101010...."},
-    {"name": "ATMCHSEL",   "wave": "x3x4x5x6x...", "data": ["CH0","CH1","CH2","CH3"]},
+    {"name": "ATMCHSEL",   "wave": "3.4.5.6.x....", "data": ["CH0","CH1","CH2","CH3"]},
     {"name": "LASTWORD",   "wave": "0......10...."},
     {"name": "write_ptr",  "wave": "2......2.....", "data": ["N", "N+1"]},
     {},

@@ -71,7 +71,7 @@ The module behavior is controlled by the following inputs (conceptually register
 | `ENSAMP_sync` | 1 | **Enable Sampling**. Master switch for the sequencer. |
 | `CHEN_sync` | 8 | **Channel Enable Mask**. Bit N enables Channel N. The sequencer skips disabled channels. |
 | `OSR_sync` | 4 | **Oversampling Ratio**. Defines the conversion length.<br>• `0`: SAR Mode (1 cycle)<br>• `1-15`: NS Mode (`4*OSR + 2` cycles) |
-| `ENLOWPWR_sync` | 1 | **Low Power Mode**. When set, forces the physical mux output `CHSEL` to follow `ATMCHSEL`. When clear, `CHSEL` is static? *(Note: Code `assign CHSEL = ENLOWPWR ? atmchsel : CHEN` implies static `CHEN` drive if not low power. This might be a legacy feature).* |
+| `ENLOWPWR_sync` | 1 | **Low Power Mode**. When set, forces the physical mux output `CHSEL` to follow `ATMCHSEL`. When clear, `CHSEL` is static? *(Note: Code `assign CHSEL = ENLOWPWR ? atmchsel : CHEN` implies static `CHEN` drive if not low power.).* |
 
 ---
 

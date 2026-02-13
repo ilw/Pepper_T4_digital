@@ -6,9 +6,9 @@ The status monitoring system in the Pepper T4 design tracks various error and st
 
 ---
 
-## The Life of a Status Bit
+## The Cycle of a Status Bit
 
-Status bits follow a well-defined journey from event detection through synchronization to final registration:
+This section describes the process that occurs for each status bit from event detection through synchronization to final registration:
 
 ### 1. Event Detection (Source Domain)
 

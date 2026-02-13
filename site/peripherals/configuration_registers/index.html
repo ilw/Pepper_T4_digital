@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../atm_control/" rel="prev"/>
+<link href="../temp_sense/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Configuration Registers - Pepper_T4 Digital Documentation</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#configuration-registers">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Pepper_T4 Digital Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Configuration Registers
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../system_overview/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../core_blocks/command_interpreter/">
+          
+  
+  
+  Core Blocks
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../functional/status_logic/">
+          
+  
+  
+  Functional Logic
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../atm_control/">
+          
+  
+  
+  Peripherals
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Pepper_T4 Digital Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    System Overview
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/block_diagram/">
+<span class="md-ellipsis">
+    
+  
+    Block Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Core Blocks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Blocks
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/command_interpreter/">
+<span class="md-ellipsis">
+    
+  
+    Command Interpreter
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/fifo/">
+<span class="md-ellipsis">
+    
+  
+    FIFO
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../core_blocks/cdc_sync/">
+<span class="md-ellipsis">
+    
+  
+    CDC Sync
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Functional Logic
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Functional Logic
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../functional/status_logic/">
+<span class="md-ellipsis">
+    
+  
+    Status Logic
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Peripherals
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripherals
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../atm_control/">
+<span class="md-ellipsis">
+    
+  
+    ATM Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Configuration Registers
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Configuration Registers
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-map">
+<span class="md-ellipsis">
+      
+        Register Map
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bit-fields">
+<span class="md-ellipsis">
+      
+        Bit Fields
+      
+    </span>
+</a>
+<nav aria-label="Bit Fields" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x00-cref-control">
+<span class="md-ellipsis">
+      
+        0x00 - CREF Control
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x11-afe-control-1">
+<span class="md-ellipsis">
+      
+        0x11 - AFE Control 1
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x13-afe-control-2">
+<span class="md-ellipsis">
+      
+        0x13 - AFE Control 2
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x1b-adc-control-1">
+<span class="md-ellipsis">
+      
+        0x1B - ADC Control 1
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x23-global-control">
+<span class="md-ellipsis">
+      
+        0x23 - Global Control
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../temp_sense/">
+<span class="md-ellipsis">
+    
+  
+    Temperature Sensor
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-map">
+<span class="md-ellipsis">
+      
+        Register Map
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bit-fields">
+<span class="md-ellipsis">
+      
+        Bit Fields
+      
+    </span>
+</a>
+<nav aria-label="Bit Fields" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x00-cref-control">
+<span class="md-ellipsis">
+      
+        0x00 - CREF Control
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x11-afe-control-1">
+<span class="md-ellipsis">
+      
+        0x11 - AFE Control 1
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x13-afe-control-2">
+<span class="md-ellipsis">
+      
+        0x13 - AFE Control 2
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x1b-adc-control-1">
+<span class="md-ellipsis">
+      
+        0x1B - ADC Control 1
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#0x23-global-control">
+<span class="md-ellipsis">
+      
+        0x23 - Global Control
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="configuration-registers">Configuration Registers</h1>
+<p>The <code>Configuration_Registers</code> module implements a bank of 36 8-bit registers, providing a total of 288 bits of configuration data to various blocks in the Pepper T4 digital system. These registers are primarily written via the SPI interface during the configuration phase.</p>
+<h2 id="overview">Overview</h2>
+<ul>
+<li><strong>Address Range</strong>: <code>0x00</code> to <code>0x23</code> (36 registers).</li>
+<li><strong>Reset State</strong>: All registers are reset to <code>0x00</code> when <code>NRST</code> is asserted (active low).</li>
+<li><strong>Write Mechanism</strong>: Writes occur on the rising edge of <code>SCK</code> when <code>wr_en</code> is high and the address is within the valid range (&lt; 36).</li>
+<li><strong>Output</strong>: The concatenated 512-bit <code>cfg_data</code> bus provides register values to the system. Bits <code>[287:0]</code> contain the register data, while <code>[511:288]</code> are tied low.</li>
+</ul>
+<h2 id="register-map">Register Map</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Address</th>
+<th style="text-align: left;">Register Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CREF Control</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Voltage regulator controls (AFE, ADC, DIG).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x01</code></td>
+<td style="text-align: left;">CREF Trim 1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Resistor trimming for Bandgap and AFE regulators.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x02</code></td>
+<td style="text-align: left;">CREF Trim 2</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Resistor trimming for ADC and DIG regulators.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x03</code></td>
+<td style="text-align: left;">SPARECREF</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for CREF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x04</code></td>
+<td style="text-align: left;">BIAS Control</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Bias section, Temp sensor, and ITEST enablement.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x05</code></td>
+<td style="text-align: left;">BIAS Trim / LNA0</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Bias trim and CH0 AFELNA current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x06</code></td>
+<td style="text-align: left;">LNA 1/2 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH1 and CH2 AFELNA current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x07</code></td>
+<td style="text-align: left;">LNA 3/4 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH3 and CH4 AFELNA current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x08</code></td>
+<td style="text-align: left;">LNA 5/6 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH5 and CH6 AFELNA current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x09</code></td>
+<td style="text-align: left;">LNA 7 / LPF 0 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH7 LNA and CH0 LPF current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0A</code></td>
+<td style="text-align: left;">LPF 1/2 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH1 and CH2 AFELPF current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0B</code></td>
+<td style="text-align: left;">LPF 3/4 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH3 and CH4 AFELPF current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0C</code></td>
+<td style="text-align: left;">LPF 5/6 Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH5 and CH6 AFELPF current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0D</code></td>
+<td style="text-align: left;">LPF 7 / BUF Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">CH7 LPF and AFEBUF current settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0E</code></td>
+<td style="text-align: left;">ADC Trim</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">IT setting for ADC.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x0F</code></td>
+<td style="text-align: left;">SPAREBIAS1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for BIAS.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x10</code></td>
+<td style="text-align: left;">SPAREBIAS2</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for BIAS.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x11</code></td>
+<td style="text-align: left;">AFE Control 1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Enablement for LNA, LPF, BUF, and Sensing/Ref modes.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x12</code></td>
+<td style="text-align: left;">AFE Reset</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Reset (active high) for selected AFE channels.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x13</code></td>
+<td style="text-align: left;">AFE Control 2</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">AFEBUF reset, gain, and monitoring controls.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x14</code></td>
+<td style="text-align: left;">LPF Bandwidth</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">AFELPF cut-off frequency tuning.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x15</code></td>
+<td style="text-align: left;">Low Power Mode</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Enable sequential channel switching.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x16</code></td>
+<td style="text-align: left;">Channel Enable</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Selection of channels to be sampled.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x17</code></td>
+<td style="text-align: left;">SPAREAFE</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for AFE.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x18</code></td>
+<td style="text-align: left;">ATM Control 1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Analog Test Mux Enablement (IN/OUT/LNA/LPF/BUF).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x19</code></td>
+<td style="text-align: left;">ATM mode</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Operation mode of the ATM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1A</code></td>
+<td style="text-align: left;">SPAREATM</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for ATM.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1B</code></td>
+<td style="text-align: left;">ADC Control 1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">ADC Over-sampling ratio, DWA, Chopper, and Error Shaping.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1C</code></td>
+<td style="text-align: left;">ADC Control 2</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">ADC Gain, Ext Clock, and Override controls.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1D</code></td>
+<td style="text-align: left;">ADC / Test Control</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Digital/Analog test signal selection.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1E</code></td>
+<td style="text-align: left;">SPAREADC1</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for ADC.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x1F</code></td>
+<td style="text-align: left;">SPAREADC2</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Spare 8-bit register for ADC.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x20</code></td>
+<td style="text-align: left;">Digital Phase 1 Div</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Phase divider settings for digital control.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x21</code></td>
+<td style="text-align: left;">Digital Phase 1 Cnt</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Phase count and secondary divider settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x22</code></td>
+<td style="text-align: left;">Digital Phase 2 Cnt</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Phase 2 count settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>0x23</code></td>
+<td style="text-align: left;">Global Control</td>
+<td style="text-align: left;">R/W</td>
+<td style="text-align: left;"><code>0x00</code></td>
+<td style="text-align: left;">Sample Enable, Force Write, and FIFO Watermarks.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="bit-fields">Bit Fields</h2>
+<h3 id="0x00-cref-control"><code>0x00</code> - CREF Control</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>ENREGAFE</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable AFE Voltage Regulator.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>ENREGADC</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable ADC Voltage Regulator.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;"><code>PDREGDIG</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Power down DIG Voltage Regulator (0=ON, 1=OFF).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7:3</code></td>
+<td style="text-align: left;"><code>RESERVED</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="0x11-afe-control-1"><code>0x11</code> - AFE Control 1</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>ENAFELNA</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable AFELNA.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>ENAFELPF</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable AFELPF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;"><code>ENAFEBUF</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable AFEBUF.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;"><code>SENSEMODE</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Sensing mode: 0 = Monopolar, 1 = Bipolar.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>4</code></td>
+<td style="text-align: left;"><code>ENREFBUF</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable external REF buffer (0 = Bypass).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5</code></td>
+<td style="text-align: left;"><code>REFMODE</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Electrode reference: 0 = External, 1 = Internal.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>6</code></td>
+<td style="text-align: left;"><code>AFELPFBYP</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Bypass LPF (LNA direct to BUF).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7</code></td>
+<td style="text-align: left;"><code>RESERVED</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="0x13-afe-control-2"><code>0x13</code> - AFE Control 2</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>AFEBUFRST</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Reset AFEBUF (Active High).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2:1</code></td>
+<td style="text-align: left;"><code>AFEBUFGT&lt;1:0&gt;</code></td>
+<td style="text-align: left;"><code>00</code></td>
+<td style="text-align: left;">Set AFEBUF gain.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;"><code>ENMONTSENSE</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable Monitoring Temperature Sensor.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>4</code></td>
+<td style="text-align: left;"><code>ENLNAOUT</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable LNA outputs to ATM (bypass AFEBUF).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5</code></td>
+<td style="text-align: left;"><code>ENLPFOUT</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable LPF outputs to ATM (bypass AFEBUF).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>6</code></td>
+<td style="text-align: left;"><code>ENMONAFE</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable AFE section monitoring.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7</code></td>
+<td style="text-align: left;"><code>RESERVED</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="0x1b-adc-control-1"><code>0x1B</code> - ADC Control 1</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>ENADCANALOG</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable ADC analog section.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>ENMES</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Mismatch Error Shaping Enable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;"><code>ENCHP</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Chopper Enable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;"><code>ENDWA</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Dynamic Weighted Average Enable.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7:4</code></td>
+<td style="text-align: left;"><code>ADCOSR&lt;3:0&gt;</code></td>
+<td style="text-align: left;"><code>0000</code></td>
+<td style="text-align: left;">ADC Over-Sampling Ratio.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="0x23-global-control"><code>0x23</code> - Global Control</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Bit</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>PHASE2COUNT2[8]</code>?</td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">LSB bits of Phase 2 Count (from CSV logic).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>PHASE2COUNT2[9]</code>?</td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">MSB bits of Phase 2 Count.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>5:2</code></td>
+<td style="text-align: left;"><code>FIFOWATERMARK</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Data frames before <code>DATAREADY</code> triggers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>6</code></td>
+<td style="text-align: left;"><code>FORCEWREN</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enable register writes during sampling (not recommended).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>7</code></td>
+<td style="text-align: left;"><code>ENSAMP</code></td>
+<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><strong>GLOBAL ENABLE</strong> - Starts sampling process.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!NOTE]
+<code>PHASE2COUNT2</code> bits at address <code>0x23</code> represent the most significant bits of the Phase 2 count, extending the 8-bit value in <code>0x22</code>.</p>
+</blockquote>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../js/wavedrom.unpkg.js"></script>
+<script src="../../js/skin-default.js"></script>
+</body>
+</html>

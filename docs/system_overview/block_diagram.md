@@ -4,76 +4,9 @@ This document provides a high-level overview of the `TLM` (Top Level Module) arc
 
 ## Block Diagram
 
-The following Mermaid flowchart illustrates the connectivity between the major submodules within the `TLM`.
+The following diagram illustrates the connectivity between the major submodules within the `TLM`.
 
-```mermaid
-flowchart LR
-    %% External Inputs
-    subgraph Inputs ["External Digital Inputs"]
-        RESETN
-        SCK
-        MOSI
-        CS
-        HF_CLK
-    end
-
-    subgraph Analog_Inputs ["Analog Outputs (to Digital)"]
-        ADC_RESULT["RESULT [15:0]"]
-        ADC_DONE["DONE"]
-        ADC_FLAGS["ADCOVERFLOW, SATDETECT"]
-    end
-
-    %% Submodules
-    SPI_Core[("SPI Core")]
-    CIM["Command Interpreter"]
-    CFG_Regs["Configuration Registers"]
-    CDC["CDC Sync"]
-    Divider["Burst Divider"]
-    ATM_Ctrl["ATM Control"]
-    Temp_Ctrl["TempSense Control"]
-    FIFO["FIFO Buffer"]
-    Stat_Mon["Status Monitor"]
-    Temp_Buf["Temp Buffer"]
-    Status_CDC["Status Clear CDC"]
-
-    %% Connections - SPI & Commands
-    RESETN --> SPI_Core & CIM & CFG_Regs & CDC
-    SCK --> SPI_Core & CIM & CFG_Regs & FIFO
-    MOSI --> SPI_Core
-    CS --> SPI_Core & CIM
-
-    SPI_Core <==>|"Byte/Word Interface"| CIM
-    CIM ==>|"Addr/Data/WrEn"| CFG_Regs
-    CIM <==>|"ADC Data / Status"| FIFO
-    CIM <==>|"Status"| Stat_Mon
-
-    %% Configuration
-    CFG_Regs ==>|"cfg_data [511:0]"| CDC
-    
-    %% CDC & Clocks
-    HF_CLK --> CDC & Divider & Stat_Mon & Temp_Ctrl & Status_CDC
-    CDC ==>|"Synced Configs"| Divider & ATM_Ctrl & FIFO & Stat_Mon & Temp_Buf
-    
-    %% Timing & Control
-    Divider --"SAMPLE_CLK"--> FIFO & ATM_Ctrl & Temp_Buf
-    Temp_Ctrl --"temp_run"--> Divider
-    ATM_Ctrl --"ATMCHSEL"--> FIFO
-
-    %% Data Path
-    ADC_RESULT --> FIFO & Temp_Buf
-    ADC_DONE --> FIFO & Temp_Buf & Temp_Ctrl
-    ADC_FLAGS --> CDC
-    CDC --> Stat_Mon
-
-    %% Outputs
-    FIFO --"Data Ready"--> DATA_RDY
-    Stat_Mon --"Interrupt"--> INT
-    SPI_Core --> MISO
-    
-    %% Styles
-    classDef block fill:#f9f,stroke:#333,stroke-width:2px;
-    class SPI_Core,CIM,CFG_Regs,CDC,FIFO,Divider,Stat_Mon,ATM_Ctrl,Temp_Ctrl,Temp_Buf,Status_CDC block;
-```
+<img src="../../images/combined_diagrams.jpg" alt="Block Diagram" width="800"/>
 
 ## Interface Description
 
@@ -89,7 +22,7 @@ The `TLM` module serves as the digital core, interfacing with the SPI master (ex
 | `SCK` | Input | SPI Clock. |
 | `CS` | Input | Chip Select (Active Low). |
 | `HF_CLK` | Input | High-Frequency System Clock (Main digital clock). |
-| `OEN` | Output | Output Enable (Active high when CS is low and not scanning). |
+| `OEN` | Output | Output Enable (Active low when CS is low OR scanning). |
 | `DATA_RDY` | Output | Indicates new data is available in the FIFO. |
 | `INT` | Output | Interrupt signal (Active High), driven by Status Monitor. |
 

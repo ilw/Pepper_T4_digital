@@ -1,0 +1,1179 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../system_overview/block_diagram/" rel="prev"/>
+<link href="../fifo/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.1" name="generator"/>
+<title>Command Interpreter - Pepper_T4 Digital Documentation</title>
+<link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#command-interpreter-and-spi-core">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Pepper_T4 Digital Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Command Interpreter
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../system_overview/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="./">
+          
+  
+  
+  Core Blocks
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../functional/status_logic/">
+          
+  
+  
+  Functional Logic
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../peripherals/atm_control/">
+          
+  
+  
+  Peripherals
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Pepper_T4 Digital Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Pepper_T4 Digital Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    Pepper_T4 Digital Documentation
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    System Overview
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/">
+<span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system_overview/block_diagram/">
+<span class="md-ellipsis">
+    
+  
+    Block Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+<span class="md-ellipsis">
+    
+  
+    Core Blocks
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Core Blocks
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Command Interpreter
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Command Interpreter
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spi-protocol">
+<span class="md-ellipsis">
+      
+        SPI Protocol
+      
+    </span>
+</a>
+<nav aria-label="SPI Protocol" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mode-timing">
+<span class="md-ellipsis">
+      
+        Mode &amp; Timing
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-structure">
+<span class="md-ellipsis">
+      
+        Command Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#response-format">
+<span class="md-ellipsis">
+      
+        Response Format
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#finite-state-machine">
+<span class="md-ellipsis">
+      
+        Finite State Machine
+      
+    </span>
+</a>
+<nav aria-label="Finite State Machine" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-descriptions">
+<span class="md-ellipsis">
+      
+        State Descriptions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multi-word-transaction-handling">
+<span class="md-ellipsis">
+      
+        Multi-Word Transaction Handling
+      
+    </span>
+</a>
+<nav aria-label="Multi-Word Transaction Handling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#word-vs-byte-structure">
+<span class="md-ellipsis">
+      
+        Word vs. Byte Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-word-transactions">
+<span class="md-ellipsis">
+      
+        Single-Word Transactions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multi-word-transactions">
+<span class="md-ellipsis">
+      
+        Multi-Word Transactions
+      
+    </span>
+</a>
+<nav aria-label="Multi-Word Transactions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_reg-2-word-sequence">
+<span class="md-ellipsis">
+      
+        READ_REG (2-Word Sequence)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_data-streaming-mode">
+<span class="md-ellipsis">
+      
+        READ_DATA (Streaming Mode)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#transaction-boundary-reset">
+<span class="md-ellipsis">
+      
+        Transaction Boundary Reset
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-protection-permissions">
+<span class="md-ellipsis">
+      
+        Write Protection &amp; Permissions
+      
+    </span>
+</a>
+<nav aria-label="Write Protection &amp; Permissions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#safe-vs-restricted-registers">
+<span class="md-ellipsis">
+      
+        Safe vs. Restricted Registers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implementation-detail">
+<span class="md-ellipsis">
+      
+        Implementation Detail
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clock-domain-crossing-cdc">
+<span class="md-ellipsis">
+      
+        Clock Domain Crossing (CDC)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-clear-w1c-mechanism">
+<span class="md-ellipsis">
+      
+        Status Clear (W1C) Mechanism
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-transaction-write-register">
+<span class="md-ellipsis">
+      
+        Example Transaction: Write Register
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-address-map-read-access">
+<span class="md-ellipsis">
+      
+        Register Address Map (Read Access)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-design-choices">
+<span class="md-ellipsis">
+      
+        Key Design Choices
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../fifo/">
+<span class="md-ellipsis">
+    
+  
+    FIFO
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cdc_sync/">
+<span class="md-ellipsis">
+    
+  
+    CDC Sync
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Functional Logic
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Functional Logic
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../functional/status_logic/">
+<span class="md-ellipsis">
+    
+  
+    Status Logic
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Peripherals
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Peripherals
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/atm_control/">
+<span class="md-ellipsis">
+    
+  
+    ATM Control
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/configuration_registers/">
+<span class="md-ellipsis">
+    
+  
+    Configuration Registers
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../peripherals/temp_sense/">
+<span class="md-ellipsis">
+    
+  
+    Temperature Sensor
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#spi-protocol">
+<span class="md-ellipsis">
+      
+        SPI Protocol
+      
+    </span>
+</a>
+<nav aria-label="SPI Protocol" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mode-timing">
+<span class="md-ellipsis">
+      
+        Mode &amp; Timing
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-structure">
+<span class="md-ellipsis">
+      
+        Command Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#response-format">
+<span class="md-ellipsis">
+      
+        Response Format
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#finite-state-machine">
+<span class="md-ellipsis">
+      
+        Finite State Machine
+      
+    </span>
+</a>
+<nav aria-label="Finite State Machine" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#state-descriptions">
+<span class="md-ellipsis">
+      
+        State Descriptions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multi-word-transaction-handling">
+<span class="md-ellipsis">
+      
+        Multi-Word Transaction Handling
+      
+    </span>
+</a>
+<nav aria-label="Multi-Word Transaction Handling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#word-vs-byte-structure">
+<span class="md-ellipsis">
+      
+        Word vs. Byte Structure
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-word-transactions">
+<span class="md-ellipsis">
+      
+        Single-Word Transactions
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multi-word-transactions">
+<span class="md-ellipsis">
+      
+        Multi-Word Transactions
+      
+    </span>
+</a>
+<nav aria-label="Multi-Word Transactions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_reg-2-word-sequence">
+<span class="md-ellipsis">
+      
+        READ_REG (2-Word Sequence)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#read_data-streaming-mode">
+<span class="md-ellipsis">
+      
+        READ_DATA (Streaming Mode)
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#transaction-boundary-reset">
+<span class="md-ellipsis">
+      
+        Transaction Boundary Reset
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#write-protection-permissions">
+<span class="md-ellipsis">
+      
+        Write Protection &amp; Permissions
+      
+    </span>
+</a>
+<nav aria-label="Write Protection &amp; Permissions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#safe-vs-restricted-registers">
+<span class="md-ellipsis">
+      
+        Safe vs. Restricted Registers
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implementation-detail">
+<span class="md-ellipsis">
+      
+        Implementation Detail
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clock-domain-crossing-cdc">
+<span class="md-ellipsis">
+      
+        Clock Domain Crossing (CDC)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-clear-w1c-mechanism">
+<span class="md-ellipsis">
+      
+        Status Clear (W1C) Mechanism
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-transaction-write-register">
+<span class="md-ellipsis">
+      
+        Example Transaction: Write Register
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#register-address-map-read-access">
+<span class="md-ellipsis">
+      
+        Register Address Map (Read Access)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-design-choices">
+<span class="md-ellipsis">
+      
+        Key Design Choices
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="command-interpreter-and-spi-core">Command Interpreter and SPI core</h1>
+<h2 id="overview">Overview</h2>
+<p>The <strong>Command Interpreter</strong> is the control center of the Pepper T4 digital logic. It acts as an SPI slave, decoding host commands and orchestrating data flow between:
+*   <strong>Configuration Registers</strong> (write/read configuration)
+*   <strong>FIFO</strong> (streaming ADC data to host)
+*   <strong>Status Monitor</strong> (reporting system health)
+*   <strong>Temperature Buffer</strong> (reading temperature sensor)</p>
+<p>The module operates entirely in the <strong>SCK domain</strong> (SPI clock), with careful synchronization of inputs from the <strong>HF_CLK domain</strong> (Status, ENSAMP, TEMPVAL).</p>
+<h2 id="spi-protocol">SPI Protocol</h2>
+<h3 id="mode-timing">Mode &amp; Timing</h3>
+<ul>
+<li><strong>SPI Mode</strong>: Mode 3 (CPOL=1, CPHA=1)<ul>
+<li>Clock idle state is HIGH</li>
+<li>Data is captured on the rising edge of SCK</li>
+<li>Data is shifted out on the falling edge of SCK</li>
+</ul>
+</li>
+<li><strong>Bit Order</strong>: MSB first</li>
+<li><strong>Word Size</strong>: 16 bits (8-bit command + 8-bit data)</li>
+</ul>
+<h3 id="command-structure">Command Structure</h3>
+<p>Each SPI transaction begins with an 8-bit <strong>command byte</strong> from the SPI master:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Bits</th>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>[7:6]</code></td>
+<td style="text-align: left;"><strong>Opcode</strong></td>
+<td style="text-align: left;"><code>00</code>=Read Register, <code>01</code>=Read CRC, <code>10</code>=Write Register, <code>11</code>=Read Data</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>[5:0]</code></td>
+<td style="text-align: left;"><strong>Blank or Address</strong></td>
+<td style="text-align: left;">Blank or register address or stream identifier</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response-format">Response Format</h3>
+<p>The module prepends a <strong>Status Word</strong> to every response:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>[15:14] = 01 (Status response identifier)
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>[13:0]  = 14-bit Status register snapshot
+</code></pre></div>
+<h2 id="finite-state-machine">Finite State Machine</h2>
+<p>The Command Interpreter uses a <strong>one-hot encoded</strong> 5-state FSM:</p>
+<pre class="mermaid"><code>stateDiagram-v2
+    [*] --&gt; IDLE
+    IDLE --&gt; READ_REG : byte_rcvd &amp; CMD_RDREG
+    IDLE --&gt; WRITE_REG : byte_rcvd &amp; CMD_WRREG
+    IDLE --&gt; READ_DATA : byte_rcvd &amp; CMD_RDDATA &amp; addr==0
+    IDLE --&gt; READ_CRC : byte_rcvd &amp; CMD_RDCRC &amp; addr==0
+
+    READ_REG --&gt; READ_REG : word_rcvd (word 0→1)
+    READ_REG --&gt; IDLE : word_rcvd (word 1) | CS high
+
+    WRITE_REG --&gt; IDLE : word_rcvd | CS high
+
+    READ_DATA --&gt; READ_DATA : word_rcvd (streaming)
+    READ_DATA --&gt; IDLE : CS high
+
+    READ_CRC --&gt; IDLE : word_rcvd | CS high
+
+    IDLE --&gt; IDLE : CS high (default reset)</code></pre>
+<h3 id="state-descriptions">State Descriptions</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">State</th>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Exit Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>IDLE</strong></td>
+<td style="text-align: left;">Waiting for command byte. Returns Status word on <code>tx_buff</code>.</td>
+<td style="text-align: left;">Command opcode decoded</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>READ_REG</strong></td>
+<td style="text-align: left;">Two-word sequence: ①Status ②Register data</td>
+<td style="text-align: left;">After 2nd word or CS high</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WRITE_REG</strong></td>
+<td style="text-align: left;">Write data byte to target register (if allowed)</td>
+<td style="text-align: left;">After word received or CS high</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>READ_DATA</strong></td>
+<td style="text-align: left;">Streaming FIFO readout (8×16-bit words per frame)</td>
+<td style="text-align: left;">CS high (manual stop)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>READ_CRC</strong></td>
+<td style="text-align: left;">Return CRC-16-CCITT checksum of last FIFO burst</td>
+<td style="text-align: left;">After word or CS high</td>
+</tr>
+</tbody>
+</table>
+<h2 id="multi-word-transaction-handling">Multi-Word Transaction Handling</h2>
+<h3 id="word-vs-byte-structure">Word vs. Byte Structure</h3>
+<p>The SPI interface operates on <strong>16-bit words</strong> composed of two sequential 8-bit bytes:
+*   <strong>Byte 0</strong>: Command or high byte
+*   <strong>Byte 1</strong>: Data or low byte</p>
+<p>The <code>spiCore</code> module provides two pulse signals to the Command Interpreter:
+*   <strong><code>byte_rcvd</code></strong>: Pulses after each 8-bit byte
+*   <strong><code>word_rcvd</code></strong>: Pulses after every 2nd byte (16 bits complete)</p>
+<h3 id="single-word-transactions">Single-Word Transactions</h3>
+<p>Most commands complete in a single word (16 SCK cycles):</p>
+<ol>
+<li><strong>Byte 0 received</strong> → <code>byte_rcvd</code> pulses<ul>
+<li>Command Interpreter captures opcode and address</li>
+<li>FSM transitions from <code>IDLE</code> to target state</li>
+</ul>
+</li>
+<li><strong>Byte 1 received</strong> → <code>word_rcvd</code> pulses<ul>
+<li>For <code>WRITE_REG</code>: Data is written to register</li>
+<li>For <code>READ_CRC</code>: CRC value is transmitted</li>
+<li>FSM returns to <code>IDLE</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="multi-word-transactions">Multi-Word Transactions</h3>
+<h4 id="read_reg-2-word-sequence">READ_REG (2-Word Sequence)</h4>
+<p>The <code>READ_REG</code> state uses a counter (<code>read_reg_word_count</code>) to track progress:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Word</th>
+<th style="text-align: center;">Counter</th>
+<th style="text-align: left;">MISO Response</th>
+<th style="text-align: left;">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><code>0</code></td>
+<td style="text-align: left;">Status[13:0] + <code>01</code></td>
+<td style="text-align: left;">Command parsed; counter resets to 0</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><code>1</code></td>
+<td style="text-align: left;"><code>0xC0</code> + Register[7:0]</td>
+<td style="text-align: left;">Register data transmitted; return to IDLE</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation:</strong> The counter increments on each <code>word_rcvd</code> while in <code>READ_REG</code> state (line 254-256).</p>
+<h4 id="read_data-streaming-mode">READ_DATA (Streaming Mode)</h4>
+<p>For FIFO readout, the transaction continues until the host raises <strong>CS</strong>:</p>
+<ol>
+<li><strong>Word 0</strong>: First 16-bit ADC sample (<code>ADC_data[15:0]</code>)</li>
+<li><strong>Word 1</strong>: Second sample (<code>ADC_data[31:16]</code>)</li>
+<li><strong>...continues...</strong></li>
+<li><strong>Word 7</strong>: Eighth sample (<code>ADC_data[127:112]</code>)</li>
+<li><strong>Auto-Pop</strong>: After word 7, <code>FIFO_POP</code> pulses and a new frame is loaded</li>
+<li><strong>Word 8+</strong>: Streaming continues from the next frame</li>
+</ol>
+<p><strong>Word Selection Logic</strong> (line 461):
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">tx_buff_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADC_data</span><span class="p">[</span><span class="n">word_counter</span><span class="o">*</span><span class="mh">16</span><span class="w"> </span><span class="o">+:</span><span class="w"> </span><span class="mh">16</span><span class="p">];</span>
+</code></pre></div></p>
+<p>The <code>word_counter</code> (3-bit, 0-7) increments on each <code>word_rcvd</code> and wraps around, triggering a FIFO pop on the transition from 7→0.</p>
+<h3 id="transaction-boundary-reset">Transaction Boundary Reset</h3>
+<p><strong>Critical:</strong> The <code>first_transaction</code> flag (lines 168-174) detects the very first byte after CS assertion. This prevents stale commands from the previous transaction from executing if CS glitches or bounces.</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">SCK</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">CS</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CS</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="n">first_transaction</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">byte_rcvd</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">        </span><span class="n">first_transaction</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">end</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">end</span>
+</code></pre></div>
+<p>If <code>first_transaction</code> is high during state execution, the FSM immediately aborts to <code>IDLE</code>.</p>
+<h2 id="write-protection-permissions">Write Protection &amp; Permissions</h2>
+<h3 id="safe-vs-restricted-registers">Safe vs. Restricted Registers</h3>
+<p>To prevent glitches in the analog domain, <strong>most configuration registers are write-protected when sampling is active</strong> (<code>ENSAMP=1</code>).</p>
+<p><strong>Always writable</strong> (exceptions):
+*   <code>0x12</code> (<code>AFERSTCH</code>): Channel reset control
+*   <code>0x13</code>: AFE monitor enables
+*   <code>0x23</code>: Contains <code>ENSAMP</code> bit itself (allows stopping sampling)</p>
+<p><strong>Protected when <code>ENSAMP=1</code></strong>:
+*   All other configuration registers (<code>0x00–0x22</code>)</p>
+<p><strong>Always writable</strong> (special addresses):
+*   <code>0x26</code> (<code>STATUS_CLR_LO</code>): Write-1-to-Clear for saturation flags
+*   <code>0x27</code> (<code>STATUS_CLR_HI</code>): Write-1-to-Clear for upper status bits</p>
+<h3 id="implementation-detail">Implementation Detail</h3>
+<p>The write-enable logic (lines 273-286):
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reg_addr_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">6'h23</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ENSAMP_sync_reg</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">||</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="p">(</span><span class="n">reg_addr_reg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">REG_23_SAFE</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">        </span><span class="p">(</span><span class="n">reg_addr_reg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">REG_AFERSTCH</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">        </span><span class="p">(</span><span class="n">reg_addr_reg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">REG_13_SAFE</span><span class="p">))</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="n">reg_value_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">data_byte</span><span class="p">;</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="n">wr_en_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b1</span><span class="p">;</span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="n">wr_en_reg</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">1</span><span class="mb">'b0</span><span class="p">;</span><span class="w">  </span><span class="c1">// Silently ignore</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="k">end</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="k">end</span>
+</code></pre></div></p>
+<h2 id="clock-domain-crossing-cdc">Clock Domain Crossing (CDC)</h2>
+<p>The Command Interpreter receives three signals from the <strong>HF_CLK domain</strong>:
+1.  <strong>Status[13:0]</strong>: System health flags
+2.  <strong>ENSAMP_sync</strong>: Sampling active indicator
+3.  <strong>TEMPVAL[15:0]</strong>: Temperature sensor readout</p>
+<p>Each is synchronized using <strong>2-stage flip-flop chains</strong> (lines 137-151):
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">SCK</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">negedge</span><span class="w"> </span><span class="n">NRST</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="n">status_sync</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="n">status_sync</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">status_sync</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span><span class="w">  </span><span class="c1">// Use stage [1] for logic</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="c1">// ... similar for TEMPVAL and ENSAMP</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">end</span>
+</code></pre></div></p>
+<p>This ensures meta-stability is resolved before use in the SCK domain logic.</p>
+<h2 id="status-clear-w1c-mechanism">Status Clear (W1C) Mechanism</h2>
+<p>The Command Interpreter implements a <strong>Write-1-to-Clear</strong> queue with handshake to the HF_CLK domain:</p>
+<ol>
+<li><strong>Queue Phase</strong> (SCK domain): Writes to <code>0x26</code>/<code>0x27</code> set bits in <code>status_clr_queued_*</code>.</li>
+<li><strong>Launch Phase</strong>: When not in-flight, the queued mask is copied to <code>status_clr_inflight_*</code> and a <strong>toggle request</strong> is sent.</li>
+<li><strong>Handshake</strong>: The <code>Status_Clear_CDC</code> bridge detects the toggle, pulses the clear in HF_CLK, and toggles back an <strong>ack</strong>.</li>
+<li><strong>Consume Phase</strong>: The ack toggle is synchronized back to SCK, clearing the in-flight flag.</li>
+</ol>
+<p>This allows overlapping clear requests without data loss.</p>
+<h2 id="example-transaction-write-register">Example Transaction: Write Register</h2>
+<pre class="wavedrom"><code>{
+  "signal": [
+    {"name": "CS", "wave": "10..........1"},
+    {"name": "SCK", "wave": "0.p.........|", "period": 0.5},
+    {"name": "MOSI", "wave": "x.===x......", "data": ["CMD", "ADDR", "DATA"]},
+    {"name": "MISO", "wave": "x....===x...", "data": ["STAT_HI", "STAT_LO", "ACK"]},
+    {},
+    {"name": "byte_rcvd", "wave": "0..1.0.1.0.."},
+    {"name": "word_rcvd", "wave": "0......1.0.."},
+    {"name": "state", "wave": "2..3....2...", "data": ["IDLE", "WRITE_REG", "IDLE"]},
+    {"name": "wr_en", "wave": "0.......1.0."}
+  ],
+  "config": {"hscale": 1.5}
+}</code></pre>
+<p><strong>Sequence:</strong>
+1.  <strong>Byte 0</strong> (Command): <code>10XXXXXX</code> (WRREG opcode) triggers transition to <code>WRITE_REG</code>.
+2.  <strong>Byte 1</strong> (Data): Written to target register on <code>word_rcvd</code>.
+3.  <strong>Response</strong>: Status word is returned on MISO during the transaction.
+4.  <strong>Completion</strong>: <code>wr_en</code> pulses for one SCK cycle; state returns to <code>IDLE</code> on CS high.</p>
+<h2 id="register-address-map-read-access">Register Address Map (Read Access)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Address</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>0x00–0x23</code></td>
+<td style="text-align: left;">Configuration Registers</td>
+<td style="text-align: left;">Physical config registers (see Register Map doc)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x24</code></td>
+<td style="text-align: left;"><code>STATUS_LO</code></td>
+<td style="text-align: left;">Status bits [7:0] (Saturation flags)</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x25</code></td>
+<td style="text-align: left;"><code>STATUS_HI</code></td>
+<td style="text-align: left;">Status bits [13:8] packed into [5:0]</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x2C</code></td>
+<td style="text-align: left;"><code>TEMPVAL_HI</code></td>
+<td style="text-align: left;">Temperature sensor high byte</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>0x2D</code></td>
+<td style="text-align: left;"><code>TEMPVAL_LO</code></td>
+<td style="text-align: left;">Temperature sensor low byte</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-design-choices">Key Design Choices</h2>
+<ol>
+<li><strong>One-Hot FSM</strong>: Simplifies decode logic and improves timing in ASIC.</li>
+<li><strong>Always-Valid <code>tx_buff</code></strong>: The transmit buffer is combinationally generated, ensuring data is ready before the SPI core shifts it out.</li>
+<li><strong>First Transaction Detection</strong>: Uses an asynchronous set flip-flop (line 168) to detect the very first byte after CS assertion, preventing stale commands from executing.</li>
+<li><strong>Modular CRC</strong>: The CRC-16-CCITT calculation is self-contained (lines 375-411) and can be easily removed if area is critical.</li>
+</ol>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+<script src="../../js/wavedrom.unpkg.js"></script>
+<script src="../../js/skin-default.js"></script>
+</body>
+</html>

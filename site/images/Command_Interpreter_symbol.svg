@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="750" height="665" viewBox="0 0 750 665" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="750" height="665" fill="white"/>
+  <rect x="200" y="100.0" width="350" height="485" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2.5" rx="10" ry="10"/>
+  <rect x="255.0" y="60.0" width="240" height="30" fill="white" stroke="none"/>
+  <text x="375.0" y="82.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#2c3e50">Command_Interpreter</text>
+  <line x1="175" y1="134.64285714285714" x2="200" y2="134.64285714285714" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="124.64285714285714" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="139.64285714285714" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">NRST</text>
+  <circle cx="200" cy="134.64285714285714" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="169.28571428571428" x2="200" y2="169.28571428571428" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="159.28571428571428" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="174.28571428571428" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">CS</text>
+  <circle cx="200" cy="169.28571428571428" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="203.92857142857144" x2="200" y2="203.92857142857144" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="193.92857142857144" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="208.92857142857144" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">SCK</text>
+  <circle cx="200" cy="203.92857142857144" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="238.57142857142858" x2="200" y2="238.57142857142858" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="228.57142857142858" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="243.57142857142858" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">byte_rcvd</text>
+  <circle cx="200" cy="238.57142857142858" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="273.2142857142857" x2="200" y2="273.2142857142857" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="263.2142857142857" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="278.2142857142857" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">word_rcvd</text>
+  <circle cx="200" cy="273.2142857142857" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="307.8571428571429" x2="200" y2="307.8571428571429" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="297.8571428571429" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="312.8571428571429" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">cmd_byte</text>
+  <circle cx="200" cy="307.8571428571429" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="342.5" x2="200" y2="342.5" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="332.5" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="347.5" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">data_byte</text>
+  <circle cx="200" cy="342.5" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="377.14285714285717" x2="200" y2="377.14285714285717" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="367.14285714285717" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="382.14285714285717" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ADC_data</text>
+  <circle cx="200" cy="377.14285714285717" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="411.78571428571433" x2="200" y2="411.78571428571433" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="401.78571428571433" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="416.78571428571433" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">cfg_data</text>
+  <circle cx="200" cy="411.78571428571433" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="446.42857142857144" x2="200" y2="446.42857142857144" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="436.42857142857144" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="451.42857142857144" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">status</text>
+  <circle cx="200" cy="446.42857142857144" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="481.0714285714286" x2="200" y2="481.0714285714286" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="471.0714285714286" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="486.0714285714286" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">ENSAMP_sync</text>
+  <circle cx="200" cy="481.0714285714286" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="515.7142857142858" x2="200" y2="515.7142857142858" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="505.7142857142858" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="520.7142857142858" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">TEMPVAL</text>
+  <circle cx="200" cy="515.7142857142858" r="3.5" fill="#2c3e50"/>
+  <line x1="175" y1="550.3571428571429" x2="200" y2="550.3571428571429" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="10" y="540.3571428571429" width="160" height="20" fill="white" stroke="none"/>
+  <text x="170" y="555.3571428571429" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">status_clr_ack_tgl</text>
+  <circle cx="200" cy="550.3571428571429" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="153.88888888888889" x2="575" y2="153.88888888888889" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="143.88888888888889" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="158.88888888888889" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">tx_buff</text>
+  <circle cx="550" cy="153.88888888888889" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="207.77777777777777" x2="575" y2="207.77777777777777" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="197.77777777777777" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="212.77777777777777" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">FIFO_POP</text>
+  <circle cx="550" cy="207.77777777777777" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="261.66666666666663" x2="575" y2="261.66666666666663" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="251.66666666666663" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="266.66666666666663" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">reg_addr</text>
+  <circle cx="550" cy="261.66666666666663" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="315.55555555555554" x2="575" y2="315.55555555555554" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="305.55555555555554" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="320.55555555555554" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">reg_value</text>
+  <circle cx="550" cy="315.55555555555554" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="369.44444444444446" x2="575" y2="369.44444444444446" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="359.44444444444446" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="374.44444444444446" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">wr_en</text>
+  <circle cx="550" cy="369.44444444444446" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="423.3333333333333" x2="575" y2="423.3333333333333" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="413.3333333333333" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="428.3333333333333" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">status_clr_req_tgl</text>
+  <circle cx="550" cy="423.3333333333333" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="477.2222222222222" x2="575" y2="477.2222222222222" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="467.2222222222222" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="482.2222222222222" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">status_clr_lo</text>
+  <circle cx="550" cy="477.2222222222222" r="3.5" fill="#2c3e50"/>
+  <line x1="550" y1="531.1111111111111" x2="575" y2="531.1111111111111" stroke="#34495e" stroke-width="1.5"/>
+  <rect x="580" y="521.1111111111111" width="160" height="20" fill="white" stroke="none"/>
+  <text x="585" y="536.1111111111111" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#2c3e50">status_clr_hi</text>
+  <circle cx="550" cy="531.1111111111111" r="3.5" fill="#2c3e50"/>
+  <text x="375.0" y="645" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7f8c8d">Inputs: 13  |  Outputs: 8</text>
+</svg>
